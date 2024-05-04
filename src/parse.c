@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/04 21:32:07 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/04 22:07:16 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ char	**parse_file(char *file, t_map *map_data)
 	int		fd;
 	char	*line;
 	char	**map;
-	int		i;
+	// int		i;
 
-	i = 0;
+	// i = 0;
 	map = NULL;
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
