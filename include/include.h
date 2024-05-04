@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/04 21:29:22 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/04 23:12:07 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
 
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 # define LCLICK 1
 # define RCLICK 3
 # define WUP 1
@@ -49,13 +49,13 @@
 # include "SDL2/SDL_scancode.h"
 # include "mlx.h"
 
-typedef struct	s_vector
+typedef struct s_vector
 {
 	double		x;
 	double		y;
 }				t_vector;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	char		**map;
 	int			width;
@@ -64,7 +64,7 @@ typedef struct	s_map
 	int			cols;
 }				t_map;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	t_vector	pos;
 	t_vector	dir;
@@ -85,7 +85,7 @@ typedef struct s_mlx
 	char		input_map[65536];
 }				t_mlx;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	t_mlx		mlx;
 	t_map		map;

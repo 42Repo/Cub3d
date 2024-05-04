@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_image.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/04 21:50:28 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/04 23:24:58 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,23 @@ void	print_map(t_data *data)
 double	cast_ray(t_vector pos, double angle, t_map map, t_data d)
 {
 	t_vector	tmp;
+	int			map_x;
+	int			map_y;
 
 	tmp = pos;
-	while (pos.x >= 0 && pos.y >= 0 && \
-	pos.x < map.width && pos.y < map.height && \
-	map.map[(int)pos.y / TILE_SIZE][(int)pos.x / TILE_SIZE] != '1')
+	while (42)
 	{
-		mlx_set_image_pixel \
-		(d.mlx.mlx, d.mlx.img_player, pos.x, pos.y, 0xFF303030);
+		map_x = (int)pos.x / TILE_SIZE;
+		map_y = (int)pos.y / TILE_SIZE;
+		if (pos.x < 0 || pos.y < 0 || map_x >= map.width || map_y >= map.height
+			|| map.map[map_y][map_x] == '1')
+			break ;
+		mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_player,
+			pos.x, pos.y, 0xFF303030);
 		pos.x += cos(angle);
 		pos.y += sin(angle);
 	}
+
 	return (sqrt(pow(pos.x - tmp.x, 2) + pow(pos.y - tmp.y, 2)));
 }
 
@@ -96,7 +102,6 @@ void	add_wall(t_data d, int i, double wall_size)
 		y++;
 	}
 }
-
 
 void	add_ray(t_data d)
 {
