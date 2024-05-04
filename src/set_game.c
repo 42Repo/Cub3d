@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/04 21:44:51 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/04 23:34:04 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	init_data(char *file, t_data *d)
 {
 	d->map.map = parse_file(file, &d->map);
-	d->map.width = d->map.cols * TILE_SIZE;
-	d->map.height = d->map.rows * TILE_SIZE;
+	d->map.width = 600;
+	d->map.height = 1200;
 	d->player.pos.x = 100;
 	d->player.pos.y = 100;
 	d->player.dir.x = 0;

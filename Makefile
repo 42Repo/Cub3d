@@ -6,7 +6,7 @@
 #    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 16:23:45 by bgoron            #+#    #+#              #
-#    Updated: 2024/05/04 20:57:31 by bgoron           ###   ########.fr        #
+#    Updated: 2024/05/04 23:42:50 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ $(OBJ_DIR)/%.o: %.c
 clean :
 	@rm -rf $(OBJ)
 	@make -C Libft/ clean
-	@make -C MacroLibX/ clean
 
 dclean : clean
 	@rm -rf $(OBJ_DIR)
