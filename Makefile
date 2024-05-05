@@ -6,20 +6,20 @@
 #    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/05/05 17:00:43 by bgoron           ###   ########.fr        #
+#    Updated: 2024/05/05 17:16:18 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include utils.mk
 
 NAME = cub3D
-CFLAGS		=	-Wall -Werror -Wextra -o3
+CFLAGS		=	-Wall -Werror -Wextra
 MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
 LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
 FLAGS_OPTI = -O3  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -pipe
 IFLAGS = -I include -I Libft/include -I $(MacroLibX_DIR)includes
-CC = clang $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
+CC = clang $(CFLAGS) $(IFLAGS)
 MACROLIBX		=	$(MacroLibX_DIR)libmlx.so
 CACHE_DIR	=	$(addprefix $(shell pwd)/, .cache)
 MAKE		=	make --no-print-directory

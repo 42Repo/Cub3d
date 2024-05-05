@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 16:56:37 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 18:24:48 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,8 @@
 
 void	render(t_data *data)
 {
-	// mlx_clear_window(data->mlx.mlx, data->mlx.win);
+	mlx_clear_window(data->mlx.mlx, data->mlx.win);
 	// add_player(*data);
-	for (int i = 0; i < data->map.height; i++)
-	{
-		for (int j = 0; j < data->map.width; j++)
-			mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_wall, j, i, 0x00000000);
-	}
 	add_ray(*data);
 	mlx_put_image_to_window
 	(data->mlx.mlx, data->mlx.win, data->mlx.img_background, 0, 0);

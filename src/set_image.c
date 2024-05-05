@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 16:51:46 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 18:53:03 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,54 +90,65 @@ void	add_wall(t_data d, int i, double wall_size)
 	static int	half_height;
 	int			half_wall_size;
 	int			wall_width;
-	int			x;
-	int			y;
+	int			wall_x;
+	int			wall_y;
 
 	wall_width = d.map.width / d.mlx.ray_nb;
 	half_wall_size = wall_size / 2;
 	half_height = d.map.height / 2;
-	y = half_height - wall_size / 2;
-	while (y <= half_height + half_wall_size && y <= d.map.height)
+	wall_y = half_height - wall_size / 2;
+	while (wall_y <= half_height + half_wall_size && wall_y <= d.map.height)
 	{
-		x = i * wall_width;
-		while (x <= i * wall_width + wall_width && x <= d.map.width)
+		wall_x = i * wall_width;
+		while (wall_x <= i * wall_width + wall_width && wall_x <= d.map.width)
 			mlx_set_image_pixel \
-			(d.mlx.mlx, d.mlx.img_wall, x++, y, 0xFF000000);
-		y++;
+			(d.mlx.mlx, d.mlx.img_wall, wall_x++, wall_y, 0xFF000000);
+		wall_y++;
 	}
+}
+
+void	reset_image(t_data d, void *image)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (d.map.width > x)
+	{
+		y = 0;
+		while (d.map.height > y)
+			mlx_set_image_pixel(d.mlx.mlx, image, x, y++, 0x00000000);
+		x++;
+	}
+}
+void	draw_ray(t_data d, double angle, double disto, int i)
+{
+	double	dist;
+	double	wall_size;
+
+	dist = cast_ray(d.player.pos, angle, d.map, d);
+	// wall_size = (TILE_SIZE / (dist * cos(angle - d.player.angle))) * disto;
+	wall_size = (TILE_SIZE / (dist * cos(angle - d.player.angle))) * disto * cos(angle - d.player.angle);
+	add_wall(d, i, wall_size);
 }
 
 void	add_ray(t_data d)
 {
-	double			dist;
-	double			angle;
-	double			wall_size;
-	double			increment;
-	double			disto;
-	int				i;
-	double			perp_dist;
-	double			angle_end;
-	double			angle_diff;
-	double			fov_rad;
+	double	angle;
+	double	increment;
+	double	disto;
+	double	angle_end;
+	int		i;
 
-
-	fov_rad = FOV * CUB_PI / 180.0;
-	angle = d.player.angle - fov_rad / 2;
-	increment = fov_rad / d.mlx.ray_nb;
-	angle_end = d.player.angle + fov_rad / 2;
-	disto = ((d.map.width / 2) / tan(fov_rad / 2));
+	angle = d.player.angle - FOV_RAD / 2;
+	increment = FOV_RAD / d.mlx.ray_nb;
+	angle_end = d.player.angle + FOV_RAD / 2;
+	disto = ((d.map.width / 2) / tan(FOV_RAD / 2));
 	i = 1;
+	reset_image(d, d.mlx.img_wall);
 	while (angle <= angle_end)
 	{
-		dist = cast_ray(d.player.pos, angle, d.map, d);
-
-		// angle_diff = angle - d.player.angle;
-		// perp_dist = dist * cos(angle_diff);
-		// wall_size = (TILE_SIZE / perp_dist) * disto;
-		angle_diff = angle - d.player.angle;
-		perp_dist = dist * cos(angle_diff);
-		wall_size = (TILE_SIZE / perp_dist) * disto * cos(angle_diff);
-		add_wall(d, i, wall_size);
+		draw_ray(d, angle, disto, i);
 		angle += increment;
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 17:06:05 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 18:54:39 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,10 @@
 # define D 7
 
 # define FOV 90
+# define FOV_RAD (FOV * CUB_PI / 180)
 
 # define CUB_2_PI 6.28318530717958647692
 # define CUB_PI 3.14159265358979323846
-# define CUB_PI_2 1.57079632679489661923
-# define CUB_PI_3 1.04719755119659774615
-# define CUB_PI_4 0.78539816339744830962
-# define CUB_PI_5 0.62831853071795864769
-# define CUB_PI_6 0.52359877559829887308
-# define CUB_PI_7 0.44879895051282760589
-# define CUB_PI_8 0.39269908169872415481
 
 # include <unistd.h>
 # include <stdlib.h>
