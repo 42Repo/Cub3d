@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
+#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/05/05 03:38:46 by asuc             ###   ########.fr        #
+#    Updated: 2024/05/05 17:00:43 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,9 @@ CFLAGS		=	-Wall -Werror -Wextra -o3
 MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
 LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
+FLAGS_OPTI = -O3  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -pipe
 IFLAGS = -I include -I Libft/include -I $(MacroLibX_DIR)includes
-CC = clang $(CFLAGS) $(IFLAGS)
+CC = clang $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
 MACROLIBX		=	$(MacroLibX_DIR)libmlx.so
 CACHE_DIR	=	$(addprefix $(shell pwd)/, .cache)
 MAKE		=	make --no-print-directory
@@ -62,7 +63,7 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
 all : $(NAME)
 
 debug: CFLAGS += -gdwarf-4
-debug: re
+debug: all
 
 $(OBJ_DIR) $(DEP_DIR):
 	@mkdir -p $(OBJ_DIR) $(DEP_DIR)

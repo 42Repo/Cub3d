@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_image.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 05:02:28 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/05 16:51:46 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void	add_wall(t_data d, int i, double wall_size)
 	while (y <= half_height + half_wall_size && y <= d.map.height)
 	{
 		x = i * wall_width;
-		while (x <= i * wall_width * 2 && x <= d.map.width)
+		while (x <= i * wall_width + wall_width && x <= d.map.width)
 			mlx_set_image_pixel \
 			(d.mlx.mlx, d.mlx.img_wall, x++, y, 0xFF000000);
 		y++;
@@ -131,13 +131,12 @@ void	add_ray(t_data d)
 	{
 		dist = cast_ray(d.player.pos, angle, d.map, d);
 
-		angle_diff = angle - d.player.angle;
-		perp_dist = dist * cos(angle_diff);
-		wall_size = (TILE_SIZE / perp_dist) * disto;
 		// angle_diff = angle - d.player.angle;
 		// perp_dist = dist * cos(angle_diff);
-		// wall_size = (TILE_SIZE / perp_dist) * disto * cos(angle_diff);
-		
+		// wall_size = (TILE_SIZE / perp_dist) * disto;
+		angle_diff = angle - d.player.angle;
+		perp_dist = dist * cos(angle_diff);
+		wall_size = (TILE_SIZE / perp_dist) * disto * cos(angle_diff);
 		add_wall(d, i, wall_size);
 		angle += increment;
 		i++;

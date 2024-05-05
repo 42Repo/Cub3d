@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 04:51:45 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/05 16:51:07 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	init_data(char *file, t_data *d)
 {
 	d->map.map = parse_file(file, &d->map);
-	d->map.width = 800;
-	d->map.height = 600;
+	d->map.width = 1920;
+	d->map.height = 1080;
 	d->player.pos.x = 100;
 	d->player.pos.y = 100;
 	d->player.dir.x = 0;
@@ -39,7 +39,6 @@ void	init_data(char *file, t_data *d)
 
 void	init_mlx(t_data *data)
 {
-	// mlx_set_fps_goal(data->mlx.mlx, 30);
 	mlx_on_event(data->mlx.mlx, data->mlx.win, \
 	MLX_WINDOW_EVENT, destroy, (void *)data);
 	mlx_on_event(data->mlx.mlx, data->mlx.win, \
