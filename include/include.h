@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 21:29:55 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 23:25:51 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ typedef struct s_vector
 	double		y;
 }				t_vector;
 
+typedef struct s_ray
+{
+	t_vector	hit_pos;
+	double		dist;
+}			t_ray;
+
 typedef struct s_map
 {
 	char		**map;
@@ -72,6 +78,14 @@ typedef struct s_player
 	double		speed;
 }				t_player;
 
+typedef struct s_sprite
+{
+	void		*wall_n;
+	void		*wall_s;
+	void		*wall_e;
+	void		*wall_w;
+}				t_sprite;
+
 typedef struct s_mlx
 {
 	void		*mlx;
@@ -80,6 +94,7 @@ typedef struct s_mlx
 	void		*img_wall;
 	void		*img_map;
 	void		*img_player;
+	t_sprite	wall_sprite;
 	size_t		ray_nb;
 	double		*wall_dist;
 	char		input_map[65536];
@@ -114,8 +129,8 @@ void	exit_game(t_data data);
 void	reset_image(t_data d, void *image);
 void	fps_counter(void);
 
-double	cast_ray(t_vector pos, double angle, t_map map, t_data d);
-void	add_wall(t_data d, int i, double wall_size);
+void	cast_ray(double angle, t_data d, t_ray *ray);
+void	add_wall(t_data d, int i, double wall_size, t_ray ray);
 void	draw_ray(t_data d, double angle, double disto, int i);
 void	add_ray(t_data d);
 
