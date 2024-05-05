@@ -6,7 +6,7 @@
 #    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/05/05 17:16:18 by bgoron           ###   ########.fr        #
+#    Updated: 2024/05/05 19:16:23 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
 FLAGS_OPTI = -O3  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -pipe
 IFLAGS = -I include -I Libft/include -I $(MacroLibX_DIR)includes
-CC = clang $(CFLAGS) $(IFLAGS)
+CC = clang $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
 MACROLIBX		=	$(MacroLibX_DIR)libmlx.so
 CACHE_DIR	=	$(addprefix $(shell pwd)/, .cache)
 MAKE		=	make --no-print-directory

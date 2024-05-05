@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 16:51:07 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 19:05:42 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 void	init_data(char *file, t_data *d)
 {
 	d->map.map = parse_file(file, &d->map);
-	d->map.width = 1920;
-	d->map.height = 1080;
+	d->map.width = WIN_WIDTH;
+	d->map.height = WIN_HEIGHT;
 	d->player.pos.x = 100;
 	d->player.pos.y = 100;
 	d->player.dir.x = 0;
 	d->player.dir.y = 0;
 	d->player.angle = 0;
-	d->mlx.ray_nb = d->map.width;
+	d->mlx.ray_nb = WIN_WIDTH;
 	ft_memset(d->mlx.input_map, 0, 65536 * sizeof(char));
 	d->mlx.mlx = mlx_init();
 	d->mlx.win = mlx_new_window \

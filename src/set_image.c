@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 18:58:44 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 19:21:31 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ void	add_wall(t_data d, int i, double wall_size)
 	int			wall_y;
 
 	wall_width = d.map.width / d.mlx.ray_nb;
-	half_wall_size = wall_size / 2;
-	half_height = d.map.height / 2;
-	wall_y = half_height - wall_size / 2;
+	half_wall_size = (int)wall_size >> 1;
+	half_height = d.map.height >> 1;
+	wall_y = half_height - ((int)wall_size >> 1);
 	while (wall_y <= half_height + half_wall_size && wall_y <= d.map.height)
 	{
 		wall_x = i * wall_width;

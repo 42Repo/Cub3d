@@ -6,12 +6,15 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 18:54:39 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 19:16:47 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
+
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 # define TILE_SIZE 32
 # define LCLICK 1
