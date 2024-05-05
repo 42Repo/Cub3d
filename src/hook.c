@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 18:24:48 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 18:56:16 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	fps_counter(void)
 		frame_count = 0;
 		last_avg_time = current_time;
 	}
-
 	printf("FPS: %.2f\n", fps);
 }
 
@@ -93,7 +92,6 @@ int	update(void *param)
 	fps_counter();
 	return (0);
 }
-
 
 int	key_press(int key, void *param)
 {

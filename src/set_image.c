@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 18:53:03 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 18:58:44 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ double	cast_ray(t_vector pos, double angle, t_map map, t_data d)
 		pos.x += cos_angle;
 		pos.y += sin_angle;
 	}
-
 	return (sqrt(pow(pos.x - tmp.x, 2) + pow(pos.y - tmp.y, 2)));
 }
 
@@ -121,6 +120,7 @@ void	reset_image(t_data d, void *image)
 		x++;
 	}
 }
+
 void	draw_ray(t_data d, double angle, double disto, int i)
 {
 	double	dist;
@@ -128,7 +128,8 @@ void	draw_ray(t_data d, double angle, double disto, int i)
 
 	dist = cast_ray(d.player.pos, angle, d.map, d);
 	// wall_size = (TILE_SIZE / (dist * cos(angle - d.player.angle))) * disto;
-	wall_size = (TILE_SIZE / (dist * cos(angle - d.player.angle))) * disto * cos(angle - d.player.angle);
+	wall_size = (TILE_SIZE / (dist * cos(angle - d.player.angle))) * \
+	disto * cos(angle - d.player.angle);
 	add_wall(d, i, wall_size);
 }
 
