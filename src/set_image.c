@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 04:51:25 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/05 05:02:28 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void	add_ray(t_data d)
 	double			angle_diff;
 	double			fov_rad;
 
+
 	fov_rad = FOV * CUB_PI / 180.0;
 	angle = d.player.angle - fov_rad / 2;
 	increment = fov_rad / d.mlx.ray_nb;
@@ -129,9 +130,14 @@ void	add_ray(t_data d)
 	while (angle <= angle_end)
 	{
 		dist = cast_ray(d.player.pos, angle, d.map, d);
+
 		angle_diff = angle - d.player.angle;
 		perp_dist = dist * cos(angle_diff);
-		wall_size = (TILE_SIZE / perp_dist) * disto * cos(angle_diff);
+		wall_size = (TILE_SIZE / perp_dist) * disto;
+		// angle_diff = angle - d.player.angle;
+		// perp_dist = dist * cos(angle_diff);
+		// wall_size = (TILE_SIZE / perp_dist) * disto * cos(angle_diff);
+		
 		add_wall(d, i, wall_size);
 		angle += increment;
 		i++;
