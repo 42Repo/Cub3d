@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/04 22:07:16 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/05 03:24:37 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ char	**parse_file(char *file, t_map *map_data)
 		line = get_next_line(fd);
 	}
 	close(fd);
+	
+	
 	format_map(&map, map_data);
 	return (map);
 }
