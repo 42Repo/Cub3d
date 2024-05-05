@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 20:02:01 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/05 21:29:55 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
 
-# define WIN_WIDTH 500
-# define WIN_HEIGHT 500
+# define WIN_WIDTH 1000
+# define WIN_HEIGHT 800
 
 # define TILE_SIZE 32
 # define LCLICK 1
@@ -111,5 +111,12 @@ int		key_release(int key, void *param);
 
 int		destroy(int key, void *param);
 void	exit_game(t_data data);
+void	reset_image(t_data d, void *image);
+void	fps_counter(void);
+
+double	cast_ray(t_vector pos, double angle, t_map map, t_data d);
+void	add_wall(t_data d, int i, double wall_size);
+void	draw_ray(t_data d, double angle, double disto, int i);
+void	add_ray(t_data d);
 
 #endif

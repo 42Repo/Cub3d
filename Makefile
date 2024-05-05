@@ -6,7 +6,7 @@
 #    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/05/05 19:16:23 by bgoron           ###   ########.fr        #
+#    Updated: 2024/05/05 21:03:54 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ src/hook.c       \
 src/set_game.c   \
 src/set_image.c  \
 src/parsing/parse.c \
+src/raycast.c \
+src/utils.c \
 
 
 
