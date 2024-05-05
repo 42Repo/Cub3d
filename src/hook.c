@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 19:28:29 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 20:45:50 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,23 @@ void	move(t_data *d)
 		d->player.speed += 5;
 	if (d->mlx.input_map[SDL_SCANCODE_W])
 	{
-		d->player.pos.x += d->player.speed * (trig.x);
-		d->player.pos.y += d->player.speed * (trig.y);
+		d->player.pos.x  = d->player.pos.x + d->player.speed * (trig.x);
+		d->player.pos.y = d->player.pos.y + d->player.speed * (trig.y);
 	}
 	if (d->mlx.input_map[SDL_SCANCODE_S])
 	{
-		d->player.pos.x -= d->player.speed * (trig.x);
-		d->player.pos.y -= d->player.speed * (trig.y);
+		d->player.pos.x  = d->player.pos.x - d->player.speed * (trig.x);
+		d->player.pos.y = d->player.pos.y - d->player.speed * (trig.y);
 	}
 	if (d->mlx.input_map[SDL_SCANCODE_A])
 		d->player.angle -= (CUB_PI / 60);
 	if (d->mlx.input_map[SDL_SCANCODE_D])
 		d->player.angle += (CUB_PI / 60);
 	d->player.angle = fmod(d->player.angle, CUB_2_PI);
-	d->player.pos.x = fmod(d->map.width + d->player.pos.x, d->map.width);
-	d->player.pos.y = fmod(d->map.height + d->player.pos.y, d->map.height);
+	d->player.pos.x = fmod(d->map.map_width + d->player.pos.x, d->map.map_width);
+	d->player.pos.y = fmod(d->map.map_height + d->player.pos.y, d->map.map_height);
 	d->player.dir.x = (trig.x * 10) + d->player.pos.x;
-	d->player.dir.x = (trig.y * 10) + d->player.pos.y;
+	d->player.dir.y = (trig.y * 10) + d->player.pos.y;
 }
 
 void	fps_counter(void)

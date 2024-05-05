@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_image.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 19:38:02 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 20:13:40 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,9 @@ double	cast_ray(t_vector pos, double angle, t_map map, t_data d)
 	{
 		map_x = (int)pos.x / TILE_SIZE;
 		map_y = (int)pos.y / TILE_SIZE;
-		if (pos.x < 0 || pos.y < 0 || map_x >= map.map_width || map_y >= map.map_height
-			|| map.map[map_y][map_x] == '1')
+		if (pos.x < 0 || pos.y < 0 || map_x >= map.cols || map_y >= map.rows)
+			break ;
+		if (map.map[map_y][map_x] == '1')
 			break ;
 		mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_player,
 			pos.x, pos.y, 0xFF303030);
@@ -126,12 +127,13 @@ void	draw_ray(t_data d, double angle, double disto, int i)
 	double	dist;
 	double	wall_size;
 
+	(void)wall_size;
 	(void)i;
 	dist = cast_ray(d.player.pos, angle, d.map, d);
 	// wall_size = (TILE_SIZE / (dist * cos(angle - d.player.angle))) * disto;
 	wall_size = (TILE_SIZE / (dist * cos(angle - d.player.angle))) * \
 	disto * cos(angle - d.player.angle);
-	// add_wall(d, i, wall_size);
+	add_wall(d, i, wall_size);
 }
 
 void	add_ray(t_data d)
