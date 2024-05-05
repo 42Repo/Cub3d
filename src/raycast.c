@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 21:30:07 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 21:49:18 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	add_wall(t_data d, int i, double wall_size)
 	while (wall_y <= half_height + half_wall_size && wall_y <= d.map.height)
 	{
 		wall_x = i * wall_width;
-		while (wall_x <= i * wall_width + wall_width && wall_x <= d.map.width)
+		while (wall_x < (i + 1) * wall_width && wall_x < d.map.width)
 			mlx_set_image_pixel \
 			(d.mlx.mlx, d.mlx.img_wall, wall_x++, wall_y, 0xFF000000);
 		wall_y++;
@@ -80,16 +80,14 @@ void	add_ray(t_data d)
 	double	angle;
 	double	increment;
 	double	disto;
-	double	angle_end;
 	int		i;
 
 	angle = d.player.angle - FOV_RAD / 2;
 	increment = FOV_RAD / d.mlx.ray_nb;
-	angle_end = d.player.angle + FOV_RAD / 2;
 	disto = ((d.map.width / 2) / tan(FOV_RAD / 2));
-	i = 1;
+	i = 0;
 	reset_image(d, d.mlx.img_wall);
-	while (angle <= angle_end)
+	while (i < (int)d.mlx.ray_nb)
 	{
 		draw_ray(d, angle, disto, i);
 		angle += increment;
