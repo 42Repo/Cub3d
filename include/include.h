@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 19:16:47 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 19:30:34 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_map
 	char		**map;
 	int			width;
 	int			height;
+	int			map_width;
+	int			map_height;
 	int			rows;
 	int			cols;
 }				t_map;

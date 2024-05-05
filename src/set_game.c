@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 19:05:42 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 19:39:42 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,20 @@ void	init_data(char *file, t_data *d)
 	d->mlx.ray_nb = WIN_WIDTH;
 	ft_memset(d->mlx.input_map, 0, 65536 * sizeof(char));
 	d->mlx.mlx = mlx_init();
-	d->mlx.win = mlx_new_window \
-	(d->mlx.mlx, d->map.width, d->map.height, "Cub3D");
-	d->mlx.img_map = mlx_new_image \
-	(d->mlx.mlx, d->map.width, d->map.height);
-	d->mlx.img_player = mlx_new_image \
-	(d->mlx.mlx, d->map.width, d->map.height);
+	// 3D
+	// d->mlx.win = mlx_new_window \
+	// (d->mlx.mlx, d->map.width, d->map.height, "Cub3D");
 	(d->mlx.img_background = mlx_new_image \
 	(d->mlx.mlx, d->map.width, d->map.height));
 	(d->mlx.img_wall = mlx_new_image \
 	(d->mlx.mlx, d->map.width, d->map.height));
+	// 2D
+	d->mlx.win = mlx_new_window \
+	(d->mlx.mlx, d->map.map_width, d->map.map_height, "Cub3D");
+	d->mlx.img_map = mlx_new_image \
+	(d->mlx.mlx, d->map.map_width, d->map.map_height);
+	d->mlx.img_player = mlx_new_image \
+	(d->mlx.mlx, d->map.map_width, d->map.map_height);
 }
 
 void	init_mlx(t_data *data)

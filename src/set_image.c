@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 19:21:31 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 19:38:02 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void	print_map(t_data *data)
 	int	y;
 
 	x = 0;
-	while (data->map.width > x)
+	while (data->map.map_width > x)
 	{
 		y = 0;
-		while (data->map.height > y)
+		while (data->map.map_height > y)
 		{
 			if (data->map.map[y / TILE_SIZE][x / TILE_SIZE] == '1')
 				mlx_set_image_pixel \
@@ -73,7 +73,7 @@ double	cast_ray(t_vector pos, double angle, t_map map, t_data d)
 	{
 		map_x = (int)pos.x / TILE_SIZE;
 		map_y = (int)pos.y / TILE_SIZE;
-		if (pos.x < 0 || pos.y < 0 || map_x >= map.width || map_y >= map.height
+		if (pos.x < 0 || pos.y < 0 || map_x >= map.map_width || map_y >= map.map_height
 			|| map.map[map_y][map_x] == '1')
 			break ;
 		mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_player,
@@ -112,10 +112,10 @@ void	reset_image(t_data d, void *image)
 	int	y;
 
 	x = 0;
-	while (d.map.width > x)
+	while (d.map.map_width > x)
 	{
 		y = 0;
-		while (d.map.height > y)
+		while (d.map.map_height > y)
 			mlx_set_image_pixel(d.mlx.mlx, image, x, y++, 0x00000000);
 		x++;
 	}
@@ -126,11 +126,12 @@ void	draw_ray(t_data d, double angle, double disto, int i)
 	double	dist;
 	double	wall_size;
 
+	(void)i;
 	dist = cast_ray(d.player.pos, angle, d.map, d);
 	// wall_size = (TILE_SIZE / (dist * cos(angle - d.player.angle))) * disto;
 	wall_size = (TILE_SIZE / (dist * cos(angle - d.player.angle))) * \
 	disto * cos(angle - d.player.angle);
-	add_wall(d, i, wall_size);
+	// add_wall(d, i, wall_size);
 }
 
 void	add_ray(t_data d)
@@ -161,10 +162,10 @@ void	add_player(t_data d)
 	int	y;
 
 	x = 0;
-	while (d.map.width > x)
+	while (d.map.map_width > x)
 	{
 		y = 0;
-		while (d.map.height > y)
+		while (d.map.map_height > y)
 		{
 			if ((x > d.player.pos.x - 5 && x < d.player.pos.x + 5) \
 				&& (y > d.player.pos.y - 5 && y < d.player.pos.y + 5))

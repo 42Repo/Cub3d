@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 18:58:30 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 19:42:01 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	extand_map(char **map, size_t max_len)
 		if (ft_strlen(*tmp) < max_len)
 		{
 			tmp2 = ft_calloc(sizeof(char), max_len - ft_strlen(*tmp) + 1);
-			ft_memset(tmp2, ' ', max_len - ft_strlen(*tmp));
+			ft_memset(tmp2, '0', max_len - ft_strlen(*tmp));
 			*tmp = ft_strjoin(*tmp, tmp2, 0b11);
 		}
 		tmp++;
@@ -47,6 +47,8 @@ void	format_map(char ***grid, t_map *map)
 	}
 	map->cols = max_len;
 	map->rows = tmp - *grid;
+	map->map_width = map->cols * TILE_SIZE;
+	map->map_height = map->rows * TILE_SIZE;
 	extand_map(*grid, max_len);
 }
 
