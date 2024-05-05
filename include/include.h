@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 03:45:12 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/05 04:17:51 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # include "libft.h"
 # include "SDL2/SDL_scancode.h"
 # include "mlx.h"
+# include <time.h>
 
 typedef struct s_vector
 {

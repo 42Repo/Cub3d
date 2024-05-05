@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 03:49:49 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/05 04:51:45 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_data(char *file, t_data *d)
 
 void	init_mlx(t_data *data)
 {
-	mlx_set_fps_goal(data->mlx.mlx, 30);
+	// mlx_set_fps_goal(data->mlx.mlx, 30);
 	mlx_on_event(data->mlx.mlx, data->mlx.win, \
 	MLX_WINDOW_EVENT, destroy, (void *)data);
 	mlx_on_event(data->mlx.mlx, data->mlx.win, \

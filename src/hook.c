@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/04 21:51:40 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/05 04:52:12 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,44 @@ void	move(t_data *d)
 	d->player.dir.x = (trig.y * 10) + d->player.pos.y;
 }
 
+void	fps_counter(void)
+{
+	static clock_t	last_time = 0;
+	static clock_t	last_avg_time = 0;
+	static int		frame_count = 0;
+	static double	fps_sum = 0.0;
+	clock_t			current_time;
+	double			fps;
+	double			avg_fps;
+
+	current_time = clock();
+	fps = CLOCKS_PER_SEC / (double)(current_time - last_time);
+	last_time = current_time;
+	fps_sum += fps;
+	frame_count++;
+	if ((current_time - last_avg_time) >= CLOCKS_PER_SEC * 10)
+	{
+		avg_fps = fps_sum / frame_count;
+		printf("\033[1;31mAverage FPS (10s): %.2f\033[0m\n", avg_fps);
+		fps_sum = 0.0;
+		frame_count = 0;
+		last_avg_time = current_time;
+	}
+
+	printf("FPS: %.2f\n", fps);
+}
+
 int	update(void *param)
 {
-	t_data		*d;
+	t_data	*d;
 
 	d = (t_data *)param;
 	move(d);
 	render(d);
+	fps_counter();
 	return (0);
 }
+
 
 int	key_press(int key, void *param)
 {

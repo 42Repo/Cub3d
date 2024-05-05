@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 03:48:18 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/05 04:51:25 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,11 @@ double	cast_ray(t_vector pos, double angle, t_map map, t_data d)
 	t_vector	tmp;
 	int			map_x;
 	int			map_y;
+	double		cos_angle;
+	double		sin_angle;
 
+	cos_angle = cos(angle);
+	sin_angle = sin(angle);
 	tmp = pos;
 	while (42)
 	{
@@ -74,8 +78,8 @@ double	cast_ray(t_vector pos, double angle, t_map map, t_data d)
 			break ;
 		mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_player,
 			pos.x, pos.y, 0xFF303030);
-		pos.x += cos(angle);
-		pos.y += sin(angle);
+		pos.x += cos_angle;
+		pos.y += sin_angle;
 	}
 
 	return (sqrt(pow(pos.x - tmp.x, 2) + pow(pos.y - tmp.y, 2)));
