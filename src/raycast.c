@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 23:39:25 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/06 02:04:41 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	cast_ray(double angle, t_data d, t_ray *ray)
 	ray->dist = sqrt(pow(d.player.pos.x - ray->hit_pos.x, 2) + pow(d.player.pos.y - ray->hit_pos.y, 2));
 }
 
-void	add_wall(t_data d, int i, double wall_size, t_ray ray)
+void	add_wall(t_data d, int i, double wall_size)
 {
 	const int	half_height = d.map.height >> 1;
 	const int	half_wall_size = (int)wall_size >> 1;
@@ -44,7 +44,6 @@ void	add_wall(t_data d, int i, double wall_size, t_ray ray)
 	int			wall_y;
 	int			wall_x;
 
-	(void)ray;
 	wall_y = half_height - ((int)wall_size >> 1);
 	while (wall_y <= half_height + half_wall_size && wall_y <= d.map.height)
 	{
@@ -59,35 +58,35 @@ void	add_wall(t_data d, int i, double wall_size, t_ray ray)
 	}
 }
 
-void	draw_ray(t_data d, double angle, double disto, int i)
-{
-	double	wall_size;
-	t_ray	ray;
+void	draw_ray(t_data d, int i, t_ray *ray)
+	{
+	double	plane_distance;
+	double	ray_angle;
+	double	corrected_angle;
+	double	correct_dist;
+	double	wall_height;
 
-	ray = (t_ray){(t_vector){0, 0}, 0};
-	cast_ray(angle, d, &ray);
-	if (!ray.dist)
-		wall_size = 5000;
-	else
-		wall_size = (TILE_SIZE / (ray.dist * cos(angle - d.player.angle))) \
-		* disto * cos(angle - d.player.angle);
-	add_wall(d, i, wall_size, ray);
+	plane_distance = (d.map.width / 2) / tan(FOV_RAD / 2);
+	ray_angle = d.player.angle + atan((i - d.map.width / 2.0) / plane_distance);
+	corrected_angle = ray_angle - d.player.angle;
+	correct_dist = ray->dist * cos(corrected_angle);
+	wall_height = (TILE_SIZE / correct_dist) * plane_distance;
+	cast_ray(ray_angle, d, ray);
+	if (!ray->dist)
+		wall_height = WIN_HEIGHT;
+	add_wall(d, i, wall_height);
 }
 
 void	add_ray(t_data d)
 {
-	const double	increment = FOV_RAD / d.mlx.ray_nb;
-	const double	disto = ((d.map.width / 2) / tan(FOV_RAD / 2));
-	double			angle;
-	int				i;
+	t_ray	ray;
+	size_t	i;
 
-	angle = d.player.angle - FOV_RAD / 2;
 	i = 0;
 	reset_image(d, d.mlx.img_wall);
-	while (i < (int)d.mlx.ray_nb)
+	while (i < d.mlx.ray_nb)
 	{
-		draw_ray(d, angle, disto, i);
-		angle += increment;
+		draw_ray(d, i, &ray);
 		i++;
 	}
 }

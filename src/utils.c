@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:02:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 21:50:34 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/06 01:39:06 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	reset_image(t_data d, void *image)
 	int	y;
 
 	x = 0;
-	while (d.map.map_width > x)
+	while (WIN_WIDTH > x)
 	{
 		y = 0;
-		while (d.map.map_height > y)
+		while (WIN_HEIGHT > y)
 			mlx_set_image_pixel(d.mlx.mlx, image, x, y++, 0x00000000);
 		x++;
 	}

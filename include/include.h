@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 23:25:51 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/06 02:04:14 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
 
-# define WIN_WIDTH 1000
-# define WIN_HEIGHT 800
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 # define TILE_SIZE 32
 # define LCLICK 1
@@ -130,8 +130,8 @@ void	reset_image(t_data d, void *image);
 void	fps_counter(void);
 
 void	cast_ray(double angle, t_data d, t_ray *ray);
-void	add_wall(t_data d, int i, double wall_size, t_ray ray);
-void	draw_ray(t_data d, double angle, double disto, int i);
+void	add_wall(t_data d, int i, double wall_size);
+void	draw_ray(t_data d, int i, t_ray *ray);
 void	add_ray(t_data d);
 
 #endif
