@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 20:51:26 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/07 14:06:35 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@ int	main(int ac, char **av)
 	// 2D
 	// print_map(&data);
 	init_mlx(&data);
-	exit_game(data);
 	return (EXIT_SUCCESS);
 }

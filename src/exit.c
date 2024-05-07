@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 16:54:44 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/05/07 14:06:31 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	exit_game(t_data data)
 {
+	mlx_loop_end(data.mlx.mlx);
 	mlx_destroy_image(data.mlx.mlx, data.mlx.img_map);
 	mlx_destroy_image(data.mlx.mlx, data.mlx.img_player);
 	mlx_destroy_image(data.mlx.mlx, data.mlx.img_background);
@@ -30,6 +31,6 @@ int	destroy(int key, void *param)
 
 	data = (t_data *)param;
 	if (!key)
-		mlx_loop_end(data->mlx.mlx);
+		exit_game(*data);
 	return (0);
 }
