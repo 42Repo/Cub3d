@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: baptistegoron <baptistegoron@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/06 02:04:41 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/10 14:45:26 by baptistegor      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	cast_ray(double angle, t_data d, t_ray *ray)
 	const double	sin_angle = sin(angle);
 
 	ray->hit_pos = d.player.pos;
+	ray->prev_hit_pos = ray->hit_pos;
 	while (42)
 	{
 		map_x = (int)ray->hit_pos.x / TILE_SIZE;
@@ -27,16 +28,27 @@ void	cast_ray(double angle, t_data d, t_ray *ray)
 		if (ray->hit_pos.x < 0 || ray->hit_pos.y < 0 || map_x >= d.map.cols || map_y >= d.map.rows)
 			break ;
 		if (d.map.map[map_y][map_x] == '1')
+		{
+			if (ray->prev_hit_pos.x < map_x * TILE_SIZE)
+				ray->wall_type = EAST;
+			else if (ray->prev_hit_pos.x > map_x * TILE_SIZE + TILE_SIZE)
+				ray->wall_type = WEST;
+			else if (ray->prev_hit_pos.y < map_y * TILE_SIZE)
+				ray->wall_type = SOUTH;
+			else if (ray->prev_hit_pos.y > map_y * TILE_SIZE + TILE_SIZE)
+				ray->wall_type = NORTH;
 			break ;
+		}
 		mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_player,
 			ray->hit_pos.x, ray->hit_pos.y, 0xFF303030);
+		ray->prev_hit_pos = ray->hit_pos;
 		ray->hit_pos.x += cos_angle;
 		ray->hit_pos.y += sin_angle;
 	}
 	ray->dist = sqrt(pow(d.player.pos.x - ray->hit_pos.x, 2) + pow(d.player.pos.y - ray->hit_pos.y, 2));
 }
 
-void	add_wall(t_data d, int i, double wall_size)
+void	add_wall(t_data d, int i, double wall_size, t_ray *ray)
 {
 	const int	half_height = d.map.height >> 1;
 	const int	half_wall_size = (int)wall_size >> 1;
@@ -50,8 +62,14 @@ void	add_wall(t_data d, int i, double wall_size)
 		wall_x = i * wall_width;
 		while (wall_x < (i + 1) * wall_width && wall_x < d.map.width)
 		{
-			mlx_set_image_pixel \
-			(d.mlx.mlx, d.mlx.img_wall, wall_x++, wall_y, 0xFF000000);
+			if (ray->wall_type == NORTH)
+				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y, 0xFF101010);
+			else if (ray->wall_type == SOUTH)
+				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y, 0xFF202020);
+			else if (ray->wall_type == EAST)
+				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y, 0xFF303030);
+			else if (ray->wall_type == WEST)
+				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y, 0xFF404040);
 			wall_x++;
 		}
 		wall_y++;
@@ -74,7 +92,7 @@ void	draw_ray(t_data d, int i, t_ray *ray)
 	cast_ray(ray_angle, d, ray);
 	if (!ray->dist)
 		wall_height = WIN_HEIGHT;
-	add_wall(d, i, wall_height);
+	add_wall(d, i, wall_height, ray);
 }
 
 void	add_ray(t_data d)

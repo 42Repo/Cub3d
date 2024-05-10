@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: baptistegoron <baptistegoron@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/06 02:04:14 by asuc             ###   ########.fr       */
+/*   Updated: 2024/05/10 14:50:17 by baptistegor      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,20 @@ typedef struct s_vector
 	double		y;
 }				t_vector;
 
+typedef enum e_wall
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+}			t_wall;
+
 typedef struct s_ray
 {
 	t_vector	hit_pos;
+	t_vector	prev_hit_pos;
 	double		dist;
+	t_wall		wall_type;
 }			t_ray;
 
 typedef struct s_map
@@ -130,7 +140,7 @@ void	reset_image(t_data d, void *image);
 void	fps_counter(void);
 
 void	cast_ray(double angle, t_data d, t_ray *ray);
-void	add_wall(t_data d, int i, double wall_size);
+void	add_wall(t_data d, int i, double wall_size, t_ray *ray);
 void	draw_ray(t_data d, int i, t_ray *ray);
 void	add_ray(t_data d);
 
