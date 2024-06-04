@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptistegoron <baptistegoron@student.42    +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/10 14:45:26 by baptistegor      ###   ########.fr       */
+/*   Updated: 2024/06/04 15:42:00 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,23 @@ void	add_wall(t_data d, int i, double wall_size, t_ray *ray)
 		while (wall_x < (i + 1) * wall_width && wall_x < d.map.width)
 		{
 			if (ray->wall_type == NORTH)
-				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y, 0xFF101010);
+				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y,
+					0xFFFF0000); // Red for NORTH
 			else if (ray->wall_type == SOUTH)
-				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y, 0xFF202020);
+				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y,
+					0xFFFF55FF); // Pink for SOUTH
 			else if (ray->wall_type == EAST)
-				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y, 0xFF303030);
+				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y,
+					0xFF00FF00); // Green for EAST
 			else if (ray->wall_type == WEST)
-				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y, 0xFF404040);
+				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y,
+					0xFFFFFF00); // Yellow for WEST
+			else
+				mlx_set_image_pixel(d.mlx.mlx, d.mlx.img_wall, wall_x, wall_y,
+					0xFFFFFFFF); // White for unknown
+			// printf("wall_x: %d, wall_y: %d\n", wall_x, wall_y);
+			// printf("ray->wall_type: %d\n", ray->wall_type);
+			// printf("ray->dist: %f\n", ray->dist);
 			wall_x++;
 		}
 		wall_y++;
@@ -77,7 +87,7 @@ void	add_wall(t_data d, int i, double wall_size, t_ray *ray)
 }
 
 void	draw_ray(t_data d, int i, t_ray *ray)
-	{
+{
 	double	plane_distance;
 	double	ray_angle;
 	double	corrected_angle;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 19:42:01 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/03 19:32:28 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,21 @@ void	extand_map(char **map, size_t max_len)
 	}
 }
 
+void	set_border(char **map, t_map *map_data)
+{
+	char	**tmp;
+
+	tmp = map;
+	while (*tmp)
+	{
+		(*tmp)[0] = '1';
+		(*tmp)[map_data->cols - 1] = '1';
+		tmp++;
+	}
+	ft_memset(*map, '1', map_data->cols);
+	ft_memset(*(map + map_data->rows - 1), '1', map_data->cols);
+}
+
 void	format_map(char ***grid, t_map *map)
 {
 	size_t	max_len;
@@ -50,6 +65,7 @@ void	format_map(char ***grid, t_map *map)
 	map->map_width = map->cols * TILE_SIZE;
 	map->map_height = map->rows * TILE_SIZE;
 	extand_map(*grid, max_len);
+	set_border(*grid, map);
 }
 
 char	**parse_file(char *file, t_map *map_data)
