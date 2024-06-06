@@ -6,26 +6,23 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/03 18:50:15 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/06 19:24:19 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include utils.mk
 
 NAME = cub3D
-CFLAGS		=	-Wall -Werror -Wextra -pg
+CFLAGS		=	-Wall -Werror -Wextra
 MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
 LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
-# FLAGS_OPTI = -O3  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -pipe
+FLAGS_OPTI = -O3  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -pipe
 IFLAGS = -I include -I Libft/include -I $(MacroLibX_DIR)includes
 CC = clang $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
 MACROLIBX		=	$(MacroLibX_DIR)libmlx.so
 CACHE_DIR	=	$(addprefix $(shell pwd)/, .cache)
 MAKE		=	make --no-print-directory
-
-
-
 
 SRC = src/main.c \
 src/exit.c       \
@@ -35,6 +32,8 @@ src/set_image.c  \
 src/parsing/parse.c \
 src/raycast.c \
 src/utils.c \
+src/mlx_addon/mlx_line.c \
+src/mlx_addon/mlx_rectangle.c
 
 
 

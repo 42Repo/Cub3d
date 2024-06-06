@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_image.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/05 21:02:47 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/06 20:00:32 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,10 @@ void	print_map(t_data *data)
 			else
 				mlx_set_image_pixel \
 				(data->mlx.mlx, data->mlx.img_map, x, y, 0xFF5B3C11);
-			y++;
+			y++;	// d->map.map_width = 24;
+	// d->map.map_height = 24;
+	// d->map.cols = 24;
+	// d->map.rows = 24;
 		}
 		x++;
 	}

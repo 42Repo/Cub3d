@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/03 19:32:28 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/06 19:21:40 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	format_map(char ***grid, t_map *map)
 	}
 	map->cols = max_len;
 	map->rows = tmp - *grid;
-	map->map_width = map->cols * TILE_SIZE;
-	map->map_height = map->rows * TILE_SIZE;
+	map->map_width = map->cols;
+	map->map_height = map->rows;
 	extand_map(*grid, max_len);
 	set_border(*grid, map);
 }

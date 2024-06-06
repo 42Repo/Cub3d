@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baptistegoron <baptistegoron@student.42    +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/10 14:50:17 by baptistegor      ###   ########.fr       */
+/*   Updated: 2024/06/06 18:26:19 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,85 +37,7 @@
 # define CUB_2_PI 6.28318530717958647692
 # define CUB_PI 3.14159265358979323846
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <math.h>
-# include <fcntl.h>
-# include "libft.h"
-# include "SDL2/SDL_scancode.h"
-# include "mlx.h"
-# include <time.h>
-
-typedef struct s_vector
-{
-	double		x;
-	double		y;
-}				t_vector;
-
-typedef enum e_wall
-{
-	NORTH,
-	SOUTH,
-	EAST,
-	WEST
-}			t_wall;
-
-typedef struct s_ray
-{
-	t_vector	hit_pos;
-	t_vector	prev_hit_pos;
-	double		dist;
-	t_wall		wall_type;
-}			t_ray;
-
-typedef struct s_map
-{
-	char		**map;
-	int			width;
-	int			height;
-	int			map_width;
-	int			map_height;
-	int			rows;
-	int			cols;
-}				t_map;
-
-typedef struct s_player
-{
-	t_vector	pos;
-	t_vector	dir;
-	double		angle;
-	double		speed;
-}				t_player;
-
-typedef struct s_sprite
-{
-	void		*wall_n;
-	void		*wall_s;
-	void		*wall_e;
-	void		*wall_w;
-}				t_sprite;
-
-typedef struct s_mlx
-{
-	void		*mlx;
-	void		*win;
-	void		*img_background;
-	void		*img_wall;
-	void		*img_map;
-	void		*img_player;
-	t_sprite	wall_sprite;
-	size_t		ray_nb;
-	double		*wall_dist;
-	char		input_map[65536];
-}				t_mlx;
-
-typedef struct s_data
-{
-	t_mlx		mlx;
-	t_map		map;
-	t_player	player;
-}				t_data;
+# include "mlx_addon.h"
 
 void	parsing(int ac, char **av);
 char	**parse_file(char *file, t_map *map);
@@ -139,9 +61,9 @@ void	exit_game(t_data data);
 void	reset_image(t_data d, void *image);
 void	fps_counter(void);
 
-void	cast_ray(double angle, t_data d, t_ray *ray);
 void	add_wall(t_data d, int i, double wall_size, t_ray *ray);
 void	draw_ray(t_data d, int i, t_ray *ray);
 void	add_ray(t_data d);
+void	render_frame(t_data *data);
 
 #endif

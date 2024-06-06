@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   _mlx_addon.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/06 19:36:23 by asuc             ###   ########.fr       */
+/*   Created: 2024/06/05 20:53:49 by asuc              #+#    #+#             */
+/*   Updated: 2024/06/05 21:36:11 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.h"
+#ifndef _MLX_ADDON_H
+# define _MLX_ADDON_H
 
-int	main(int ac, char **av)
+# include "../../include/include.h"
+# include "struct.h"
+
+typedef struct s_line_vars
 {
-	t_data	data;
+	double	dx;
+	double	dy;
+	double	sx;
+	double	sy;
+	double	err;
+	int		steps;
+}			t_line_vars;
 
-	parsing(ac, av);
-	init_data(av[1], &data);
-	// 3D
-	print_background(&data);
-	// 2D
-	//  print_map(&data);
-	init_mlx(&data);
-	return (EXIT_SUCCESS);
-}
+#endif // _MLX_ADDON_H
