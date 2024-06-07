@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/06 19:51:13 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/07 18:34:56 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,13 @@ void	cast_ray(t_data *data, int x)
 		color = 0xFFFFFFFF;
 	for (int y = draw_start; y < draw_end; y++)
 	{
-		mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_wall, x, y, color);
+		mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, y, color);
 	}
 }
 
 
 void	render_frame(t_data *data)
 {
-	// reset_image(*data, data->mlx.img_wall);
 	for (int x = 0; x < data->map.width; x++)
 		cast_ray(data, x);
 }

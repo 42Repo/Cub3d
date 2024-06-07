@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/06 19:51:45 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/06 20:09:51 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	render(t_data *data)
 {
-	// mlx_clear_window(data->mlx.mlx, data->mlx.win);
+	mlx_clear_window(data->mlx.mlx, data->mlx.win);
 	add_player(*data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
 		data->mlx.img_background, 0, 0);
