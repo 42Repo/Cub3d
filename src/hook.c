@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 21:47:49 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/09 00:21:17 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,16 @@ void	move(t_data *data)
 	}
 	if (data->mlx.key_states[D])
 	{
+		data->player.pos.x += data->player.dir.y * data->player.move_speed;
+		data->player.pos.y -= data->player.dir.x * data->player.move_speed;
+	}
+	if (data->mlx.key_states[A])
+	{
+		data->player.pos.x -= data->player.dir.y * data->player.move_speed;
+		data->player.pos.y += data->player.dir.x * data->player.move_speed;
+	}
+	if (data->mlx.key_states[LEFT])
+	{
 		old_dir_x = data->player.dir.x;
 		data->player.dir.x = data->player.dir.x * cos(-data->player.rot_speed)
 			- data->player.dir.y * sin(-data->player.rot_speed);
@@ -49,7 +59,7 @@ void	move(t_data *data)
 		data->player.plane.y = old_plane_x * sin(-data->player.rot_speed)
 			+ data->player.plane.y * cos(-data->player.rot_speed);
 	}
-	if (data->mlx.key_states[A])
+	if (data->mlx.key_states[RIGHT])
 	{
 		old_dir_x = data->player.dir.x;
 		data->player.dir.x = data->player.dir.x * cos(data->player.rot_speed)

@@ -54,3 +54,4 @@ dkms.conf
 cub3D
 .normignore
 .cache
+42_kube/

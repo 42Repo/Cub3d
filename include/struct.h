@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/08 22:39:03 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 23:57:35 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,24 @@
 # include <stdlib.h>
 # include <time.h>
 # include <unistd.h>
+
+# define WIN_WIDTH 1800
+# define WIN_HEIGHT 1080
+
+# define TILE_SIZE 32
+# define LCLICK 1
+# define RCLICK 3
+# define WUP 1
+# define WDOWN 2
+# define UP 82
+# define DOWN 81
+# define LEFT 79
+# define RIGHT 80
+# define ESCAP 41
+# define W 26
+# define A 4
+# define S 22
+# define D 7
 
 typedef struct s_vec2
 {

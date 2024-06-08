@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 21:03:16 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/09 00:21:44 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	init_player(t_data *data)
 {
-	data->player.pos.x = 22.0;
-	data->player.pos.y = 12.0;
+	data->player.pos.x = 10.5;
+	data->player.pos.y = 12.5;
 	data->player.dir.x = -1.0;
 	data->player.dir.y = 0.0;
 	data->player.plane.x = 0.0;
 	data->player.plane.y = 0.66;
-	data->player.move_speed = 0.1;
+	data->player.move_speed = 0.05;
 	data->player.rot_speed = 0.025;
 }
 
