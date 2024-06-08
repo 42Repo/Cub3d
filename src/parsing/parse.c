@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 19:22:03 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/08 19:32:10 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void	format_map(char ***grid, t_map *map)
 	}
 	map->cols = max_len;
 	map->rows = tmp - *grid;
-	map->map_width = map->cols;
-	map->map_height = map->rows;
 	extand_map(*grid, max_len);
 	// set_border(*grid, map);
 }

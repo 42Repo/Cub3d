@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 18:42:12 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/08 19:30:30 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,9 @@
 void	render(t_data *data)
 {
 	mlx_clear_window(data->mlx.mlx, data->mlx.win);
-	add_player(*data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
 		data->mlx.img_background, 0, 0);
 	render_frame(data);
-	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
-		data->mlx.img_wall, 0, 0);
-	// 2D
-	// mlx_put_image_to_window
-	// 	(data->mlx.mlx, data->mlx.win, data->mlx.img_map, 0, 0);
-	// mlx_put_image_to_window
-	// 	(data->mlx.mlx, data->mlx.win, data->mlx.img_player, 0, 0);
 }
 
 void	move(t_data *data)
@@ -91,10 +83,6 @@ int	key_press(int key, void *param)
 	data = (t_data *)param;
 	if (key == SDL_SCANCODE_ESCAPE)
 		mlx_loop_end(data->mlx.mlx);
-	// if (key == SDL_SCANCODE_MINUS)
-	// 	data->mlx.ray_nb /= 1 + (data->mlx.ray_nb > 1);
-	// if (key == SDL_SCANCODE_EQUALS)
-	// 	data->mlx.ray_nb *= 1 + ((int)data->mlx.ray_nb < data->map.width);
 	data->mlx.key_states[key] = 1;
 	return (0);
 }

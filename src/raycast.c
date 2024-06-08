@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 18:09:05 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/08 19:31:21 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ void	init_ray(t_ray *ray, t_player *player, float camera_x)
 	ray->hit = 0;
 }
 
-void	calculate_step_and_side_dist(t_ray *ray, t_player *player)
+void	calculate_step_and_side_dist(t_ray *ray)
 {
-	(void)player;
 	if (ray->dir.x < 0)
 	{
 		ray->step_x = -1;
@@ -87,7 +86,7 @@ void	cast_ray(t_data *data, int x)
 
 	camera_x = 2 * x / (float)data->map.width - 1;
 	init_ray(&ray, &data->player, camera_x);
-	calculate_step_and_side_dist(&ray, &data->player);
+	calculate_step_and_side_dist(&ray);
 	perform_dda(&ray, &data->map);
 	line_height = (int)(data->map.height / ray.perp_wall_dist);
 	draw_start = -line_height / 2 + data->map.height / 2;
@@ -106,9 +105,14 @@ void	cast_ray(t_data *data, int x)
 	}
 }
 
-
 void	render_frame(t_data *data)
 {
-	for (int x = 0; x < data->map.width; x++)
-		cast_ray(data, x);
+	int	i;
+
+	i = 0;
+	while (i < data->map.width)
+	{
+		cast_ray(data, i);
+		i++;
+	}
 }

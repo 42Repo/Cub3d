@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/06 20:00:32 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 18:53:51 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,56 +29,6 @@ void	print_background(t_data *data)
 			else
 				mlx_set_image_pixel \
 				(data->mlx.mlx, data->mlx.img_background, x, y, 0xFF5B3C11);
-			y++;
-		}
-		x++;
-	}
-}
-
-void	print_map(t_data *data)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (data->map.map_width > x)
-	{
-		y = 0;
-		while (data->map.map_height > y)
-		{
-			if (data->map.map[y / TILE_SIZE][x / TILE_SIZE] == '1')
-				mlx_set_image_pixel \
-				(data->mlx.mlx, data->mlx.img_map, x, y, 0xFF202020);
-			else
-				mlx_set_image_pixel \
-				(data->mlx.mlx, data->mlx.img_map, x, y, 0xFF5B3C11);
-			y++;	// d->map.map_width = 24;
-	// d->map.map_height = 24;
-	// d->map.cols = 24;
-	// d->map.rows = 24;
-		}
-		x++;
-	}
-}
-
-void	add_player(t_data d)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (d.map.map_width > x)
-	{
-		y = 0;
-		while (d.map.map_height > y)
-		{
-			if ((x > d.player.pos.x - 5 && x < d.player.pos.x + 5) \
-				&& (y > d.player.pos.y - 5 && y < d.player.pos.y + 5))
-				mlx_set_image_pixel \
-				(d.mlx.mlx, d.mlx.img_player, x, y, 0xFF000000);
-			else
-				mlx_set_image_pixel \
-				(d.mlx.mlx, d.mlx.img_player, x, y, 0x00000000);
 			y++;
 		}
 		x++;

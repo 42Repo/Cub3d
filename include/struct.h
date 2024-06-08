@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/08 18:15:26 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/08 19:30:15 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ typedef struct s_map
 	char		**map;
 	int			width;
 	int			height;
-	int			map_width;
-	int			map_height;
 	int			rows;
 	int			cols;
 }				t_map;
@@ -129,12 +127,7 @@ typedef struct s_mlx
 	void		*mlx;
 	void		*win;
 	void		*img_background;
-	void		*img_wall;
-	void		*img_map;
-	void		*img_player;
 	t_sprite	wall_sprite;
-	size_t		ray_nb;
-	float		*wall_dist;
 	int			key_states[256];
 }				t_mlx;
 

@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 18:30:46 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/08 19:29:40 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@
 # define S 22
 # define D 7
 
-# define FOV 90
-# define FOV_RAD (FOV * CUB_PI / 180)
-
-# define CUB_2_PI 6.28318530717958647692
-# define CUB_PI 3.14159265358979323846
-
 # include "mlx_addon.h"
 
 int		parsing(int ac, char **av, t_data *data);
@@ -47,8 +41,6 @@ void	format_map(char ***grid, t_map *map);
 void	init_data(t_data *d);
 void	init_mlx(t_data *data);
 void	print_background(t_data *data);
-void	print_map(t_data *data);
-void	add_player(t_data d);
 void	add_ray(t_data d);
 int		update(void *param);
 
