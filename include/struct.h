@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/08 19:05:45 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:22:02 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
 
 typedef struct s_vec2
 {
-	double		x;
-	double		y;
+	float		x;
+	float		y;
 }				t_vec2;
 
 typedef struct s_vec2_color
 {
-	double		x;
-	double		y;
+	float		x;
+	float		y;
 	int			color;
 }				t_vec2_color;
 
@@ -56,17 +56,18 @@ typedef struct s_ray
 {
 	t_vec2		pos;
 	t_vec2		dir;
-	double		perp_wall_dist;
+	float		perp_wall_dist;
 	int			map_x;
 	int			map_y;
 	int			step_x;
 	int			step_y;
-	double		side_dist_x;
-	double		side_dist_y;
-	double		delta_dist_x;
-	double		delta_dist_y;
+	float		side_dist_x;
+	float		side_dist_y;
+	float		delta_dist_x;
+	float		delta_dist_y;
 	int			hit;
 	int			side;
+	t_wall		wall;
 }				t_ray;
 
 typedef struct s_map
@@ -83,8 +84,8 @@ typedef struct s_player
 	t_vec2		pos;
 	t_vec2		dir;
 	t_vec2		plane;
-	double		move_speed;
-	double		rot_speed;
+	float		move_speed;
+	float		rot_speed;
 }				t_player;
 
 typedef struct s_sprite

@@ -6,14 +6,14 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:13:12 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/08 18:37:40 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:08:31 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/mlx_addon.h"
 #include "_mlx_addon.h"
 
-static int	interpolate_color(int color1, int color2, double t)
+static int	interpolate_color(int color1, int color2, float t)
 {
 	int	r1;
 	int	g1;
@@ -32,9 +32,9 @@ static int	interpolate_color(int color1, int color2, double t)
 }
 
 static void	calculate_line_vars(t_line_vars *vars, int steps, t_vec2_color *a,
-		double *t)
+		float *t)
 {
-	double	e2;
+	float	e2;
 
 	e2 = vars->err;
 	if (e2 > -vars->dx)
@@ -73,7 +73,7 @@ void	mlx_draw_line_gradient(void *mlx, void *img, t_vec2_color a,
 {
 	t_line_vars	vars;
 	int			steps;
-	double		t;
+	float		t;
 
 	t = 0.0;
 	setup_line_vars(&vars, a, b);
@@ -95,7 +95,7 @@ void	mlx_draw_line(void *mlx, void *img, t_vec2_color a, t_vec2 b)
 {
 	t_line_vars	vars;
 	int			steps;
-	double		t;
+	float		t;
 
 	t = 0.0;
 	setup_line_vars(&vars, a, (t_vec2_color){b.x, b.y, 0});

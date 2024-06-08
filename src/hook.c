@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 18:59:20 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:08:31 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	render(t_data *data)
 
 void	move(t_data *data)
 {
-	double	old_dir_x;
-	double	old_plane_x;
+	float	old_dir_x;
+	float	old_plane_x;
 
 	if (data->mlx.key_states[W])
 	{

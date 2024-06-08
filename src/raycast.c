@@ -6,13 +6,13 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 18:54:47 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:36:13 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	init_ray(t_ray *ray, t_player *player, double camera_x)
+void	init_ray(t_ray *ray, t_player *player, float camera_x)
 {
 	ray->pos = player->pos;
 	ray->dir.x = player->dir.x + player->plane.x * camera_x;
@@ -77,14 +77,14 @@ void	perform_dda(t_ray *ray, t_map *map)
 
 void	cast_ray(t_data *data, int x)
 {
-	double	camera_x;
+	float	camera_x;
 	t_ray	ray;
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
 	int		color;
 
-	camera_x = 2 * x / (double)data->map.width - 1;
+	camera_x = 2 * x / (float)data->map.width - 1;
 	init_ray(&ray, &data->player, camera_x);
 	calculate_step_and_side_dist(&ray);
 	perform_dda(&ray, &data->map);

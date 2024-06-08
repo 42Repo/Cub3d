@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 20:53:49 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/05 21:36:11 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:08:31 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 
 typedef struct s_line_vars
 {
-	double	dx;
-	double	dy;
-	double	sx;
-	double	sy;
-	double	err;
+	float	dx;
+	float	dy;
+	float	sx;
+	float	sy;
+	float	err;
 	int		steps;
 }			t_line_vars;
 

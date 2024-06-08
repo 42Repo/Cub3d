@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 18:59:05 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:08:31 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	exit_game(t_data data);
 void	reset_image(t_data d, void *image);
 void	fps_counter(void);
 
-void	add_wall(t_data d, int i, double wall_size, t_ray *ray);
+void	add_wall(t_data d, int i, float wall_size, t_ray *ray);
 void	draw_ray(t_data d, int i, t_ray *ray);
 void	add_ray(t_data d);
 void	render_frame(t_data *data);
