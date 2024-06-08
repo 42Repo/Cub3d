@@ -3,21 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
+#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/08 11:06:41 by bgoron           ###   ########.fr        #
+#    Updated: 2024/06/08 22:55:41 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include utils.mk
 
 NAME = cub3D
-CFLAGS		=	-Wall -Werror -Wextra -g
+CFLAGS		=	-Wall -Werror -Wextra
 MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
 LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
-FLAGS_OPTI = -O3  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -pipe
+# FLAGS_OPTI = -O3  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -pipe
 IFLAGS = -I include -I Libft/include -I $(MacroLibX_DIR)includes
 CC = clang $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
 MACROLIBX		=	$(MacroLibX_DIR)libmlx.so

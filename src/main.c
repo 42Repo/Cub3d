@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 22:54:13 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 22:57:36 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	main(int ac, char **av)
 	if (parsing(ac, av, &data) == -1)
 		return (EXIT_FAILURE);
 	init_data(&data);
-	print_background(&data);	init_mlx(&data);
 	preload_textures(&data);
+	print_background(&data);	
+	init_mlx(&data);
 	return (EXIT_SUCCESS);
 }
