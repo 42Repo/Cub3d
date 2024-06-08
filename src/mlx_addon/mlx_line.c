@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:13:12 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/06 19:56:02 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 18:37:40 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static int	interpolate_color(int color1, int color2, double t)
 	b1 = color1 & 0xFF;
 	g2 = (color2 >> 8) & 0xFF;
 	b2 = color2 & 0xFF;
-	return (0xFF000000 + (((int)(r1 + t * (((color2 >> 16) & 0xFF)
-						- r1))) << 16) | (((int)(g1 + t * (g2
-						- g1))) << 8) | ((int)(b1 + t * (b2 - b1))));
+	return (0xFF000000 + (((int)(r1 + t * (((color2 >> 16) & 0xFF) - r1)))
+		<< 16) | (((int)(g1 + t * (g2 - g1))) << 8)
+			| ((int)(b1 + t * (b2 - b1))));
 }
 
 static void	calculate_line_vars(t_line_vars *vars, int steps, t_vec2_color *a,
