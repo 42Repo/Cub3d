@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/06 19:46:41 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 15:58:23 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,11 @@ void init_player(t_data *data)
 	data->player.plane.x = 0.0;
 	data->player.plane.y = 0.66;
 	data->player.move_speed = 0.1;
-	data->player.rot_speed = 0.05;
+	data->player.rot_speed = 0.01;
 }
 
-void	init_data(char *file, t_data *d)
+void	init_data(t_data *d)
 {
-	d->map.map = parse_file(file, &d->map);
-	int i = 0;
-	while (i < d->map.rows)
-	{
-		printf("%s\n", d->map.map[i]);
-		i++;
-	}
-	printf("%d\n", d->map.rows);
-	printf("%d\n", d->map.cols);
 	d->map.width = WIN_WIDTH;
 	d->map.height = WIN_HEIGHT;
 	init_player(d);

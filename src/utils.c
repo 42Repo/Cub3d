@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:02:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/05/06 01:39:06 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 18:30:26 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ void	fps_counter(void)
 	static clock_t	last_time = 0;
 	static clock_t	last_avg_time = 0;
 	static int		frame_count = 0;
-	static double	fps_sum = 0.0;
+	static float	fps_sum = 0.0;
 	clock_t			current_time;
-	double			fps;
-	double			avg_fps;
+	float			fps;
+	float			avg_fps;
 
 	current_time = clock();
-	fps = CLOCKS_PER_SEC / (double)(current_time - last_time);
+	fps = CLOCKS_PER_SEC / (float)(current_time - last_time);
 	last_time = current_time;
 	fps_sum += fps;
 	frame_count++;
@@ -51,4 +51,10 @@ void	fps_counter(void)
 		last_avg_time = current_time;
 	}
 	printf("FPS: %.2f\n", fps);
+}
+
+int	print_error(char *error)
+{
+	printf("\033[1;31mError\n%s\033[0m\n", error);
+	return (1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/06 20:09:51 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 18:42:12 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	render(t_data *data)
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
 		data->mlx.img_background, 0, 0);
 	render_frame(data);
-	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win, data->mlx.img_wall, 0,
-		0);
+	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
+		data->mlx.img_wall, 0, 0);
 	// 2D
 	// mlx_put_image_to_window
 	// 	(data->mlx.mlx, data->mlx.win, data->mlx.img_map, 0, 0);
@@ -30,8 +30,8 @@ void	render(t_data *data)
 
 void	move(t_data *data)
 {
-	double	old_dir_x;
-	double	old_plane_x;
+	float	old_dir_x;
+	float	old_plane_x;
 
 	if (data->mlx.key_states[W])
 	{
@@ -80,7 +80,7 @@ int	update(void *param)
 	d = (t_data *)param;
 	move(d);
 	render(d);
-	fps_counter();
+	// fps_counter();
 	return (0);
 }
 
