@@ -6,11 +6,12 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 19:39:20 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 20:16:21 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
+#include <stdio.h>
 
 void	init_ray(t_ray *ray, t_player *player, float camera_x)
 {
@@ -50,6 +51,7 @@ void	calculate_step_and_side_dist(t_ray *ray)
 
 void	perform_dda(t_ray *ray, t_map *map)
 {
+	ray->wall = 0;
 	while (ray->hit == 0)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
@@ -68,11 +70,17 @@ void	perform_dda(t_ray *ray, t_map *map)
 			ray->hit = 1;
 	}
 	if (ray->side == 0)
+	{
 		ray->perp_wall_dist = (ray->map_x - ray->pos.x + (1 - ray->step_x) / 2)
 			/ ray->dir.x;
+		ray->wall = (ray->step_x > 0) ? EAST : WEST;
+	}
 	else
+	{
 		ray->perp_wall_dist = (ray->map_y - ray->pos.y + (1 - ray->step_y) / 2)
 			/ ray->dir.y;
+		ray->wall = (ray->step_y > 0) ? SOUTH : NORTH;
+	}
 }
 
 void	cast_ray(t_data *data, int x)
@@ -95,10 +103,14 @@ void	cast_ray(t_data *data, int x)
 	draw_end = line_height / 2 + data->map.height / 2;
 	if (draw_end >= data->map.height)
 		draw_end = data->map.height - 1;
-	if (ray.side == 1)
+	if (ray.wall == EAST)
+		color = 0xFFFF0000;
+	else if (ray.wall == WEST)
+		color = 0xFF00FF00;
+	else if (ray.wall == SOUTH)
 		color = 0xFF00F0FF;
 	else
-		color = 0xFFFFFFFF;
+		color = 0xFFFFFF00;
 	for (int y = draw_start; y < draw_end; y++)
 	{
 		mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, y, color);
