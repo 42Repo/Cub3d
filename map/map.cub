@@ -1,13 +1,13 @@
-NO ./path_to_the_north_texture
+NO ./sprite/x.png
 
 
-WE ./path_to_the_west_texture
+WE ./sprite/circle.png
 
 
-EA ./path_to_the_east_texture
+EA ./sprite/m.png
 
 
-SO ./path_to_the_south_texture
+SO ./sprite/triangle.png
 
 F 220,100,1
 

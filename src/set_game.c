@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 19:32:05 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/08 21:03:16 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ void	init_data(t_data *d)
 	init_player(d);
 	d->mlx.mlx = mlx_init();
 	ft_bzero(d->mlx.key_states, 256);
+	d->mlx.wall_sprite.wall_e.img = mlx_png_file_to_image(d->mlx.mlx, d->mlx.wall_sprite.path_e, &d->mlx.wall_sprite.wall_e.width, &d->mlx.wall_sprite.wall_e.height);
+	d->mlx.wall_sprite.wall_w.img = mlx_png_file_to_image(d->mlx.mlx, d->mlx.wall_sprite.path_w, &d->mlx.wall_sprite.wall_w.width, &d->mlx.wall_sprite.wall_w.height);
+	d->mlx.wall_sprite.wall_s.img = mlx_png_file_to_image(d->mlx.mlx, d->mlx.wall_sprite.path_s, &d->mlx.wall_sprite.wall_s.width, &d->mlx.wall_sprite.wall_s.height);
+	d->mlx.wall_sprite.wall_n.img = mlx_png_file_to_image(d->mlx.mlx, d->mlx.wall_sprite.path_n, &d->mlx.wall_sprite.wall_n.width, &d->mlx.wall_sprite.wall_n.height);
 	d->mlx.win = mlx_new_window(d->mlx.mlx, d->map.width, d->map.height,
 			"Cub3D");
 	d->mlx.img_background = mlx_new_image(d->mlx.mlx, d->map.width,
