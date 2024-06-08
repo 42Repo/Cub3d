@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 22:04:15 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 22:52:36 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	cast_ray(t_data *data, int x)
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	t_image	*texture;
+	int		*texture;
 	float	wall_x;
 	int		tex_x;
 	float	step;
@@ -108,32 +108,32 @@ void	cast_ray(t_data *data, int x)
 	if (ray.side == 0)
 	{
 		if (ray.dir.x > 0)
-			texture = &data->mlx.wall_sprite.wall_e;
+			texture = data->mlx.wall_sprite.east_texture;
 		else
-			texture = &data->mlx.wall_sprite.wall_w;
+			texture = data->mlx.wall_sprite.west_texture;
 	}
 	else
 	{
 		if (ray.dir.y > 0)
-			texture = &data->mlx.wall_sprite.wall_s;
+			texture = data->mlx.wall_sprite.south_texture;
 		else
-			texture = &data->mlx.wall_sprite.wall_n;
+			texture = data->mlx.wall_sprite.north_texture;
 	}
 	if (ray.side == 0)
 		wall_x = ray.pos.y + ray.perp_wall_dist * ray.dir.y;
 	else
 		wall_x = ray.pos.x + ray.perp_wall_dist * ray.dir.x;
 	wall_x -= floor(wall_x);
-	tex_x = (int)(wall_x * (float)texture->width);
+	tex_x = (int)(wall_x * (float)data->mlx.wall_sprite.wall_n.width);
 	if ((ray.side == 0 && ray.dir.x > 0) || (ray.side == 1 && ray.dir.y < 0))
-		tex_x = texture->width - tex_x - 1;
-	step = 1.0 * texture->height / line_height;
+		tex_x = data->mlx.wall_sprite.wall_n.width - tex_x - 1;
+	step = 1.0 * data->mlx.wall_sprite.wall_n.height / line_height;
 	tex_pos = (draw_start - data->map.height / 2 + line_height / 2) * step;
 	for (int y = draw_start; y < draw_end; y++)
 	{
-		tex_y = (int)tex_pos & (texture->height - 1);
+		tex_y = (int)tex_pos & (data->mlx.wall_sprite.wall_n.height - 1);
 		tex_pos += step;
-		color = mlx_get_image_pixel(data->mlx.mlx, texture->img, tex_x, tex_y);
+		color = texture[tex_y * data->mlx.wall_sprite.wall_n.width + tex_x];
 		mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, y,
 			color);
 	}

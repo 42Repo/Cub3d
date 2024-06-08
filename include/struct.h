@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/08 20:56:36 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 22:39:03 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,10 @@ typedef struct s_sprite
 	t_image		wall_s;
 	t_image		wall_e;
 	t_image		wall_w;
+	int			*north_texture;
+	int			*south_texture;
+	int			*east_texture;
+	int			*west_texture;
 	t_color		color_floor;
 	t_color		color_ceiling;
 }				t_sprite;
