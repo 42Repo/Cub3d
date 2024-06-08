@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/08 19:22:02 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:38:51 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@ typedef struct s_vec2_color
 	float		y;
 	int			color;
 }				t_vec2_color;
+
+typedef union u_color
+{
+	struct
+	{
+		uint8_t	a;
+		uint8_t	r;
+		uint8_t	g;
+		uint8_t	b;
+	};
+	uint32_t	argb;
+}				t_color;
 
 typedef struct s_square
 {
@@ -88,12 +100,27 @@ typedef struct s_player
 	float		rot_speed;
 }				t_player;
 
+typedef struct s_image
+{
+	void		*img;
+	int			x;
+	int			y;
+}				t_image;
+
 typedef struct s_sprite
 {
-	void		*wall_n;
-	void		*wall_s;
-	void		*wall_e;
-	void		*wall_w;
+	int			width;
+	int			height;
+	char		*path_n;
+	char		*path_s;
+	char		*path_e;
+	char		*path_w;
+	t_image		wall_n;
+	t_image		wall_s;
+	t_image		wall_e;
+	t_image		wall_w;
+	t_color		color_floor;
+	t_color		color_ceiling;
 }				t_sprite;
 
 typedef struct s_mlx

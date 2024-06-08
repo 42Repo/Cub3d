@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 19:08:31 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:39:01 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	update(void *param)
 	d = (t_data *)param;
 	move(d);
 	render(d);
-	fps_counter();
+	// fps_counter();
 	return (0);
 }
 

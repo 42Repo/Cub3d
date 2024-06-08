@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 18:53:44 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:31:06 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ int	main(int ac, char **av)
 {
 	t_data	data;
 
-	parsing(ac, av);
-	init_data(av[1], &data);
+	ft_bzero(&data, sizeof(t_data));
+	if (parsing(ac, av, &data) == -1)
+		return (EXIT_FAILURE);
+	init_data(&data);
+	// 3D
 	print_background(&data);
 	init_mlx(&data);
 	return (EXIT_SUCCESS);

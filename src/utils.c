@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:02:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 19:08:31 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:39:56 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,10 @@ void	fps_counter(void)
 		last_avg_time = current_time;
 	}
 	printf("FPS: %.2f\n", fps);
+}
+
+int	print_error(char *error)
+{
+	printf("\033[1;31mError\n%s\033[0m\n", error);
+	return (1);
 }

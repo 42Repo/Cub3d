@@ -6,14 +6,14 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 19:08:31 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:38:22 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
 
-# define WIN_WIDTH 1920
+# define WIN_WIDTH 1800
 # define WIN_HEIGHT 1080
 
 # define TILE_SIZE 32
@@ -33,12 +33,12 @@
 
 # include "mlx_addon.h"
 
-void	parsing(int ac, char **av);
+int		parsing(int ac, char **av, t_data *data);
 char	**parse_file(char *file, t_map *map);
 void	extand_map(char **map, size_t max_len);
 void	format_map(char ***grid, t_map *map);
 
-void	init_data(char *file, t_data *d);
+void	init_data(t_data *d);
 void	init_mlx(t_data *data);
 void	print_background(t_data *data);
 void	add_ray(t_data d);
@@ -57,5 +57,6 @@ void	add_wall(t_data d, int i, float wall_size, t_ray *ray);
 void	draw_ray(t_data d, int i, t_ray *ray);
 void	add_ray(t_data d);
 void	render_frame(t_data *data);
+int		print_error(char *error);
 
 #endif

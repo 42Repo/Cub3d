@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 19:36:13 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/08 19:39:20 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,7 @@ void	cast_ray(t_data *data, int x)
 	if (draw_end >= data->map.height)
 		draw_end = data->map.height - 1;
 	if (ray.side == 1)
-	{
 		color = 0xFF00F0FF;
-	}
 	else
 		color = 0xFFFFFFFF;
 	for (int y = draw_start; y < draw_end; y++)
