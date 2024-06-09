@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/09 00:21:44 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/09 02:18:18 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	init_player(t_data *data)
 	data->player.plane.x = 0.0;
 	data->player.plane.y = 0.66;
 	data->player.move_speed = 0.05;
-	data->player.rot_speed = 0.025;
+	data->player.rot_speed = 0.04;
 }
 
 void	init_data(t_data *d)
@@ -31,10 +31,18 @@ void	init_data(t_data *d)
 	init_player(d);
 	d->mlx.mlx = mlx_init();
 	ft_bzero(d->mlx.key_states, 256);
-	d->mlx.wall_sprite.wall_e.img = mlx_png_file_to_image(d->mlx.mlx, d->mlx.wall_sprite.path_e, &d->mlx.wall_sprite.wall_e.width, &d->mlx.wall_sprite.wall_e.height);
-	d->mlx.wall_sprite.wall_w.img = mlx_png_file_to_image(d->mlx.mlx, d->mlx.wall_sprite.path_w, &d->mlx.wall_sprite.wall_w.width, &d->mlx.wall_sprite.wall_w.height);
-	d->mlx.wall_sprite.wall_s.img = mlx_png_file_to_image(d->mlx.mlx, d->mlx.wall_sprite.path_s, &d->mlx.wall_sprite.wall_s.width, &d->mlx.wall_sprite.wall_s.height);
-	d->mlx.wall_sprite.wall_n.img = mlx_png_file_to_image(d->mlx.mlx, d->mlx.wall_sprite.path_n, &d->mlx.wall_sprite.wall_n.width, &d->mlx.wall_sprite.wall_n.height);
+	d->mlx.wall_sprite.wall_e.img = mlx_png_file_to_image(d->mlx.mlx,
+			d->mlx.wall_sprite.path_e, &d->mlx.wall_sprite.wall_e.width,
+			&d->mlx.wall_sprite.wall_e.height);
+	d->mlx.wall_sprite.wall_w.img = mlx_png_file_to_image(d->mlx.mlx,
+			d->mlx.wall_sprite.path_w, &d->mlx.wall_sprite.wall_w.width,
+			&d->mlx.wall_sprite.wall_w.height);
+	d->mlx.wall_sprite.wall_s.img = mlx_png_file_to_image(d->mlx.mlx,
+			d->mlx.wall_sprite.path_s, &d->mlx.wall_sprite.wall_s.width,
+			&d->mlx.wall_sprite.wall_s.height);
+	d->mlx.wall_sprite.wall_n.img = mlx_png_file_to_image(d->mlx.mlx,
+			d->mlx.wall_sprite.path_n, &d->mlx.wall_sprite.wall_n.width,
+			&d->mlx.wall_sprite.wall_n.height);
 	d->mlx.win = mlx_new_window(d->mlx.mlx, d->map.width, d->map.height,
 			"Cub3D");
 	d->mlx.img_background = mlx_new_image(d->mlx.mlx, d->map.width,
@@ -50,5 +58,6 @@ void	init_mlx(t_data *data)
 	mlx_on_event(data->mlx.mlx, data->mlx.win, MLX_KEYUP, key_release,
 		(void *)data);
 	mlx_loop_hook(data->mlx.mlx, update, (void *)data);
+	mlx_set_fps_goal(data->mlx.mlx, 60);
 	mlx_loop(data->mlx.mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 22:52:36 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/09 02:20:47 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,14 +128,14 @@ void	cast_ray(t_data *data, int x)
 	if ((ray.side == 0 && ray.dir.x > 0) || (ray.side == 1 && ray.dir.y < 0))
 		tex_x = data->mlx.wall_sprite.wall_n.width - tex_x - 1;
 	step = 1.0 * data->mlx.wall_sprite.wall_n.height / line_height;
-	tex_pos = (draw_start - data->map.height / 2 + line_height / 2) * step;
+	tex_pos = (draw_start - (float)(data->map.height) / 2 + (float)line_height
+			/ 2) * step;
 	for (int y = draw_start; y < draw_end; y++)
 	{
 		tex_y = (int)tex_pos & (data->mlx.wall_sprite.wall_n.height - 1);
 		tex_pos += step;
 		color = texture[tex_y * data->mlx.wall_sprite.wall_n.width + tex_x];
-		mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, y,
-			color);
+		mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, y, color);
 	}
 }
 

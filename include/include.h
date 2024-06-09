@@ -6,30 +6,12 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 19:38:22 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/09 02:17:31 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
-
-# define WIN_WIDTH 1800
-# define WIN_HEIGHT 1080
-
-# define TILE_SIZE 32
-# define LCLICK 1
-# define RCLICK 3
-# define WUP 1
-# define WDOWN 2
-# define UP 82
-# define DOWN 81
-# define LEFT 79
-# define RIGHT 80
-# define ESCAP 41
-# define W 26
-# define A 4
-# define S 22
-# define D 7
 
 # include "mlx_addon.h"
 

@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/08 23:57:35 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/09 02:19:58 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <time.h>
 # include <unistd.h>
 
-# define WIN_WIDTH 1800
+# define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
 
 # define TILE_SIZE 32
