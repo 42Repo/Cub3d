@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 19:32:10 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/09 02:28:25 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	format_map(char ***grid, t_map *map)
 
 char	**file_to_char(int fd, char ***file)
 {
-	char *line;
+	char	*line;
 
 	line = get_next_line(fd);
 	while (line)
@@ -165,25 +165,30 @@ int	parse_texture(char **file, t_data *data)
 		}
 		tmp++;
 	}
-	if (!data->mlx.wall_sprite.path_n || !data->mlx.wall_sprite.path_s ||
-		!data->mlx.wall_sprite.path_w || !data->mlx.wall_sprite.path_e ||
-		!data->mlx.wall_sprite.color_ceiling.a || !data->mlx.wall_sprite.color_floor.a)
+	if (!data->mlx.wall_sprite.path_n || !data->mlx.wall_sprite.path_s
+		|| !data->mlx.wall_sprite.path_w || !data->mlx.wall_sprite.path_e
+		|| !data->mlx.wall_sprite.color_ceiling.a
+		|| !data->mlx.wall_sprite.color_floor.a)
 		return (-1);
 	return (0);
 }
 
 void	print_parsing(t_data *data)
 {
+	char	**tmp;
+
 	printf("NO: %s\n", data->mlx.wall_sprite.path_n);
 	printf("SO: %s\n", data->mlx.wall_sprite.path_s);
 	printf("WE: %s\n", data->mlx.wall_sprite.path_w);
 	printf("EA: %s\n", data->mlx.wall_sprite.path_e);
 	printf("F: %d, %d, %d\n", data->mlx.wall_sprite.color_floor.r,
-		data->mlx.wall_sprite.color_floor.g, data->mlx.wall_sprite.color_floor.b);
+		data->mlx.wall_sprite.color_floor.g,
+		data->mlx.wall_sprite.color_floor.b);
 	printf("C: %d, %d, %d\n", data->mlx.wall_sprite.color_ceiling.r,
-		data->mlx.wall_sprite.color_ceiling.g, data->mlx.wall_sprite.color_ceiling.b);
+		data->mlx.wall_sprite.color_ceiling.g,
+		data->mlx.wall_sprite.color_ceiling.b);
 	printf("Map:\n");
-	char **tmp = data->map.map;
+	tmp = data->map.map;
 	while (*tmp)
 	{
 		printf("%s\n", *tmp);

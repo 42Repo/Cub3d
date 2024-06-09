@@ -55,3 +55,4 @@ cub3D
 .normignore
 .cache
 42_kube/
+*compile_commands.json*
