@@ -56,3 +56,4 @@ cub3D
 .cache
 42_kube/
 *compile_commands.json*
+compile_commands.json
