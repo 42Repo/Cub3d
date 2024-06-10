@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/08 22:57:36 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/10 16:01:52 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,30 @@ void	preload_textures(t_data *data)
 	}
 }
 
+static void	print_background(t_data *data)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (data->map.width > x)
+	{
+		y = 0;
+		while (data->map.height > y)
+		{
+			if (y < data->map.height / 2)
+				mlx_set_image_pixel \
+				(data->mlx.mlx, data->mlx.img_background, x, y, 0xFF0000FF);
+			else
+				mlx_set_image_pixel \
+				(data->mlx.mlx, data->mlx.img_background, x, y, 0xFF5B3C11);
+			y++;
+		}
+		x++;
+	}
+}
+
+
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -58,7 +82,7 @@ int	main(int ac, char **av)
 		return (EXIT_FAILURE);
 	init_data(&data);
 	preload_textures(&data);
-	print_background(&data);	
+	print_background(&data);
 	init_mlx(&data);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/09 02:19:58 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/10 16:50:16 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ typedef struct s_player
 	t_vec2		plane;
 	float		move_speed;
 	float		rot_speed;
+	float		pitch;
 }				t_player;
 
 typedef struct s_image

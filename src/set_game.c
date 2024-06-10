@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/09 13:05:25 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/10 14:52:23 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	init_data(t_data *d)
 	d->map.height = WIN_HEIGHT;
 	init_player(d);
 	d->mlx.mlx = mlx_init();
-	mlx_set_fps_goal(d->mlx.mlx, 60);
+	// mlx_set_fps_goal(d- >mlx.mlx, 60);
+	mlx_mouse_hide();
 	ft_bzero(d->mlx.key_states, 256);
 	d->mlx.wall_sprite.wall_e.img = mlx_png_file_to_image(d->mlx.mlx,
 			d->mlx.wall_sprite.path_e, &d->mlx.wall_sprite.wall_e.width,

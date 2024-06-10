@@ -6,13 +6,14 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/09 14:09:19 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/10 16:37:53 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
+#include "struct.h"
 
-static void	init_ray(t_ray *ray, t_player *player, float camera_x)
+static inline void	init_ray(t_ray *ray, t_player *player, float camera_x)
 {
 	ray->pos = player->pos;
 	ray->dir.x = player->dir.x + player->plane.x * camera_x;
@@ -24,7 +25,7 @@ static void	init_ray(t_ray *ray, t_player *player, float camera_x)
 	ray->hit = 0;
 }
 
-static void	calculate_step_and_side_dist(t_ray *ray)
+static inline void	calculate_step_and_side_dist(t_ray *ray)
 {
 	if (ray->dir.x < 0)
 	{
@@ -48,11 +49,11 @@ static void	calculate_step_and_side_dist(t_ray *ray)
 	}
 }
 
-void	perform_dda(t_ray *ray, t_map *map)
+static inline void	perform_dda(t_ray *ray, t_map *map)
 {
 	int	max_distance;
 
-	max_distance = sqrt(WIN_WIDTH * WIN_WIDTH + WIN_HEIGHT * WIN_HEIGHT);
+	max_distance = sqrt(WIN_WIDTH * WIN_WIDTH + WIN_HEIGHT * WIN_HEIGHT) + 1;
 	while (ray->hit == 0)
 	{
 		if (ray->side_dist_x < ray->side_dist_y)
@@ -97,12 +98,10 @@ void	perform_dda(t_ray *ray, t_map *map)
 		}
 	}
 	else if (ray->hit == 2)
-	{
 		ray->perp_wall_dist = max_distance;
-	}
 }
 
-void	cast_ray(t_data *data, int x)
+static inline void	cast_ray(t_data *data, int x)
 {
 	float	camera_x;
 	t_ray	ray;
@@ -122,10 +121,12 @@ void	cast_ray(t_data *data, int x)
 	calculate_step_and_side_dist(&ray);
 	perform_dda(&ray, &data->map);
 	line_height = (int)(WIN_HEIGHT / ray.perp_wall_dist);
-	draw_start = -line_height / 2 + WIN_HEIGHT / 2;
+	draw_start = -line_height / 2 + WIN_HEIGHT / 2 + (int)(-data->player.pitch
+			* WIN_HEIGHT);
 	if (draw_start < 0)
 		draw_start = 0;
-	draw_end = line_height / 2 + WIN_HEIGHT / 2;
+	draw_end = line_height / 2 + WIN_HEIGHT / 2 + (int)(-data->player.pitch
+			* WIN_HEIGHT);
 	if (draw_end >= WIN_HEIGHT)
 		draw_end = WIN_HEIGHT - 1;
 	if (ray.hit == 2)
@@ -156,7 +157,7 @@ void	cast_ray(t_data *data, int x)
 	tex_pos = (draw_start - WIN_HEIGHT / 2 + line_height / 2) * step;
 	for (int y = draw_start; y < draw_end; y++)
 	{
-		tex_y = (int)tex_pos & (data->mlx.wall_sprite.wall_n.height - 1);
+		tex_y = ((int)tex_pos & (data->mlx.wall_sprite.wall_n.height - 1));
 		tex_pos += step;
 		color = texture[tex_y * data->mlx.wall_sprite.wall_n.width + tex_x];
 		mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, y, color);

@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/09 14:14:17 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/10 14:08:12 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	format_map(char ***grid, t_map *map);
 
 void	init_data(t_data *d);
 void	init_mlx(t_data *data);
-void	print_background(t_data *data);
+// void	print_background(t_data *data);
 int		update(void *param);
 
 int		keyhook(int key, void *param);
