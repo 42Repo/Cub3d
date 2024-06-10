@@ -1,3 +1,6 @@
-[submodule "MacroLibX"]
-	path = MacroLibX
-	url = https://github.com/seekrs/MacroLibX.git
+[submodule "bonus/MacroLibX"]
+	path = bonus/MacroLibX
+	url = https://github.com/seekrs/MacroLibX
+[submodule "mandatory/MacroLibX"]
+	path = mandatory/MacroLibX
+	url = https://github.com/seekrs/MacroLibX
