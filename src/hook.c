@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 16:10:51 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/10 16:53:35 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ int	key_press(int key, void *param)
 
 	data = (t_data *)param;
 	if (key == SDL_SCANCODE_ESCAPE)
-		mlx_loop_end(data->mlx.mlx);
+		exit_game(*data);
 	data->mlx.key_states[key] = 1;
 	return (0);
 }

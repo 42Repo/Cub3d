@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 14:08:12 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/10 16:53:26 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	exit_game(t_data data);
 void	fps_counter(void);
 
 void	render_frame(t_data *data);
+int		print_error(char *error);
 
 #endif
