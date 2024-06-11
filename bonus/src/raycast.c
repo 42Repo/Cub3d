@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 17:05:55 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/11 17:12:45 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,18 +115,18 @@ static inline void	cast_ray(t_data *data, int x)
 	float	tex_pos;
 	int		tex_y;
 	int		color;
+	int		line_offset;
 
 	camera_x = 2 * x / (float)WIN_WIDTH - 1;
 	init_ray(&ray, &data->player, camera_x);
 	calculate_step_and_side_dist(&ray);
 	perform_dda(&ray, &data->map);
 	line_height = (int)(WIN_HEIGHT / ray.perp_wall_dist);
-	draw_start = -line_height / 2 + WIN_HEIGHT / 2 + (int)(-data->player.pitch
-			* WIN_HEIGHT);
+	line_offset = (int)(-data->player.pitch * WIN_HEIGHT);
+	draw_start = -line_height / 2 + WIN_HEIGHT / 2 + line_offset;
 	if (draw_start < 0)
 		draw_start = 0;
-	draw_end = line_height / 2 + WIN_HEIGHT / 2 + (int)(-data->player.pitch
-			* WIN_HEIGHT);
+	draw_end = line_height / 2 + WIN_HEIGHT / 2 + line_offset;
 	if (draw_end >= WIN_HEIGHT)
 		draw_end = WIN_HEIGHT - 1;
 	if (ray.hit == 2)
@@ -154,10 +154,11 @@ static inline void	cast_ray(t_data *data, int x)
 	if ((ray.side == 0 && ray.dir.x > 0) || (ray.side == 1 && ray.dir.y < 0))
 		tex_x = data->mlx.wall_sprite.wall_n.width - tex_x - 1;
 	step = 1.0 * data->mlx.wall_sprite.wall_n.height / line_height;
-	tex_pos = (draw_start - WIN_HEIGHT / 2 + line_height / 2) * step;
+	tex_pos = (draw_start - line_offset - WIN_HEIGHT / 2 + line_height / 2)
+		* step;
 	for (int y = draw_start; y < draw_end; y++)
 	{
-		tex_y = ((int)tex_pos & (data->mlx.wall_sprite.wall_n.height - 1));
+		tex_y = (int)tex_pos & (data->mlx.wall_sprite.wall_n.height - 1);
 		tex_pos += step;
 		color = texture[tex_y * data->mlx.wall_sprite.wall_n.width + tex_x];
 		mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, y, color);
