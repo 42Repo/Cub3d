@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 14:52:23 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/11 21:13:03 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	init_player(t_data *data)
 
 void	init_data(t_data *d)
 {
-	d->map.width = WIN_WIDTH;
-	d->map.height = WIN_HEIGHT;
 	init_player(d);
 	d->mlx.mlx = mlx_init();
 	// mlx_set_fps_goal(d- >mlx.mlx, 60);
@@ -45,10 +43,10 @@ void	init_data(t_data *d)
 	d->mlx.wall_sprite.wall_n.img = mlx_png_file_to_image(d->mlx.mlx,
 			d->mlx.wall_sprite.path_n, &d->mlx.wall_sprite.wall_n.width,
 			&d->mlx.wall_sprite.wall_n.height);
-	d->mlx.win = mlx_new_window(d->mlx.mlx, d->map.width, d->map.height,
+	d->mlx.win = mlx_new_window(d->mlx.mlx, WIN_WIDTH, WIN_HEIGHT,
 			"Cub3D");
-	d->mlx.img_background = mlx_new_image(d->mlx.mlx, d->map.width,
-			d->map.height);
+	d->mlx.img_background = mlx_new_image(d->mlx.mlx, WIN_WIDTH,
+			WIN_HEIGHT);
 }
 
 void	init_mlx(t_data *data)

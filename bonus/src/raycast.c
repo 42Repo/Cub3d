@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/11 17:12:45 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/11 21:12:44 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
-#include "struct.h"
 
 static inline void	init_ray(t_ray *ray, t_player *player, float camera_x)
 {
@@ -103,19 +102,19 @@ static inline void	perform_dda(t_ray *ray, t_map *map)
 
 static inline void	cast_ray(t_data *data, int x)
 {
-	float	camera_x;
-	t_ray	ray;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
-	int		*texture;
-	float	wall_x;
-	int		tex_x;
-	float	step;
-	float	tex_pos;
-	int		tex_y;
-	int		color;
-	int		line_offset;
+	float			camera_x;
+	t_ray			ray;
+	int				line_height;
+	int				draw_start;
+	int				draw_end;
+	int				*texture;
+	float			wall_x;
+	int				tex_x;
+	float			step;
+	float			tex_pos;
+	int				tex_y;
+	unsigned int	color;
+	int				line_offset;
 
 	camera_x = 2 * x / (float)WIN_WIDTH - 1;
 	init_ray(&ray, &data->player, camera_x);
@@ -170,7 +169,7 @@ void	render_frame(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < data->map.width)
+	while (i < WIN_WIDTH)
 	{
 		cast_ray(data, i);
 		i++;

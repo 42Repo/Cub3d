@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 16:56:35 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/11 21:13:10 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	print_first_background(t_data *data)
 	int	y;
 
 	x = 0;
-	while (data->map.width > x)
+	while (WIN_WIDTH > x)
 	{
 		y = 0;
-		while (data->map.height > y)
+		while (WIN_HEIGHT > y)
 		{
-			if (y < data->map.height / 2)
+			if (y < WIN_HEIGHT / 2)
 				mlx_set_image_pixel \
 				(data->mlx.mlx, data->mlx.img_background, x, y, 0xFF0000FF);
 			else
