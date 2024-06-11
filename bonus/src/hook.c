@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 17:02:27 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/11 15:39:01 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,33 +18,35 @@ static inline void	print_background(t_data *data)
 	int			color;
 	int			x;
 	int			y;
-	static int	old_pitch;
-	int			min_y;
-	int			max_y;
+	int			start_y;
+	int			end_y;
+	static int	prev_pitch_shift = 0;
 
 	pitch_shift = (int)(data->player.pitch * WIN_HEIGHT);
-	min_y = (WIN_HEIGHT / 2 - old_pitch - (WIN_HEIGHT / 4) < 0) ? 0 : WIN_HEIGHT
-		/ 2 - old_pitch - (WIN_HEIGHT / 4);
-	max_y = (WIN_HEIGHT / 2 - old_pitch + (WIN_HEIGHT
-				/ 4) >= WIN_HEIGHT) ? WIN_HEIGHT - 1 : WIN_HEIGHT / 2
-		- old_pitch + (WIN_HEIGHT / 4);
-	old_pitch = pitch_shift;
-	for (y = min_y; y <= max_y; y++)
+	if (pitch_shift > prev_pitch_shift)
+	{
+		start_y = WIN_HEIGHT / 2 - prev_pitch_shift;
+		end_y = WIN_HEIGHT / 2 - pitch_shift;
+		color = 0xFF5B3C11;
+	}
+	else
+	{
+		start_y = WIN_HEIGHT / 2 - pitch_shift;
+		end_y = WIN_HEIGHT / 2 - prev_pitch_shift;
+		color = 0xFF0000FF;
+	}
+	for (y = end_y; y <= start_y; y++)
 	{
 		x = 0;
-		color = mlx_get_image_pixel(data->mlx.mlx, data->mlx.img_background, x,
-				y);
-		if (y + pitch_shift < WIN_HEIGHT / 2 && color != 0x0000FF)
-			color = 0xFF0000FF;
-		else if (y + pitch_shift >= WIN_HEIGHT / 2 && color != 0x5B3C11)
-			color = 0xFF5B3C11;
 		while (x < WIN_WIDTH)
 		{
-			mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_background, x, y,
-				color);
+			if (y < WIN_HEIGHT && y >= 0 && x < WIN_WIDTH && x >= 0)
+				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_background, x, y,
+					color);
 			x++;
 		}
 	}
+	prev_pitch_shift = pitch_shift;
 }
 
 void	render(t_data *data)

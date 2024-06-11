@@ -1,13 +1,13 @@
-NO ./sprite/x.png
+NO ./sprite/template(1).png
 
 
-WE ./sprite/circle.png
+WE ./sprite/template(2).png
 
 
-EA ./sprite/m.png
+EA ./sprite/template(3).png
 
 
-SO ./sprite/triangle.png
+SO ./sprite/template.png
 
 F 220,100,1
 

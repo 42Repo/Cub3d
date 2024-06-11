@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/10 16:50:16 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/11 16:24:00 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
 
-# define TILE_SIZE 32
 # define LCLICK 1
 # define RCLICK 3
 # define WUP 1

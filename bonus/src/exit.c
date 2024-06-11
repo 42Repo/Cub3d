@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 16:37:39 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/11 16:22:33 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	exit_game(t_data data)
 	free(data.mlx.wall_sprite.path_s);
 	free(data.mlx.wall_sprite.path_e);
 	free(data.mlx.wall_sprite.path_w);
-	exit(EXIT_SUCCESS);
+	exit(0);
 }
 
 int	destroy(int key, void *param)
