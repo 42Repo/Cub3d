@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/12 10:50:28 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/12 16:59:55 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,31 +173,6 @@ int	parse_texture(char **file, t_data *data)
 	return (0);
 }
 
-void	print_parsing(t_data *data)
-{
-	char	**tmp;
-
-	tmp = data->map.map;
-	printf("NO: %s\n", data->mlx.wall_sprite.path_n);
-	printf("SO: %s\n", data->mlx.wall_sprite.path_s);
-	printf("WE: %s\n", data->mlx.wall_sprite.path_w);
-	printf("EA: %s\n", data->mlx.wall_sprite.path_e);
-	printf("F: %d, %d, %d\n", \
-	data->mlx.wall_sprite.floor_color.r, \
-	data->mlx.wall_sprite.floor_color.g, \
-	data->mlx.wall_sprite.floor_color.b);
-	printf("C: %d, %d, %d\n", \
-	data->mlx.wall_sprite.ceiling_color.r, \
-	data->mlx.wall_sprite.ceiling_color.g, \
-	data->mlx.wall_sprite.ceiling_color.b);
-	printf("Map:\n");
-	while (*tmp)
-	{
-		printf("%s\n", *tmp);
-		tmp++;
-	}
-}
-
 void	set_player_dir_and_plane(char **map, int i, int j, t_player *player)
 {
 	if (map[i][j] == 'N')
@@ -358,6 +333,8 @@ int	parsing(int ac, char **av, t_data *data)
 	file = NULL;
 	if (ac != 2)
 		return (print_error("Wrong number of arguments\n"));
+	if (ft_strlen(av[1]) < 4 && ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4))
+		return (print_error("Wrong file extension\n"));
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (print_error("Can't open file\n"));

@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/12 10:28:40 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/12 15:02:50 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef union u_color
 		uint8_t	g;
 		uint8_t	b;
 	};
-	uint32_t	argb;
+	uint32_t	color;
 }				t_color;
 
 typedef struct s_square

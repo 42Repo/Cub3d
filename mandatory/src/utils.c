@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:02:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/12 08:55:24 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/12 12:40:22 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,29 @@ size_t	ft_ctablen(char **tab)
 	while (tab[i])
 		i++;
 	return (i);
+}
+
+void	print_parsing(t_data *data)
+{
+	char	**tmp;
+
+	tmp = data->map.map;
+	printf("NO: %s\n", data->mlx.wall_sprite.path_n);
+	printf("SO: %s\n", data->mlx.wall_sprite.path_s);
+	printf("WE: %s\n", data->mlx.wall_sprite.path_w);
+	printf("EA: %s\n", data->mlx.wall_sprite.path_e);
+	printf("F: %d, %d, %d\n", \
+	data->mlx.wall_sprite.floor_color.r, \
+	data->mlx.wall_sprite.floor_color.g, \
+	data->mlx.wall_sprite.floor_color.b);
+	printf("C: %d, %d, %d\n", \
+	data->mlx.wall_sprite.ceiling_color.r, \
+	data->mlx.wall_sprite.ceiling_color.g, \
+	data->mlx.wall_sprite.ceiling_color.b);
+	printf("Map:\n");
+	while (*tmp)
+	{
+		printf("%s\n", *tmp);
+		tmp++;
+	}
 }

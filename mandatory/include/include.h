@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/12 08:52:00 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/12 12:40:38 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	fps_counter(void);
 void	render_frame(t_data *data);
 int		print_error(char *error);
 size_t	ft_ctablen(char **tab);
+void	print_parsing(t_data *data);
 
 #endif
