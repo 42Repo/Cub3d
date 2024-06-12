@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:02:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 16:32:43 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/12 08:55:24 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,15 @@ void	fps_counter(void)
 int	print_error(char *error)
 {
 	printf("\033[1;31mError\n%s\033[0m\n", error);
-	return (1);
+	return (-1);
+}
+
+size_t	ft_ctablen(char **tab)
+{
+	size_t	i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }
