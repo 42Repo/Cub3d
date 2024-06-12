@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/12 09:35:18 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/12 10:50:28 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ int	get_background_color(t_data *data, char **line)
 	t_color	*color;
 
 	if (!ft_strncmp(*line, "F ", 2))
-		color = &data->mlx.wall_sprite.color_floor;
+		color = &data->mlx.wall_sprite.floor_color;
 	else if (!ft_strncmp(*line, "C ", 2))
-		color = &data->mlx.wall_sprite.color_ceiling;
+		color = &data->mlx.wall_sprite.ceiling_color;
 	else
 		return (-1);
 	if (color->a)
@@ -141,7 +141,7 @@ int	check_empty_texture(t_sprite *sprite)
 {
 	if (!sprite->path_n || !sprite->path_s
 		|| !sprite->path_w || !sprite->path_e
-		|| !sprite->color_ceiling.a || !sprite->color_floor.a)
+		|| !sprite->ceiling_color.a || !sprite->floor_color.a)
 		return (-1);
 	return (0);
 }
@@ -183,13 +183,13 @@ void	print_parsing(t_data *data)
 	printf("WE: %s\n", data->mlx.wall_sprite.path_w);
 	printf("EA: %s\n", data->mlx.wall_sprite.path_e);
 	printf("F: %d, %d, %d\n", \
-	data->mlx.wall_sprite.color_floor.r, \
-	data->mlx.wall_sprite.color_floor.g, \
-	data->mlx.wall_sprite.color_floor.b);
+	data->mlx.wall_sprite.floor_color.r, \
+	data->mlx.wall_sprite.floor_color.g, \
+	data->mlx.wall_sprite.floor_color.b);
 	printf("C: %d, %d, %d\n", \
-	data->mlx.wall_sprite.color_ceiling.r, \
-	data->mlx.wall_sprite.color_ceiling.g, \
-	data->mlx.wall_sprite.color_ceiling.b);
+	data->mlx.wall_sprite.ceiling_color.r, \
+	data->mlx.wall_sprite.ceiling_color.g, \
+	data->mlx.wall_sprite.ceiling_color.b);
 	printf("Map:\n");
 	while (*tmp)
 	{
@@ -372,6 +372,6 @@ int	parsing(int ac, char **av, t_data *data)
 		return (print_error("Wrong character in map\n"));
 	if (check_unclosed_map(data->map.map) == -1)
 		return (print_error("Unclosed map\n"));
-	print_parsing(data);
+	// print_parsing(data);
 	return (0);
 }

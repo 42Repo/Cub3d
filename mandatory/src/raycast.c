@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 17:05:45 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/12 10:52:33 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ static inline void	cast_ray(t_data *data, int x)
 	float	tex_pos;
 	int		tex_y;
 	int		color;
+	int		i;
 
 	camera_x = 2 * x / (float)WIN_WIDTH - 1;
 	init_ray(&ray, &data->player, camera_x);
@@ -153,13 +154,16 @@ static inline void	cast_ray(t_data *data, int x)
 		tex_x = data->mlx.wall_sprite.wall_n.width - tex_x - 1;
 	step = 1.0 * data->mlx.wall_sprite.wall_n.height / line_height;
 	tex_pos = (draw_start - WIN_HEIGHT / 2 + line_height / 2) * step;
-	for (int y = draw_start; y < draw_end; y++)
+	i = draw_start;
+	while (i < draw_end)
 	{
 		tex_y = ((int)tex_pos & (data->mlx.wall_sprite.wall_n.height - 1));
 		tex_pos += step;
 		color = texture[tex_y * data->mlx.wall_sprite.wall_n.width + tex_x];
-		mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, y, color);
+		mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, i, color);
+		i++;
 	}
+
 }
 
 void	render_frame(t_data *data)

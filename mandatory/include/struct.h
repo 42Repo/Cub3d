@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/10 17:00:53 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/12 10:28:40 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,8 +141,8 @@ typedef struct s_sprite
 	int			*south_texture;
 	int			*east_texture;
 	int			*west_texture;
-	t_color		color_floor;
-	t_color		color_ceiling;
+	t_color		floor_color;
+	t_color		ceiling_color;
 }				t_sprite;
 
 typedef struct s_mlx
