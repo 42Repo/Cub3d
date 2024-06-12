@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 16:37:39 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/12 10:02:17 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ void	exit_game(t_data data)
 	free(data.mlx.wall_sprite.path_s);
 	free(data.mlx.wall_sprite.path_e);
 	free(data.mlx.wall_sprite.path_w);
+	free(data.mlx.wall_sprite.north_texture);
+	free(data.mlx.wall_sprite.south_texture);
+	free(data.mlx.wall_sprite.east_texture);
+	free(data.mlx.wall_sprite.west_texture);
 	exit(EXIT_SUCCESS);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/12 09:28:14 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/12 09:35:18 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,7 +289,7 @@ int	check_map_character(char **map)
 
 void	flood_fill(char **map, size_t i, size_t j)
 {
-	if (!i || !j == 0 || i == ft_ctablen(map) - 1 || j == ft_strlen(*map) - 1)
+	if (!i || !j || i == ft_ctablen(map) - 1 || j == ft_strlen(*map) - 1)
 		return ;
 	if ((map[i - 1][j] == '0' || map[i - 1][j] == '1' || map[i - 1][j] == '2')
 	&& (map[i + 1][j] == '0' || map[i + 1][j] == '1' || map[i + 1][j] == '2')

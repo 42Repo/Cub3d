@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 16:56:34 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/12 10:02:03 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,14 @@ int	main(int ac, char **av)
 
 	ft_bzero(&data, sizeof(t_data));
 	if (parsing(ac, av, &data) == -1)
+	{
+		free(data.mlx.wall_sprite.path_n);
+		free(data.mlx.wall_sprite.path_s);
+		free(data.mlx.wall_sprite.path_e);
+		free(data.mlx.wall_sprite.path_w);
+		ft_free_tab((void **)data.map.map);
 		return (EXIT_FAILURE);
+	}
 	init_data(&data);
 	preload_textures(&data);
 	print_first_background(&data);
