@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:02:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/13 15:51:46 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:18:34 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,51 +38,4 @@ void	fps_counter(void)
 	printf("FPS: %.2f\n", fps);
 }
 
-int	print_error(char *error)
-{
-	printf("\033[1;31mError\n%s\033[0m\n", error);
-	return (-1);
-}
 
-size_t	ft_ctablen(char **tab)
-{
-	size_t	i;
-
-	i = 0;
-	while (tab[i])
-		i++;
-	return (i);
-}
-
-void	print_parsing(t_data *data)
-{
-	char	**tmp;
-
-	tmp = data->map.map;
-	printf("NO: %s\n", data->mlx.wall_sprite.path_n);
-	printf("SO: %s\n", data->mlx.wall_sprite.path_s);
-	printf("WE: %s\n", data->mlx.wall_sprite.path_w);
-	printf("EA: %s\n", data->mlx.wall_sprite.path_e);
-	printf("F: %d, %d, %d\n", \
-	data->mlx.wall_sprite.floor_color.r, \
-	data->mlx.wall_sprite.floor_color.g, \
-	data->mlx.wall_sprite.floor_color.b);
-	printf("C: %d, %d, %d\n", \
-	data->mlx.wall_sprite.ceiling_color.r, \
-	data->mlx.wall_sprite.ceiling_color.g, \
-	data->mlx.wall_sprite.ceiling_color.b);
-	printf("Map:\n");
-	while (*tmp)
-	{
-		printf("%s\n", *tmp);
-		tmp++;
-	}
-}
-
-int	check_extension_file(char *file, char *extension)
-{
-	if (ft_strlen(file) < ft_strlen(extension)
-		|| ft_strncmp(file + ft_strlen(file) - ft_strlen(extension), extension, ft_strlen(extension)))
-		return (-1);
-	return (0);
-}

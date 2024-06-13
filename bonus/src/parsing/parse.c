@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 16:30:09 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:31:01 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,6 @@ void	extand_map(char **map, size_t max_len)
 		}
 		tmp++;
 	}
-}
-
-void	set_border(char **map, t_map *map_data)
-{
-	char	**tmp;
-
-	tmp = map;
-	while (*tmp)
-	{
-		(*tmp)[0] = '1';
-		(*tmp)[map_data->cols - 1] = '1';
-		tmp++;
-	}
-	ft_memset(*map, '1', map_data->cols);
-	ft_memset(*(map + map_data->rows - 1), '1', map_data->cols);
 }
 
 void	format_map(char ***grid, t_map *map)
