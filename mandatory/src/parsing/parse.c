@@ -6,11 +6,11 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/13 15:18:04 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:05:12 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.h"
+#include "_parsing.h"
 
 void	extand_map(char **map, size_t max_len)
 {
@@ -65,7 +65,7 @@ void	format_map(char ***grid, t_map *map)
 	extand_map(*grid, max_len);
 }
 
-char	**file_to_char(int fd, char ***file)
+void	file_to_char(int fd, char ***file)
 {
 	char	*line;
 
@@ -83,7 +83,6 @@ char	**file_to_char(int fd, char ***file)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	return (*file);
 }
 
 int	get_wall_texture(t_data *data, char **line)
@@ -109,6 +108,21 @@ int	get_wall_texture(t_data *data, char **line)
 	return (0);
 }
 
+int	check_backgroud_color(char **line)
+{
+	char	**tmp;
+	
+	*line += 2;
+	tmp = ft_split(*line, ',');
+	if (!tmp || ft_ctablen(tmp) != 3)
+	{
+		ft_free_tab((void **)tmp);
+		return (-1);
+	}
+	ft_free_tab((void **)tmp);
+	return (0);
+}
+
 int	get_background_color(t_data *data, char **line)
 {
 	t_color	*color;
@@ -120,6 +134,8 @@ int	get_background_color(t_data *data, char **line)
 	else
 		return (-1);
 	if (color->a)
+		return (-1);
+	if (check_backgroud_color(line) == -1)
 		return (-1);
 	*line += 2;
 	while (**line == ' ' || **line == '\t')
@@ -146,6 +162,16 @@ int	check_empty_texture(t_sprite *sprite)
 	return (0);
 }
 
+int	check_extension_texture(t_sprite *sprite)
+{
+	if (check_extension_file(sprite->path_n, ".png") == -1
+		|| check_extension_file(sprite->path_s, ".png") == -1
+		|| check_extension_file(sprite->path_w, ".png") == -1
+		|| check_extension_file(sprite->path_e, ".png") == -1)
+		return (-1);
+	return (0);
+}
+
 int	parse_texture(char **file, t_data *data)
 {
 	char	**tmp;
@@ -159,26 +185,19 @@ int	parse_texture(char **file, t_data *data)
 			|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3))
 		{
 			if (get_wall_texture(data, &line) == -1)
-			{
-				ft_free_tab((void **)file);
-				return (-1);
-			}
+				return (ft_free_tab((void **)file));
 		}
 		else if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
 		{
 			if (get_background_color(data, &line) == -1)
-			{
-				ft_free_tab((void **)file);
-				return (-1);
-			}
+				return (ft_free_tab((void **)file));
 		}
 		tmp++;
 	}
 	if (check_empty_texture(&data->mlx.wall_sprite) == -1)
-	{
-		ft_free_tab((void **)file);
-		return (-1);
-	}
+		return (ft_free_tab((void **)file));
+	if (check_extension_texture(&data->mlx.wall_sprite) == -1)
+		return (ft_free_tab((void **)file));
 	return (0);
 }
 
@@ -206,6 +225,8 @@ void	set_player_dir_and_plane(char **map, int i, int j, t_player *player)
 	}
 	map[i][j] = '0';
 	player->pos = (t_vec2){j, i};
+	player->move_speed = 0.05;
+	player->rot_speed = 0.05;
 }
 
 int	check_player(char **map, t_player *player)
@@ -334,12 +355,12 @@ int	parsing(int ac, char **av, t_data *data)
 	file = NULL;
 	if (ac != 2)
 		return (print_error("Wrong number of arguments\n"));
-	if (ft_strlen(av[1]) < 4 && ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4))
+	if (check_extension_file(av[1], ".cub") == -1)
 		return (print_error("Wrong file extension\n"));
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (print_error("Can't open file\n"));
-	file = file_to_char(fd, &file);
+	file_to_char(fd, &file);
 	if (parse_texture(file, data) == -1)
 		return (print_error("Can't parse texture\n"));
 	if (parse_map(file, data) == -1)

@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:02:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/12 12:40:22 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/13 15:51:46 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,12 @@ void	print_parsing(t_data *data)
 		printf("%s\n", *tmp);
 		tmp++;
 	}
+}
+
+int	check_extension_file(char *file, char *extension)
+{
+	if (ft_strlen(file) < ft_strlen(extension)
+		|| ft_strncmp(file + ft_strlen(file) - ft_strlen(extension), extension, ft_strlen(extension)))
+		return (-1);
+	return (0);
 }

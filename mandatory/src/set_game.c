@@ -6,25 +6,18 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/12 10:08:33 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/13 15:43:24 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	init_player(t_data *data)
-{
-	data->player.move_speed = 0.05;
-	data->player.rot_speed = 0.04;
-}
-
 void	init_data(t_data *d)
 {
 	d->map.width = WIN_WIDTH;
 	d->map.height = WIN_HEIGHT;
-	init_player(d);
 	d->mlx.mlx = mlx_init();
-	// mlx_set_fps_goal(d->mlx.mlx, 60);
+	mlx_set_fps_goal(d->mlx.mlx, 60);
 	mlx_mouse_hide();
 	ft_bzero(d->mlx.key_states, 256);
 	d->mlx.wall_sprite.wall_e.img = mlx_png_file_to_image(d->mlx.mlx,
