@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/12 16:59:55 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/13 15:18:04 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,17 +159,26 @@ int	parse_texture(char **file, t_data *data)
 			|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3))
 		{
 			if (get_wall_texture(data, &line) == -1)
+			{
+				ft_free_tab((void **)file);
 				return (-1);
+			}
 		}
 		else if (!ft_strncmp(line, "F ", 2) || !ft_strncmp(line, "C ", 2))
 		{
 			if (get_background_color(data, &line) == -1)
+			{
+				ft_free_tab((void **)file);
 				return (-1);
+			}
 		}
 		tmp++;
 	}
 	if (check_empty_texture(&data->mlx.wall_sprite) == -1)
+	{
+		ft_free_tab((void **)file);
 		return (-1);
+	}
 	return (0);
 }
 
@@ -262,7 +271,7 @@ int	check_map_character(char **map)
 	return (0);
 }
 
-void	flood_fill(char **map, size_t i, size_t j)
+void	check_valid_zero(char **map, size_t i, size_t j)
 {
 	if (!i || !j || i == ft_ctablen(map) - 1 || j == ft_strlen(*map) - 1)
 		return ;
@@ -271,14 +280,6 @@ void	flood_fill(char **map, size_t i, size_t j)
 	&& (map[i][j - 1] == '0' || map[i][j - 1] == '1' || map[i][j - 1] == '2')
 	&& (map[i][j + 1] == '0' || map[i][j + 1] == '1' || map[i][j + 1] == '2'))
 		map[i][j] = '2';
-	if (map[i - 1][j] == '0')
-		flood_fill(map, i - 1, j);
-	if (map[i + 1][j] == '0')
-		flood_fill(map, i + 1, j);
-	if (map[i][j - 1] == '0')
-		flood_fill(map, i, j - 1);
-	if (map[i][j + 1] == '0')
-		flood_fill(map, i, j + 1);
 }
 
 int	reset_map(char **map)
@@ -315,7 +316,7 @@ int	check_unclosed_map(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == '0')
-				flood_fill(map, i, j);
+				check_valid_zero(map, i, j);
 			j++;
 		}
 		i++;
@@ -349,6 +350,6 @@ int	parsing(int ac, char **av, t_data *data)
 		return (print_error("Wrong character in map\n"));
 	if (check_unclosed_map(data->map.map) == -1)
 		return (print_error("Unclosed map\n"));
-	// print_parsing(data);
+	print_parsing(data);
 	return (0);
 }
