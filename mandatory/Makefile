@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
+#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/12 17:09:43 by bgoron           ###   ########.fr        #
+#    Updated: 2024/06/13 16:46:27 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ src/hook.c       \
 src/set_game.c   \
 src/set_image.c  \
 src/parsing/parse.c \
-src/raycast.c \
+src/raycasting/raycasting.c \
+src/raycasting/dda.c \
+src/raycasting/raycasting_utils.c \
 src/utils.c \
 src/mlx_addon/mlx_line.c \
 src/mlx_addon/mlx_rectangle.c

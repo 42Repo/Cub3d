@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/12 10:21:45 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/13 16:45:53 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
-
 
 void	render(t_data *data)
 {
@@ -83,7 +82,7 @@ int	update(void *param)
 	d = (t_data *)param;
 	move(d);
 	render(d);
-	// fps_counter();
+	fps_counter();
 	return (0);
 }
 
