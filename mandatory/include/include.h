@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/13 17:04:42 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:41:42 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int		key_release(int key, void *param);
 
 int		destroy(int key, void *param);
 void	exit_game(t_data data);
-void	fps_counter(void);
 
 void	render_frame(t_data *data);
 

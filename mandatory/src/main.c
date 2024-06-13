@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/12 17:00:49 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:40:21 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	preload_textures(t_data *data)
 		}
 	}
 }
+
 int	main(int ac, char **av)
 {
 	t_data	data;

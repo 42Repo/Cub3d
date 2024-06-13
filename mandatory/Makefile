@@ -6,7 +6,7 @@
 #    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/13 17:36:41 by bgoron           ###   ########.fr        #
+#    Updated: 2024/06/13 17:41:19 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ src/parsing/check_params.c \
 src/raycasting/raycasting.c \
 src/raycasting/dda.c \
 src/raycasting/raycasting_utils.c \
-src/utils.c \
 src/mlx_addon/mlx_line.c \
 src/mlx_addon/mlx_rectangle.c
 
