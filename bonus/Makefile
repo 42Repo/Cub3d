@@ -6,7 +6,7 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/11 16:18:36 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/13 17:24:11 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,9 @@ src/hook.c       \
 src/set_game.c   \
 src/set_image.c  \
 src/parsing/parse.c \
-src/raycast.c \
+src/raycasting/dda.c \
+src/raycasting/raycasting_utils.c \
+src/raycasting/raycast.c \
 src/utils.c \
 src/mlx_addon/mlx_line.c \
 src/mlx_addon/mlx_rectangle.c
