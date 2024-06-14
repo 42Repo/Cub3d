@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   _player_movement.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/14 18:16:39 by asuc             ###   ########.fr       */
+/*   Created: 2024/06/14 17:01:25 by asuc              #+#    #+#             */
+/*   Updated: 2024/06/14 17:01:58 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.h"
+#ifndef _PLAYER_MOVEMENT_H
+# define _PLAYER_MOVEMENT_H
 
-int	main(int ac, char **av)
-{
-	t_data	data;
+# include "struct.h"
 
-	ft_bzero(&data, sizeof(t_data));
-	if (parsing(ac, av, &data) == -1)
-		return (EXIT_FAILURE);
-	init_data(&data);
-	preload_textures(&data);
-	print_first_background(&data);
-	init_mlx(&data);
-	return (EXIT_SUCCESS);
-}
+void	move_forward(t_player *player);
+void	move_backward(t_player *player);
+void	move_right(t_player *player);
+void	move_left(t_player *player);
+void	rotate(t_player *player, float angle);
+
+#endif // _PLAYER_MOVEMENT_H

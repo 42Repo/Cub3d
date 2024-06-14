@@ -6,14 +6,15 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/13 17:24:11 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/14 18:21:30 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include utils.mk
 
 NAME = cub3D
-CFLAGS		=	-Wall -Werror -Wextra -pg -gdwarf-4
+DEBUG		=	-g -gdwarf-4 -pg
+CFLAGS		=	-Wall -Werror -Wextra $(DEBUG)
 MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
 LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
@@ -35,8 +36,11 @@ src/raycasting/raycasting_utils.c \
 src/raycasting/raycast.c \
 src/utils.c \
 src/mlx_addon/mlx_line.c \
-src/mlx_addon/mlx_rectangle.c
-
+src/mlx_addon/mlx_rectangle.c \
+src/preload_textures.c \
+src/movement/game_controls.c \
+src/movement/keyboard_movement.c \
+src/movement/mouse_movement.c
 
 
 

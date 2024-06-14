@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/10 16:56:25 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/14 18:24:47 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 # include "mlx_addon.h"
 
 int		parsing(int ac, char **av, t_data *data);
-char	**parse_file(char *file, t_map *map);
-void	extand_map(char **map, size_t max_len);
-void	format_map(char ***grid, t_map *map);
+void	preload_textures(t_data *data);
 
 void	init_data(t_data *d);
 void	init_mlx(t_data *data);
 void	print_first_background(t_data *data);
 int		update(void *param);
+void	move(t_data *data);
+void	mouse_move(t_data *data);
 
 int		keyhook(int key, void *param);
 int		key_press(int key, void *param);
