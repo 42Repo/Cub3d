@@ -6,14 +6,14 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/14 17:03:38 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/14 17:50:07 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include utils.mk
 
 NAME = cub3D
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Werror -Wextra -pg
 MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
 LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
@@ -29,6 +29,7 @@ src/exit.c       \
 src/hook.c       \
 src/set_game.c   \
 src/set_image.c  \
+src/preload_textures.c \
 src/movement/player_movement.c \
 src/movement/game_controls.c \
 src/parsing/parsing.c \
