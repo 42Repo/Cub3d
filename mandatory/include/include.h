@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/14 17:05:04 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/14 17:43:26 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 void	init_data(t_data *d);
 void	init_mlx(t_data *data);
 void	print_first_background(t_data *data);
+void	preload_textures(t_data *data);
 
 int		update(void *param);
 int		keyhook(int key, void *param);
