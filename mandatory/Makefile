@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
+#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/13 17:41:19 by bgoron           ###   ########.fr        #
+#    Updated: 2024/06/14 17:03:38 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ src/exit.c       \
 src/hook.c       \
 src/set_game.c   \
 src/set_image.c  \
+src/movement/player_movement.c \
+src/movement/game_controls.c \
 src/parsing/parsing.c \
 src/parsing/parsing_utils.c \
 src/parsing/parse_texture.c \
