@@ -7,11 +7,11 @@ WE ./sprite/template(2).png
 EA ./sprite/template(3).png
 
 
-SO ./sprite/template.png
+SO ./sprite/m.png
 
-F 220,100,1
+F 220,100,100
 
-C 225,30,1
+C 225,30,150
 
         1111111111111111111111111
         1000000000110000000000001
