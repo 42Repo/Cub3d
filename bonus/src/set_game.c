@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 16:03:59 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 17:20:58 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	init_data(t_data *d)
 {
+	d->map.height = WIN_HEIGHT;
+	d->map.width = WIN_WIDTH;
 	d->mlx.mlx = mlx_init();
 	mlx_mouse_hide();
 	ft_bzero(d->mlx.key_states, 256);

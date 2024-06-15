@@ -7,7 +7,7 @@ WE ./sprite/circle.png
 EA ./sprite/m.png
 
 
-SO ./sprite/triangle.png
+SO ./sprite/brick.png
 
 F 220,100,1
 

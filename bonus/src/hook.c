@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 16:13:02 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 17:28:00 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ static inline void	print_background(t_data *data)
 	{
 		start_y = WIN_HEIGHT / 2 - prev_pitch_shift;
 		end_y = WIN_HEIGHT / 2 - pitch_shift;
-		color = 0xFF5B3C11;
+		color = data->mlx.wall_sprite.ceiling_color.color;
 	}
 	else
 	{
 		start_y = WIN_HEIGHT / 2 - pitch_shift;
 		end_y = WIN_HEIGHT / 2 - prev_pitch_shift;
-		color = 0xFF0000FF;
+		color = data->mlx.wall_sprite.floor_color.color;
 	}
 	for (pos.y = end_y; pos.y <= start_y; pos.y++)
 	{

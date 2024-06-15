@@ -6,13 +6,13 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:11:56 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/13 17:36:15 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 16:26:06 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
 
-void	check_valid_zero(char **map, size_t i, size_t j)
+static void	check_valid_zero(char **map, size_t i, size_t j)
 {
 	if (!i || !j || i == ft_ctablen(map) - 1 || j == ft_strlen(*map) - 1)
 		return ;
@@ -41,6 +41,34 @@ int	check_map_character(char **map)
 		i++;
 	}
 	return (0);
+}
+
+static void	set_player_dir_and_plane(char **map, int i, int j, t_player *player)
+{
+	if (map[i][j] == 'N')
+	{
+		player->dir = (t_vec2){0, -1};
+		player->plane = (t_vec2){-0.66, 0};
+	}
+	else if (map[i][j] == 'S')
+	{
+		player->dir = (t_vec2){0, 1};
+		player->plane = (t_vec2){0.66, 0};
+	}
+	else if (map[i][j] == 'W')
+	{
+		player->dir = (t_vec2){-1, 0};
+		player->plane = (t_vec2){0, 0.66};
+	}
+	else if (map[i][j] == 'E')
+	{
+		player->dir = (t_vec2){1, 0};
+		player->plane = (t_vec2){0, -0.66};
+	}
+	map[i][j] = '0';
+	player->pos = (t_vec2){j + 0.5, i + 0.5};
+	player->move_speed = 0.05;
+	player->rot_speed = 0.05;
 }
 
 int	check_player(char **map, t_player *player)

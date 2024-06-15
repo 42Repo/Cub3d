@@ -6,13 +6,13 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:35:29 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 15:42:02 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 16:27:27 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
 
-int	open_file(char *file)
+static int	open_file(char *file)
 {
 	int	fd;
 

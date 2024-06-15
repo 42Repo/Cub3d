@@ -6,13 +6,13 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:15:52 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/13 17:31:06 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 16:27:40 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
 
-void	format_map(char ***grid, t_map *map)
+static void	format_map(char ***grid, t_map *map)
 {
 	size_t	max_len;
 	char	**tmp;

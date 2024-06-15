@@ -6,41 +6,13 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/13 17:42:55 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 16:22:25 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
 
-void	set_player_dir_and_plane(char **map, int i, int j, t_player *player)
-{
-	if (map[i][j] == 'N')
-	{
-		player->dir = (t_vec2){0, -1};
-		player->plane = (t_vec2){-0.66, 0};
-	}
-	else if (map[i][j] == 'S')
-	{
-		player->dir = (t_vec2){0, 1};
-		player->plane = (t_vec2){0.66, 0};
-	}
-	else if (map[i][j] == 'W')
-	{
-		player->dir = (t_vec2){-1, 0};
-		player->plane = (t_vec2){0, 0.66};
-	}
-	else if (map[i][j] == 'E')
-	{
-		player->dir = (t_vec2){1, 0};
-		player->plane = (t_vec2){0, -0.66};
-	}
-	map[i][j] = '0';
-	player->pos = (t_vec2){j + 0.5, i + 0.5};
-	player->move_speed = 0.05;
-	player->rot_speed = 0.05;
-}
-
-int	print_error(char *error)
+static int	print_error(char *error)
 {
 	printf("\033[1;31mError\n%s\033[0m\n", error);
 	return (-1);

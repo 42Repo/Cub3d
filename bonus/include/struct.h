@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/15 14:42:27 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 17:27:23 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef union u_color
 		uint8_t	g;
 		uint8_t	b;
 	};
-	uint32_t	argb;
+	uint32_t	color;
 }				t_color;
 
 typedef struct s_square
@@ -104,6 +104,8 @@ typedef struct s_map
 	char		**map;
 	int			rows;
 	int			cols;
+	int			width;
+	int			height;
 }				t_map;
 
 typedef struct s_player

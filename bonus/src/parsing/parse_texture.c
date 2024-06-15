@@ -6,13 +6,13 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:17:23 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/13 17:22:21 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 16:20:13 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
 
-int	get_wall_texture(t_data *data, char **line)
+static int	get_wall_texture(t_data *data, char **line)
 {
 	char	**path;
 
@@ -35,7 +35,7 @@ int	get_wall_texture(t_data *data, char **line)
 	return (0);
 }
 
-int	get_background_color(t_data *data, char **line)
+static int	get_background_color(t_data *data, char **line)
 {
 	t_color	*color;
 
