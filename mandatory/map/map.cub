@@ -7,9 +7,9 @@ WE ./sprite/circle.png
 EA ./sprite/m.png
 
 
-SO ./sprite/triangle.png
+SO ./sprite/trangle.png
 
-F 220,100, 12
+F 220,100,1
 
 C 225,30,1
 

@@ -6,14 +6,14 @@
 #    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/15 14:45:09 by bgoron           ###   ########.fr        #
+#    Updated: 2024/06/15 15:53:14 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include utils.mk
 
 NAME = cub3D
-DEBUG		=	-g -gdwarf-4 -pg
+DEBUG		=	-g -gdwarf-4
 CFLAGS		=	-Wall -Werror -Wextra $(DEBUG)
 MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
 LIBFT_DIR	=	$(shell pwd)/Libft/
