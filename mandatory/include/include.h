@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 16:31:01 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 18:00:46 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 18:34:15 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	exit_game(t_data data);
 void	render_frame(t_data *data);
 
 int		parsing(int ac, char **av, t_data *data);
+int		print_error(char *error);
 
 #endif // INCLUDE_H

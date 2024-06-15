@@ -6,13 +6,13 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 16:28:06 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 18:34:52 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
 
-static int	print_error(char *error)
+int	print_error(char *error)
 {
 	printf("\033[1;31mError\n%s\033[0m\n", error);
 	return (-1);

@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/15 17:27:23 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 18:05:46 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <time.h>
 # include <unistd.h>
 
-# define WIN_WIDTH 1920
+# define WIN_WIDTH 1800
 # define WIN_HEIGHT 1080
 
 # define LCLICK 1
