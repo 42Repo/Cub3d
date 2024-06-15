@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:34:29 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/15 17:17:32 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/15 17:27:53 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,14 @@ inline int	*select_texture(t_ray_params *params, t_sprite *sprite)
 
 inline void	calculate_wall_x_and_tex_x(t_ray *ray, t_ray_params *params)
 {
+	float	wall_x;
+
 	if (ray->side == 0)
-		params->wall_x = ray->pos.y + ray->perp_wall_dist * ray->dir.y;
+		wall_x = ray->pos.y + ray->perp_wall_dist * ray->dir.y;
 	else
-		params->wall_x = ray->pos.x + ray->perp_wall_dist * ray->dir.x;
-	params->wall_x -= floor(params->wall_x);
-	params->tex_x = (int)(params->wall_x * (float)params->texture_width);
+		wall_x = ray->pos.x + ray->perp_wall_dist * ray->dir.x;
+	wall_x -= floor(wall_x);
+	params->tex_x = (int)(wall_x * (float)params->texture_width);
 	if ((ray->side == 0 && ray->dir.x > 0) || (ray->side == 1
 			&& ray->dir.y < 0))
 		params->tex_x = params->texture_width - params->tex_x - 1;

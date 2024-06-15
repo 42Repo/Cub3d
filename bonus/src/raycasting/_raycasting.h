@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:59:19 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/15 17:12:04 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/15 17:27:57 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ typedef struct s_ray_params
 	int		draw_start;
 	int		draw_end;
 	int		*texture;
-	float	wall_x;
 	int		tex_x;
 	float	step;
 	float	tex_pos;
