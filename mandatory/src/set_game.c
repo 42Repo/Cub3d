@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 18:33:56 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 18:51:12 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,8 @@ void	init_data(t_data *d)
 	d->mlx.wall_sprite.wall_n.img = mlx_png_file_to_image(d->mlx.mlx,
 			d->mlx.wall_sprite.path_n, &d->mlx.wall_sprite.wall_n.width,
 			&d->mlx.wall_sprite.wall_n.height);
-	if (d->mlx.wall_sprite.wall_n.height != d->mlx.wall_sprite.wall_n.width
-		|| d->mlx.wall_sprite.wall_s.height != d->mlx.wall_sprite.wall_s.width
-		|| d->mlx.wall_sprite.wall_e.height != d->mlx.wall_sprite.wall_e.width
-		|| d->mlx.wall_sprite.wall_w.height != d->mlx.wall_sprite.wall_w.width)
-		exit_game(*d);
+	if (check_wall_size(&d->mlx.wall_sprite) == -1)
+		exit(EXIT_FAILURE);
 	d->mlx.win = mlx_new_window(d->mlx.mlx, d->map.width, d->map.height,
 			"Cub3D");
 	d->mlx.img_background = mlx_new_image(d->mlx.mlx, d->map.width,
