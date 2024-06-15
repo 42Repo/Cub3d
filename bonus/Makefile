@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
+#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/14 18:21:30 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/15 14:45:09 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,12 @@ src/exit.c       \
 src/hook.c       \
 src/set_game.c   \
 src/set_image.c  \
-src/parsing/parse.c \
+src/parsing/parsing.c \
+src/parsing/parsing_utils.c \
+src/parsing/parse_texture.c \
+src/parsing/parse_map.c \
+src/parsing/check_map.c \
+src/parsing/check_params.c \
 src/raycasting/dda.c \
 src/raycasting/raycasting_utils.c \
 src/raycasting/raycast.c \

@@ -6,19 +6,19 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 02:01:06 by bgoron            #+#    #+#             */
-/*   Updated: 2024/04/05 10:51:21 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 14:45:35 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_tab(void **tab)
+int	ft_free_tab(void **tab)
 {
 	int	i;
 
 	i = 0;
 	if (!tab)
-		return ;
+		return (-1);
 	while (tab[i])
 	{
 		free(tab[i]);
@@ -27,4 +27,5 @@ void	ft_free_tab(void **tab)
 	}
 	free(tab);
 	tab = NULL;
+	return (-1);
 }

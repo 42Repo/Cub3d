@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:22:59 by bgoron            #+#    #+#             */
-/*   Updated: 2024/04/27 13:33:38 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 14:46:00 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef long long	t_elodie;
 
 void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
-void		ft_free_tab(void **tab);
+int			ft_free_tab(void **tab);
 
 /* ************************************************************************** */
 /*                                     Is                                     */
