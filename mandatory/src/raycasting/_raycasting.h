@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:59:19 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/15 18:28:07 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 18:46:01 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,14 @@ typedef struct s_ray_params
 	int		tex_x;
 	float	step;
 	float	tex_pos;
+	int		texture_height;
+	int		texture_width;
 }			t_ray_params;
 
-void	perform_dda(t_ray *ray, t_map *map);
-void	calculate_wall_x_and_tex_x(t_ray *ray, t_ray_params *params,
-			t_sprite *sprite);
-int		*select_texture(t_ray *ray, t_sprite *sprite);
-void	calculate_step_and_side_dist(t_ray *ray);
-void	init_ray(t_ray *ray, t_player *player, float camera_x);
+void		perform_dda(t_ray *ray, t_map *map);
+void		calculate_wall_x_and_tex_x(t_ray *ray, t_ray_params *params);
+int			*select_texture(t_ray_params *params, t_sprite *sprite);
+void		calculate_step_and_side_dist(t_ray *ray);
+void		init_ray(t_ray *ray, t_player *player, float camera_x);
 
 #endif // _RAYCASTING_H
