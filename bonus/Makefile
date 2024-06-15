@@ -6,7 +6,7 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/15 20:34:07 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/15 22:26:52 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,7 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
 
 all : $(NAME)
 
-debug: CFLAGS += -gdwarf-4 -g -pg
+debug: CFLAGS += -gdwarf-4 -g
 debug: clean all
 
 $(OBJ_DIR) $(DEP_DIR):

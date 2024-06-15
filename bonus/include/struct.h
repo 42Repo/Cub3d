@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/15 18:05:46 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 22:29:27 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ typedef struct s_map
 	char		**map;
 	int			rows;
 	int			cols;
-	int			width;
-	int			height;
 }				t_map;
 
 typedef struct s_player
@@ -150,6 +148,7 @@ typedef struct s_mlx
 	void		*mlx;
 	void		*win;
 	void		*img_background;
+	void		*img_mini_map;
 	t_sprite	wall_sprite;
 	int			key_states[256];
 }				t_mlx;

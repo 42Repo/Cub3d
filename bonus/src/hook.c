@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 18:14:27 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 22:32:39 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,10 @@ static inline void	print_background(t_data *data)
 		pos.x = 0;
 		while (pos.x < WIN_WIDTH)
 		{
-			if (pos.y < WIN_HEIGHT && pos.y >= 0 && pos.x < WIN_WIDTH && pos.x >= 0)
-				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_background, pos.x, pos.y,
-					color);
+			if (pos.y < WIN_HEIGHT && pos.y >= 0 && pos.x < WIN_WIDTH
+				&& pos.x >= 0)
+				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_background,
+					pos.x, pos.y, color);
 			pos.x++;
 		}
 	}
@@ -51,10 +52,13 @@ static inline void	print_background(t_data *data)
 void	render(t_data *data)
 {
 	mlx_clear_window(data->mlx.mlx, data->mlx.win);
+	render_frame(data);
 	print_background(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
 		data->mlx.img_background, 0, 0);
-	render_frame(data);
+	// DRAW MINI MAP A FAIRE
+	// mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
+	// 	data->mlx.img_mini_map, WIN_WIDTH - 200 - 10, 10);
 }
 
 int	update(void *param)
