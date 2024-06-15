@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/14 18:23:58 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/15 16:13:02 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ static inline void	print_background(t_data *data)
 {
 	int			pitch_shift;
 	int			color;
-	int			x;
-	int			y;
+	t_vec2		pos;
 	int			start_y;
 	int			end_y;
 	static int	prev_pitch_shift = 0;
@@ -35,15 +34,15 @@ static inline void	print_background(t_data *data)
 		end_y = WIN_HEIGHT / 2 - prev_pitch_shift;
 		color = 0xFF0000FF;
 	}
-	for (y = end_y; y <= start_y; y++)
+	for (pos.y = end_y; pos.y <= start_y; pos.y++)
 	{
-		x = 0;
-		while (x < WIN_WIDTH)
+		pos.x = 0;
+		while (pos.x < WIN_WIDTH)
 		{
-			if (y < WIN_HEIGHT && y >= 0 && x < WIN_WIDTH && x >= 0)
-				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_background, x, y,
+			if (pos.y < WIN_HEIGHT && pos.y >= 0 && pos.x < WIN_WIDTH && pos.x >= 0)
+				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_background, pos.x, pos.y,
 					color);
-			x++;
+			pos.x++;
 		}
 	}
 	prev_pitch_shift = pitch_shift;

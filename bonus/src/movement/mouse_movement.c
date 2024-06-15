@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_movement.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 18:21:02 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/14 18:23:35 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/15 16:15:45 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 void	mouse_move(t_data *data)
 {
-	int		screen_center_x;
-	int		screen_center_y;
+	t_vec2	screen_center;
 	float	old_dir_x;
 	float	old_plane_x;
 	int		mouse_x;
@@ -25,11 +24,11 @@ void	mouse_move(t_data *data)
 	float	delta_y;
 
 	sensitivity = 0.00075;
-	screen_center_x = WIN_WIDTH / 2;
-	screen_center_y = WIN_HEIGHT / 2;
+	screen_center.x = WIN_WIDTH / 2;
+	screen_center.y = WIN_HEIGHT / 2;
 	mlx_mouse_get_pos(data->mlx.mlx, &mouse_x, &mouse_y);
-	delta_x = (mouse_x - screen_center_x) * sensitivity;
-	delta_y = (mouse_y - screen_center_y) * sensitivity;
+	delta_x = (mouse_x - screen_center.x) * sensitivity;
+	delta_y = (mouse_y - screen_center.y) * sensitivity;
 	old_dir_x = data->player.dir.x;
 	data->player.dir.x = data->player.dir.x * cos(-delta_x) - data->player.dir.y
 		* sin(-delta_x);
@@ -45,6 +44,6 @@ void	mouse_move(t_data *data)
 		data->player.pitch = 1.0f;
 	if (data->player.pitch < -1.0f)
 		data->player.pitch = -1.0f;
-	mlx_mouse_move(data->mlx.mlx, data->mlx.win, screen_center_x,
-		screen_center_y);
+	mlx_mouse_move(data->mlx.mlx, data->mlx.win, screen_center.x,
+		screen_center.y);
 }
