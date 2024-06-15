@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:34:29 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/13 17:26:37 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/15 17:17:32 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,32 +48,43 @@ inline void	calculate_step_and_side_dist(t_ray *ray)
 	}
 }
 
-inline int	*select_texture(t_ray *ray, t_sprite *sprite)
+inline int	*select_texture(t_ray_params *params, t_sprite *sprite)
 {
-	if (ray->side == 0)
+	if (params->ray.side == 0)
 	{
-		if (ray->dir.x > 0)
+		if (params->ray.dir.x > 0)
+		{
+			params->texture_height = sprite->wall_e.height;
+			params->texture_width = sprite->wall_e.width;
 			return (sprite->east_texture);
+		}
+		params->texture_height = sprite->wall_w.height;
+		params->texture_width = sprite->wall_w.width;
 		return (sprite->west_texture);
 	}
 	else
 	{
-		if (ray->dir.y > 0)
+		if (params->ray.dir.y > 0)
+		{
+			params->texture_height = sprite->wall_s.height;
+			params->texture_width = sprite->wall_s.width;
 			return (sprite->south_texture);
+		}
+		params->texture_height = sprite->wall_n.height;
+		params->texture_width = sprite->wall_n.width;
 		return (sprite->north_texture);
 	}
 }
 
-inline void	calculate_wall_x_and_tex_x(t_ray *ray, t_ray_params *params,
-		t_sprite *sprite)
+inline void	calculate_wall_x_and_tex_x(t_ray *ray, t_ray_params *params)
 {
 	if (ray->side == 0)
 		params->wall_x = ray->pos.y + ray->perp_wall_dist * ray->dir.y;
 	else
 		params->wall_x = ray->pos.x + ray->perp_wall_dist * ray->dir.x;
 	params->wall_x -= floor(params->wall_x);
-	params->tex_x = (int)(params->wall_x * (float)sprite->wall_n.width);
+	params->tex_x = (int)(params->wall_x * (float)params->texture_width);
 	if ((ray->side == 0 && ray->dir.x > 0) || (ray->side == 1
 			&& ray->dir.y < 0))
-		params->tex_x = sprite->wall_n.width - params->tex_x - 1;
+		params->tex_x = params->texture_width - params->tex_x - 1;
 }

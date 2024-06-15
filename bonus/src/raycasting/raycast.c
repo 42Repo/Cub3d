@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/13 17:33:08 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/15 17:20:47 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static inline void	draw_texture(t_data *data, int x, t_ray_params *params)
 			+ params->line_height / 2) * params->step;
 	while (i < params->draw_end)
 	{
-		tex_y = ((int)params->tex_pos & (data->mlx.wall_sprite.wall_n.height
+		tex_y = ((int)params->tex_pos & (params->texture_height
 					- 1));
 		params->tex_pos += params->step;
-		color = params->texture[tex_y * data->mlx.wall_sprite.wall_n.width
+		color = params->texture[tex_y * params->texture_width
 			+ params->tex_x];
 		mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, i, color);
 		i++;
@@ -57,11 +57,11 @@ static inline void	cast_ray(t_data *data, int x)
 	perform_dda(&params.ray, &data->map);
 	if (params.ray.hit == 2)
 		return ;
-	params.texture = select_texture(&params.ray, &data->mlx.wall_sprite);
+	params.texture = select_texture(&params, &data->mlx.wall_sprite);
 	params.line_offset = (int)(-data->player.pitch * WIN_HEIGHT);
 	calculate_line_height_and_draw_points(&params.ray, &params);
-	calculate_wall_x_and_tex_x(&params.ray, &params, &data->mlx.wall_sprite);
-	params.step = 1.0 * data->mlx.wall_sprite.wall_n.height
+	calculate_wall_x_and_tex_x(&params.ray, &params);
+	params.step = 1.0 * params.texture_height
 		/ params.line_height;
 	draw_texture(data, x, &params);
 }
