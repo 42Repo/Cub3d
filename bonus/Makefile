@@ -3,18 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
+#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/15 17:43:55 by bgoron           ###   ########.fr        #
+#    Updated: 2024/06/15 20:34:07 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include utils.mk
 
 NAME = cub3D
-DEBUG		=	-g -gdwarf-4
-CFLAGS		=	-Wall -Werror -Wextra $(DEBUG)
+CFLAGS		=	-Wall -Werror -Wextra
 MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
 LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
@@ -45,7 +44,8 @@ src/mlx_addon/mlx_rectangle.c \
 src/preload_textures.c \
 src/movement/game_controls.c \
 src/movement/keyboard_movement.c \
-src/movement/mouse_movement.c
+src/movement/mouse_movement.c \
+src/movement/movement_utils.c
 
 
 
@@ -74,8 +74,8 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
 
 all : $(NAME)
 
-debug: CFLAGS += -gdwarf-4
-debug: all
+debug: CFLAGS += -gdwarf-4 -g -pg
+debug: clean all
 
 $(OBJ_DIR) $(DEP_DIR):
 	@mkdir -p $(OBJ_DIR) $(DEP_DIR)
