@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 17:52:26 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 18:00:35 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,4 @@ void	fps_counter(void);
 void	render_frame(t_data *data);
 int		argb_to_int(t_color color);
 
-#endif
+#endif // INCLUDE_H

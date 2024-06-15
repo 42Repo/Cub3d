@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:02:04 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 16:25:07 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/15 18:00:29 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,4 @@ int		check_texture(t_sprite *sprite);
 
 size_t	ft_ctablen(char **tab);
 
-#endif
+#endif // _PARSING_H
