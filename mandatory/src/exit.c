@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 19:21:43 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/16 19:39:00 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	exit_exitgame(t_data data)
 {
 	mlx_loop_end(data.mlx.mlx);
 	mlx_destroy_image(data.mlx.mlx, data.mlx.img_background);
+	
 	mlx_destroy_image(data.mlx.mlx, data.mlx.wall_sprite.wall_e.img);
 	mlx_destroy_image(data.mlx.mlx, data.mlx.wall_sprite.wall_w.img);
 	mlx_destroy_image(data.mlx.mlx, data.mlx.wall_sprite.wall_s.img);
