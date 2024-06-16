@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:17:23 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 16:27:57 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/16 18:18:57 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int	get_wall_texture(t_data *data, char **line)
 static int	get_background_color(t_data *data, char **line)
 {
 	t_color	*color;
+	char	**tmp;
 
 	if (!ft_strncmp(*line, "F ", 2))
 		color = &data->mlx.wall_sprite.floor_color;
@@ -45,21 +46,15 @@ static int	get_background_color(t_data *data, char **line)
 		color = &data->mlx.wall_sprite.ceiling_color;
 	else
 		return (-1);
-	if (color->a || check_backgroud_color(line) == -1)
-		return (-1);
 	*line += 2;
-	while (**line == ' ' || **line == '\t')
-		(*line)++;
-	color->r = ft_atoi(*line);
-	while (**line != ',' && **line)
-		(*line)++;
-	(*line)++;
-	color->g = ft_atoi(*line);
-	while (**line != ',' && **line)
-		(*line)++;
-	(*line)++;
-	color->b = ft_atoi(*line);
-	color->a = 255;
+	tmp = ft_split(*line, ',');
+	if (!tmp || ft_ctablen(tmp) != 3)
+		return (ft_free_tab((void **)tmp));
+	(*color).r = ft_atoi(tmp[0]);
+	(*color).g = ft_atoi(tmp[1]);
+	(*color).b = ft_atoi(tmp[2]);
+	ft_free_tab((void **)tmp);
+	(*color).a = 255;
 	return (0);
 }
 
