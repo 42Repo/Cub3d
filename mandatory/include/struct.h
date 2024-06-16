@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/14 17:14:45 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/16 17:37:35 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ typedef struct s_square
 	t_vec2		x3;
 	t_vec2		x4;
 }				t_square;
+
+typedef enum e_status
+{
+	PARSING_ERROR,
+	PRELOAD_ERROR,
+	EXIT_GAME
+}				t_status;
 
 typedef enum e_wall
 {

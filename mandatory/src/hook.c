@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/14 17:00:45 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/16 17:41:34 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	key_press(int key, void *param)
 
 	data = (t_data *)param;
 	if (key == SDL_SCANCODE_ESCAPE)
-		exit_game(*data);
+		exit_game(*data, EXIT_GAME);
 	data->mlx.key_states[key] = 1;
 	return (0);
 }
