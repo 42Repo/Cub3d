@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 17:48:41 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/16 19:21:43 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	exit_exitgame(t_data data)
 
 void	exit_game(t_data data, int status)
 {
-	if (status <= EXIT_GAME)
+	if (status >= PARSING_ERROR)
 		exit_parsingerror(data);
 	if (status >= PRELOAD_ERROR)
 		exit_preloaderror(data);
