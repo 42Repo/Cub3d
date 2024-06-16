@@ -7,7 +7,7 @@ WE ./sprite/template(2).png
 EA ./sprite/template(3).png
 
 
-SO ./sprite/m.png
+SO ./sprite/template.png
 
 F 220,100,100
 

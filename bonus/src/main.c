@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 17:57:12 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/16 19:37:13 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,11 @@ int	main(int ac, char **av)
 
 	ft_bzero(&data, sizeof(t_data));
 	if (parsing(ac, av, &data) == -1)
-	{
-		free(data.mlx.wall_sprite.path_n);
-		free(data.mlx.wall_sprite.path_s);
-		free(data.mlx.wall_sprite.path_e);
-		free(data.mlx.wall_sprite.path_w);
-		ft_free_tab((void **)data.map.map);
-		return (EXIT_FAILURE);
-	}
+		exit_game(data, PARSING_ERROR);
 	init_data(&data);
-	preload_textures(&data);
+	if (preload_textures(&data) == -1)
+		exit_game(data, PRELOAD_ERROR);
+	data.mlx.win = mlx_new_window(data.mlx.mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	print_first_background(&data);
 	init_mlx(&data);
 	return (EXIT_SUCCESS);
