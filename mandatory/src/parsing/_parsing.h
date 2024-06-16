@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:02:04 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 16:26:49 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/16 18:21:28 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		check_extension_file(char *file, char *extension);
 int		check_map_character(char **map);
 int		check_player(char **map, t_player *player);
 int		check_unclosed_map(char **map);
-int		check_backgroud_color(char **line);
 int		check_texture(t_sprite *sprite);
 
 size_t	ft_ctablen(char **tab);

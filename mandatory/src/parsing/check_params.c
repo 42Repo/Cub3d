@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:35:29 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 16:27:27 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/16 18:21:19 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,6 @@ int	check_texture(t_sprite *sprite)
 	if (open_file(sprite->path_n) == -1 || open_file(sprite->path_s) == -1
 		|| open_file(sprite->path_w) == -1 || open_file(sprite->path_e) == -1)
 		return (-1);
-	return (0);
-}
-
-int	check_backgroud_color(char **line)
-{
-	char	**tmp;
-
-	*line += 2;
-	tmp = ft_split(*line, ',');
-	if (!tmp || ft_ctablen(tmp) != 3)
-	{
-		ft_free_tab((void **)tmp);
-		return (-1);
-	}
-	ft_free_tab((void **)tmp);
 	return (0);
 }
 
