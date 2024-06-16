@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:17:23 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 18:18:57 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/16 19:24:35 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static int	get_background_color(t_data *data, char **line)
 	else if (!ft_strncmp(*line, "C ", 2))
 		color = &data->mlx.wall_sprite.ceiling_color;
 	else
+		return (-1);
+	if (color->a)
 		return (-1);
 	*line += 2;
 	tmp = ft_split(*line, ',');
