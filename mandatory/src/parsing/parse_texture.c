@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:17:23 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 19:24:35 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/16 19:25:31 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ static int	get_background_color(t_data *data, char **line)
 	tmp = ft_split(*line, ',');
 	if (!tmp || ft_ctablen(tmp) != 3)
 		return (ft_free_tab((void **)tmp));
+	(*color).a = 255;
 	(*color).r = ft_atoi(tmp[0]);
 	(*color).g = ft_atoi(tmp[1]);
 	(*color).b = ft_atoi(tmp[2]);
 	ft_free_tab((void **)tmp);
-	(*color).a = 255;
 	return (0);
 }
 
