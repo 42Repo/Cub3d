@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dda.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:58:08 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/13 16:37:55 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/17 15:59:59 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static inline int	has_reached_max_distance(t_ray *ray, int max_distance)
 
 static inline void	update_ray_position(t_ray *ray)
 {
-	if (ray->side_dist_x < ray->side_dist_y)
+	if (ray->side_dist.x < ray->side_dist.y)
 	{
-		ray->side_dist_x += ray->delta_dist_x;
+		ray->side_dist.x += ray->delta_dist.x;
 		ray->map_x += ray->step_x;
 		ray->side = 0;
 	}
 	else
 	{
-		ray->side_dist_y += ray->delta_dist_y;
+		ray->side_dist.y += ray->delta_dist.y;
 		ray->map_y += ray->step_y;
 		ray->side = 1;
 	}
