@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 19:39:58 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 15:47:20 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,5 @@ int	destroy(int key, void *param)
 	data = (t_data *)param;
 	if (!key)
 		exit_game(*data, EXIT_GAME);
-	return(0);
+	return (0);
 }

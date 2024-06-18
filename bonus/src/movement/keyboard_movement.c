@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:54:33 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/17 16:03:13 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 16:00:08 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	move_forward(t_data *data)
 {
-	t_vec2 new;
+	t_vec2	new;
 
 	new.x = data->player.pos.x + data->player.dir.x * data->player.move_speed;
 	new.y = data->player.pos.y + data->player.dir.y * data->player.move_speed;
@@ -26,7 +26,7 @@ void	move_forward(t_data *data)
 
 void	move_backward(t_data *data)
 {
-	t_vec2 new;
+	t_vec2	new;
 
 	new.x = data->player.pos.x - data->player.dir.x * data->player.move_speed;
 	new.y = data->player.pos.y - data->player.dir.y * data->player.move_speed;
@@ -38,7 +38,7 @@ void	move_backward(t_data *data)
 
 void	move_right(t_data *data)
 {
-	t_vec2 new;
+	t_vec2	new;
 
 	new.x = data->player.pos.x + data->player.plane.x * data->player.move_speed;
 	new.y = data->player.pos.y + data->player.plane.y * data->player.move_speed;
@@ -50,7 +50,7 @@ void	move_right(t_data *data)
 
 void	move_left(t_data *data)
 {
-	t_vec2 new;
+	t_vec2	new;
 
 	new.x = data->player.pos.x - data->player.plane.x * data->player.move_speed;
 	new.y = data->player.pos.y - data->player.plane.y * data->player.move_speed;

@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 15:13:14 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 16:13:18 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ void	render_frame(t_data *data);
 int		argb_to_int(t_color color);
 int		print_error(char *error);
 int		next_power_of_two(int n);
+void	render(t_data *data);
 
 #endif // INCLUDE_H

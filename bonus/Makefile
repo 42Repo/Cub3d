@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
+#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/15 22:26:52 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/18 16:12:33 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ src/preload_textures.c \
 src/movement/game_controls.c \
 src/movement/keyboard_movement.c \
 src/movement/mouse_movement.c \
-src/movement/movement_utils.c
+src/movement/movement_utils.c \
+src/render.c
 
 
 
