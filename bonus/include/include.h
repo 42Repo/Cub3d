@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 14:44:34 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 15:13:14 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "mlx_addon.h"
 
 int		parsing(int ac, char **av, t_data *data);
-int		preload_textures(t_data *data);
+void	preload_textures(t_data *data);
 
 void	init_data(t_data *d);
 void	init_mlx(t_data *data);

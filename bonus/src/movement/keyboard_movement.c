@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard_movement.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:54:33 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/15 20:33:42 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/17 16:03:13 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,50 @@
 
 void	move_forward(t_data *data)
 {
-	float	new_x;
-	float	new_y;
+	t_vec2 new;
 
-	new_x = data->player.pos.x + data->player.dir.x * data->player.move_speed;
-	new_y = data->player.pos.y + data->player.dir.y * data->player.move_speed;
-	if (!check_collision(&data->map, new_x, data->player.pos.y))
-		data->player.pos.x = new_x;
-	if (!check_collision(&data->map, data->player.pos.x, new_y))
-		data->player.pos.y = new_y;
+	new.x = data->player.pos.x + data->player.dir.x * data->player.move_speed;
+	new.y = data->player.pos.y + data->player.dir.y * data->player.move_speed;
+	if (!check_collision(&data->map, new.x, data->player.pos.y))
+		data->player.pos.x = new.x;
+	if (!check_collision(&data->map, data->player.pos.x, new.y))
+		data->player.pos.y = new.y;
 }
 
 void	move_backward(t_data *data)
 {
-	float	new_x;
-	float	new_y;
+	t_vec2 new;
 
-	new_x = data->player.pos.x - data->player.dir.x * data->player.move_speed;
-	new_y = data->player.pos.y - data->player.dir.y * data->player.move_speed;
-	if (!check_collision(&data->map, new_x, data->player.pos.y))
-		data->player.pos.x = new_x;
-	if (!check_collision(&data->map, data->player.pos.x, new_y))
-		data->player.pos.y = new_y;
+	new.x = data->player.pos.x - data->player.dir.x * data->player.move_speed;
+	new.y = data->player.pos.y - data->player.dir.y * data->player.move_speed;
+	if (!check_collision(&data->map, new.x, data->player.pos.y))
+		data->player.pos.x = new.x;
+	if (!check_collision(&data->map, data->player.pos.x, new.y))
+		data->player.pos.y = new.y;
 }
 
 void	move_right(t_data *data)
 {
-	float	new_x;
-	float	new_y;
+	t_vec2 new;
 
-	new_x = data->player.pos.x + data->player.plane.x * data->player.move_speed;
-	new_y = data->player.pos.y + data->player.plane.y * data->player.move_speed;
-	if (!check_collision(&data->map, new_x, data->player.pos.y))
-		data->player.pos.x = new_x;
-	if (!check_collision(&data->map, data->player.pos.x, new_y))
-		data->player.pos.y = new_y;
+	new.x = data->player.pos.x + data->player.plane.x * data->player.move_speed;
+	new.y = data->player.pos.y + data->player.plane.y * data->player.move_speed;
+	if (!check_collision(&data->map, new.x, data->player.pos.y))
+		data->player.pos.x = new.x;
+	if (!check_collision(&data->map, data->player.pos.x, new.y))
+		data->player.pos.y = new.y;
 }
 
 void	move_left(t_data *data)
 {
-	float	new_x;
-	float	new_y;
+	t_vec2 new;
 
-	new_x = data->player.pos.x - data->player.plane.x * data->player.move_speed;
-	new_y = data->player.pos.y - data->player.plane.y * data->player.move_speed;
-	if (!check_collision(&data->map, new_x, data->player.pos.y))
-		data->player.pos.x = new_x;
-	if (!check_collision(&data->map, data->player.pos.x, new_y))
-		data->player.pos.y = new_y;
+	new.x = data->player.pos.x - data->player.plane.x * data->player.move_speed;
+	new.y = data->player.pos.y - data->player.plane.y * data->player.move_speed;
+	if (!check_collision(&data->map, new.x, data->player.pos.y))
+		data->player.pos.x = new.x;
+	if (!check_collision(&data->map, data->player.pos.x, new.y))
+		data->player.pos.y = new.y;
 }
 
 void	rotate(t_player *player, float angle)

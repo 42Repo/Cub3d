@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/16 17:37:35 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 15:29:02 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ typedef struct s_vec2
 	float		x;
 	float		y;
 }				t_vec2;
+
+typedef struct s_vec2_int
+{
+	int			x;
+	int			y;
+}				t_vec2_int;
 
 typedef struct s_vec2_color
 {

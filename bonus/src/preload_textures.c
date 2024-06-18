@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:42:33 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/18 14:38:57 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 15:11:26 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	preload_texture(t_data *data, t_image wall_img, int **texture)
 	load_texture_data(data->mlx.mlx, wall_img, *texture);
 }
 
-int	preload_textures(t_data *data)
+void	preload_textures(t_data *data)
 {
 	preload_texture(data, data->mlx.wall_sprite.wall_n,
 		&data->mlx.wall_sprite.north_texture);
@@ -47,5 +47,4 @@ int	preload_textures(t_data *data)
 		&data->mlx.wall_sprite.east_texture);
 	preload_texture(data, data->mlx.wall_sprite.wall_w,
 		&data->mlx.wall_sprite.west_texture);
-	return (0);
 }

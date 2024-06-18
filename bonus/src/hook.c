@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 19:37:58 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:37:24 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	update(void *param)
 	mouse_move(d);
 	move(d);
 	render(d);
-	fps_counter();
+	// fps_counter();
 	return (0);
 }
 
