@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:11:56 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 16:26:06 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 18:37:59 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,21 +48,21 @@ static void	set_player_dir_and_plane(char **map, int i, int j, t_player *player)
 	if (map[i][j] == 'N')
 	{
 		player->dir = (t_vec2){0, -1};
-		player->plane = (t_vec2){-0.66, 0};
+		player->plane = (t_vec2){0.66, 0};
 	}
 	else if (map[i][j] == 'S')
 	{
 		player->dir = (t_vec2){0, 1};
-		player->plane = (t_vec2){0.66, 0};
-	}
-	else if (map[i][j] == 'W')
-	{
-		player->dir = (t_vec2){-1, 0};
-		player->plane = (t_vec2){0, 0.66};
+		player->plane = (t_vec2){-0.66, 0};
 	}
 	else if (map[i][j] == 'E')
 	{
 		player->dir = (t_vec2){1, 0};
+		player->plane = (t_vec2){0, 0.66};
+	}
+	else if (map[i][j] == 'W')
+	{
+		player->dir = (t_vec2){-1, 0};
 		player->plane = (t_vec2){0, -0.66};
 	}
 	map[i][j] = '0';

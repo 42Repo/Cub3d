@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 18:08:18 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/18 18:24:23 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int ac, char **av)
 	ft_bzero(&data, sizeof(t_data));
 	if (parsing(ac, av, &data) == -1)
 		exit_game(data, PARSING_ERROR);
-	invert_map(&data.map);
+	// invert_map(&data.map);
 	init_data(&data);
 	resize_images(&data);
 	preload_textures(&data);

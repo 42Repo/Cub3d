@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 18:21:02 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/18 16:02:05 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 18:34:03 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static void	set_dir_and_plane(t_data *data, float delta)
 	float	old_plane_x;
 
 	old_dir_x = data->player.dir.x;
-	data->player.dir.x = data->player.dir.x * cos(-delta) - data->player.dir.y
-		* sin(-delta);
-	data->player.dir.y = old_dir_x * sin(-delta) + data->player.dir.y
-		* cos(-delta);
+	data->player.dir.x = data->player.dir.x * cos(delta)
+		- data->player.dir.y * sin(delta);
+	data->player.dir.y = old_dir_x * sin(delta) + data->player.dir.y
+		* cos(delta);
 	old_plane_x = data->player.plane.x;
-	data->player.plane.x = data->player.plane.x * cos(-delta)
-		- data->player.plane.y * sin(-delta);
-	data->player.plane.y = old_plane_x * sin(-delta) + data->player.plane.y
-		* cos(-delta);
+	data->player.plane.x = data->player.plane.x * cos(delta)
+		- data->player.plane.y * sin(delta);
+	data->player.plane.y = old_plane_x * sin(delta) + data->player.plane.y
+		* cos(delta);
 }
 
 void	mouse_move(t_data *data)

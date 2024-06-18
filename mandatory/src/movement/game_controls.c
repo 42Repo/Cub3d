@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_controls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:58:24 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/14 17:02:20 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/18 18:39:21 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	move(t_data *data)
 	if (data->mlx.key_states[A])
 		move_left(&data->player);
 	if (data->mlx.key_states[LEFT])
-		rotate(&data->player, -data->player.rot_speed);
-	if (data->mlx.key_states[RIGHT])
 		rotate(&data->player, data->player.rot_speed);
+	if (data->mlx.key_states[RIGHT])
+		rotate(&data->player, -data->player.rot_speed);
 }
