@@ -6,7 +6,7 @@
 #    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/18 16:12:33 by bgoron           ###   ########.fr        #
+#    Updated: 2024/06/18 16:17:46 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,9 +46,8 @@ src/movement/game_controls.c \
 src/movement/keyboard_movement.c \
 src/movement/mouse_movement.c \
 src/movement/movement_utils.c \
-src/render.c
-
-
+src/render.c \
+src/resize_textures.c
 
 OBJ_DIR = $(CACHE_DIR)/obj
 DEP_DIR = $(CACHE_DIR)/dep
