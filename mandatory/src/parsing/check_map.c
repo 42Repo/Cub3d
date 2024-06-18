@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:11:56 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 18:37:59 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 19:53:48 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static void	check_valid_zero(char **map, size_t i, size_t j)
 {
 	if (!i || !j || i == ft_ctablen(map) - 1 || j == ft_strlen(*map) - 1)
 		return ;
-	if ((map[i - 1][j] == '0' || map[i - 1][j] == '1' || map[i - 1][j] == '2')
-	&& (map[i + 1][j] == '0' || map[i + 1][j] == '1' || map[i + 1][j] == '2')
-	&& (map[i][j - 1] == '0' || map[i][j - 1] == '1' || map[i][j - 1] == '2')
-	&& (map[i][j + 1] == '0' || map[i][j + 1] == '1' || map[i][j + 1] == '2'))
+	if ((map[i - 1][j] == '0' || map[i - 1][j] == '1' || map[i - 1][j] == '2' || map[i - 1][j] == 'D')
+	&& (map[i + 1][j] == '0' || map[i + 1][j] == '1' || map[i + 1][j] == '2' || map[i + 1][j] == 'D')
+	&& (map[i][j - 1] == '0' || map[i][j - 1] == '1' || map[i][j - 1] == '2' || map[i][j - 1] == 'D')
+	&& (map[i][j + 1] == '0' || map[i][j + 1] == '1' || map[i][j + 1] == '2' || map[i][j + 1] == 'D'))
 		map[i][j] = '2';
 }
 

@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:58:08 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/18 16:02:19 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 20:15:22 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ inline void	perform_dda(t_ray *ray, t_map *map)
 	{
 		update_ray_position(ray);
 		if (is_within_map_bounds(ray, map)
-			&& map->map[ray->map_y][ray->map_x] == '1')
+			&& (map->map[ray->map_y][ray->map_x] == '1'
+			|| (map->map[ray->map_y][ray->map_x] == 'D')))
 		{
 			ray->hit = 1;
 		}

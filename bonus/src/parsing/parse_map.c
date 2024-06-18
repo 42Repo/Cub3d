@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:15:52 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 16:19:21 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 20:12:46 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ int	reset_map(char **map)
 		{
 			if (map[i][j] == '2')
 				map[i][j] = '0';
-			else if (map[i][j] == '0')
+			else if (map[i][j] == 'V')
+				map[i][j] = 'D';
+			else if (map[i][j] == '0' || map[i][j] == 'D')
 				return (-1);
 			j++;
 		}
