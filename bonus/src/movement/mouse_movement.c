@@ -6,19 +6,34 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 18:21:02 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/17 16:05:23 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 16:02:05 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_player_movement.h"
+
+static void	set_dir_and_plane(t_data *data, float delta)
+{
+	float	old_dir_x;
+	float	old_plane_x;
+
+	old_dir_x = data->player.dir.x;
+	data->player.dir.x = data->player.dir.x * cos(-delta) - data->player.dir.y
+		* sin(-delta);
+	data->player.dir.y = old_dir_x * sin(-delta) + data->player.dir.y
+		* cos(-delta);
+	old_plane_x = data->player.plane.x;
+	data->player.plane.x = data->player.plane.x * cos(-delta)
+		- data->player.plane.y * sin(-delta);
+	data->player.plane.y = old_plane_x * sin(-delta) + data->player.plane.y
+		* cos(-delta);
+}
 
 void	mouse_move(t_data *data)
 {
 	t_vec2_int	mouse;
 	t_vec2		delta;
 	t_vec2		screen_center;
-	float		old_dir_x;
-	float		old_plane_x;
 	float		sensitivity;
 
 	sensitivity = 0.00075;
@@ -27,16 +42,7 @@ void	mouse_move(t_data *data)
 	mlx_mouse_get_pos(data->mlx.mlx, &mouse.x, &mouse.y);
 	delta.x = (mouse.x - screen_center.x) * sensitivity;
 	delta.y = (mouse.y - screen_center.y) * sensitivity;
-	old_dir_x = data->player.dir.x;
-	data->player.dir.x = data->player.dir.x * cos(-delta.x) - data->player.dir.y
-		* sin(-delta.x);
-	data->player.dir.y = old_dir_x * sin(-delta.x) + data->player.dir.y
-		* cos(-delta.x);
-	old_plane_x = data->player.plane.x;
-	data->player.plane.x = data->player.plane.x * cos(-delta.x)
-		- data->player.plane.y * sin(-delta.x);
-	data->player.plane.y = old_plane_x * sin(-delta.x) + data->player.plane.y
-		* cos(-delta.x);
+	set_dir_and_plane(data, delta.x);
 	data->player.pitch += delta.y;
 	if (data->player.pitch > 1.0f)
 		data->player.pitch = 1.0f;

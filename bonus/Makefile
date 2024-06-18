@@ -6,7 +6,7 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/18 14:53:53 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/18 18:04:39 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,9 +46,9 @@ src/movement/game_controls.c \
 src/movement/keyboard_movement.c \
 src/movement/mouse_movement.c \
 src/movement/movement_utils.c \
-src/minimap/rotate_minimap.c
-
-
+src/minimap/rotate_minimap.c \
+src/render.c \
+src/resize_textures.c
 
 OBJ_DIR = $(CACHE_DIR)/obj
 DEP_DIR = $(CACHE_DIR)/dep
