@@ -1,13 +1,13 @@
-NO ./sprite/template(1).png
+SO ./sprite/circle50.png
 
 
-WE ./sprite/template(2).png
+WE ./sprite/circle50.png
 
 
-EA ./sprite/template(3).png
+EA ./sprite/circle50.png
 
 
-SO ./sprite/template.png
+NO ./sprite/flatcircle.png
 
 F 220,100,100
 

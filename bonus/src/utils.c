@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:02:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 17:52:11 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:44:20 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,14 @@ void	fps_counter(void)
 		last_avg_time = current_time;
 	}
 	printf("FPS: %.2f\n", fps);
+}
+
+int	next_power_of_two(int n)
+{
+	int	power;
+
+	power = 1;
+	while (power < n)
+		power *= 2;
+	return (power);
 }

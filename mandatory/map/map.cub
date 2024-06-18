@@ -1,7 +1,7 @@
-NO      ./sprite/template.png
-WE ./sprite/template(1).png
-EA ./sprite/template(2).png
-SO ./sprite/template(3).png
+NO      ./sprite/circle50.png
+WE ./sprite/circle50.png
+EA ./sprite/circle50.png
+SO ./sprite/circle50.png
 
 F    150,  450,   50
 C    40, 50,             5450

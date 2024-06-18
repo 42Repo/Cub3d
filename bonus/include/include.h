@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 19:38:17 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 14:44:34 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	fps_counter(void);
 void	render_frame(t_data *data);
 int		argb_to_int(t_color color);
 int		print_error(char *error);
+int		next_power_of_two(int n);
 
 #endif // INCLUDE_H
