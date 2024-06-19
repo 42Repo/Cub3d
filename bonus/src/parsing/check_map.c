@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:11:56 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/19 11:31:53 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 11:55:34 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,5 @@ int	check_unclosed_map(char **map)
 		}
 		i++;
 	}
-	if (reset_map(map) == -1)
-		return (-1);
-	return (0);
+	return (reset_map(map));
 }
