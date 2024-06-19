@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 20:41:31 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/19 21:04:17 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,47 @@ void	create_circular_mask(int *mask, int width, int height)
 			else
 			{
 				mask[y * width + x] = 0;
+			}
+		}
+	}
+}
+
+void	draw_player_marker(t_data *data, int center_x, int center_y)
+{
+	int	radius;
+	int	tip_length;
+	int	tip_width;
+	int	offset;
+	int	x;
+	int	y;
+
+	radius = 3;
+	tip_length = 5;
+	tip_width = 3;
+	offset = 2;
+	for (int dy = -radius; dy <= radius; dy++)
+	{
+		for (int dx = -radius; dx <= radius; dx++)
+		{
+			if (dx * dx + dy * dy <= radius * radius)
+			{
+				x = center_x + dx;
+				y = center_y + dy;
+				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_mini_map, x, y,
+					0xFF00FF00);
+			}
+		}
+	}
+	for (int i = 0; i <= tip_length; i++)
+	{
+		for (int j = -tip_width; j <= tip_width; j++)
+		{
+			if (abs(j) <= (tip_length - i))
+			{
+				x = center_x + j;
+				y = center_y - radius - i + offset;
+				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_mini_map, x, y,
+					0xFF00FF00);
 			}
 		}
 	}
@@ -95,22 +136,8 @@ void	draw_minimap(t_data *data)
 			}
 		}
 	}
-
-	for (int y = -2; y <= 2; y++)
-	{
-		for (int x = -2; x <= 2; x++)
-		{
-			int px = MINIMAP_RADIUS + x;
-			int py = MINIMAP_RADIUS + y;
-			if (px >= 0 && px < minimap_size && py >= 0 && py < minimap_size
-				&& mask[py * minimap_size + px])
-			{
-				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_mini_map, px,
-					py, 0xFF00FF00);
-			}
-		}
-	}
-	int window_offset_x = 10; 
+	draw_player_marker(data, MINIMAP_RADIUS, MINIMAP_RADIUS);
+	int window_offset_x = 10;
 	int window_offset_y = 10;
 	for (int y = 0; y < minimap_size; y++)
 	{
