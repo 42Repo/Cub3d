@@ -57,3 +57,5 @@ cub3D
 42_kube/
 *compile_commands.json*
 compile_commands.json
+caca
+output.png
