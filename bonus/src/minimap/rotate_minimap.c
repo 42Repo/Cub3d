@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 19:02:01 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/19 20:41:31 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	draw_minimap(t_data *data)
 	int mask[minimap_size * minimap_size];
 	create_circular_mask(mask, minimap_size, minimap_size);
 
-	int player_map_x = (int)data->player.pos.x;
-	int player_map_y = (int)data->player.pos.y;
+	float player_map_x = data->player.pos.x;
+	float player_map_y = data->player.pos.y;
 
 	for (int y = 0; y < minimap_size; y++)
 	{
@@ -74,8 +74,8 @@ void	draw_minimap(t_data *data)
 				int rotated_y = dx;
 				float final_x = cos_angle * rotated_x - sin_angle * rotated_y;
 				float final_y = sin_angle * rotated_x + cos_angle * rotated_y;
-				int map_x = player_map_x + final_x / MINIMAP_SCALE + 0.5;
-				int map_y = player_map_y + final_y / MINIMAP_SCALE + 0.5;
+				int map_x = player_map_x + final_x / MINIMAP_SCALE;
+				int map_y = player_map_y + final_y / MINIMAP_SCALE;
 
 				int color = 0xFF808080;
 				if (map_x >= 0 && map_x < data->map.cols && map_y >= 0
@@ -90,8 +90,8 @@ void	draw_minimap(t_data *data)
 						color = 0xFF0000FF;
 					}
 				}
-				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_mini_map,
-					x, y, color);
+				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_mini_map, x, y,
+					color);
 			}
 		}
 	}
@@ -102,21 +102,25 @@ void	draw_minimap(t_data *data)
 		{
 			int px = MINIMAP_RADIUS + x;
 			int py = MINIMAP_RADIUS + y;
-			if (px >= 0 && px < minimap_size && py >= 0 && py < minimap_size &&
-				mask[py * minimap_size + px])
+			if (px >= 0 && px < minimap_size && py >= 0 && py < minimap_size
+				&& mask[py * minimap_size + px])
 			{
-				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_mini_map,
-					px, py, 0xFF00FF00);
+				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_mini_map, px,
+					py, 0xFF00FF00);
 			}
 		}
 	}
+	int window_offset_x = 10; 
+	int window_offset_y = 10;
 	for (int y = 0; y < minimap_size; y++)
 	{
 		for (int x = 0; x < minimap_size; x++)
 		{
-			int color = mlx_get_image_pixel(data->mlx.mlx, data->mlx.img_mini_map, x, y);
+			int color = mlx_get_image_pixel(data->mlx.mlx,
+					data->mlx.img_mini_map, x, y);
 			if (color != 0x00000000)
-				mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, y, color);
+				mlx_pixel_put(data->mlx.mlx, data->mlx.win, window_offset_x + x,
+					window_offset_y + y, color);
 		}
 	}
 }

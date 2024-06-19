@@ -59,3 +59,4 @@ cub3D
 compile_commands.json
 caca
 output.png
+*.dot
