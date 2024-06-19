@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:58:08 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/18 20:15:22 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 10:23:51 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,17 @@ static inline void	calculate_perpendicular_distance(t_ray *ray)
 	}
 }
 
-inline void	perform_dda(t_ray *ray, t_map *map)
+int	player_is_in_front_of_door(t_player *player, t_ray *ray, t_map *map)
+{
+	return (map->map[ray->map_y][ray->map_x] == 'D'
+		&& (((int)player->pos.x == ray->map_x && (int)player->pos.y == ray->map_y)
+		|| ((int)player->pos.x == ray->map_x + 1 && (int)player->pos.y == ray->map_y)
+		|| ((int)player->pos.x == ray->map_x - 1 && (int)player->pos.y == ray->map_y)
+		|| ((int)player->pos.x == ray->map_x && (int)player->pos.y == ray->map_y + 1)
+		|| ((int)player->pos.x == ray->map_x && (int)player->pos.y == ray->map_y - 1)));
+}
+
+inline void	perform_dda(t_ray *ray, t_map *map, t_player *player)
 {
 	int	max_distance;
 
@@ -66,7 +76,10 @@ inline void	perform_dda(t_ray *ray, t_map *map)
 			&& (map->map[ray->map_y][ray->map_x] == '1'
 			|| (map->map[ray->map_y][ray->map_x] == 'D')))
 		{
-			ray->hit = 1;
+			if (player_is_in_front_of_door(player, ray, map))
+				ray->hit = 0;
+			else
+				ray->hit = 1;
 		}
 		else if (has_reached_max_distance(ray, max_distance))
 		{

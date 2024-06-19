@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 15:57:35 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 10:09:40 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static inline void	cast_ray(t_data *data, int x)
 
 	init_ray(&params.ray, &data->player, 2 * x / (float)WIN_WIDTH - 1);
 	calculate_step_and_side_dist(&params.ray);
-	perform_dda(&params.ray, &data->map);
+	perform_dda(&params.ray, &data->map, &data->player);
 	if (params.ray.hit == 2)
 		return ;
 	params.texture = select_texture(&params, &data->mlx.wall_sprite);
