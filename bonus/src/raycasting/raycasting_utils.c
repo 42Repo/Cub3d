@@ -6,13 +6,13 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:34:29 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 11:39:23 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 11:41:29 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_raycasting.h"
 
-inline void		init_ray(t_ray *ray, t_player *player, float camera_x)
+inline void	init_ray(t_ray *ray, t_player *player, float camera_x)
 {
 	ray->pos = player->pos;
 	ray->dir.x = player->dir.x + player->plane.x * camera_x;
@@ -93,14 +93,14 @@ inline void	calculate_wall_x_and_tex_x(t_ray *ray, t_ray_params *params)
 
 int	player_is_in_front_of_door(t_player *player, t_ray *ray)
 {
-	return ((((int)player->pos.x == ray->map_x
-		&& (int)player->pos.y == ray->map_y)
-		|| ((int)player->pos.x == ray->map_x + 1
-		&& (int)player->pos.y == ray->map_y)
-		|| ((int)player->pos.x == ray->map_x - 1
-		&& (int)player->pos.y == ray->map_y)
-		|| ((int)player->pos.x == ray->map_x
-		&& (int)player->pos.y == ray->map_y + 1)
-		|| ((int)player->pos.x == ray->map_x
-		&& (int)player->pos.y == ray->map_y - 1)));
+	return ((((int)player->pos.x == ray->map_x \
+	&& (int)player->pos.y == ray->map_y) \
+	|| ((int)player->pos.x == ray->map_x + 1 \
+	&& (int)player->pos.y == ray->map_y) \
+	|| ((int)player->pos.x == ray->map_x - 1 \
+	&& (int)player->pos.y == ray->map_y) \
+	|| ((int)player->pos.x == ray->map_x \
+	&& (int)player->pos.y == ray->map_y + 1) \
+	|| ((int)player->pos.x == ray->map_x \
+	&& (int)player->pos.y == ray->map_y - 1)));
 }

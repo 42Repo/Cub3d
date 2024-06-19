@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:35:29 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 19:44:25 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 11:45:18 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ static int	open_file(char *file)
 
 int	check_texture(t_sprite *sprite)
 {
-	if (!sprite->path_n || !sprite->path_s
-		|| !sprite->path_w || !sprite->path_e
-		|| !sprite->ceiling_color.a || !sprite->floor_color.a)
+	if (!sprite->path_n || !sprite->path_s \
+	|| !sprite->path_w || !sprite->path_e \
+	|| !sprite->ceiling_color.a || !sprite->floor_color.a)
 		return (-1);
-	else if (check_extension_file(sprite->path_n, ".png") == -1
-		|| check_extension_file(sprite->path_s, ".png") == -1
-		|| check_extension_file(sprite->path_w, ".png") == -1
-		|| check_extension_file(sprite->path_e, ".png") == -1)
+	else if (check_extension_file(sprite->path_n, ".png") == -1 \
+	|| check_extension_file(sprite->path_s, ".png") == -1 \
+	|| check_extension_file(sprite->path_w, ".png") == -1 \
+	|| check_extension_file(sprite->path_e, ".png") == -1)
 		return (-1);
-	if (open_file(sprite->path_n) == -1 || open_file(sprite->path_s) == -1
-		|| open_file(sprite->path_w) == -1 || open_file(sprite->path_e) == -1)
+	if (open_file(sprite->path_n) == -1 || open_file(sprite->path_s) == -1 \
+	|| open_file(sprite->path_w) == -1 || open_file(sprite->path_e) == -1)
 		return (-1);
 	return (0);
 }
