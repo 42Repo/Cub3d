@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:05:34 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 16:11:27 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 05:38:32 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,5 @@ void	render(t_data *data)
 	print_background(data);
 	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
 		data->mlx.img_background, 0, 0);
-	// DRAW MINI MAP A FAIRE
-	// mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
-	// 	data->mlx.img_mini_map, WIN_WIDTH - 200 - 10, 10);
+	draw_minimap(data);
 }

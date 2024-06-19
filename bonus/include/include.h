@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 16:18:06 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/18 19:31:31 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,7 @@ int		argb_to_int(t_color color);
 int		print_error(char *error);
 void	render(t_data *data);
 void	resize_images(t_data *data);
+
+void	draw_minimap(t_data *data);
 
 #endif // INCLUDE_H

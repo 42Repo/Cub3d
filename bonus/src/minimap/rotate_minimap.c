@@ -6,65 +6,105 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/18 14:49:07 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/19 05:38:51 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_minimap.h"
-#include "include.h"
 
-void	draw_pixel(void *img, int x, int y, int color, t_data *d)
+void	create_circular_mask(int *mask, int width, int height)
 {
-    if (x >= 0 && x < MINIMAP_SIZE && y >= 0 && y < MINIMAP_SIZE)
-        mlx_set_image_pixel(d->mlx.mlx, img, x, y, color);
-}
+	int	radius;
+	int	center_x;
+	int	center_y;
+	int	dx;
+	int	dy;
 
-void	draw_square(void *img, int x, int y, int size, int color, t_data *data)
-{
-	for (int i = 0; i < size; i++)
-		for (int j = 0; j < size; j++)
-			draw_pixel(img, x + i, y + j, color, data);
-}
-
-t_vec2	rotate_point(t_vec2 point, float angle)
-{
-	t_vec2	new_point;
-	new_point.x = point.x * cos(angle) - point.y * sin(angle);
-	new_point.y = point.x * sin(angle) + point.y * cos(angle);
-	return (new_point);
-}
-
-void	update_minimap(t_data *d)
-{
-	int		map_size = 200;
-	float	scale = map_size / (float)fmax(d->map.rows, d->map.cols);
-	t_vec2	player_pos = {d->player.pos.x * scale, d->player.pos.y * scale};
-	float	angle = atan2(d->player.dir.y, d->player.dir.x);
-
-    for (int i = 0; i < MINIMAP_SIZE; i++)
-    {
-        for (int j = 0; j < MINIMAP_SIZE; j++)
-            mlx_set_image_pixel(d->mlx.mlx, d->mlx.img_mini_map, i, j, 0x00000000);
-    }
-    
-	for (int i = 0; i < d->map.rows; i++)
+	radius = width / 2;
+	center_x = width / 2;
+	center_y = height / 2;
+	for (int y = 0; y < height; y++)
 	{
-		for (int j = 0; j < d->map.cols; j++)
+		for (int x = 0; x < width; x++)
 		{
-			if (d->map.map[i][j] == '1')
+			dx = center_x - x;
+			dy = center_y - y;
+			if (dx * dx + dy * dy <= radius * radius)
 			{
-				t_vec2 pos = {j * scale, i * scale};
-				pos = rotate_point((t_vec2){pos.x - player_pos.x, pos.y - player_pos.y}, angle);
-				pos.x += map_size / 2;
-				pos.y += map_size / 2;
-				draw_square(d->mlx.img_mini_map, pos.x, pos.y, scale, 0xFFFFFFFF, d);
+				mask[y * width + x] = 1;
+			}
+			else
+			{
+				mask[y * width + x] = 0;
 			}
 		}
 	}
+}
 
-	// Draw player
-	draw_square(d->mlx.img_mini_map, map_size / 2 - 2, map_size / 2 - 2, 4, 0xFFFF0000, d);
+void	draw_minimap(t_data *data)
+{
+	int minimap_size = 2 * MINIMAP_RADIUS;
+	int mask[minimap_size * minimap_size];
+	create_circular_mask(mask, minimap_size, minimap_size);
 
-	// Display minimap
-	mlx_put_image_to_window(d->mlx.mlx, d->mlx.win, d->mlx.img_mini_map, WIN_WIDTH - map_size - 10, 10);
+	int player_map_x = (int)data->player.pos.x;
+	int player_map_y = (int)data->player.pos.y;
+
+	for (int y = 0; y < minimap_size; y++)
+	{
+		for (int x = 0; x < minimap_size; x++)
+		{
+			mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_mini_map, x, y,
+				0x00000000);
+		}
+	}
+
+	float angle = atan2(data->player.dir.y, data->player.dir.x) + M_PI_2;
+	float cos_angle = cos(angle);
+	float sin_angle = sin(angle);
+
+	for (int dy = -MINIMAP_RADIUS; dy < MINIMAP_RADIUS; dy++)
+	{
+		for (int dx = -MINIMAP_RADIUS; dx < MINIMAP_RADIUS; dx++)
+		{
+			int map_x = player_map_x + dx / MINIMAP_SCALE;
+			int map_y = player_map_y + dy / MINIMAP_SCALE;
+
+			int rotated_x = cos_angle * dx + sin_angle * dy;
+			int rotated_y = -sin_angle * dx + cos_angle * dy;
+			int minimap_x = MINIMAP_RADIUS + rotated_x;
+			int minimap_y = MINIMAP_RADIUS + rotated_y;
+
+			if (minimap_x >= 0 && minimap_x < minimap_size && minimap_y >= 0
+				&& minimap_y < minimap_size)
+			{
+				if (mask[minimap_y * minimap_size + minimap_x])
+				{
+					int color = 0xFF808080;
+					if (map_x >= 0 && map_x < data->map.cols && map_y >= 0
+						&& map_y < data->map.rows)
+					{
+						if (data->map.map[map_y][map_x] == '1')
+						{
+							color = 0xFFFF0000;
+						}
+					}
+					mlx_pixel_put(data->mlx.mlx, data->mlx.win,
+						minimap_x, minimap_y, color);
+				}
+			}
+		}
+	}
+	for (int y = -2; y <= 2; y++)
+	{
+		for (int x = -2; x <= 2; x++)
+		{
+			if (mask[(MINIMAP_RADIUS + y) * minimap_size + (MINIMAP_RADIUS
+					+ x)])
+			{
+				mlx_pixel_put(data->mlx.mlx, data->mlx.win,
+					 MINIMAP_RADIUS + x,  MINIMAP_RADIUS + y, 0xFF00FF00);
+			}
+		}
+	}
 }
