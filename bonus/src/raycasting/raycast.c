@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/19 10:09:40 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 22:12:53 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,10 @@ static inline void	draw_texture(t_data *data, int x, t_ray_params *params)
 static inline void	cast_ray(t_data *data, int x)
 {
 	t_ray_params	params;
+	float			camera_x;
 
-	init_ray(&params.ray, &data->player, 2 * x / (float)WIN_WIDTH - 1);
+	camera_x = (2 * x / (float)WIN_WIDTH - 1) * tan(FOV * (M_PI / 180.0) / 2);
+	init_ray(&params.ray, &data->player, camera_x);
 	calculate_step_and_side_dist(&params.ray);
 	perform_dda(&params.ray, &data->map, &data->player);
 	if (params.ray.hit == 2)
