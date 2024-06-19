@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 05:38:51 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/19 18:40:16 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,39 +59,36 @@ void	draw_minimap(t_data *data)
 		}
 	}
 
-	float angle = atan2(data->player.dir.y, data->player.dir.x) + M_PI_2;
+	float angle = atan2(data->player.dir.y, data->player.dir.x);
 	float cos_angle = cos(angle);
 	float sin_angle = sin(angle);
 
-	for (int dy = -MINIMAP_RADIUS; dy < MINIMAP_RADIUS; dy++)
+	for (int y = 0; y < minimap_size; y++)
 	{
-		for (int dx = -MINIMAP_RADIUS; dx < MINIMAP_RADIUS; dx++)
+		for (int x = 0; x < minimap_size; x++)
 		{
-			int map_x = player_map_x + dx / MINIMAP_SCALE;
-			int map_y = player_map_y + dy / MINIMAP_SCALE;
-
-			int rotated_x = cos_angle * dx + sin_angle * dy;
-			int rotated_y = -sin_angle * dx + cos_angle * dy;
-			int minimap_x = MINIMAP_RADIUS + rotated_x;
-			int minimap_y = MINIMAP_RADIUS + rotated_y;
-
-			if (minimap_x >= 0 && minimap_x < minimap_size && minimap_y >= 0
-				&& minimap_y < minimap_size)
+			if (mask[y * minimap_size + x])
 			{
-				if (mask[minimap_y * minimap_size + minimap_x])
+				int dx = x - MINIMAP_RADIUS;
+				int dy = y - MINIMAP_RADIUS;
+				int rotated_x = -dy;
+				int rotated_y = dx;
+
+				int final_x = cos_angle * rotated_x - sin_angle * rotated_y;
+				int final_y = sin_angle * rotated_x + cos_angle * rotated_y;
+				int map_x = player_map_x + final_x / MINIMAP_SCALE;
+				int map_y = player_map_y + final_y / MINIMAP_SCALE;
+
+				int color = 0xFF808080;
+				if (map_x >= 0 && map_x < data->map.cols && map_y >= 0
+					&& map_y < data->map.rows)
 				{
-					int color = 0xFF808080;
-					if (map_x >= 0 && map_x < data->map.cols && map_y >= 0
-						&& map_y < data->map.rows)
+					if (data->map.map[map_y][map_x] == '1')
 					{
-						if (data->map.map[map_y][map_x] == '1')
-						{
-							color = 0xFFFF0000;
-						}
+						color = 0xFFFF0000;
 					}
-					mlx_pixel_put(data->mlx.mlx, data->mlx.win,
-						minimap_x, minimap_y, color);
 				}
+				mlx_pixel_put(data->mlx.mlx, data->mlx.win, x, y, color);
 			}
 		}
 	}
@@ -102,8 +99,8 @@ void	draw_minimap(t_data *data)
 			if (mask[(MINIMAP_RADIUS + y) * minimap_size + (MINIMAP_RADIUS
 					+ x)])
 			{
-				mlx_pixel_put(data->mlx.mlx, data->mlx.win,
-					 MINIMAP_RADIUS + x,  MINIMAP_RADIUS + y, 0xFF00FF00);
+				mlx_pixel_put(data->mlx.mlx, data->mlx.win, MINIMAP_RADIUS + x,
+					MINIMAP_RADIUS + y, 0xFF00FF00);
 			}
 		}
 	}
