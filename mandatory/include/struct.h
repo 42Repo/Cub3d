@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/18 15:29:02 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 12:02:41 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,10 @@ typedef struct s_ray
 	t_vec2		pos;
 	t_vec2		dir;
 	float		perp_wall_dist;
-	int			map_x;
-	int			map_y;
-	int			step_x;
-	int			step_y;
-	float		side_dist_x;
-	float		side_dist_y;
-	float		delta_dist_x;
-	float		delta_dist_y;
+	t_vec2_int	map;
+	t_vec2_int	step;
+	t_vec2		side_dist;
+	t_vec2		delta_dist;
 	int			hit;
 	int			side;
 	t_wall		wall;

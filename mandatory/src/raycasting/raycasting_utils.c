@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:34:29 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/15 18:31:37 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/19 12:02:15 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ inline void	init_ray(t_ray *ray, t_player *player, float camera_x)
 	ray->pos = player->pos;
 	ray->dir.x = player->dir.x + player->plane.x * camera_x;
 	ray->dir.y = player->dir.y + player->plane.y * camera_x;
-	ray->map_x = (int)ray->pos.x;
-	ray->map_y = (int)ray->pos.y;
-	ray->delta_dist_x = fabs(1 / ray->dir.x);
-	ray->delta_dist_y = fabs(1 / ray->dir.y);
+	ray->map.x = (int)ray->pos.x;
+	ray->map.y = (int)ray->pos.y;
+	ray->delta_dist.x = fabs(1 / ray->dir.x);
+	ray->delta_dist.y = fabs(1 / ray->dir.y);
 	ray->hit = 0;
 }
 
@@ -28,23 +28,23 @@ inline void	calculate_step_and_side_dist(t_ray *ray)
 {
 	if (ray->dir.x < 0)
 	{
-		ray->step_x = -1;
-		ray->side_dist_x = (ray->pos.x - ray->map_x) * ray->delta_dist_x;
+		ray->step.x = -1;
+		ray->side_dist.x = (ray->pos.x - ray->map.x) * ray->delta_dist.x;
 	}
 	else
 	{
-		ray->step_x = 1;
-		ray->side_dist_x = (ray->map_x + 1.0 - ray->pos.x) * ray->delta_dist_x;
+		ray->step.x = 1;
+		ray->side_dist.x = (ray->map.x + 1.0 - ray->pos.x) * ray->delta_dist.x;
 	}
 	if (ray->dir.y < 0)
 	{
-		ray->step_y = -1;
-		ray->side_dist_y = (ray->pos.y - ray->map_y) * ray->delta_dist_y;
+		ray->step.y = -1;
+		ray->side_dist.y = (ray->pos.y - ray->map.y) * ray->delta_dist.y;
 	}
 	else
 	{
-		ray->step_y = 1;
-		ray->side_dist_y = (ray->map_y + 1.0 - ray->pos.y) * ray->delta_dist_y;
+		ray->step.y = 1;
+		ray->side_dist.y = (ray->map.y + 1.0 - ray->pos.y) * ray->delta_dist.y;
 	}
 }
 
