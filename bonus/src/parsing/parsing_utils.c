@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:13:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/13 17:19:31 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 11:34:11 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,28 @@ size_t	ft_ctablen(char **tab)
 	return (i);
 }
 
-void	print_parsing(t_data *data)
+void	check_valid_zero(char **map, size_t i, size_t j)
 {
-	char	**tmp;
+	if (!i || !j || i == ft_ctablen(map) - 1 || j == ft_strlen(*map) - 1)
+		return ;
+	if ((map[i - 1][j] == '0' || map[i - 1][j] == '1' || map[i - 1][j] == '2'
+	|| map[i - 1][j] == 'D' || map[i - 1][j] == 'V')
+	&& (map[i + 1][j] == '0' || map[i + 1][j] == '1' || map[i + 1][j] == '2'
+	|| map[i + 1][j] == 'D' || map[i + 1][j] == 'V')
+	&& (map[i][j - 1] == '0' || map[i][j - 1] == '1' || map[i][j - 1] == '2'
+	|| map[i][j - 1] == 'D' || map[i][j - 1] == 'V')
+	&& (map[i][j + 1] == '0' || map[i][j + 1] == '1' || map[i][j + 1] == '2'
+	|| map[i][j + 1] == 'D' || map[i][j + 1] == 'V'))
+		map[i][j] = '2';
+}
 
-	tmp = data->map.map;
-	printf("NO: %s\n", data->mlx.wall_sprite.path_n);
-	printf("SO: %s\n", data->mlx.wall_sprite.path_s);
-	printf("WE: %s\n", data->mlx.wall_sprite.path_w);
-	printf("EA: %s\n", data->mlx.wall_sprite.path_e);
-	printf("F: %d, %d, %d\n", \
-	data->mlx.wall_sprite.floor_color.r, \
-	data->mlx.wall_sprite.floor_color.g, \
-	data->mlx.wall_sprite.floor_color.b);
-	printf("C: %d, %d, %d\n", \
-	data->mlx.wall_sprite.ceiling_color.r, \
-	data->mlx.wall_sprite.ceiling_color.g, \
-	data->mlx.wall_sprite.ceiling_color.b);
-	printf("Map:\n");
-	while (*tmp)
-	{
-		printf("%s\n", *tmp);
-		tmp++;
-	}
+void	check_valid_door(char **map, size_t i, size_t j)
+{
+	if (!i || !j || i == ft_ctablen(map) - 1 || j == ft_strlen(*map) - 1)
+		return ;
+	if (((map[i - 1][j] == '2' || map[i - 1][j] == '0')
+	&& (map[i + 1][j] == '2' || map[i + 1][j] == '0'))
+	|| ((map[i][j - 1] == '2' || map[i][j - 1] == '0')
+	&& (map[i][j + 1] == '2' || map[i][j + 1] == '0')))
+		map[i][j] = 'V';
 }

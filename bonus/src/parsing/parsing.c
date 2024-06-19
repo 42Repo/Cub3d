@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 19:38:30 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 11:36:31 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ int	parsing(int ac, char **av, t_data *data)
 		return (print_error("Wrong character in map\n"));
 	if (check_unclosed_map(data->map.map) == -1)
 		return (print_error("Unclosed map\n"));
-	print_parsing(data);
 	return (0);
 }

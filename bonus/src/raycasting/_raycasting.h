@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:59:19 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 10:09:44 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 11:36:10 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void		calculate_wall_x_and_tex_x(t_ray *ray, t_ray_params *params);
 int			*select_texture(t_ray_params *params, t_sprite *sprite);
 void		calculate_step_and_side_dist(t_ray *ray);
 void		init_ray(t_ray *ray, t_player *player, float camera_x);
+int			player_is_in_front_of_door(t_player *player, t_ray *ray);
 
 #endif // _RAYCASTING_H

@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:11:56 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 20:10:56 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 11:31:53 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,26 +88,6 @@ int	check_player(char **map, t_player *player)
 	return (0);
 }
 
-static void	check_valid_zero(char **map, size_t i, size_t j)
-{
-	if (!i || !j || i == ft_ctablen(map) - 1 || j == ft_strlen(*map) - 1)
-		return ;
-	if ((map[i - 1][j] == '0' || map[i - 1][j] == '1' || map[i - 1][j] == '2' || map[i - 1][j] == 'D')
-	&& (map[i + 1][j] == '0' || map[i + 1][j] == '1' || map[i + 1][j] == '2' || map[i + 1][j] == 'D')
-	&& (map[i][j - 1] == '0' || map[i][j - 1] == '1' || map[i][j - 1] == '2' || map[i][j - 1] == 'D')
-	&& (map[i][j + 1] == '0' || map[i][j + 1] == '1' || map[i][j + 1] == '2' || map[i][j + 1] == 'D'))
-		map[i][j] = '2';
-}
-
-static void	check_valid_door(char **map, size_t i, size_t j)
-{
-	if (!i || !j || i == ft_ctablen(map) - 1 || j == ft_strlen(*map) - 1)
-		return ;
-	if ((map[i - 1][j] == '2' && map[i + 1][j] == '2')
-	|| (map[i][j - 1] == '2' && map[i][j + 1] == '2'))
-		map[i][j] = 'V';
-}
-
 int	check_unclosed_map(char **map)
 {
 	size_t	i;
@@ -121,17 +101,7 @@ int	check_unclosed_map(char **map)
 		{
 			if (map[i][j] == '0')
 				check_valid_zero(map, i, j);
-			j++;
-		}
-		i++;
-	}
-	i = 0;
-	while (map[i])
-	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] == 'D')
+			else if (map[i][j] == 'D')
 				check_valid_door(map, i, j);
 			j++;
 		}

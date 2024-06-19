@@ -6,29 +6,11 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 18:24:23 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 11:28:34 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
-
-void	invert_map(t_map *map)
-{
-	int		i;
-	int		j;
-	char	*tmp;
-
-	i = 0;
-	j = map->rows - 1;
-	while (i < j)
-	{
-		tmp = map->map[i];
-		map->map[i] = map->map[j];
-		map->map[j] = tmp;
-		i++;
-		j--;
-	}
-}
 
 int	main(int ac, char **av)
 {
@@ -37,7 +19,6 @@ int	main(int ac, char **av)
 	ft_bzero(&data, sizeof(t_data));
 	if (parsing(ac, av, &data) == -1)
 		exit_game(data, PARSING_ERROR);
-	// invert_map(&data.map);
 	init_data(&data);
 	resize_images(&data);
 	preload_textures(&data);

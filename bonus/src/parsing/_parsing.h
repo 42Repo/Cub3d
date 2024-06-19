@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:02:04 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 18:00:29 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/19 11:31:33 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int		check_player(char **map, t_player *player);
 int		check_unclosed_map(char **map);
 int		check_backgroud_color(char **line);
 int		check_texture(t_sprite *sprite);
+void	check_valid_zero(char **map, size_t i, size_t j);
+void	check_valid_door(char **map, size_t i, size_t j);
 
 size_t	ft_ctablen(char **tab);
 
