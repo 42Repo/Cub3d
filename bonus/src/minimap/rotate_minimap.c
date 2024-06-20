@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 21:04:17 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/20 18:33:12 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	draw_player_marker(t_data *data, int center_x, int center_y)
 
 void	draw_minimap(t_data *data)
 {
-	int minimap_size = 2 * MINIMAP_RADIUS;
+	int minimap_size = 2 * MINIMAP_RADIUS * data->settings.minimap_scale;
 	int mask[minimap_size * minimap_size];
 	create_circular_mask(mask, minimap_size, minimap_size);
 
@@ -109,14 +109,14 @@ void	draw_minimap(t_data *data)
 		{
 			if (mask[y * minimap_size + x])
 			{
-				int dx = x - MINIMAP_RADIUS;
-				int dy = y - MINIMAP_RADIUS;
+				int dx = x - MINIMAP_RADIUS * data->settings.minimap_scale;
+				int dy = y - MINIMAP_RADIUS * data->settings.minimap_scale;
 				int rotated_x = -dy;
 				int rotated_y = dx;
 				float final_x = cos_angle * rotated_x - sin_angle * rotated_y;
 				float final_y = sin_angle * rotated_x + cos_angle * rotated_y;
-				int map_x = player_map_x + final_x / MINIMAP_SCALE;
-				int map_y = player_map_y + final_y / MINIMAP_SCALE;
+				int map_x = player_map_x + final_x / MINIMAP_SCALE * data->settings.minimap_scale;
+				int map_y = player_map_y + final_y / MINIMAP_SCALE * data->settings.minimap_scale;
 
 				int color = 0xFF808080;
 				if (map_x >= 0 && map_x < data->map.cols && map_y >= 0
@@ -136,7 +136,7 @@ void	draw_minimap(t_data *data)
 			}
 		}
 	}
-	draw_player_marker(data, MINIMAP_RADIUS, MINIMAP_RADIUS);
+	draw_player_marker(data, MINIMAP_RADIUS * data->settings.minimap_scale, MINIMAP_RADIUS * data->settings.minimap_scale);
 	int window_offset_x = 10;
 	int window_offset_y = 10;
 	for (int y = 0; y < minimap_size; y++)

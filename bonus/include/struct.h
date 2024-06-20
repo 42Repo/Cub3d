@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 22:15:34 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/20 18:32:53 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,11 +163,17 @@ typedef struct s_mlx
 	int			key_states[256];
 }				t_mlx;
 
+typedef struct s_settings
+{
+	float		minimap_scale;
+}				t_settings;
+
 typedef struct s_data
 {
 	t_mlx		mlx;
 	t_map		map;
 	t_player	player;
+	t_settings	settings;
 }				t_data;
 
 #endif // STRUCT_H

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 19:34:00 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/20 18:47:28 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_data(t_data *d)
 {
+	d->settings.minimap_scale = 1.5;
 	d->mlx.mlx = mlx_init();
 	mlx_mouse_hide();
 	ft_bzero(d->mlx.key_states, 256);
@@ -30,7 +31,7 @@ void	init_data(t_data *d)
 			d->mlx.wall_sprite.path_n, &d->mlx.wall_sprite.wall_n.width,
 			&d->mlx.wall_sprite.wall_n.height);
 	d->mlx.img_background = mlx_new_image(d->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
-	d->mlx.img_mini_map = mlx_new_image(d->mlx.mlx, 200, 200);
+	d->mlx.img_mini_map = mlx_new_image(d->mlx.mlx, WIN_WIDTH * 0.1666667, WIN_HEIGHT * 0.27778);
 }
 
 void	init_mlx(t_data *data)

@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/19 10:09:13 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/20 18:39:48 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
+#include <SDL2/SDL_scancode.h>
+
+void	other_move(t_data *data)
+{
+	data->settings.minimap_scale = 1;
+	if (data->mlx.key_states[SDL_SCANCODE_Z])
+		data->settings.minimap_scale = 1.5;
+}
 
 int	update(void *param)
 {
@@ -19,7 +27,9 @@ int	update(void *param)
 	d = (t_data *)param;
 	mouse_move(d);
 	move(d);
+	other_move(d);
 	render(d);
+	fps_counter();
 	return (0);
 }
 
