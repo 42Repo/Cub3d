@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/15 22:33:09 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/20 21:55:25 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	print_first_background(t_data *data)
 	int	ceiling_color;
 	int	floor_color;
 
-	ceiling_color = argb_to_int(data->mlx.wall_sprite.ceiling_color);
-	floor_color = argb_to_int(data->mlx.wall_sprite.floor_color);
+	ceiling_color = argb_to_int(data->graphics.wall_sprite.ceiling_color);
+	floor_color = argb_to_int(data->graphics.wall_sprite.floor_color);
 	x = 0;
 	while (WIN_WIDTH > x)
 	{
@@ -41,10 +41,10 @@ void	print_first_background(t_data *data)
 		{
 			if (y < WIN_HEIGHT / 2)
 				mlx_set_image_pixel \
-				(data->mlx.mlx, data->mlx.img_background, x, y, ceiling_color);
+				(data->graphics.mlx, data->graphics.game.img_background, x, y, ceiling_color);
 			else
 				mlx_set_image_pixel \
-				(data->mlx.mlx, data->mlx.img_background, x, y, floor_color);
+				(data->graphics.mlx, data->graphics.game.img_background, x, y, floor_color);
 			y++;
 		}
 		x++;

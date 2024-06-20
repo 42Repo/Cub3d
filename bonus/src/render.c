@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:05:34 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/19 05:38:32 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 01:21:51 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static inline void	set_image(t_vec2 pos, int start_y, int color, t_data *data)
 		{
 			if (pos.y < WIN_HEIGHT && pos.y >= 0 && pos.x < WIN_WIDTH
 				&& pos.x >= 0)
-				mlx_set_image_pixel(data->mlx.mlx, data->mlx.img_background,
+				mlx_set_image_pixel(data->graphics.mlx, data->graphics.game.img_background,
 					pos.x, pos.y, color);
 			pos.x++;
 		}
@@ -42,13 +42,13 @@ static inline void	print_background(t_data *data)
 	{
 		start_y = WIN_HEIGHT / 2 - prev_pitch_shift;
 		pos.y = WIN_HEIGHT / 2 - pitch_shift;
-		color = argb_to_int(data->mlx.wall_sprite.floor_color);
+		color = argb_to_int(data->graphics.wall_sprite.floor_color);
 	}
 	else
 	{
 		start_y = WIN_HEIGHT / 2 - pitch_shift;
 		pos.y = WIN_HEIGHT / 2 - prev_pitch_shift;
-		color = argb_to_int(data->mlx.wall_sprite.ceiling_color);
+		color = argb_to_int(data->graphics.wall_sprite.ceiling_color);
 	}
 	set_image(pos, start_y, color, data);
 	prev_pitch_shift = pitch_shift;
@@ -56,10 +56,10 @@ static inline void	print_background(t_data *data)
 
 void	render(t_data *data)
 {
-	mlx_clear_window(data->mlx.mlx, data->mlx.win);
+	mlx_clear_window(data->graphics.mlx, data->graphics.win);
 	render_frame(data);
 	print_background(data);
-	mlx_put_image_to_window(data->mlx.mlx, data->mlx.win,
-		data->mlx.img_background, 0, 0);
+	mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
+		data->graphics.game.img_background, 0, 0);
 	draw_minimap(data);
 }

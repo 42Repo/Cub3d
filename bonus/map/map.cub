@@ -1,13 +1,13 @@
-SO ./sprite/circle50.png
+SO ./textures/wall/circle50.png
 
 
-WE ./sprite/circle50.png
+WE ./textures/wall/circle50.png
 
 
-EA ./sprite/circle50.png
+EA ./textures/wall/circle50.png
 
 
-NO ./sprite/flatcircle.png
+NO ./textures/wall/flatcircle.png
 
 F 220,100,100
 

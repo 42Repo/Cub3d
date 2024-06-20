@@ -6,7 +6,7 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/20 18:34:51 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/21 01:18:20 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,9 @@ src/movement/mouse_movement.c \
 src/movement/movement_utils.c \
 src/minimap/rotate_minimap.c \
 src/render.c \
-src/resize_textures.c
+src/resize_textures.c \
+src/menu/menu.c \
+src/menu/init_menu.c
 
 OBJ_DIR = $(CACHE_DIR)/obj
 DEP_DIR = $(CACHE_DIR)/dep
@@ -75,7 +77,7 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
 
 all : $(NAME)
 
-debug: CFLAGS += -gdwarf-4 -g 
+debug: CFLAGS += -gdwarf-4 -g -pg
 debug: clean all
 
 $(OBJ_DIR) $(DEP_DIR):

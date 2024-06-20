@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 19:31:31 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/20 22:04:15 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,8 @@ void	render(t_data *data);
 void	resize_images(t_data *data);
 
 void	draw_minimap(t_data *data);
+
+void	render_menu(t_data *data);
+void	init_menu(t_data *data);
 
 #endif // INCLUDE_H

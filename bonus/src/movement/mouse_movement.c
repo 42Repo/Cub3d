@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_movement.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 18:21:02 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/18 18:34:03 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/20 21:50:13 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	mouse_move(t_data *data)
 	sensitivity = 0.00075;
 	screen_center.x = WIN_WIDTH / 2;
 	screen_center.y = WIN_HEIGHT / 2;
-	mlx_mouse_get_pos(data->mlx.mlx, &mouse.x, &mouse.y);
+	mlx_mouse_get_pos(data->graphics.mlx, &mouse.x, &mouse.y);
 	delta.x = (mouse.x - screen_center.x) * sensitivity;
 	delta.y = (mouse.y - screen_center.y) * sensitivity;
 	set_dir_and_plane(data, delta.x);
@@ -48,6 +48,6 @@ void	mouse_move(t_data *data)
 		data->player.pitch = 1.0f;
 	if (data->player.pitch < -1.0f)
 		data->player.pitch = -1.0f;
-	mlx_mouse_move(data->mlx.mlx, data->mlx.win, screen_center.x,
+	mlx_mouse_move(data->graphics.mlx, data->graphics.win, screen_center.x,
 		screen_center.y);
 }

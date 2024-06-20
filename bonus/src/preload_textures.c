@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   preload_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:42:33 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/18 15:11:26 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/20 21:50:13 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ void	load_texture_data(void *mlx, t_image wall_img, int *texture)
 void	preload_texture(t_data *data, t_image wall_img, int **texture)
 {
 	*texture = malloc(wall_img.width * wall_img.height * sizeof(int));
-	load_texture_data(data->mlx.mlx, wall_img, *texture);
+	load_texture_data(data->graphics.mlx, wall_img, *texture);
 }
 
 void	preload_textures(t_data *data)
 {
-	preload_texture(data, data->mlx.wall_sprite.wall_n,
-		&data->mlx.wall_sprite.north_texture);
-	preload_texture(data, data->mlx.wall_sprite.wall_s,
-		&data->mlx.wall_sprite.south_texture);
-	preload_texture(data, data->mlx.wall_sprite.wall_e,
-		&data->mlx.wall_sprite.east_texture);
-	preload_texture(data, data->mlx.wall_sprite.wall_w,
-		&data->mlx.wall_sprite.west_texture);
+	preload_texture(data, data->graphics.wall_sprite.wall_n,
+		&data->graphics.wall_sprite.north_texture);
+	preload_texture(data, data->graphics.wall_sprite.wall_s,
+		&data->graphics.wall_sprite.south_texture);
+	preload_texture(data, data->graphics.wall_sprite.wall_e,
+		&data->graphics.wall_sprite.east_texture);
+	preload_texture(data, data->graphics.wall_sprite.wall_w,
+		&data->graphics.wall_sprite.west_texture);
 }

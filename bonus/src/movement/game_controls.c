@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:58:24 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/18 18:43:20 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/20 21:50:13 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	move(t_data *data)
 {
-	if (data->mlx.key_states[W])
+	if (data->graphics.key_states[W])
 		move_forward(data);
-	if (data->mlx.key_states[S])
+	if (data->graphics.key_states[S])
 		move_backward(data);
-	if (data->mlx.key_states[D])
+	if (data->graphics.key_states[D])
 		move_right(data);
-	if (data->mlx.key_states[A])
+	if (data->graphics.key_states[A])
 		move_left(data);
-	if (data->mlx.key_states[RIGHT])
+	if (data->graphics.key_states[RIGHT])
 		rotate(&data->player, -data->player.rot_speed);
-	if (data->mlx.key_states[LEFT])
+	if (data->graphics.key_states[LEFT])
 		rotate(&data->player, data->player.rot_speed);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 15:47:20 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/21 00:23:19 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,33 @@
 
 void	exit_parsingerror(t_data data)
 {
-	free(data.mlx.wall_sprite.path_n);
-	free(data.mlx.wall_sprite.path_s);
-	free(data.mlx.wall_sprite.path_e);
-	free(data.mlx.wall_sprite.path_w);
+	free(data.graphics.wall_sprite.path_n);
+	free(data.graphics.wall_sprite.path_s);
+	free(data.graphics.wall_sprite.path_e);
+	free(data.graphics.wall_sprite.path_w);
 	ft_free_tab((void **)data.map.map);
 }
 
 void	exit_preloaderror(t_data data)
 {
-	free(data.mlx.wall_sprite.north_texture);
-	free(data.mlx.wall_sprite.south_texture);
-	free(data.mlx.wall_sprite.east_texture);
-	free(data.mlx.wall_sprite.west_texture);
+	free(data.graphics.wall_sprite.north_texture);
+	free(data.graphics.wall_sprite.south_texture);
+	free(data.graphics.wall_sprite.east_texture);
+	free(data.graphics.wall_sprite.west_texture);
 }
 
 void	exit_exitgame(t_data data)
 {
-	mlx_loop_end(data.mlx.mlx);
-	mlx_destroy_image(data.mlx.mlx, data.mlx.img_background);
-	mlx_destroy_image(data.mlx.mlx, data.mlx.wall_sprite.wall_e.img);
-	mlx_destroy_image(data.mlx.mlx, data.mlx.wall_sprite.wall_w.img);
-	mlx_destroy_image(data.mlx.mlx, data.mlx.wall_sprite.wall_s.img);
-	mlx_destroy_image(data.mlx.mlx, data.mlx.wall_sprite.wall_n.img);
-	mlx_destroy_image(data.mlx.mlx, data.mlx.img_mini_map);
-	mlx_destroy_window(data.mlx.mlx, data.mlx.win);
-	mlx_destroy_display(data.mlx.mlx);
+	mlx_loop_end(data.graphics.mlx);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.game.img_background);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.wall_sprite.wall_e.img);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.wall_sprite.wall_w.img);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.wall_sprite.wall_s.img);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.wall_sprite.wall_n.img);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.img_mini_map);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.menu.img_background.img);
+	mlx_destroy_window(data.graphics.mlx, data.graphics.win);
+	mlx_destroy_display(data.graphics.mlx);
 }
 
 void	exit_game(t_data data, int status)
