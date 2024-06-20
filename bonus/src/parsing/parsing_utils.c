@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:13:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/19 11:42:59 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/20 18:44:55 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,15 @@ void	check_valid_zero(char **map, size_t i, size_t j)
 
 void	check_valid_door(char **map, size_t i, size_t j)
 {
+	int	nb_of_path;
+
 	if (!i || !j || i == ft_ctablen(map) - 1 || j == ft_strlen(*map) - 1)
 		return ;
-	if (((map[i - 1][j] == '2' || map[i - 1][j] == '0') \
-	&& (map[i + 1][j] == '2' || map[i + 1][j] == '0')) \
-	|| ((map[i][j - 1] == '2' || map[i][j - 1] == '0') \
-	&& (map[i][j + 1] == '2' || map[i][j + 1] == '0')))
+	nb_of_path = 0;
+	nb_of_path += (map[i - 1][j] == '0' || map[i - 1][j] == '2');
+	nb_of_path += (map[i + 1][j] == '0' || map[i + 1][j] == '2');
+	nb_of_path += (map[i][j - 1] == '0' || map[i][j - 1] == '2');
+	nb_of_path += (map[i][j + 1] == '0' || map[i][j + 1] == '2');
+	if (nb_of_path >= 2)
 		map[i][j] = 'V';
 }
