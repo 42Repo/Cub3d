@@ -6,14 +6,14 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/20 22:04:15 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 03:07:52 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INCLUDE_H
 # define INCLUDE_H
 
-# include "mlx_addon.h"
+# include "struct.h"
 
 int		parsing(int ac, char **av, t_data *data);
 void	preload_textures(t_data *data);

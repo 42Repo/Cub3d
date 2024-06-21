@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 02:40:14 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 03:06:47 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,6 @@ typedef struct s_vec2_int
 	int				y;
 }					t_vec2_int;
 
-typedef struct s_vec2_color
-{
-	float			x;
-	float			y;
-	int				color;
-}					t_vec2_color;
-
 typedef union u_color
 {
 	struct
@@ -71,14 +64,6 @@ typedef union u_color
 	};
 	uint32_t		color;
 }					t_color;
-
-typedef struct s_square
-{
-	t_vec2			x1;
-	t_vec2			x2;
-	t_vec2			x3;
-	t_vec2			x4;
-}					t_square;
 
 typedef enum e_status
 {
@@ -102,20 +87,6 @@ typedef enum e_screen_state
 	PAUSE,
 	END_GAME
 }					t_screen_state;
-
-typedef struct s_ray
-{
-	t_vec2			pos;
-	t_vec2			dir;
-	float			perp_wall_dist;
-	t_vec2_int		map;
-	t_vec2_int		step;
-	t_vec2			side_dist;
-	t_vec2			delta_dist;
-	int				hit;
-	int				side;
-	t_wall			wall;
-}					t_ray;
 
 typedef struct s_map
 {

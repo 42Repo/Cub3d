@@ -6,7 +6,7 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/21 01:18:20 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/21 03:07:29 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,6 @@ src/raycasting/dda.c \
 src/raycasting/raycasting_utils.c \
 src/raycasting/raycast.c \
 src/utils.c \
-src/mlx_addon/mlx_line.c \
-src/mlx_addon/mlx_rectangle.c \
 src/preload_textures.c \
 src/movement/game_controls.c \
 src/movement/keyboard_movement.c \
