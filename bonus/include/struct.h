@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 05:24:06 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 18:54:38 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ typedef struct s_sprite
 typedef struct s_button
 {
 	t_image			img;
+	t_image			img_hovered;
+	bool			is_hovered;
 	t_vec2_int		pos;
 	t_vec2_int		size;
 }					t_button;
@@ -137,8 +139,6 @@ typedef struct s_menu
 	t_image			img_background;
 	t_image			img_background_button;
 	t_button		play_button;
-	t_button		play_button_hovered;
-	bool			play_button_is_hovered;
 	t_button		exit_button;
 	t_button		settings_button;
 }					t_menu;
