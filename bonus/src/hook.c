@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/21 01:17:49 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 01:31:28 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	update(void *param)
 	t_data	*d;
 
 	d = (t_data *)param;
-	d->settings.screen_state = GAME; // TODO remove this line
+	// d->settings.screen_state = GAME; // TODO remove this line
 	if (d->settings.screen_state == GAME)
 	{
 		mlx_mouse_hide();

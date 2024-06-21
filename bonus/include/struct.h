@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 01:28:08 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 02:40:14 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include <time.h>
 # include <unistd.h>
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 400
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 # define FOV 90.0
 
 # define LCLICK 1

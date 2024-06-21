@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 21:41:16 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 01:08:03 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 02:35:40 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,20 @@ static void	resize_image(t_data *data, t_image *src, t_vec2_int new_size)
 	*src = dst;
 }
 
-void	init_menu(t_data *data)
+
+void init_menu(t_data *data)
 {
+    float scale_factor_width = (float)WIN_WIDTH / 1920.0f;
+    float scale_factor_height = (float)WIN_HEIGHT / 1080.0f;
+	
     data->graphics.menu.img_background.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/menu_background.png", &data->graphics.menu.img_background.width, &data->graphics.menu.img_background.height);
     resize_image(data, &data->graphics.menu.img_background, (t_vec2_int){WIN_WIDTH, WIN_HEIGHT});
     data->graphics.menu.img_background_button.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/GUI.png", &data->graphics.menu.img_background_button.width, &data->graphics.menu.img_background_button.height);
-    resize_image(data, &data->graphics.menu.img_background_button, (t_vec2_int){data->graphics.menu.img_background_button.width * 1.5 , data->graphics.menu.img_background_button.height * 1.5});
+    resize_image(data, &data->graphics.menu.img_background_button, (t_vec2_int){data->graphics.menu.img_background_button.width * scale_factor_width * 7, data->graphics.menu.img_background_button.height * scale_factor_height * 7});
+    data->graphics.menu.img_play.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/start.png", &data->graphics.menu.img_play.width, &data->graphics.menu.img_play.height);
+    resize_image(data, &data->graphics.menu.img_play, (t_vec2_int){data->graphics.menu.img_play.width * scale_factor_width * 7, data->graphics.menu.img_play.height * scale_factor_height * 7});
+    data->graphics.menu.img_exit.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/exit.png", &data->graphics.menu.img_exit.width, &data->graphics.menu.img_exit.height);
+    resize_image(data, &data->graphics.menu.img_exit, (t_vec2_int){data->graphics.menu.img_exit.width * scale_factor_width * 7, data->graphics.menu.img_exit.height * scale_factor_height * 7});
+    data->graphics.menu.img_settings.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/settings.png", &data->graphics.menu.img_settings.width, &data->graphics.menu.img_settings.height);
+    resize_image(data, &data->graphics.menu.img_settings, (t_vec2_int){data->graphics.menu.img_settings.width * scale_factor_width * 7, data->graphics.menu.img_settings.height * scale_factor_height * 7});
 }
