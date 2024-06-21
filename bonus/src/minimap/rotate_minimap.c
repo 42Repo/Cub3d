@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 01:27:31 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 13:00:18 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,72 +14,84 @@
 
 void	create_circular_mask(int *mask, int width, int height)
 {
-	int	radius;
-	int	center_x;
-	int	center_y;
-	int	dx;
-	int	dy;
+	int			radius;
+	t_vec2_int	center;
+	t_vec2_int	p;
+	t_vec2_int	d;
 
 	radius = width / 2;
-	center_x = width / 2;
-	center_y = height / 2;
-	for (int y = 0; y < height; y++)
+	center.x = width / 2;
+	center.y = height / 2;
+	p.y = 0;
+	while (p.y < height)
 	{
-		for (int x = 0; x < width; x++)
+		p.x = 0;
+		while (p.x < width)
 		{
-			dx = center_x - x;
-			dy = center_y - y;
-			if (dx * dx + dy * dy <= radius * radius)
-			{
-				mask[y * width + x] = 1;
-			}
+			d.x = center.x - p.x;
+			d.y = center.y - p.y;
+			if (d.x * d.x + d.y * d.y <= radius * radius)
+				mask[p.y * width + p.x] = 1;
 			else
-			{
-				mask[y * width + x] = 0;
-			}
+				mask[p.y * width + p.x] = 0;
+			p.x++;
 		}
+		p.y++;
+	}
+}
+
+void	draw_circle(int radius, int center_x, int center_y, t_data *data)
+{
+	t_vec2_int	p;
+	t_vec2_int	d;
+
+	d.y = -radius;
+	while (d.y <= radius)
+	{
+		d.x = -radius;
+		while (d.x <= radius)
+		{
+			if (d.x * d.x + d.y * d.y <= radius * radius)
+			{
+				p.x = center_x + d.x;
+				p.y = center_y + d.y;
+				mlx_set_image_pixel(data->graphics.mlx, data->graphics.img_mini_map, p.x, p.y,
+					0xFF00FF00);
+			}
+			d.x++;
+		}
+		d.y++;
+	}
+}
+
+void	draw_tip(int radius, int tip_length, int tip_width, int center_x, int center_y, int offset, t_data *data)
+{
+	t_vec2_int	p;
+	t_vec2_int	d;
+
+	d.y = 0;
+	while (d.y <= tip_length)
+	{
+		d.x = -tip_width;
+		while (d.x <= tip_width)
+		{
+			if (abs(d.y) <= (tip_length - d.x))
+			{
+				p.x = center_x + d.y;
+				p.y = center_y - radius - d.x + offset;
+				mlx_set_image_pixel(data->graphics.mlx, data->graphics.img_mini_map, p.x, p.y,
+					0xFF00FF00);
+			}
+			d.x++;
+		}
+		d.y++;
 	}
 }
 
 void	draw_player_marker(t_data *data, int center_x, int center_y)
 {
-	int	radius;
-	int	tip_length;
-	int	tip_width;
-	int	offset;
-	int	x;
-	int	y;
-
-	radius = 3;
-	tip_length = 5;
-	tip_width = 3;
-	offset = 2;
-	for (int dy = -radius; dy <= radius; dy++)
-	{
-		for (int dx = -radius; dx <= radius; dx++)
-		{
-			if (dx * dx + dy * dy <= radius * radius)
-			{
-				x = center_x + dx;
-				y = center_y + dy;
-				mlx_set_image_pixel(data->graphics.mlx, data->graphics.img_mini_map, x, y,
-					0xFF00FF00);
-			}
-		}
-	}
-	for (int i = 0; i <= tip_length; i++)
-	{
-		for (int j = -tip_width; j <= tip_width; j++)
-		{
-			if (abs(j) <= (tip_length - i))
-			{
-				x = center_x + j;
-				y = center_y - radius - i + offset;
-				mlx_set_image_pixel(data->graphics.mlx, data->graphics.img_mini_map, x, y,
-					0xFF00FF00);
-			}
-		}
-	}
+	draw_circle(3, center_x, center_y, data);
+	draw_tip(3, 5, 3, center_x, center_y, 2, data);
 }
 
 void	draw_minimap(t_data *data)
