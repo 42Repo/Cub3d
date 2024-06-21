@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 13:00:18 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/21 18:53:03 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ void	draw_tip(int radius, int tip_length, int tip_width, int center_x, int cente
 		d.x = -tip_width;
 		while (d.x <= tip_width)
 		{
-			if (abs(d.y) <= (tip_length - d.x))
+			if (abs(d.x) <= (tip_length - d.y))
 			{
-				p.x = center_x + d.y;
-				p.y = center_y - radius - d.x + offset;
+				p.x = center_x + d.x;
+				p.y = center_y - radius - d.y + offset;
 				mlx_set_image_pixel(data->graphics.mlx, data->graphics.img_mini_map, p.x, p.y,
 					0xFF00FF00);
 			}
