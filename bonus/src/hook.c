@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/21 12:03:31 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/21 19:29:19 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int mouse_press(int key, void *param)
 
 	data = (t_data *)param;
 	(void)key;
-	if (data->graphics.menu.play_button_is_hovered)
+	if (data->graphics.menu.play_button.is_hovered)
 		data->settings.screen_state = GAME;
 	(void)data;
 	return (0);
