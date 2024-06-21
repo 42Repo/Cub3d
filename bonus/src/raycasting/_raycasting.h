@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:59:19 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 03:05:37 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 03:11:33 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define _RAYCASTING_H
 
 # include "../../include/struct.h"
+
+typedef enum e_wall
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+}				t_wall;
 
 typedef struct s_ray
 {
