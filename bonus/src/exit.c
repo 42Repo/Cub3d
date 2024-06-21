@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/21 00:23:19 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 12:03:55 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void	exit_exitgame(t_data data)
 	mlx_destroy_image(data.graphics.mlx, data.graphics.wall_sprite.wall_n.img);
 	mlx_destroy_image(data.graphics.mlx, data.graphics.img_mini_map);
 	mlx_destroy_image(data.graphics.mlx, data.graphics.menu.img_background.img);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.menu.play_button.img.img);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.menu.play_button_hovered.img.img);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.menu.exit_button.img.img);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.menu.settings_button.img.img);
+	mlx_destroy_image(data.graphics.mlx, data.graphics.menu.img_background_button.img);
 	mlx_destroy_window(data.graphics.mlx, data.graphics.win);
 	mlx_destroy_display(data.graphics.mlx);
 }
