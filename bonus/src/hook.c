@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/21 01:31:28 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 05:27:18 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	update(void *param)
 	else if (d->settings.screen_state == MAIN_MENU)
 	{
 		mlx_mouse_show();
+		update_button_states(d);
 		render_menu(d);
 	}
 	return (0);
@@ -61,5 +62,27 @@ int	key_release(int key, void *param)
 
 	data = (t_data *)param;
 	data->graphics.key_states[key] = 0;
+	return (0);
+}
+
+int mouse_press(int key, void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	(void)key;
+	if (data->graphics.menu.play_button_is_hovered)
+		data->settings.screen_state = GAME;
+	(void)data;
+	return (0);
+}
+
+int mouse_release(int key, void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	(void)key;
+	(void)data;
 	return (0);
 }

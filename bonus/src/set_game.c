@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/21 01:21:24 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 05:28:24 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
-#include "struct.h"
 
 void	init_data(t_data *d)
 {
@@ -44,6 +43,10 @@ void	init_mlx(t_data *data)
 	mlx_on_event(data->graphics.mlx, data->graphics.win, MLX_KEYDOWN, key_press,
 		(void *)data);
 	mlx_on_event(data->graphics.mlx, data->graphics.win, MLX_KEYUP, key_release,
+		(void *)data);
+	mlx_on_event(data->graphics.mlx, data->graphics.win, MLX_MOUSEDOWN, mouse_press,
+		(void *)data);
+	mlx_on_event(data->graphics.mlx, data->graphics.win, MLX_MOUSEUP, mouse_release,
 		(void *)data);
 	mlx_loop_hook(data->graphics.mlx, update, (void *)data);
 	mlx_loop(data->graphics.mlx);
