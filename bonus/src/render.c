@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:05:34 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/21 01:21:51 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/22 02:51:15 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static inline void	set_image(t_vec2 pos, int start_y, int color, t_data *data)
 	}
 }
 
-static inline void	print_background(t_data *data)
+void	print_background(t_data *data)
 {
 	int			pitch_shift;
 	int			color;
@@ -57,9 +57,10 @@ static inline void	print_background(t_data *data)
 void	render(t_data *data)
 {
 	mlx_clear_window(data->graphics.mlx, data->graphics.win);
+	render_floor_and_ceiling(data);
+	// print_background(data);
+	// mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, // TODO : SI on veut juste sans les floor et ceiling
+		// data->graphics.game.img_background, 0, 0);
 	render_frame(data);
-	print_background(data);
-	mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
-		data->graphics.game.img_background, 0, 0);
 	draw_minimap(data);
 }

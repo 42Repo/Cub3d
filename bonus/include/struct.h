@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 18:54:38 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/22 02:04:40 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,20 +107,24 @@ typedef struct s_player
 
 typedef struct s_sprite
 {
-	int				width;
-	int				height;
 	char			*path_n;
 	char			*path_s;
 	char			*path_e;
 	char			*path_w;
+	char			*path_floor;
+	char			*path_ceiling;
 	t_image			wall_n;
 	t_image			wall_s;
 	t_image			wall_e;
 	t_image			wall_w;
+	t_image			floor;
+	t_image			ceiling;
 	int				*north_texture;
 	int				*south_texture;
 	int				*east_texture;
 	int				*west_texture;
+	int				*floor_texture;
+	int				*ceiling_texture;
 	t_color			floor_color;
 	t_color			ceiling_color;
 }					t_sprite;

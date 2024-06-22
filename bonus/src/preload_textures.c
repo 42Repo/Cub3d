@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:42:33 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/20 21:50:13 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/21 23:06:32 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,8 @@ void	preload_textures(t_data *data)
 		&data->graphics.wall_sprite.east_texture);
 	preload_texture(data, data->graphics.wall_sprite.wall_w,
 		&data->graphics.wall_sprite.west_texture);
+	preload_texture(data, data->graphics.wall_sprite.floor,
+		&data->graphics.wall_sprite.floor_texture);
+	preload_texture(data, data->graphics.wall_sprite.ceiling,
+		&data->graphics.wall_sprite.ceiling_texture);
 }

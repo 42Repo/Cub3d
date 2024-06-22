@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 21:41:16 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 19:28:25 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/22 02:59:17 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void init_menu(t_data *data)
 
 	data->graphics.menu.exit_button.pos = (t_vec2_int){data->graphics.menu.settings_button.pos.x, data->graphics.menu.settings_button.pos.y + data->graphics.menu.settings_button.size.y + 14 * scale_factor_height};
 	data->graphics.menu.exit_button.size = (t_vec2_int){data->graphics.menu.exit_button.img.width, data->graphics.menu.exit_button.img.height};
-
 
 	data->graphics.menu.play_button.is_hovered = false;
 	data->graphics.menu.settings_button.is_hovered = false;

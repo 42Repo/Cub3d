@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/21 19:29:19 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/22 00:56:52 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	update(void *param)
 		move(d);
 		other_move(d);
 		render(d);
-		// fps_counter();
+		fps_counter();
 	}
 	else if (d->settings.screen_state == MAIN_MENU)
 	{
