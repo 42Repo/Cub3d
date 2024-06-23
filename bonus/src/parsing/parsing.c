@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/23 14:40:03 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/23 14:45:46 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_error(char *error)
 {
-	printf("\033[1;31mError\n%s\033[0m\n", error);
+	printf("\033[1;31mError\n%s\033[0m", error);
 	return (-1);
 }
 
