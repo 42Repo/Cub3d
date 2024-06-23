@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/23 13:34:24 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/23 14:07:54 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_data(t_data *d)
 	d->settings.minimap_scale = 1.5;
 	d->graphics.mlx = mlx_init();
 	d->settings.screen_state = MAIN_MENU;
+	d->graphics.game.floor_and_ceiling = false;
 	init_menu(d);
 	d->graphics.wall_sprite.path_ceiling = "textures/wall/x.png"; // TODO change path
 	d->graphics.wall_sprite.path_floor = "textures/wall/x.png";

@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/23 14:02:41 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/23 14:08:50 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	key_press(int key, void *param)
 	if (key == SDL_SCANCODE_ESCAPE)
 		exit_game(*data, EXIT_GAME);
 	data->graphics.key_states[key] = 1;
+	if (key == SDL_SCANCODE_F1)
+		data->graphics.game.floor_and_ceiling = !data->graphics.game.floor_and_ceiling;
 	return (0);
 }
 

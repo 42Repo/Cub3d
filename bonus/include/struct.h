@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/23 13:51:42 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/23 14:07:18 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ typedef struct s_menu
 typedef struct s_game
 {
 	void			*img_background;
+	bool			floor_and_ceiling;
 }					t_game;
 
 typedef struct s_graphics
