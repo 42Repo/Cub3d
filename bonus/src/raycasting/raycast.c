@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/20 21:50:13 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/23 14:40:45 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_raycasting.h"
-#include "include.h"
 
 static inline void	calculate_line_height_and_draw_points(t_ray *ray,
 		t_ray_params *params)

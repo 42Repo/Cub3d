@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/23 14:08:50 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/23 14:40:30 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
-#include <unistd.h>
 
 void	other_move(t_data *data)
 {
