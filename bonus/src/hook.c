@@ -6,13 +6,12 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/22 00:56:52 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/23 14:02:41 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
-#include "mlx.h"
-#include "struct.h"
+#include <unistd.h>
 
 void	other_move(t_data *data)
 {
@@ -24,12 +23,18 @@ void	other_move(t_data *data)
 int	update(void *param)
 {
 	t_data	*d;
+	static bool first = true;
 
 	d = (t_data *)param;
-	// d->settings.screen_state = GAME; // TODO remove this line
 	if (d->settings.screen_state == GAME)
 	{
-		mlx_mouse_hide();
+		if (first)
+		{
+			first = false;
+			system("aplay -q /home/asuc/Documents/42/Cub3d/bonus/textures/menu/button_pressed.wav &");
+			usleep(250000);
+			mlx_mouse_hide();
+		}
 		mouse_move(d);
 		move(d);
 		other_move(d);
@@ -38,9 +43,43 @@ int	update(void *param)
 	}
 	else if (d->settings.screen_state == MAIN_MENU)
 	{
-		mlx_mouse_show();
 		update_button_states(d);
 		render_menu(d);
+	}
+	else if (d->settings.screen_state == SETTINGS)
+	{
+		if (first)
+		{
+			first = false;
+			system("aplay -q /home/asuc/Documents/42/Cub3d/bonus/textures/menu/button_pressed.wav &");
+			usleep(250000);
+		}
+		// d->settings.screen_state = MAIN_MENU;
+	}
+	else if (d->settings.screen_state == EXIT)
+	{
+		if (first)
+		{
+			first = false;
+			system("aplay -q /home/asuc/Documents/42/Cub3d/bonus/textures/menu/button_pressed.wav &");
+			usleep(250000);
+		}
+		exit_game(*d, EXIT_GAME);
+	}
+	if (d->graphics.menu.play_button.is_pressed == true)
+	{
+		d->graphics.menu.play_button.is_pressed = false;
+		d->settings.screen_state = GAME;
+	}
+	if (d->graphics.menu.exit_button.is_pressed == true)
+	{
+		d->graphics.menu.exit_button.is_pressed = false;
+		d->settings.screen_state = EXIT;
+	}
+	if (d->graphics.menu.settings_button.is_pressed == true)
+	{
+		d->graphics.menu.settings_button.is_pressed = false;
+		d->settings.screen_state = SETTINGS;
 	}
 	return (0);
 }
@@ -72,8 +111,11 @@ int mouse_press(int key, void *param)
 	data = (t_data *)param;
 	(void)key;
 	if (data->graphics.menu.play_button.is_hovered)
-		data->settings.screen_state = GAME;
-	(void)data;
+		data->graphics.menu.play_button.is_pressed = true;
+	else if (data->graphics.menu.exit_button.is_hovered)
+		data->graphics.menu.exit_button.is_pressed = true;
+	else if (data->graphics.menu.settings_button.is_hovered)
+		data->graphics.menu.settings_button.is_pressed = true;
 	return (0);
 }
 

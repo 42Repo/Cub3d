@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 21:41:16 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/22 02:59:17 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/23 13:43:06 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_menu.h"
-#include "struct.h"
 
 static void	init_image(t_data *data, t_image *src, t_image *dst, t_vec2_int *ratio)
 {
@@ -66,17 +65,26 @@ void init_menu(t_data *data)
 	data->graphics.menu.play_button.img_hovered.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/start_hovered.png", &data->graphics.menu.play_button.img_hovered.width, &data->graphics.menu.play_button.img_hovered.height);
 	resize_image(data, &data->graphics.menu.play_button.img_hovered, (t_vec2_int){data->graphics.menu.play_button.img_hovered.width * scale_factor_width * 7, data->graphics.menu.play_button.img_hovered.height * scale_factor_height * 7});
 
+	data->graphics.menu.play_button.img_pressed.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/start_pressed.png", &data->graphics.menu.play_button.img_pressed.width, &data->graphics.menu.play_button.img_pressed.height);
+	resize_image(data, &data->graphics.menu.play_button.img_pressed, (t_vec2_int){data->graphics.menu.play_button.img_pressed.width * scale_factor_width * 7, data->graphics.menu.play_button.img_pressed.height * scale_factor_height * 7});
+
     data->graphics.menu.exit_button.img.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/exit.png", &data->graphics.menu.exit_button.img.width, &data->graphics.menu.exit_button.img.height);
     resize_image(data, &data->graphics.menu.exit_button.img, (t_vec2_int){data->graphics.menu.exit_button.img.width * scale_factor_width * 7, data->graphics.menu.exit_button.img.height * scale_factor_height * 7});
 
-	data->graphics.menu.exit_button.img_hovered.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/exit_pressed.png", &data->graphics.menu.exit_button.img_hovered.width, &data->graphics.menu.exit_button.img_hovered.height);
+	data->graphics.menu.exit_button.img_hovered.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/exit_hovered.png", &data->graphics.menu.exit_button.img_hovered.width, &data->graphics.menu.exit_button.img_hovered.height);
 	resize_image(data, &data->graphics.menu.exit_button.img_hovered, (t_vec2_int){data->graphics.menu.exit_button.img_hovered.width * scale_factor_width * 7, data->graphics.menu.exit_button.img_hovered.height * scale_factor_height * 7});
+
+	data->graphics.menu.exit_button.img_pressed.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/exit_pressed.png", &data->graphics.menu.exit_button.img_pressed.width, &data->graphics.menu.exit_button.img_pressed.height);
+	resize_image(data, &data->graphics.menu.exit_button.img_pressed, (t_vec2_int){data->graphics.menu.exit_button.img_pressed.width * scale_factor_width * 7, data->graphics.menu.exit_button.img_pressed.height * scale_factor_height * 7});
 
     data->graphics.menu.settings_button.img.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/settings.png", &data->graphics.menu.settings_button.img.width, &data->graphics.menu.settings_button.img.height);
     resize_image(data, &data->graphics.menu.settings_button.img, (t_vec2_int){data->graphics.menu.settings_button.img.width * scale_factor_width * 7, data->graphics.menu.settings_button.img.height * scale_factor_height * 7});
 
-	data->graphics.menu.settings_button.img_hovered.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/settings_pressed.png", &data->graphics.menu.settings_button.img_hovered.width, &data->graphics.menu.settings_button.img_hovered.height);
+	data->graphics.menu.settings_button.img_hovered.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/settings_hovered.png", &data->graphics.menu.settings_button.img_hovered.width, &data->graphics.menu.settings_button.img_hovered.height);
 	resize_image(data, &data->graphics.menu.settings_button.img_hovered, (t_vec2_int){data->graphics.menu.settings_button.img_hovered.width * scale_factor_width * 7, data->graphics.menu.settings_button.img_hovered.height * scale_factor_height * 7});
+
+	data->graphics.menu.settings_button.img_pressed.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/settings_pressed.png", &data->graphics.menu.settings_button.img_pressed.width, &data->graphics.menu.settings_button.img_pressed.height);
+	resize_image(data, &data->graphics.menu.settings_button.img_pressed, (t_vec2_int){data->graphics.menu.settings_button.img_pressed.width * scale_factor_width * 7, data->graphics.menu.settings_button.img_pressed.height * scale_factor_height * 7});
 
     data->graphics.menu.play_button.pos = (t_vec2_int){(WIN_WIDTH / 2) - (data->graphics.menu.img_background_button.width / 2) + 56 * scale_factor_width, (WIN_HEIGHT / 2) - (data->graphics.menu.img_background_button.height / 2) + 77 * scale_factor_height};
     data->graphics.menu.play_button.size = (t_vec2_int){data->graphics.menu.play_button.img.width, data->graphics.menu.play_button.img.height};
@@ -91,4 +99,7 @@ void init_menu(t_data *data)
 	data->graphics.menu.play_button.is_hovered = false;
 	data->graphics.menu.settings_button.is_hovered = false;
 	data->graphics.menu.exit_button.is_hovered = false;
+	data->graphics.menu.play_button.is_pressed = false;
+	data->graphics.menu.settings_button.is_pressed = false;
+	data->graphics.menu.exit_button.is_pressed = false;
 }

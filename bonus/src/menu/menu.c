@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 20:10:56 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 19:27:13 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/23 14:00:37 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_menu.h"
-#include <stdbool.h>
 
 
 int is_mouse_over_button(t_button *button, int mouse_x, int mouse_y)
@@ -28,15 +27,15 @@ void update_button_states(t_data *data)
     mlx_mouse_get_pos(data->graphics.mlx, &mouse_x, &mouse_y);
     data->graphics.menu.play_button.is_hovered = is_mouse_over_button(&data->graphics.menu.play_button, mouse_x, mouse_y);
     if (was_hovered == 0 && data->graphics.menu.play_button.is_hovered == 1)
-        system("aplay -q /home/asuc/Documents/42/Cub3d/bonus/textures/menu/button2.wav &");
+        system("aplay -q /home/asuc/Documents/42/Cub3d/bonus/textures/menu/button_hover.wav &");
     was_hovered = data->graphics.menu.settings_button.is_hovered;
     data->graphics.menu.settings_button.is_hovered = is_mouse_over_button(&data->graphics.menu.settings_button, mouse_x, mouse_y);
     if (was_hovered == 0 && data->graphics.menu.settings_button.is_hovered == 1)
-        system("aplay -q /home/asuc/Documents/42/Cub3d/bonus/textures/menu/button2.wav &");
+        system("aplay -q /home/asuc/Documents/42/Cub3d/bonus/textures/menu/button_hover.wav &");
     was_hovered = data->graphics.menu.exit_button.is_hovered;
     data->graphics.menu.exit_button.is_hovered = is_mouse_over_button(&data->graphics.menu.exit_button, mouse_x, mouse_y);
     if (was_hovered == 0 && data->graphics.menu.exit_button.is_hovered == 1)
-        system("aplay -q /home/asuc/Documents/42/Cub3d/bonus/textures/menu/button2.wav &");
+        system("aplay -q /home/asuc/Documents/42/Cub3d/bonus/textures/menu/button_hover.wav &");
 }
 
 void render_menu(t_data *data)
@@ -47,18 +46,25 @@ void render_menu(t_data *data)
     mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.img_background.img, 0, 0);
     mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.img_background_button.img, button_x, button_y);
     
-    if (data->graphics.menu.play_button.is_hovered)
-       mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.play_button.img_hovered.img, data->graphics.menu.play_button.pos.x, data->graphics.menu.play_button.pos.y + 8);
+    if (data->graphics.menu.play_button.is_pressed)
+        mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.play_button.img_pressed.img, data->graphics.menu.play_button.pos.x, data->graphics.menu.play_button.pos.y + 8);
+    else if (data->graphics.menu.play_button.is_hovered)
+       mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.play_button.img_hovered.img, data->graphics.menu.play_button.pos.x, data->graphics.menu.play_button.pos.y);
     else
         mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.play_button.img.img, data->graphics.menu.play_button.pos.x, data->graphics.menu.play_button.pos.y);
 
-    if (data->graphics.menu.settings_button.is_hovered)
-        mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.settings_button.img_hovered.img, data->graphics.menu.settings_button.pos.x, data->graphics.menu.settings_button.pos.y + 8);
+    if (data->graphics.menu.settings_button.is_pressed)
+        mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.settings_button.img_pressed.img, data->graphics.menu.settings_button.pos.x, data->graphics.menu.settings_button.pos.y + 8);
+    else if (data->graphics.menu.settings_button.is_hovered)
+        mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.settings_button.img_hovered.img, data->graphics.menu.settings_button.pos.x, data->graphics.menu.settings_button.pos.y);
     else
         mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.settings_button.img.img, data->graphics.menu.settings_button.pos.x, data->graphics.menu.settings_button.pos.y);
 
-    if (data->graphics.menu.exit_button.is_hovered)
-        mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.exit_button.img_hovered.img, data->graphics.menu.exit_button.pos.x, data->graphics.menu.exit_button.pos.y + 8);
+    if (data->graphics.menu.exit_button.is_pressed)
+        mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.exit_button.img_pressed.img, data->graphics.menu.exit_button.pos.x, data->graphics.menu.exit_button.pos.y + 8);
+    else if (data->graphics.menu.exit_button.is_hovered)
+        mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.exit_button.img_hovered.img, data->graphics.menu.exit_button.pos.x, data->graphics.menu.exit_button.pos.y);
     else
         mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, data->graphics.menu.exit_button.img.img, data->graphics.menu.exit_button.pos.x, data->graphics.menu.exit_button.pos.y);
+    
 }

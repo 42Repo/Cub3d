@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/22 02:04:40 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/23 13:51:42 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ typedef enum e_screen_state
 	MAIN_MENU,
 	GAME,
 	PAUSE,
-	END_GAME
+	SETTINGS,
+	EXIT
 }					t_screen_state;
 
 typedef struct s_image
@@ -132,8 +133,10 @@ typedef struct s_sprite
 typedef struct s_button
 {
 	t_image			img;
+	t_image			img_pressed;
 	t_image			img_hovered;
 	bool			is_hovered;
+	bool			is_pressed;
 	t_vec2_int		pos;
 	t_vec2_int		size;
 }					t_button;
