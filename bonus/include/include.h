@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/22 02:46:12 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/24 23:57:38 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		print_error(char *error);
 void	render(t_data *data);
 void	resize_images(t_data *data);
 
-void	draw_minimap(t_data *data);
+void	print_minimap(t_data *data);
 
 void	render_menu(t_data *data);
 void	init_menu(t_data *data);
