@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:39:58 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/22 02:53:44 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/24 21:53:50 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ typedef struct s_line_data
 	float	rowDistance;
 }			t_line_data;
 
-void		render_pixel_row(t_render_data *rd, t_pixel_data *pd);
+void		render_pixel_row(t_render_data *rd, t_pixel_data *pd,
+				bool render_ceiling);
 void		init_pixel_data(t_pixel_data *pd, float floorX, float floorY,
 				t_vec2 floor_step);
 void		init_render_data(t_render_data *rd, t_data *data);

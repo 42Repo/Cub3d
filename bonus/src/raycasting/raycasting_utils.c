@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:34:29 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 12:05:26 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/24 21:35:58 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,21 +86,21 @@ inline void	calculate_wall_x_and_tex_x(t_ray *ray, t_ray_params *params)
 		wall_x = ray->pos.x + ray->perp_wall_dist * ray->dir.x;
 	wall_x -= floor(wall_x);
 	params->tex_x = (int)(wall_x * (float)params->texture_width);
-	if ((ray->side == 0 && ray->dir.x > 0) || (ray->side == 1
-			&& ray->dir.y < 0))
+	if ((ray->side == 0 && ray->dir.x < 0) || (ray->side == 1
+			&& ray->dir.y > 0))
 		params->tex_x = params->texture_width - params->tex_x - 1;
 }
 
 int	player_is_in_front_of_door(t_player *player, t_ray *ray)
 {
-	return ((((int)player->pos.x == ray->map.x \
-	&& (int)player->pos.y == ray->map.y) \
-	|| ((int)player->pos.x == ray->map.x + 1 \
-	&& (int)player->pos.y == ray->map.y) \
-	|| ((int)player->pos.x == ray->map.x - 1 \
-	&& (int)player->pos.y == ray->map.y) \
-	|| ((int)player->pos.x == ray->map.x \
-	&& (int)player->pos.y == ray->map.y + 1) \
-	|| ((int)player->pos.x == ray->map.x \
-	&& (int)player->pos.y == ray->map.y - 1)));
+	return ((((int)player->pos.x == ray->map.x
+				&& (int)player->pos.y == ray->map.y)
+			|| ((int)player->pos.x == ray->map.x + 1
+				&& (int)player->pos.y == ray->map.y)
+			|| ((int)player->pos.x == ray->map.x - 1
+				&& (int)player->pos.y == ray->map.y)
+			|| ((int)player->pos.x == ray->map.x
+				&& (int)player->pos.y == ray->map.y + 1)
+			|| ((int)player->pos.x == ray->map.x
+				&& (int)player->pos.y == ray->map.y - 1)));
 }

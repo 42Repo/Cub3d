@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:42:48 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/22 02:53:49 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/24 21:54:08 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 static inline void	set_texture_data(t_render_data *rd, bool render_ceiling)
 {
-	t_sprite	*sprite;
+    t_sprite	*sprite;
 
-	sprite = &rd->data->graphics.wall_sprite;
-	if (render_ceiling)
-	{
-		rd->texture = sprite->ceiling_texture;
-		rd->width = sprite->ceiling.width;
-		rd->height = sprite->ceiling.height;
-	}
-	else
-	{
-		rd->texture = sprite->floor_texture;
-		rd->width = sprite->floor.width;
-		rd->height = sprite->floor.height;
-	}
-	rd->width_mask = rd->width - 1;
-	rd->height_mask = rd->height - 1;
+    sprite = &rd->data->graphics.wall_sprite;
+    if (render_ceiling)
+    {
+        rd->texture = sprite->ceiling_texture;
+        rd->width = sprite->ceiling.width;
+        rd->height = sprite->ceiling.height;
+    }
+    else
+    {
+        rd->texture = sprite->floor_texture;
+        rd->width = sprite->floor.width;
+        rd->height = sprite->floor.height;
+    }
+    rd->width_mask = rd->width - 1;
+    rd->height_mask = rd->height - 1;
 }
 
 static inline void	calculate_line_data(t_render_data *rd, int y,
@@ -67,7 +67,7 @@ static inline void	render_horizontal_line(t_render_data *rd, int y)
 	calculate_line_data(rd, y, &ld);
 	set_texture_data(rd, ld.render_ceiling);
 	prepare_pixel_data(rd, &ld, &pd, y);
-	render_pixel_row(rd, &pd);
+	render_pixel_row(rd, &pd, ld.render_ceiling);
 }
 
 inline void	render_floor_and_ceiling(t_data *data)

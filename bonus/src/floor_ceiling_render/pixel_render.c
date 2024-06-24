@@ -6,13 +6,14 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:42:50 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/22 02:43:16 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/24 21:56:07 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_floor_ceiling_render.h"
 
-inline void	render_pixel_row(t_render_data *rd, t_pixel_data *pd)
+inline void	render_pixel_row(t_render_data *rd, t_pixel_data *pd,
+		bool render_ceiling)
 {
 	const int	SHIFT = 20;
 	int			color;
@@ -25,6 +26,8 @@ inline void	render_pixel_row(t_render_data *rd, t_pixel_data *pd)
 			* rd->height >> 16;
 		pd->tx &= rd->width_mask;
 		pd->ty &= rd->height_mask;
+		if (render_ceiling)
+			pd->ty = rd->height - 1 - pd->ty;
 		color = rd->texture[rd->width * pd->ty + pd->tx];
 		mlx_pixel_put(rd->data->graphics.mlx, rd->data->graphics.win, pd->x,
 			pd->y, color);
