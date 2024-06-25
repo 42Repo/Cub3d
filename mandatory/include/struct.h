@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 12:02:41 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/25 14:50:09 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_vec2_int
 {
 	int			x;
 	int			y;
-}				t_vec2_int;
+}				t_vec2i;
 
 typedef struct s_vec2_color
 {
@@ -73,10 +73,10 @@ typedef union u_color
 
 typedef struct s_square
 {
-	t_vec2		x1;
-	t_vec2		x2;
-	t_vec2		x3;
-	t_vec2		x4;
+	t_vec2f	x1;
+	t_vec2f	x2;
+	t_vec2f	x3;
+	t_vec2f	x4;
 }				t_square;
 
 typedef enum e_status
@@ -96,13 +96,13 @@ typedef enum e_wall
 
 typedef struct s_ray
 {
-	t_vec2		pos;
-	t_vec2		dir;
+	t_vec2f	pos;
+	t_vec2f	dir;
 	float		perp_wall_dist;
-	t_vec2_int	map;
-	t_vec2_int	step;
-	t_vec2		side_dist;
-	t_vec2		delta_dist;
+	t_vec2i	map;
+	t_vec2i	step;
+	t_vec2f	side_dist;
+	t_vec2f	delta_dist;
 	int			hit;
 	int			side;
 	t_wall		wall;
@@ -119,9 +119,9 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	t_vec2		pos;
-	t_vec2		dir;
-	t_vec2		plane;
+	t_vec2f	pos;
+	t_vec2f	dir;
+	t_vec2f	plane;
 	float		move_speed;
 	float		rot_speed;
 }				t_player;

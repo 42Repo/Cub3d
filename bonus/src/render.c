@@ -6,13 +6,13 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:05:34 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/24 23:57:44 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/25 14:53:28 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-static inline void	set_image(t_vec2 pos, int start_y, int color, t_data *data)
+static inline void	set_image(t_vec2f pos, int start_y, int color, t_data *data)
 {
 	while (pos.y <= start_y)
 	{
@@ -33,7 +33,7 @@ void	print_background(t_data *data)
 {
 	int			pitch_shift;
 	int			color;
-	t_vec2		pos;
+	t_vec2f	pos;
 	int			start_y;
 	static int	prev_pitch_shift = 0;
 

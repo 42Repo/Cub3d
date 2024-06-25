@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_movement.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 18:21:02 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/20 21:50:13 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/25 14:50:09 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	set_dir_and_plane(t_data *data, float delta)
 
 void	mouse_move(t_data *data)
 {
-	t_vec2_int	mouse;
-	t_vec2		delta;
-	t_vec2		screen_center;
+	t_vec2i	mouse;
+	t_vec2f	delta;
+	t_vec2f	screen_center;
 	float		sensitivity;
 
 	sensitivity = 0.00075;

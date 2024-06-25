@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _floor_ceiling_render.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:39:58 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/24 21:53:50 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/25 14:54:04 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ typedef struct s_line_data
 void		render_pixel_row(t_render_data *rd, t_pixel_data *pd,
 				bool render_ceiling);
 void		init_pixel_data(t_pixel_data *pd, float floorX, float floorY,
-				t_vec2 floor_step);
+				t_vec2f floor_step);
 void		init_render_data(t_render_data *rd, t_data *data);
 void		calculate_floor_step(t_render_data *rd, float rowDistance,
-				t_vec2 *floor_step);
+				t_vec2f *floor_step);
 
 #endif

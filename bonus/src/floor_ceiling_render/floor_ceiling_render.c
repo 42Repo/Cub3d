@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_ceiling_render.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:42:48 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/24 21:54:08 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/25 14:54:36 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ static inline void	calculate_line_data(t_render_data *rd, int y,
 static inline void	prepare_pixel_data(t_render_data *rd, t_line_data *ld,
 		t_pixel_data *pd, int y)
 {
-	t_vec2	floor_step;
-	t_vec2	floor_pos;
+	t_vec2f	floor_step;
+	t_vec2f	floor_pos;
 
 	calculate_floor_step(rd, ld->rowDistance, &floor_step);
 	floor_pos.x = rd->data->player.pos.x + ld->rowDistance * rd->rayDirX0;

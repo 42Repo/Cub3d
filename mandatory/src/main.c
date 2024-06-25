@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 15:43:47 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/25 14:49:34 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	next_power_of_two(int n)
 	return (power);
 }
 
-void	init_image(t_data *data, t_image *src, t_image *dst, t_vec2_int *ratio)
+void	init_image(t_data *data, t_image *src, t_image *dst, t_vec2i *ratio)
 {
 	dst->width = next_power_of_two(src->width);
 	dst->height = dst->width;
@@ -34,9 +34,9 @@ void	init_image(t_data *data, t_image *src, t_image *dst, t_vec2_int *ratio)
 void	resize_image(t_data *data, t_image *src)
 {
 	t_image		dst;
-	t_vec2_int	ratio;
-	t_vec2_int	pos_src;
-	t_vec2_int	pos_dst;
+	t_vec2i	ratio;
+	t_vec2i	pos_src;
+	t_vec2i	pos_dst;
 	int			color;
 
 	init_image(data, src, &dst, &ratio);

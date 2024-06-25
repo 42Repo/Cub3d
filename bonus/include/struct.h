@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/23 14:07:18 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/25 14:50:32 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@
 # define S 22
 # define D 7
 
-typedef struct s_vec2
+typedef struct s_vec2f
 {
 	float			x;
 	float			y;
-}					t_vec2;
+}					t_vec2f;
 
-typedef struct s_vec2_int
+typedef struct s_vec2i
 {
 	int				x;
 	int				y;
-}					t_vec2_int;
+}					t_vec2i;
 
 typedef union u_color
 {
@@ -98,9 +98,9 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	t_vec2			pos;
-	t_vec2			dir;
-	t_vec2			plane;
+	t_vec2f		pos;
+	t_vec2f		dir;
+	t_vec2f		plane;
 	float			move_speed;
 	float			rot_speed;
 	float			pitch;
@@ -137,8 +137,8 @@ typedef struct s_button
 	t_image			img_hovered;
 	bool			is_hovered;
 	bool			is_pressed;
-	t_vec2_int		pos;
-	t_vec2_int		size;
+	t_vec2i		pos;
+	t_vec2i		size;
 }					t_button;
 
 typedef struct s_menu

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _raycasting.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:59:19 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/21 03:11:33 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/25 14:50:09 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ typedef enum e_wall
 
 typedef struct s_ray
 {
-	t_vec2		pos;
-	t_vec2		dir;
+	t_vec2f	pos;
+	t_vec2f	dir;
 	float		perp_wall_dist;
-	t_vec2_int	map;
-	t_vec2_int	step;
-	t_vec2		side_dist;
-	t_vec2		delta_dist;
+	t_vec2i	map;
+	t_vec2i	step;
+	t_vec2f	side_dist;
+	t_vec2f	delta_dist;
 	int			hit;
 	int			side;
 	t_wall		wall;
