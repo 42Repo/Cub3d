@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/25 00:18:46 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/25 13:52:11 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void	create_circular_mask(int *mask, int width, int height)
 		{
 			d.x = center.x - p.x;
 			d.y = center.y - p.y;
-			mask[p.y * width + p.x] = (d.x * d.x + d.y * d.y <= radius * radius);
+			if (d.x * d.x + d.y * d.y <= radius * radius)
+				mask[p.y * width + p.x] = 1;
+			else
+				mask[p.y * width + p.x] = 0;
 			p.x++;
 		}
 		p.y++;
@@ -52,8 +55,8 @@ void	draw_circle(int radius, t_vec2_int center, t_data *data)
 			{
 				p.x = center.x + d.x;
 				p.y = center.y + d.y;
-				mlx_set_image_pixel(data->graphics.mlx, data->graphics.img_mini_map, p.x, p.y,
-					0xFF00FF00);
+				mlx_set_image_pixel(data->graphics.mlx, \
+				data->graphics.img_mini_map, p.x, p.y, 0xFF00FF00);
 			}
 			d.x++;
 		}
@@ -61,22 +64,23 @@ void	draw_circle(int radius, t_vec2_int center, t_data *data)
 	}
 }
 
-void	draw_tip(int radius, int tip_length, int tip_width, t_vec2_int center, int offset, t_data *data)
+void	draw_tip(t_vec2_int center, t_data *data)
 {
 	t_vec2_int	p;
 	t_vec2_int	d;
 
 	d.y = 0;
-	while (d.y <= tip_length)
+	while (d.y <= 5)
 	{
-		d.x = -tip_width;
-		while (d.x <= tip_width)
+		d.x = -3;
+		while (d.x <= 3)
 		{
-			if (abs(d.x) <= (tip_length - d.y))
+			if (abs(d.x) <= (5 - d.y))
 			{
 				p.x = center.x + d.x;
-				p.y = center.y - radius - d.y + offset;
-				mlx_set_image_pixel(data->graphics.mlx, data->graphics.img_mini_map, p.x, p.y,
+				p.y = center.y - 3 - d.y + 2;
+				mlx_set_image_pixel(data->graphics.mlx, \
+				data->graphics.img_mini_map, p.x, p.y,
 					0xFF00FF00);
 			}
 			d.x++;
@@ -89,10 +93,10 @@ void	draw_player_marker(t_data *data)
 {
 	t_vec2_int	center;
 
-	center.x = 10 + (((WIN_HEIGHT * 0.28 / 2 ) / 1.5)) * data->settings.minimap_scale;
-	center.y = 10 + (((WIN_HEIGHT * 0.28 / 2 ) / 1.5)) * data->settings.minimap_scale;
+	center.x = 10 + (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
+	center.y = 10 + (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
 	draw_circle(3, center, data);
-	draw_tip(3, 5, 3, center, 2, data);
+	draw_tip(center, data);
 }
 
 void	reset_minimap(t_data *data, int minimap_size)
@@ -105,7 +109,8 @@ void	reset_minimap(t_data *data, int minimap_size)
 		pos.x = 0;
 		while (pos.x < minimap_size)
 		{
-			mlx_set_image_pixel(data->graphics.mlx, data->graphics.img_mini_map, pos.x, pos.y,
+			mlx_set_image_pixel(data->graphics.mlx, \
+			data->graphics.img_mini_map, pos.x, pos.y,
 				0x00000000);
 			pos.x++;
 		}
@@ -123,7 +128,7 @@ void	draw_minimap(t_data *data, int minimap_size, int *mask, t_vec2 player_map)
 	float		angle;
 	float		cos_angle;
 	float		sin_angle;
-	int 		color;
+	int			color;
 
 	angle = atan2(data->player.dir.y, data->player.dir.x);
 	cos_angle = cos(angle);
@@ -136,15 +141,14 @@ void	draw_minimap(t_data *data, int minimap_size, int *mask, t_vec2 player_map)
 		{
 			if (mask[pos.y * minimap_size + pos.x])
 			{
-				d.x = pos.x - (((WIN_HEIGHT * 0.28 / 2 ) / 1.5)) * data->settings.minimap_scale;
-				d.y = pos.y - (((WIN_HEIGHT * 0.28 / 2 ) / 1.5)) * data->settings.minimap_scale;
+				d.x = pos.x - (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
+				d.y = pos.y - (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
 				rotated.x = -d.y;
 				rotated.y = d.x;
 				final.x = cos_angle * rotated.x - sin_angle * rotated.y;
 				final.y = sin_angle * rotated.x + cos_angle * rotated.y;
 				map.x = player_map.x + final.x / MINIMAP_SCALE * data->settings.minimap_scale;
 				map.y = player_map.y + final.y / MINIMAP_SCALE * data->settings.minimap_scale;
-
 				color = 0xFF808080;
 				if (map.x >= 0 && map.x < data->map.cols && map.y >= 0
 					&& map.y < data->map.rows)
@@ -167,7 +171,7 @@ void	put_minimap(t_data *data, int minimap_size)
 {
 	t_vec2_int	pos;
 	t_vec2_int	window_offset;
-	int 		color;
+	int			color;
 
 	window_offset.x = 10;
 	window_offset.y = 10;
@@ -177,10 +181,11 @@ void	put_minimap(t_data *data, int minimap_size)
 		pos.x = 0;
 		while (pos.x < minimap_size)
 		{
-			color = mlx_get_image_pixel(data->graphics.mlx,
+			color = mlx_get_image_pixel(data->graphics.mlx, \
 					data->graphics.img_mini_map, pos.x, pos.y);
 			if (color != 0x00000000)
-				mlx_pixel_put(data->graphics.mlx, data->graphics.win, window_offset.x + pos.x,
+				mlx_pixel_put(data->graphics.mlx, \
+				data->graphics.win, window_offset.x + pos.x,
 					window_offset.y + pos.y, color);
 			pos.x++;
 		}
@@ -190,11 +195,11 @@ void	put_minimap(t_data *data, int minimap_size)
 
 void	print_minimap(t_data *data)
 {
-	t_vec2		player_map;
-	int 		minimap_size;
+	t_vec2	player_map;
+	int		minimap_size;
 
-	minimap_size = (2 * (((WIN_HEIGHT * 0.28 / 2 ) / 1.5))) * data->settings.minimap_scale;
-	int mask[minimap_size * minimap_size];
+	minimap_size = ((WIN_HEIGHT * 0.56 / 3)) * data->settings.minimap_scale;
+	int		mask[minimap_size * minimap_size];
 	create_circular_mask(mask, minimap_size, minimap_size);
 	player_map.x = data->player.pos.x;
 	player_map.y = data->player.pos.y;
