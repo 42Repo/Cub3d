@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/25 14:56:17 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/25 15:10:25 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,51 +118,101 @@ void	reset_minimap(t_data *data, int minimap_size)
 	}
 }
 
-void	init_minimap(t_data *data, t_vec2i pos, t_vec2f player_map, int *color)
-{
-	t_vec2i	d;
-	t_vec2f	final;
-	t_vec2i	map;
-	t_vec2f	rotated;
-	t_vec2f	cos_sin;
+// void	init_minimap(t_data *data, t_vec2i pos, t_vec2f player_map, int *color)
+// {
+// 	t_vec2i	d;
+// 	t_vec2f	final;
+// 	t_vec2i	map;
+// 	t_vec2f	rotated;
+// 	t_vec2f	cos_sin;
 
-	cos_sin.x = cos(atan2(data->player.dir.y, data->player.dir.x));
-	cos_sin.y = sin(atan2(data->player.dir.y, data->player.dir.x));
-	d.x = pos.x - (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
-	d.y = pos.y - (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
-	rotated = (t_vec2f){-d.y, d.x};
-	final.x = cos_sin.x * rotated.x - cos_sin.y * rotated.y;
-	final.y = cos_sin.y * rotated.x + cos_sin.x * rotated.y;
-	map.x = player_map.x + final.x / \
-	MINIMAP_SCALE * data->settings.minimap_scale;
-	map.y = map.x;
-	*color = 0xFF808080;
-	if (map.x >= 0 && map.x < data->map.cols && map.y >= 0
-		&& map.y < data->map.rows)
-	{
-		if (data->map.map[map.y][map.x] == '1')
-			*color = 0xFFFF0000;
-		if (data->map.map[map.y][map.x] == 'D')
-			*color = 0xFF0000FF;
-	}
-}
+// 	cos_sin.x = cos(atan2(data->player.dir.y, data->player.dir.x));
+// 	cos_sin.y = sin(atan2(data->player.dir.y, data->player.dir.x));
+// 	d.x = pos.x - (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
+// 	d.y = pos.y - (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
+// 	rotated = (t_vec2f){-d.y, d.x};
+// 	final.x = cos_sin.x * rotated.x - cos_sin.y * rotated.y;
+// 	final.y = cos_sin.y * rotated.x + cos_sin.x * rotated.y;
+// 	map.x = player_map.x + final.x / \
+// 	MINIMAP_SCALE * data->settings.minimap_scale;
+// 	map.y = map.x;
+// 	*color = 0xFF808080;
+// 	if (map.x >= 0 && map.x < data->map.cols && map.y >= 0
+// 		&& map.y < data->map.rows)
+// 	{
+// 		if (data->map.map[map.y][map.x] == '1')
+// 			*color = 0xFFFF0000;
+// 		if (data->map.map[map.y][map.x] == 'D')
+// 			*color = 0xFF0000FF;
+// 	}
+// }
 
-void	draw_minimap(t_data *data, int size, int *mask, t_vec2f player_map)
+// void	draw_minimap(t_data *data, int minimap_size, int *mask, t_vec2f player_map)
+// {
+// 	t_vec2i	pos;
+// 	int		color;
+
+// 	pos.y = 0;
+// 	while (pos.y < minimap_size)
+// 	{
+// 		pos.x = 0;
+// 		while (pos.x < minimap_size)
+// 		{
+// 			if (mask[pos.y * minimap_size + pos.x])
+// 			{
+// 				init_minimap(data, pos, player_map, &color);
+// 				mlx_set_image_pixel(data->graphics.mlx, \
+// 				data->graphics.img_mini_map, pos.x, pos.y, color);
+// 			}
+// 			pos.x++;
+// 		}
+// 		pos.y++;
+// 	}
+// }
+
+void	draw_minimap(t_data *data, int minimap_size, int *mask, t_vec2f player_map)
 {
 	t_vec2i	pos;
-	int		color;
+	t_vec2i	d;
+	t_vec2i	rotated;
+	t_vec2f	final;
+	t_vec2i	map;
+	float	angle;
+	float	cos_angle;
+	float	sin_angle;
+	int 	color;
 
+	angle = atan2(data->player.dir.y, data->player.dir.x);
+	cos_angle = cos(angle);
+	sin_angle = sin(angle);
 	pos.y = 0;
-	while (pos.y < size)
+	while (pos.y < minimap_size)
 	{
 		pos.x = 0;
-		while (pos.x < size)
+		while (pos.x < minimap_size)
 		{
-			if (mask[pos.y * size + pos.x])
+			if (mask[pos.y * minimap_size + pos.x])
 			{
-				init_minimap(data, pos, player_map, &color);
-				mlx_set_image_pixel(data->graphics.mlx, \
-				data->graphics.img_mini_map, pos.x, pos.y, color);
+				d.x = pos.x - (((WIN_HEIGHT * 0.28 / 2 ) / 1.5)) * data->settings.minimap_scale;
+				d.y = pos.y - (((WIN_HEIGHT * 0.28 / 2 ) / 1.5)) * data->settings.minimap_scale;
+				rotated.x = -d.y;
+				rotated.y = d.x;
+				final.x = cos_angle * rotated.x - sin_angle * rotated.y;
+				final.y = sin_angle * rotated.x + cos_angle * rotated.y;
+				map.x = player_map.x + final.x / MINIMAP_SCALE * data->settings.minimap_scale;
+				map.y = player_map.y + final.y / MINIMAP_SCALE * data->settings.minimap_scale;
+
+				color = 0xFF808080;
+				if (map.x >= 0 && map.x < data->map.cols && map.y >= 0
+					&& map.y < data->map.rows)
+				{
+					if (data->map.map[map.y][map.x] == '1')
+						color = 0xFFFF0000;
+					if (data->map.map[map.y][map.x] == 'D')
+						color = 0xFF0000FF;
+				}
+				mlx_set_image_pixel(data->graphics.mlx, data->graphics.img_mini_map, pos.x, pos.y,
+					color);
 			}
 			pos.x++;
 		}
@@ -174,7 +224,7 @@ void	put_minimap(t_data *data, int minimap_size)
 {
 	t_vec2i	pos;
 	t_vec2i	window_offset;
-	int		color;
+	int			color;
 
 	window_offset.x = 10;
 	window_offset.y = 10;
