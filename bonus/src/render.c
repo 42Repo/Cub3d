@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:05:34 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/25 14:53:28 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/25 15:12:40 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_background(t_data *data)
 {
 	int			pitch_shift;
 	int			color;
-	t_vec2f	pos;
+	t_vec2f		pos;
 	int			start_y;
 	static int	prev_pitch_shift = 0;
 

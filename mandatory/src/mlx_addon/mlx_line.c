@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:13:12 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/08 19:08:31 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/27 12:53:34 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	mlx_draw_line_gradient(void *mlx, void *img, t_vec2_color a,
 	}
 }
 
-void	mlx_draw_line(void *mlx, void *img, t_vec2_color a, t_vec2 b)
+void	mlx_draw_line(void *mlx, void *img, t_vec2_color a, t_vec2f b)
 {
 	t_line_vars	vars;
 	int			steps;

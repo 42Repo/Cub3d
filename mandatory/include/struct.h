@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/25 14:50:09 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 12:52:18 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@
 # define S 22
 # define D 7
 
-typedef struct s_vec2
+typedef struct s_vec2f
 {
 	float		x;
 	float		y;
-}				t_vec2;
+}				t_vec2f;
 
-typedef struct s_vec2_int
+typedef struct s_vec2i
 {
 	int			x;
 	int			y;
