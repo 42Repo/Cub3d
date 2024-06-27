@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/27 13:06:32 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:09:10 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,21 +93,21 @@ void	draw_player_marker(t_data *data)
 {
 	t_vec2i	center;
 
-	center.x = 10 + (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
-	center.y = 10 + (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
+	center.x = (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
+	center.y = (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
 	draw_circle(3, center, data);
 	draw_tip(center, data);
 }
 
-void	reset_minimap(t_data *data, int minimap_size)
+void	reset_minimap(t_data *data, int size)
 {
 	t_vec2i	pos;
 
 	pos.y = 0;
-	while (pos.y < minimap_size)
+	while (pos.y < size)
 	{
 		pos.x = 0;
-		while (pos.x < minimap_size)
+		while (pos.x < size)
 		{
 			mlx_set_image_pixel(data->graphics.mlx, \
 			data->graphics.img_mini_map, pos.x, pos.y,
@@ -118,7 +118,7 @@ void	reset_minimap(t_data *data, int minimap_size)
 	}
 }
 
-void	draw_minimap(t_data *data, int minimap_size, int *mask, t_vec2f player_map)
+void	draw_minimap(t_data *data, int size, int *mask, t_vec2f player_map)
 {
 	t_vec2i	pos;
 	t_vec2i	d;
@@ -128,21 +128,21 @@ void	draw_minimap(t_data *data, int minimap_size, int *mask, t_vec2f player_map)
 	float	angle;
 	float	cos_angle;
 	float	sin_angle;
-	int 	color;
+	int		color;
 
 	angle = atan2(data->player.dir.y, data->player.dir.x);
 	cos_angle = cos(angle);
 	sin_angle = sin(angle);
 	pos.y = 0;
-	while (pos.y < minimap_size)
+	while (pos.y < size)
 	{
 		pos.x = 0;
-		while (pos.x < minimap_size)
+		while (pos.x < size)
 		{
-			if (mask[pos.y * minimap_size + pos.x])
+			if (mask[pos.y * size + pos.x])
 			{
-				d.x = pos.x - (((WIN_HEIGHT * 0.28 / 2 ) / 1.5)) * data->settings.minimap_scale;
-				d.y = pos.y - (((WIN_HEIGHT * 0.28 / 2 ) / 1.5)) * data->settings.minimap_scale;
+				d.x = pos.x - (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
+				d.y = pos.y - (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
 				rotated.x = -d.y;
 				rotated.y = d.x;
 				final.x = cos_angle * rotated.x - sin_angle * rotated.y;
@@ -167,7 +167,7 @@ void	draw_minimap(t_data *data, int minimap_size, int *mask, t_vec2f player_map)
 	}
 }
 
-void	put_minimap(t_data *data, int minimap_size)
+void	put_minimap(t_data *data, int size)
 {
 	t_vec2i	pos;
 	t_vec2i	window_offset;
@@ -176,10 +176,10 @@ void	put_minimap(t_data *data, int minimap_size)
 	window_offset.x = 10;
 	window_offset.y = 10;
 	pos.y = 0;
-	while (pos.y < minimap_size)
+	while (pos.y < size)
 	{
 		pos.x = 0;
-		while (pos.x < minimap_size)
+		while (pos.x < size)
 		{
 			color = mlx_get_image_pixel(data->graphics.mlx, \
 					data->graphics.img_mini_map, pos.x, pos.y);
@@ -196,17 +196,17 @@ void	put_minimap(t_data *data, int minimap_size)
 void	print_minimap(t_data *data)
 {
 	t_vec2f	player_map;
-	int		minimap_size;
+	int		size;
 	int		*mask;
 
-	minimap_size = ((WIN_HEIGHT * 0.56 / 3)) * data->settings.minimap_scale;
-	mask = malloc(sizeof(int) * minimap_size * minimap_size);
-	create_circular_mask(mask, minimap_size, minimap_size);
+	size = (WIN_HEIGHT * 0.56 / 3) * data->settings.minimap_scale;
+	mask = malloc(sizeof(int) * size * size);
+	create_circular_mask(mask, size, size);
 	player_map.x = data->player.pos.x;
 	player_map.y = data->player.pos.y;
-	reset_minimap(data, minimap_size);
-	draw_minimap(data, minimap_size, mask, player_map);
+	reset_minimap(data, size);
+	draw_minimap(data, size, mask, player_map);
 	draw_player_marker(data);
-	put_minimap(data, minimap_size);
+	put_minimap(data, size);
 	free(mask);
 }

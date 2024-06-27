@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 13:52:15 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:21:51 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,52 +19,53 @@ void	other_move(t_data *data)
 		data->settings.minimap_scale = 1.5;
 }
 
-int	update(void *param)
+void	screen_state_game(bool *first, t_data *d)
 {
-	t_data		*d;
-	static bool	first = true;
+	if (*first)
+	{
+		*first = false;
+		system("aplay -q ./textures/menu/button_pressed.wav &");
+		usleep(250000);
+		mlx_mouse_hide();
+	}
+	mouse_move(d);
+	move(d);
+	other_move(d);
+	render(d);
+	fps_counter();
+}
 
-	d = (t_data *)param;
-	if (d->settings.screen_state == GAME)
+void	screen_state_menu(t_data *d)
+{
+	update_button_states(d);
+	render_menu(d);
+}
+
+void	screen_state_settings(bool *first, t_data *d)
+{
+	(void)d;
+	if (first)
 	{
-		if (first)
-		{
-			first = false;
-			system("aplay -q ./textures/menu/button_pressed.wav &");
-			usleep(250000);
-			mlx_mouse_hide();
-		}
-		mouse_move(d);
-		move(d);
-		other_move(d);
-		render(d);
-		fps_counter();
+		first = false;
+		system("aplay -q ./textures/menu/button_pressed.wav &");
+		usleep(250000);
 	}
-	else if (d->settings.screen_state == MAIN_MENU)
+	// d->settings.screen_state = MAIN_MENU;
+}
+
+void	screen_state_exit(bool *first, t_data *d)
+{
+	if (first)
 	{
-		update_button_states(d);
-		render_menu(d);
+		first = false;
+		system("aplay -q ./textures/menu/button_pressed.wav &");
+		usleep(250000);
 	}
-	else if (d->settings.screen_state == SETTINGS)
-	{
-		if (first)
-		{
-			first = false;
-			system("aplay -q ./textures/menu/button_pressed.wav &");
-			usleep(250000);
-		}
-		// d->settings.screen_state = MAIN_MENU;
-	}
-	else if (d->settings.screen_state == EXIT)
-	{
-		if (first)
-		{
-			first = false;
-			system("aplay -q ./textures/menu/button_pressed.wav &");
-			usleep(250000);
-		}
-		exit_game(*d, EXIT_GAME);
-	}
+	exit_game(*d, EXIT_GAME);
+}
+
+void	press_button(t_data *d)
+{
 	if (d->graphics.menu.play_button.is_pressed == true)
 	{
 		d->graphics.menu.play_button.is_pressed = false;
@@ -80,6 +81,23 @@ int	update(void *param)
 		d->graphics.menu.settings_button.is_pressed = false;
 		d->settings.screen_state = SETTINGS;
 	}
+}
+
+int	update(void *param)
+{
+	t_data		*d;
+	static bool	first = true;
+
+	d = (t_data *)param;
+	if (d->settings.screen_state == GAME)
+		screen_state_game(&first, d);
+	else if (d->settings.screen_state == MAIN_MENU)
+		screen_state_menu(d);
+	else if (d->settings.screen_state == SETTINGS)
+		screen_state_settings(&first, d);
+	else if (d->settings.screen_state == EXIT)
+		screen_state_exit(&first, d);
+	press_button(d);
 	return (0);
 }
 
