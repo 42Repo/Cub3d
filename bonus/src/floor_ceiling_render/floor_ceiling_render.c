@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:42:48 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/27 14:09:57 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:32:32 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ static inline void	calculate_line_data(t_render_data *rd, int y,
 {
 	ld->pitch = rd->data->player.pitch;
 	ld->real_y = y + ld->pitch * WIN_HEIGHT;
-	ld->render_ceiling = ld->real_y < rd->centerLine;
+	ld->render_ceiling = ld->real_y < rd->center_line;
 	if (ld->render_ceiling)
-		ld->p = rd->centerLine - ld->real_y;
+		ld->p = rd->center_line - ld->real_y;
 	else
-		ld->p = ld->real_y - rd->centerLine;
+		ld->p = ld->real_y - rd->center_line;
 	if (ld->p == 0)
 		ld->p = 1;
-	ld->row_distance = rd->posZ / ld->p;
+	ld->row_distance = rd->pos_z / ld->p;
 }
 
 static inline void	prepare_pixel_data(t_render_data *rd, t_line_data *ld,
@@ -75,10 +75,13 @@ static inline void	render_horizontal_line(t_render_data *rd, int y)
 inline void	render_floor_and_ceiling(t_data *data)
 {
 	t_render_data	rd;
+	int				i;
 
+	i = 0;
 	init_render_data(&rd, data);
-	for (int y = 0; y < WIN_HEIGHT; y++)
+	while (i < WIN_HEIGHT)
 	{
-		render_horizontal_line(&rd, y);
+		render_horizontal_line(&rd, i);
+		i++;
 	}
 }

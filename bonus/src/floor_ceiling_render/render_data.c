@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:42:52 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/27 15:26:37 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:31:01 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ inline void	init_render_data(t_render_data *rd, t_data *data)
 	rd->ray_dir_y0 = data->player.dir.y - data->player.plane.y;
 	rd->ray_dir_x1 = data->player.dir.x + data->player.plane.x;
 	rd->ray_dir_y1 = data->player.dir.y + data->player.plane.y;
-	rd->centerLine = WIN_HEIGHT / 2.0;
-	rd->posZ = 0.5 * WIN_HEIGHT;
+	rd->center_line = WIN_HEIGHT / 2.0;
+	rd->pos_z = 0.5 * WIN_HEIGHT;
 }
 
 inline void	calculate_floor_step(t_render_data *rd, float row_distance,

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   game_controls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:58:24 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/27 15:12:24 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/27 15:35:19 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_player_movement.h"
 
-void	move(t_data *data)
+void	manage_sprint(t_data *data)
 {
 	if (data->graphics.key_states[SDL_SCANCODE_LCTRL])
 	{
@@ -30,6 +30,11 @@ void	move(t_data *data)
 			data->player.move_speed = 0.05;
 		}
 	}
+}
+
+void	move(t_data *data)
+{
+	manage_sprint(data);
 	if (data->graphics.key_states[W])
 		move_forward(data);
 	if (data->graphics.key_states[S])

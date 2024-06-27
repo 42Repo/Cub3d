@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
+#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/22 03:03:16 by asuc             ###   ########.fr        #
+#    Updated: 2024/06/27 15:42:35 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ src/exit.c       \
 src/hook.c       \
 src/set_game.c   \
 src/set_image.c  \
+src/screen_state.c \
 src/parsing/parsing.c \
 src/parsing/parsing_utils.c \
 src/parsing/parse_texture.c \
@@ -45,6 +46,7 @@ src/movement/keyboard_movement.c \
 src/movement/mouse_movement.c \
 src/movement/movement_utils.c \
 src/minimap/rotate_minimap.c \
+src/minimap/player_minimap.c \
 src/render.c \
 src/resize_textures.c \
 src/menu/menu.c \

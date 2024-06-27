@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:39:58 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/27 14:06:41 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:30:32 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ typedef struct s_render_data
 	float	ray_dir_y0;
 	float	ray_dir_x1;
 	float	ray_dir_y1;
-	float	centerLine;
-	float	posZ;
+	float	center_line;
+	float	pos_z;
 	int		*texture;
 	int		width;
 	int		height;
