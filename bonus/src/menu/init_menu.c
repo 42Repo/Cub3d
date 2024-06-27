@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 21:41:16 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/25 14:49:34 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 13:23:44 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ static void	resize_image(t_data *data, t_image *src, t_vec2i new_size)
 
 void init_menu(t_data *data)
 {
-    float scale_factor_width = (float)WIN_WIDTH / 1920.0f;
-    float scale_factor_height = (float)WIN_HEIGHT / 1080.0f;
+	float scale_factor_width = (float)WIN_WIDTH / 1920.0f;
+	float scale_factor_height = (float)WIN_HEIGHT / 1080.0f;
 
-    data->graphics.menu.img_background.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/menu_background.png", &data->graphics.menu.img_background.width, &data->graphics.menu.img_background.height);
-    resize_image(data, &data->graphics.menu.img_background, (t_vec2i){WIN_WIDTH, WIN_HEIGHT});
+	data->graphics.menu.img_background.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/menu_background.png", &data->graphics.menu.img_background.width, &data->graphics.menu.img_background.height);
+	resize_image(data, &data->graphics.menu.img_background, (t_vec2i){WIN_WIDTH, WIN_HEIGHT});
 
-    data->graphics.menu.img_background_button.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/GUI.png", &data->graphics.menu.img_background_button.width, &data->graphics.menu.img_background_button.height);
-    resize_image(data, &data->graphics.menu.img_background_button, (t_vec2i){data->graphics.menu.img_background_button.width * scale_factor_width * 7, data->graphics.menu.img_background_button.height * scale_factor_height * 7});
+	data->graphics.menu.img_background_button.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/GUI.png", &data->graphics.menu.img_background_button.width, &data->graphics.menu.img_background_button.height);
+	resize_image(data, &data->graphics.menu.img_background_button, (t_vec2i){data->graphics.menu.img_background_button.width * scale_factor_width * 7, data->graphics.menu.img_background_button.height * scale_factor_height * 7});
 
-    data->graphics.menu.play_button.img.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/start.png", &data->graphics.menu.play_button.img.width, &data->graphics.menu.play_button.img.height);
-    resize_image(data, &data->graphics.menu.play_button.img, (t_vec2i){data->graphics.menu.play_button.img.width * scale_factor_width * 7, data->graphics.menu.play_button.img.height * scale_factor_height * 7});
+	data->graphics.menu.play_button.img.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/start.png", &data->graphics.menu.play_button.img.width, &data->graphics.menu.play_button.img.height);
+	resize_image(data, &data->graphics.menu.play_button.img, (t_vec2i){data->graphics.menu.play_button.img.width * scale_factor_width * 7, data->graphics.menu.play_button.img.height * scale_factor_height * 7});
 
 	data->graphics.menu.play_button.img_hovered.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/start_hovered.png", &data->graphics.menu.play_button.img_hovered.width, &data->graphics.menu.play_button.img_hovered.height);
 	resize_image(data, &data->graphics.menu.play_button.img_hovered, (t_vec2i){data->graphics.menu.play_button.img_hovered.width * scale_factor_width * 7, data->graphics.menu.play_button.img_hovered.height * scale_factor_height * 7});
@@ -68,8 +68,8 @@ void init_menu(t_data *data)
 	data->graphics.menu.play_button.img_pressed.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/start_pressed.png", &data->graphics.menu.play_button.img_pressed.width, &data->graphics.menu.play_button.img_pressed.height);
 	resize_image(data, &data->graphics.menu.play_button.img_pressed, (t_vec2i){data->graphics.menu.play_button.img_pressed.width * scale_factor_width * 7, data->graphics.menu.play_button.img_pressed.height * scale_factor_height * 7});
 
-    data->graphics.menu.exit_button.img.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/exit.png", &data->graphics.menu.exit_button.img.width, &data->graphics.menu.exit_button.img.height);
-    resize_image(data, &data->graphics.menu.exit_button.img, (t_vec2i){data->graphics.menu.exit_button.img.width * scale_factor_width * 7, data->graphics.menu.exit_button.img.height * scale_factor_height * 7});
+	data->graphics.menu.exit_button.img.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/exit.png", &data->graphics.menu.exit_button.img.width, &data->graphics.menu.exit_button.img.height);
+	resize_image(data, &data->graphics.menu.exit_button.img, (t_vec2i){data->graphics.menu.exit_button.img.width * scale_factor_width * 7, data->graphics.menu.exit_button.img.height * scale_factor_height * 7});
 
 	data->graphics.menu.exit_button.img_hovered.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/exit_hovered.png", &data->graphics.menu.exit_button.img_hovered.width, &data->graphics.menu.exit_button.img_hovered.height);
 	resize_image(data, &data->graphics.menu.exit_button.img_hovered, (t_vec2i){data->graphics.menu.exit_button.img_hovered.width * scale_factor_width * 7, data->graphics.menu.exit_button.img_hovered.height * scale_factor_height * 7});
@@ -77,8 +77,8 @@ void init_menu(t_data *data)
 	data->graphics.menu.exit_button.img_pressed.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/exit_pressed.png", &data->graphics.menu.exit_button.img_pressed.width, &data->graphics.menu.exit_button.img_pressed.height);
 	resize_image(data, &data->graphics.menu.exit_button.img_pressed, (t_vec2i){data->graphics.menu.exit_button.img_pressed.width * scale_factor_width * 7, data->graphics.menu.exit_button.img_pressed.height * scale_factor_height * 7});
 
-    data->graphics.menu.settings_button.img.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/settings.png", &data->graphics.menu.settings_button.img.width, &data->graphics.menu.settings_button.img.height);
-    resize_image(data, &data->graphics.menu.settings_button.img, (t_vec2i){data->graphics.menu.settings_button.img.width * scale_factor_width * 7, data->graphics.menu.settings_button.img.height * scale_factor_height * 7});
+	data->graphics.menu.settings_button.img.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/settings.png", &data->graphics.menu.settings_button.img.width, &data->graphics.menu.settings_button.img.height);
+	resize_image(data, &data->graphics.menu.settings_button.img, (t_vec2i){data->graphics.menu.settings_button.img.width * scale_factor_width * 7, data->graphics.menu.settings_button.img.height * scale_factor_height * 7});
 
 	data->graphics.menu.settings_button.img_hovered.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/settings_hovered.png", &data->graphics.menu.settings_button.img_hovered.width, &data->graphics.menu.settings_button.img_hovered.height);
 	resize_image(data, &data->graphics.menu.settings_button.img_hovered, (t_vec2i){data->graphics.menu.settings_button.img_hovered.width * scale_factor_width * 7, data->graphics.menu.settings_button.img_hovered.height * scale_factor_height * 7});
@@ -86,12 +86,12 @@ void init_menu(t_data *data)
 	data->graphics.menu.settings_button.img_pressed.img = mlx_png_file_to_image(data->graphics.mlx, "textures/menu/settings_pressed.png", &data->graphics.menu.settings_button.img_pressed.width, &data->graphics.menu.settings_button.img_pressed.height);
 	resize_image(data, &data->graphics.menu.settings_button.img_pressed, (t_vec2i){data->graphics.menu.settings_button.img_pressed.width * scale_factor_width * 7, data->graphics.menu.settings_button.img_pressed.height * scale_factor_height * 7});
 
-    data->graphics.menu.play_button.pos = (t_vec2i){(WIN_WIDTH / 2) - (data->graphics.menu.img_background_button.width / 2) + 56 * scale_factor_width, (WIN_HEIGHT / 2) - (data->graphics.menu.img_background_button.height / 2) + 77 * scale_factor_height};
-    data->graphics.menu.play_button.size = (t_vec2i){data->graphics.menu.play_button.img.width, data->graphics.menu.play_button.img.height};
+	data->graphics.menu.play_button.pos = (t_vec2i){(WIN_WIDTH / 2) - (data->graphics.menu.img_background_button.width / 2) + 56 * scale_factor_width, (WIN_HEIGHT / 2) - (data->graphics.menu.img_background_button.height / 2) + 77 * scale_factor_height};
+	data->graphics.menu.play_button.size = (t_vec2i){data->graphics.menu.play_button.img.width, data->graphics.menu.play_button.img.height};
 
 
-    data->graphics.menu.settings_button.pos = (t_vec2i){data->graphics.menu.play_button.pos.x, data->graphics.menu.play_button.pos.y + data->graphics.menu.play_button.size.y + 14 * scale_factor_height};
-    data->graphics.menu.settings_button.size = (t_vec2i){data->graphics.menu.settings_button.img.width, data->graphics.menu.settings_button.img.height};
+	data->graphics.menu.settings_button.pos = (t_vec2i){data->graphics.menu.play_button.pos.x, data->graphics.menu.play_button.pos.y + data->graphics.menu.play_button.size.y + 14 * scale_factor_height};
+	data->graphics.menu.settings_button.size = (t_vec2i){data->graphics.menu.settings_button.img.width, data->graphics.menu.settings_button.img.height};
 
 	data->graphics.menu.exit_button.pos = (t_vec2i){data->graphics.menu.settings_button.pos.x, data->graphics.menu.settings_button.pos.y + data->graphics.menu.settings_button.size.y + 14 * scale_factor_height};
 	data->graphics.menu.exit_button.size = (t_vec2i){data->graphics.menu.exit_button.img.width, data->graphics.menu.exit_button.img.height};

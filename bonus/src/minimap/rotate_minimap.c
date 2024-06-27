@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/25 17:00:19 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 13:06:32 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ void	put_minimap(t_data *data, int minimap_size)
 {
 	t_vec2i	pos;
 	t_vec2i	window_offset;
-	int			color;
+	int		color;
 
 	window_offset.x = 10;
 	window_offset.y = 10;

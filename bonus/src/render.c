@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:05:34 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/25 15:12:40 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 13:10:47 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static inline void	set_image(t_vec2f pos, int start_y, int color, t_data *data)
 		{
 			if (pos.y < WIN_HEIGHT && pos.y >= 0 && pos.x < WIN_WIDTH
 				&& pos.x >= 0)
-				mlx_set_image_pixel(data->graphics.mlx, data->graphics.game.img_background,
-					pos.x, pos.y, color);
+				mlx_set_image_pixel(data->graphics.mlx, \
+				data->graphics.game.img_background, pos.x, pos.y, color);
 			pos.x++;
 		}
 		pos.y++;
@@ -59,7 +59,7 @@ void	render(t_data *data)
 	mlx_clear_window(data->graphics.mlx, data->graphics.win);
 	if (data->graphics.game.floor_and_ceiling)
 		render_floor_and_ceiling(data);
-	else 
+	else
 	{
 		print_background(data);
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,

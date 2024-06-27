@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/23 14:03:46 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/27 13:10:03 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,31 @@ void	exit_preloaderror(t_data data)
 
 void	exit_exitgame(t_data d)
 {
-	mlx_loop_end(d.graphics.mlx);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.game.img_background);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.wall_sprite.wall_e.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.wall_sprite.wall_w.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.wall_sprite.wall_s.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.wall_sprite.wall_n.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.img_mini_map);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.img_background.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.play_button.img.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.play_button.img_hovered.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.play_button.img_pressed.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.exit_button.img.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.exit_button.img_hovered.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.exit_button.img_pressed.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.settings_button.img.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.settings_button.img_hovered.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.settings_button.img_pressed.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.menu.img_background_button.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.wall_sprite.floor.img);
-	mlx_destroy_image(d.graphics.mlx, d.graphics.wall_sprite.ceiling.img);
-	mlx_destroy_window(d.graphics.mlx, d.graphics.win);
-	mlx_destroy_display(d.graphics.mlx);
+	t_graphics	*g;
+
+	g = &d.graphics;
+	mlx_loop_end(g->mlx);
+	mlx_destroy_image(g->mlx, g->game.img_background);
+	mlx_destroy_image(g->mlx, g->wall_sprite.wall_e.img);
+	mlx_destroy_image(g->mlx, g->wall_sprite.wall_w.img);
+	mlx_destroy_image(g->mlx, g->wall_sprite.wall_s.img);
+	mlx_destroy_image(g->mlx, g->wall_sprite.wall_n.img);
+	mlx_destroy_image(g->mlx, g->img_mini_map);
+	mlx_destroy_image(g->mlx, g->menu.img_background.img);
+	mlx_destroy_image(g->mlx, g->menu.play_button.img.img);
+	mlx_destroy_image(g->mlx, g->menu.play_button.img_hovered.img);
+	mlx_destroy_image(g->mlx, g->menu.play_button.img_pressed.img);
+	mlx_destroy_image(g->mlx, g->menu.exit_button.img.img);
+	mlx_destroy_image(g->mlx, g->menu.exit_button.img_hovered.img);
+	mlx_destroy_image(g->mlx, g->menu.exit_button.img_pressed.img);
+	mlx_destroy_image(g->mlx, g->menu.settings_button.img.img);
+	mlx_destroy_image(g->mlx, g->menu.settings_button.img_hovered.img);
+	mlx_destroy_image(g->mlx, g->menu.settings_button.img_pressed.img);
+	mlx_destroy_image(g->mlx, g->menu.img_background_button.img);
+	mlx_destroy_image(g->mlx, g->wall_sprite.floor.img);
+	mlx_destroy_image(g->mlx, g->wall_sprite.ceiling.img);
+	mlx_destroy_window(g->mlx, g->win);
+	mlx_destroy_display(g->mlx);
 }
 
 void	exit_game(t_data data, int status)
