@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 13:55:56 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 14:42:54 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	init_data(t_data *d)
 
 	g = &d->graphics;
 	s = &g->wall_sprite;
+	d->settings.fov = 90;
 	map_size = (t_vec2i){WIN_WIDTH * 0.17, WIN_HEIGHT * 0.28};
 	d->settings.minimap_scale = 1.5;
 	g->mlx = mlx_init();

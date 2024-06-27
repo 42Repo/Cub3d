@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:58:24 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/20 21:50:13 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/27 15:12:24 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,22 @@
 
 void	move(t_data *data)
 {
+	if (data->graphics.key_states[SDL_SCANCODE_LCTRL])
+	{
+		if (data->settings.fov < 91.0)
+		{
+			data->settings.fov += 0.25;
+			data->player.move_speed = 0.08;
+		}
+	}
+	else
+	{
+		if (data->settings.fov > 90)
+		{
+			data->settings.fov -= 0.25;
+			data->player.move_speed = 0.05;
+		}
+	}
 	if (data->graphics.key_states[W])
 		move_forward(data);
 	if (data->graphics.key_states[S])

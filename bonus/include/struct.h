@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/25 14:50:32 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:09:03 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
-# define FOV 90.0
+// # define FOV 90.0
 
 # define LCLICK 1
 # define RCLICK 3
@@ -98,9 +98,9 @@ typedef struct s_map
 
 typedef struct s_player
 {
-	t_vec2f		pos;
-	t_vec2f		dir;
-	t_vec2f		plane;
+	t_vec2f			pos;
+	t_vec2f			dir;
+	t_vec2f			plane;
 	float			move_speed;
 	float			rot_speed;
 	float			pitch;
@@ -137,8 +137,8 @@ typedef struct s_button
 	t_image			img_hovered;
 	bool			is_hovered;
 	bool			is_pressed;
-	t_vec2i		pos;
-	t_vec2i		size;
+	t_vec2i			pos;
+	t_vec2i			size;
 }					t_button;
 
 typedef struct s_menu
@@ -170,6 +170,7 @@ typedef struct s_graphics
 typedef struct s_settings
 {
 	float			minimap_scale;
+	float			fov;
 	t_screen_state	screen_state;
 }					t_settings;
 
