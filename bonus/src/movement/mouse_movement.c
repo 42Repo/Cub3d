@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 18:21:02 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/25 14:50:09 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 14:16:12 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	mouse_move(t_data *data)
 	t_vec2i	mouse;
 	t_vec2f	delta;
 	t_vec2f	screen_center;
-	float		sensitivity;
+	float	sensitivity;
 
 	sensitivity = 0.00075;
 	screen_center.x = WIN_WIDTH / 2;
