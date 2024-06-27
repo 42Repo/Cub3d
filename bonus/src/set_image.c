@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_image.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:24:42 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/20 21:55:25 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/27 13:53:33 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,15 @@ int	argb_to_int(t_color color)
 
 void	print_first_background(t_data *data)
 {
-	int	x;
-	int	y;
-	int	ceiling_color;
-	int	floor_color;
+	int			x;
+	int			y;
+	int			ceiling_color;
+	int			floor_color;
+	t_graphics	*g;
 
-	ceiling_color = argb_to_int(data->graphics.wall_sprite.ceiling_color);
-	floor_color = argb_to_int(data->graphics.wall_sprite.floor_color);
+	g = &data->graphics;
+	ceiling_color = argb_to_int(g->wall_sprite.ceiling_color);
+	floor_color = argb_to_int(g->wall_sprite.floor_color);
 	x = 0;
 	while (WIN_WIDTH > x)
 	{
@@ -41,10 +43,10 @@ void	print_first_background(t_data *data)
 		{
 			if (y < WIN_HEIGHT / 2)
 				mlx_set_image_pixel \
-				(data->graphics.mlx, data->graphics.game.img_background, x, y, ceiling_color);
+				(g->mlx, g->game.img_background, x, y, ceiling_color);
 			else
 				mlx_set_image_pixel \
-				(data->graphics.mlx, data->graphics.game.img_background, x, y, floor_color);
+				(g->mlx, g->game.img_background, x, y, floor_color);
 			y++;
 		}
 		x++;

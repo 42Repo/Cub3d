@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/23 15:02:29 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/27 13:52:15 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,15 @@ int	update(void *param)
 int	key_press(int key, void *param)
 {
 	t_data	*data;
+	t_game	*g;
 
 	data = (t_data *)param;
+	g = &data->graphics.game;
 	if (key == SDL_SCANCODE_ESCAPE)
 		exit_game(*data, EXIT_GAME);
 	data->graphics.key_states[key] = 1;
 	if (key == SDL_SCANCODE_F1)
-		data->graphics.game.floor_and_ceiling = !data->graphics.game.floor_and_ceiling;
+		g->floor_and_ceiling = !g->floor_and_ceiling;
 	return (0);
 }
 
@@ -122,7 +124,7 @@ int	mouse_press(int key, void *param)
 
 int	mouse_release(int key, void *param)
 {
-	t_data *data;
+	t_data	*data;
 
 	data = (t_data *)param;
 	(void)key;

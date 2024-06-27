@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pixel_render.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:42:50 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/24 21:56:07 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/27 14:09:14 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ inline void	render_pixel_row(t_render_data *rd, t_pixel_data *pd,
 
 	for (pd->x = 0; pd->x < WIN_WIDTH; ++pd->x)
 	{
-		pd->tx = ((int)(pd->floorXi >> (SHIFT - 16)) & 0xFFFF)
+		pd->tx = ((int)(pd->floor_xi >> (SHIFT - 16)) & 0xFFFF)
 			* rd->width >> 16;
-		pd->ty = ((int)(pd->floorYi >> (SHIFT - 16)) & 0xFFFF)
+		pd->ty = ((int)(pd->floor_yi >> (SHIFT - 16)) & 0xFFFF)
 			* rd->height >> 16;
 		pd->tx &= rd->width_mask;
 		pd->ty &= rd->height_mask;
@@ -31,7 +31,7 @@ inline void	render_pixel_row(t_render_data *rd, t_pixel_data *pd,
 		color = rd->texture[rd->width * pd->ty + pd->tx];
 		mlx_pixel_put(rd->data->graphics.mlx, rd->data->graphics.win, pd->x,
 			pd->y, color);
-		pd->floorXi += pd->floorStepXi;
-		pd->floorYi += pd->floorStepYi;
+		pd->floor_xi += pd->floor_step_xi;
+		pd->floor_yi += pd->floor_step_yi;
 	}
 }

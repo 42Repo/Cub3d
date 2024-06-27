@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/20 21:50:23 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/27 13:48:59 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	main(int ac, char **av)
 {
-	t_data	data;
+	t_data		data;
+	t_graphics	g;
 
 	ft_bzero(&data, sizeof(t_data));
 	if (parsing(ac, av, &data) == -1)
@@ -22,7 +23,8 @@ int	main(int ac, char **av)
 	init_data(&data);
 	resize_images(&data);
 	preload_textures(&data);
-	data.graphics.win = mlx_new_window(data.graphics.mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
+	g = data.graphics;
+	data.graphics.win = mlx_new_window(g.mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	print_first_background(&data);
 	init_mlx(&data);
 	return (EXIT_SUCCESS);

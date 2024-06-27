@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:42:48 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/25 14:54:36 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 14:09:57 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 static inline void	set_texture_data(t_render_data *rd, bool render_ceiling)
 {
-    t_sprite	*sprite;
+	t_sprite	*sprite;
 
-    sprite = &rd->data->graphics.wall_sprite;
-    if (render_ceiling)
-    {
-        rd->texture = sprite->ceiling_texture;
-        rd->width = sprite->ceiling.width;
-        rd->height = sprite->ceiling.height;
-    }
-    else
-    {
-        rd->texture = sprite->floor_texture;
-        rd->width = sprite->floor.width;
-        rd->height = sprite->floor.height;
-    }
-    rd->width_mask = rd->width - 1;
-    rd->height_mask = rd->height - 1;
+	sprite = &rd->data->graphics.wall_sprite;
+	if (render_ceiling)
+	{
+		rd->texture = sprite->ceiling_texture;
+		rd->width = sprite->ceiling.width;
+		rd->height = sprite->ceiling.height;
+	}
+	else
+	{
+		rd->texture = sprite->floor_texture;
+		rd->width = sprite->floor.width;
+		rd->height = sprite->floor.height;
+	}
+	rd->width_mask = rd->width - 1;
+	rd->height_mask = rd->height - 1;
 }
 
 static inline void	calculate_line_data(t_render_data *rd, int y,
@@ -39,11 +39,13 @@ static inline void	calculate_line_data(t_render_data *rd, int y,
 	ld->pitch = rd->data->player.pitch;
 	ld->real_y = y + ld->pitch * WIN_HEIGHT;
 	ld->render_ceiling = ld->real_y < rd->centerLine;
-	ld->p = ld->render_ceiling ? rd->centerLine - ld->real_y : ld->real_y
-		- rd->centerLine;
+	if (ld->render_ceiling)
+		ld->p = rd->centerLine - ld->real_y;
+	else
+		ld->p = ld->real_y - rd->centerLine;
 	if (ld->p == 0)
 		ld->p = 1;
-	ld->rowDistance = rd->posZ / ld->p;
+	ld->row_distance = rd->posZ / ld->p;
 }
 
 static inline void	prepare_pixel_data(t_render_data *rd, t_line_data *ld,
@@ -52,9 +54,9 @@ static inline void	prepare_pixel_data(t_render_data *rd, t_line_data *ld,
 	t_vec2f	floor_step;
 	t_vec2f	floor_pos;
 
-	calculate_floor_step(rd, ld->rowDistance, &floor_step);
-	floor_pos.x = rd->data->player.pos.x + ld->rowDistance * rd->rayDirX0;
-	floor_pos.y = rd->data->player.pos.y + ld->rowDistance * rd->rayDirY0;
+	calculate_floor_step(rd, ld->row_distance, &floor_step);
+	floor_pos.x = rd->data->player.pos.x + ld->row_distance * rd->ray_dir_x0;
+	floor_pos.y = rd->data->player.pos.y + ld->row_distance * rd->ray_dir_y0;
 	init_pixel_data(pd, floor_pos.x, floor_pos.y, floor_step);
 	pd->y = y;
 }
