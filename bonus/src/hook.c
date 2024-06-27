@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 15:41:20 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 17:08:00 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,19 @@ int	key_press(int key, void *param)
 
 	data = (t_data *)param;
 	g = &data->graphics.game;
-	if (key == SDL_SCANCODE_ESCAPE)
+	if (key == SDL_SCANCODE_ESCAPE && data->settings.screen_state == MAIN_MENU)
 		exit_game(*data, EXIT_GAME);
+	if (key == SDL_SCANCODE_ESCAPE && data->settings.screen_state == GAME)
+	{
+		data->graphics.is_first_frame = true;
+		data->settings.screen_state = MAIN_MENU;
+		mlx_mouse_show();
+	}
+	if (key == SDL_SCANCODE_ESCAPE && data->settings.screen_state == SETTINGS)
+	{
+		data->graphics.is_first_frame = true;
+		data->settings.screen_state = MAIN_MENU;
+	}
 	data->graphics.key_states[key] = 1;
 	if (key == SDL_SCANCODE_F1)
 		g->floor_and_ceiling = !g->floor_and_ceiling;

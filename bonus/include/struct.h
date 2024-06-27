@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/27 15:09:03 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/27 17:03:50 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ typedef struct s_menu
 {
 	t_image			img_background;
 	t_image			img_background_button;
+	t_image			img_darken;
 	t_button		play_button;
 	t_button		exit_button;
 	t_button		settings_button;
@@ -162,6 +163,7 @@ typedef struct s_graphics
 	void			*win;
 	t_menu			menu;
 	t_game			game;
+	bool			is_first_frame;
 	void			*img_mini_map;
 	t_sprite		wall_sprite;
 	int				key_states[256];

@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 14:42:54 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/27 17:04:23 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ void	init_data(t_data *d)
 	d->settings.minimap_scale = 1.5;
 	g->mlx = mlx_init();
 	d->settings.screen_state = MAIN_MENU;
+	d->graphics.is_first_frame = true;
 	g->game.floor_and_ceiling = false;
 	init_menu(d);
+	init_settings_menu(d);
 	s->path_ceiling = "textures/wall/x.png";
 	s->path_floor = "textures/wall/x.png";
 	ft_bzero(g->key_states, 256);

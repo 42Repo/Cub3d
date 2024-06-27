@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
+#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/27 15:42:35 by bgoron           ###   ########.fr        #
+#    Updated: 2024/06/27 16:31:02 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,12 +49,13 @@ src/minimap/rotate_minimap.c \
 src/minimap/player_minimap.c \
 src/render.c \
 src/resize_textures.c \
-src/menu/menu.c \
-src/menu/init_menu.c \
+src/menu/main/menu.c \
+src/menu/main/init_menu.c \
 src/floor_ceiling_render/render_data.c \
 src/floor_ceiling_render/pixel_render.c \
-src/floor_ceiling_render/floor_ceiling_render.c
-
+src/floor_ceiling_render/floor_ceiling_render.c \
+src/menu/settings/settings_menu.c \
+src/menu/settings/init_settings_menu.c
 OBJ_DIR = $(CACHE_DIR)/obj
 DEP_DIR = $(CACHE_DIR)/dep
 

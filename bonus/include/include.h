@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 15:42:11 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/27 16:30:21 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ void	init_menu(t_data *data);
 void	update_button_states(t_data *data);
 
 void	render_floor_and_ceiling(t_data *data);
-int	update(void *param);
+int		update(void *param);
+
+void	render_settings(t_data *data);
+void	init_settings_menu(t_data *data);
 
 #endif // INCLUDE_H
