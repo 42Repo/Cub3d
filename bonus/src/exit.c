@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 16:40:49 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/28 12:32:35 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	exit_preloaderror(t_data data)
 	free(data.graphics.wall_sprite.south_texture);
 	free(data.graphics.wall_sprite.east_texture);
 	free(data.graphics.wall_sprite.west_texture);
+	free(data.graphics.wall_sprite.ceiling_texture);
+	free(data.graphics.wall_sprite.floor_texture);
 }
 
 void	exit_exitgame(t_data d)

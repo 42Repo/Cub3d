@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:15:52 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/19 11:50:43 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/28 14:32:54 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	parse_map(char **file, t_data *data)
 {
 	char	**tmp;
 
-	tmp = file + 6;
+	tmp = file + 8;
 	while (*tmp)
 	{
 		ft_extand_tab(&data->map.map, ft_strdup(*tmp));

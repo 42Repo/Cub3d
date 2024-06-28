@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/25 17:14:21 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/28 13:01:16 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,38 @@ int	print_error(char *error)
 	return (-1);
 }
 
+void	print_parsing(t_data *data)
+{
+	char	**tmp;
+
+	tmp = data->map.map;
+	printf("NO: %s\n", data->graphics.wall_sprite.path_n);
+	printf("SO: %s\n", data->graphics.wall_sprite.path_s);
+	printf("EA: %s\n", data->graphics.wall_sprite.path_e);
+	printf("WE: %s\n", data->graphics.wall_sprite.path_w);
+	printf("C: %s\n", data->graphics.wall_sprite.path_ceiling);
+	printf("F: %s\n", data->graphics.wall_sprite.path_floor);
+	printf("F: %d, %d, %d\n", data->graphics.wall_sprite.floor_color.r,
+		data->graphics.wall_sprite.floor_color.g,
+		data->graphics.wall_sprite.floor_color.b);
+	printf("C: %d, %d, %d\n", data->graphics.wall_sprite.ceiling_color.r,
+		data->graphics.wall_sprite.ceiling_color.g,
+		data->graphics.wall_sprite.ceiling_color.b);
+	printf("Map:\n");
+	while (*tmp)
+	{
+		printf("%s\n", *tmp);
+		tmp++;
+	}
+}
+
 int	parsing(int ac, char **av, t_data *data)
 {
 	int		fd;
 	char	**file;
 
 	file = NULL;
+
 	if (ac != 2)
 		return (print_error("Wrong number of arguments\n"));
 	if (check_extension_file(av[1], ".cub") == -1)

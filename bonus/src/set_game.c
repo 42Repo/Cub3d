@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 17:04:23 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/28 12:43:51 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ void	init_data(t_data *d)
 	g->game.floor_and_ceiling = false;
 	init_menu(d);
 	init_settings_menu(d);
-	s->path_ceiling = "textures/wall/x.png";
-	s->path_floor = "textures/wall/x.png";
 	ft_bzero(g->key_states, 256);
 	init_image(d);
 	g->game.img_background = mlx_new_image(g->mlx, WIN_WIDTH, WIN_HEIGHT);

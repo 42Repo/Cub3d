@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:17:23 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/20 21:50:13 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/28 14:33:41 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ static int	get_wall_texture(t_data *data, char **line)
 		path = &(data->graphics.wall_sprite.path_n);
 	else if (!ft_strncmp(*line, "SO ", 3))
 		path = &(data->graphics.wall_sprite.path_s);
-	else if (!ft_strncmp(*line, "WE ", 3))
-		path = &(data->graphics.wall_sprite.path_w);
 	else if (!ft_strncmp(*line, "EA ", 3))
 		path = &(data->graphics.wall_sprite.path_e);
+	else if (!ft_strncmp(*line, "WE ", 3))
+		path = &(data->graphics.wall_sprite.path_w);
+	else if (!ft_strncmp(*line, "FL ", 3))
+		path = &(data->graphics.wall_sprite.path_floor);
+	else if (!ft_strncmp(*line, "CE ", 3))
+		path = &(data->graphics.wall_sprite.path_ceiling);
 	else
 		return (-1);
 	if (*path)
@@ -70,7 +74,8 @@ int	parse_texture(char **file, t_data *data)
 	{
 		line = *tmp;
 		if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
-			|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3))
+			|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3)
+			|| !ft_strncmp(line, "CE ", 3) || !ft_strncmp(line, "FL ", 3))
 		{
 			if (get_wall_texture(data, &line) == -1)
 				return (ft_free_tab((void **)file));

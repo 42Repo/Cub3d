@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:16:22 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 13:07:23 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/28 12:44:27 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,6 @@ void	resize_images(t_data *data)
 	resize_image(data, &data->graphics.wall_sprite.wall_s);
 	resize_image(data, &data->graphics.wall_sprite.wall_e);
 	resize_image(data, &data->graphics.wall_sprite.wall_w);
+	resize_image(data, &data->graphics.wall_sprite.ceiling);
+	resize_image(data, &data->graphics.wall_sprite.floor);
 }
