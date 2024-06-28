@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:35:29 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/28 12:42:48 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/28 16:59:42 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	check_texture(t_sprite *sprite)
 		return (-1);
 	if (open_file(sprite->path_n) == -1 || open_file(sprite->path_s) == -1 \
 	|| open_file(sprite->path_w) == -1 || open_file(sprite->path_e) == -1 \
-	|| open_file(sprite->path_ceiling) == -1 || open_file(sprite->path_floor) == -1)
+	|| open_file(sprite->path_ceiling) == -1 \
+	|| open_file(sprite->path_floor) == -1)
 		return (-1);
 	return (0);
 }

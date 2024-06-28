@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/28 12:32:35 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/28 16:58:47 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,11 @@ void	exit_preloaderror(t_data data)
 	free(data.graphics.wall_sprite.floor_texture);
 }
 
-void	exit_exitgame(t_data d)
+void	destroy_image(t_data *data)
 {
 	t_graphics	*g;
 
-	g = &d.graphics;
-	mlx_loop_end(g->mlx);
+	g = &data->graphics;
 	mlx_destroy_image(g->mlx, g->game.img_background);
 	mlx_destroy_image(g->mlx, g->wall_sprite.wall_e.img);
 	mlx_destroy_image(g->mlx, g->wall_sprite.wall_w.img);
@@ -57,6 +56,15 @@ void	exit_exitgame(t_data d)
 	mlx_destroy_image(g->mlx, g->wall_sprite.floor.img);
 	mlx_destroy_image(g->mlx, g->wall_sprite.ceiling.img);
 	mlx_destroy_image(g->mlx, g->menu.img_darken.img);
+}
+
+void	exit_exitgame(t_data d)
+{
+	t_graphics	*g;
+
+	g = &d.graphics;
+	mlx_loop_end(g->mlx);
+	destroy_image(&d);
 	mlx_destroy_window(g->mlx, g->win);
 	mlx_destroy_display(g->mlx);
 }
@@ -70,14 +78,4 @@ void	exit_game(t_data data, int status)
 	if (status == EXIT_GAME)
 		exit_exitgame(data);
 	exit(EXIT_SUCCESS);
-}
-
-int	destroy(int key, void *param)
-{
-	t_data	*data;
-
-	data = (t_data *)param;
-	if (!key)
-		exit_game(*data, EXIT_GAME);
-	return (0);
 }

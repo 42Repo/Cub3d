@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 17:08:00 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/28 16:57:43 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,15 @@ int	mouse_release(int key, void *param)
 	data = (t_data *)param;
 	(void)key;
 	(void)data;
+	return (0);
+}
+
+int	destroy(int key, void *param)
+{
+	t_data	*data;
+
+	data = (t_data *)param;
+	if (!key)
+		exit_game(*data, EXIT_GAME);
 	return (0);
 }
