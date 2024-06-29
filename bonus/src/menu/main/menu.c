@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 20:10:56 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/29 21:35:41 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:47:58 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ void	update_button_states(t_data *data)
 	data->graphics.menu.play_button.is_hovered = is_mouse_over_button \
 	(&data->graphics.menu.play_button, mouse.x, mouse.y);
 	if (was_hovered == 0 && data->graphics.menu.play_button.is_hovered == 1)
-		system("aplay -q ./textures/menu/button_hover.wav &");
+		system("paplay ./textures/menu/button_hover.wav &");
 	was_hovered = data->graphics.menu.settings_button.is_hovered;
 	data->graphics.menu.settings_button.is_hovered = is_mouse_over_button \
 	(&data->graphics.menu.settings_button, mouse.x, mouse.y);
 	if (was_hovered == 0 && data->graphics.menu.settings_button.is_hovered == 1)
-		system("aplay -q ./textures/menu/button_hover.wav &");
+		system("paplay ./textures/menu/button_hover.wav &");
 	was_hovered = data->graphics.menu.exit_button.is_hovered;
 	data->graphics.menu.exit_button.is_hovered = is_mouse_over_button \
 	(&data->graphics.menu.exit_button, mouse.x, mouse.y);
 	if (was_hovered == 0 && data->graphics.menu.exit_button.is_hovered == 1)
-		system("aplay -q ./textures/menu/button_hover.wav &");
+		system("paplay ./textures/menu/button_hover.wav &");
 }
 
 void	manage_play_button(t_data *data)

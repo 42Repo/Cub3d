@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 21:40:07 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/29 21:40:48 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:47:11 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	screen_state_game(t_data *d)
 	if (d->graphics.is_first_frame)
 	{
 		d->graphics.is_first_frame = false;
-		system("aplay -q ./textures/menu/button_pressed.wav &");
+		system("paplay ./textures/menu/button_pressed.wav &");
 		usleep(250000);
 		mlx_mouse_hide();
 	}
@@ -43,7 +43,7 @@ void	screen_state_settings(t_data *d)
 	if (d->graphics.is_first_frame)
 	{
 		d->graphics.is_first_frame = false;
-		system("aplay -q ./textures/menu/button_pressed.wav &");
+		system("paplay ./textures/menu/button_pressed.wav &");
 		usleep(250000);
 		mlx_mouse_show();
 	}
@@ -56,7 +56,7 @@ void	screen_state_exit( t_data *d)
 	if (d->graphics.is_first_frame)
 	{
 		d->graphics.is_first_frame = false;
-		system("aplay -q ./textures/menu/button_pressed.wav &");
+		system("paplay ./textures/menu/button_pressed.wav &");
 		usleep(250000);
 	}
 	exit_game(*d, EXIT_GAME);

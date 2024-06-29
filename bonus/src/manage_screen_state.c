@@ -6,12 +6,11 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:41:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/29 21:40:39 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:42:41 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
-#include "mlx.h"
 
 void	press_button(t_data *d)
 {
