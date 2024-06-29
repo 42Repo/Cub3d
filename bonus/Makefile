@@ -6,7 +6,7 @@
 #    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/29 17:15:10 by bgoron           ###   ########.fr        #
+#    Updated: 2024/06/29 21:39:45 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ src/hook.c       \
 src/set_game.c   \
 src/set_image.c  \
 src/screen_state.c \
+src/manage_screen_state.c \
 src/parsing/parsing.c \
 src/parsing/parsing_utils.c \
 src/parsing/parse_texture.c \
@@ -51,6 +52,7 @@ src/render.c \
 src/resize_textures.c \
 src/menu/main/menu.c \
 src/menu/main/init_menu.c \
+src/menu/main/image_menu.c \
 src/floor_ceiling_render/render_data.c \
 src/floor_ceiling_render/pixel_render.c \
 src/floor_ceiling_render/floor_ceiling_render.c \

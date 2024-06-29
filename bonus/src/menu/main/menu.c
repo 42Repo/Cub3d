@@ -6,18 +6,11 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 20:10:56 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/29 14:49:15 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/29 21:35:41 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_menu.h"
-
-int	is_mouse_over_button(t_button *button, int mouse_x, int mouse_y)
-{
-	return (mouse_x >= button->pos.x && mouse_x <= button->pos.x
-		+ button->size.x && mouse_y >= button->pos.y && mouse_y <= button->pos.y
-		+ button->size.y);
-}
 
 void	update_button_states(t_data *data)
 {
