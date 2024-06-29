@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/27 17:03:50 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/29 16:32:19 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,18 @@
 # define A 4
 # define S 22
 # define D 7
+
+# define BACKGROUND "textures/menu/menu_background.png"
+# define GUI "textures/menu/GUI.png"
+# define START "textures/menu/start.png"
+# define START_HOVERED "textures/menu/start_hovered.png"
+# define START_PRESSED "textures/menu/start_pressed.png"
+# define EXIT_MENU "textures/menu/exit.png"
+# define EXIT_HOVERED "textures/menu/exit_hovered.png"
+# define EXIT_PRESSED "textures/menu/exit_pressed.png"
+# define SETTINGS_MENU "textures/menu/settings.png"
+# define SETTINGS_HOVERED "textures/menu/settings_hovered.png"
+# define SETTINGS_PRESSED "textures/menu/settings_pressed.png"
 
 typedef struct s_vec2f
 {
