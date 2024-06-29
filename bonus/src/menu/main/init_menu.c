@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 21:41:16 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/28 17:47:07 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/29 13:44:42 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,25 @@ static void	resize_image(t_data *data, t_image *src, t_vec2i new_size)
 {
 	t_image	dst;
 	t_vec2i	ratio;
-	t_vec2i	pos_src;
-	t_vec2i	pos_dst;
+	t_vec2i	pos_s;
+	t_vec2i	pos_d;
 
 	dst.width = new_size.x;
 	dst.height = new_size.y;
 	init_image(data, src, &dst, &ratio);
-	pos_dst.y = 0;
-	while (pos_dst.y < dst.height)
+	pos_d.y = 0;
+	while (pos_d.y < dst.height)
 	{
-		pos_dst.x = 0;
-		while (pos_dst.x < dst.width)
+		pos_d.x = 0;
+		while (pos_d.x < dst.width)
 		{
-			pos_src.x = (pos_dst.x * ratio.x) >> 16;
-			pos_src.y = (pos_dst.y * ratio.y) >> 16;
-			mlx_set_image_pixel
-				(data->graphics.mlx, dst.img, pos_dst.x, pos_dst.y, \
-				mlx_get_image_pixel(data->graphics.mlx, src->img, pos_src.x, pos_src.y));
-			pos_dst.x++;
+			pos_s.x = (pos_d.x * ratio.x) >> 16;
+			pos_s.y = (pos_d.y * ratio.y) >> 16;
+			mlx_set_image_pixel(data->graphics.mlx, dst.img, pos_d.x, pos_d.y, \
+			mlx_get_image_pixel(data->graphics.mlx, src->img, pos_s.x, pos_s.y));
+			pos_d.x++;
 		}
-		pos_dst.y++;
+		pos_d.y++;
 	}
 	mlx_destroy_image(data->graphics.mlx, src->img);
 	*src = dst;
