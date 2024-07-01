@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 16:26:56 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 16:28:16 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,55 +88,46 @@ int	mouse_press(int key, void *param)
 	{
 		data->graphics.settings.button_state_press = MOVE_FORWARD;
 		data->graphics.settings.waiting_for_key = true;
-		printf("Move forward\n");
 	}
 	else if (data->graphics.settings.button_state_hover == MOVE_BACKWARD)
 	{
 		data->graphics.settings.button_state_press = MOVE_BACKWARD;
 		data->graphics.settings.waiting_for_key = true;
-		printf("Move backward\n");
 	}
 	else if (data->graphics.settings.button_state_hover == MOVE_LEFT)
 	{
 		data->graphics.settings.button_state_press = MOVE_LEFT;
 		data->graphics.settings.waiting_for_key = true;
-		printf("Move left\n");
 	}
 	else if (data->graphics.settings.button_state_hover == MOVE_RIGHT)
 	{
 		data->graphics.settings.waiting_for_key = true;
 		data->graphics.settings.button_state_press = MOVE_RIGHT;
-		printf("Move right\n");
 	}
 	else if (data->graphics.settings.button_state_hover == ROTATE_LEFT)
 	{
 		data->graphics.settings.waiting_for_key = true;
 		data->graphics.settings.button_state_press = ROTATE_LEFT;
-		printf("Rotate left\n");
 	}
 	else if (data->graphics.settings.button_state_hover == ROTATE_RIGHT)
 	{
 		data->graphics.settings.waiting_for_key = true;
 		data->graphics.settings.button_state_press = ROTATE_RIGHT;
-		printf("Rotate right\n");
 	}
 	else if (data->graphics.settings.button_state_hover == SPRINT)
 	{
 		data->graphics.settings.button_state_press = SPRINT;
 		data->graphics.settings.waiting_for_key = true;
-		printf("Sprint\n");
 	}
 	else if (data->graphics.settings.button_state_hover == MAP_ZOOM)
 	{
 		data->graphics.settings.button_state_press = MAP_ZOOM;
 		data->graphics.settings.waiting_for_key = true;
-		printf("Map zoom\n");
 	}
 	else if (data->graphics.settings.button_state_hover == SHOW_FLOOR_AND_CEILING)
 	{
 		data->graphics.settings.button_state_press = SHOW_FLOOR_AND_CEILING;
 		data->graphics.settings.waiting_for_key = true;
-		printf("Show floor and ceiling\n");
 	}
 	return (0);
 }
