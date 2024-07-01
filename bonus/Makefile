@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
+#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/07/01 15:46:16 by asuc             ###   ########.fr        #
+#    Updated: 2024/07/01 17:00:29 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ MAKE		=	make --no-print-directory
 
 SRC = src/main.c \
 src/exit.c       \
-src/hook.c       \
+src/mouse_hook.c       \
+src/keyboard_hook.c \
 src/set_game.c   \
 src/set_image.c  \
 src/screen_state.c \

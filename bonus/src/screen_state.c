@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:41:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 16:22:20 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 16:29:55 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,40 +74,4 @@ void	screen_state_exit( t_data *d)
 		usleep(250000);
 	}
 	exit_game(*d, EXIT_GAME);
-}
-
-void	press_button(t_data *d)
-{
-	if (d->graphics.menu.play_button.is_pressed == true)
-	{
-		d->graphics.menu.play_button.is_pressed = false;
-		d->settings.screen_state = GAME;
-	}
-	if (d->graphics.menu.exit_button.is_pressed == true)
-	{
-		d->graphics.menu.exit_button.is_pressed = false;
-		d->settings.screen_state = EXIT;
-	}
-	if (d->graphics.menu.settings_button.is_pressed == true)
-	{
-		d->graphics.menu.settings_button.is_pressed = false;
-		d->settings.screen_state = SETTINGS;
-	}
-}
-
-int	update(void *param)
-{
-	t_data		*d;
-
-	d = (t_data *)param;
-	if (d->settings.screen_state == GAME)
-		screen_state_game(d);
-	else if (d->settings.screen_state == MAIN_MENU)
-		screen_state_menu(d);
-	else if (d->settings.screen_state == SETTINGS)
-		screen_state_settings(d);
-	else if (d->settings.screen_state == EXIT)
-		screen_state_exit(d);
-	press_button(d);
-	return (0);
 }
