@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   screen_state.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:41:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 16:29:55 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 21:45:57 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
-#include "mlx.h"
-
-void	other_move(t_data *data)
-{
-	data->settings.minimap_scale = 1;
-	if (data->graphics.key_states[data->settings.key_map_zoom])
-		data->settings.minimap_scale = 1.5;
-}
 
 void	screen_state_game(t_data *d)
 {
@@ -38,7 +30,7 @@ void	screen_state_game(t_data *d)
 	mouse_move(d);
 	move(d);
 	d->settings.minimap_scale = 1;
-	if (d->graphics.key_states[SDL_SCANCODE_Z])
+	if (d->graphics.key_states[d->settings.key_map_zoom])
 		d->settings.minimap_scale = 1.5;
 	render(d);
 	fps_counter();

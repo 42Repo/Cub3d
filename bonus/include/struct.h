@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 17:12:08 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 19:13:29 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define STRUCT_H
 
 # include "../MacroLibX/includes/mlx.h"
-# include <SDL2/SDL.h>
 # include "SDL2/SDL_scancode.h"
 # include "libft.h"
 # include <fcntl.h>
@@ -27,21 +26,6 @@
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
-// # define FOV 90.0
-
-# define LCLICK 1
-# define RCLICK 3
-# define WUP 1
-# define WDOWN 2
-# define UP 82
-# define DOWN 81
-# define LEFT 79
-# define RIGHT 80
-# define ESCAP 41
-# define W 26
-# define A 4
-# define S 22
-# define D 7
 
 # define BACKGROUND "textures/menu/menu_background.png"
 # define BACKGROUND_SETTING "textures/menu/background_settings_menu.png"

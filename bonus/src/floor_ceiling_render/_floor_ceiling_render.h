@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _floor_ceiling_render.h                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:39:58 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/27 15:30:32 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 19:24:31 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define _FLOOR_CEILING_RENDER_H
 
 # include "include.h"
-# include <math.h>
 
 typedef struct s_render_data
 {

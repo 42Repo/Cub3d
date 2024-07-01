@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
+#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/07/01 17:00:29 by bgoron           ###   ########.fr        #
+#    Updated: 2024/07/01 21:53:14 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
 FLAGS_OPTI = -Ofast  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -finline-functions  -pipe -fno-plt -fno-stack-protector -fno-stack-check -fno-strict-aliasing -fno-builtin -fno-common  -fno-jump-tables -fno-semantic-interposition -fno-zero-initialized-in-bss
 IFLAGS = -I include -I Libft/include -I $(MacroLibX_DIR)includes
-CC = gcc $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
+CC = cc $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
 MACROLIBX		=	$(MacroLibX_DIR)libmlx.so
 CACHE_DIR	=	$(addprefix $(shell pwd)/, .cache)
 MAKE		=	make --no-print-directory
@@ -59,7 +59,9 @@ src/floor_ceiling_render/render_data.c \
 src/floor_ceiling_render/pixel_render.c \
 src/floor_ceiling_render/floor_ceiling_render.c \
 src/menu/settings/settings_menu.c \
-src/menu/settings/init_settings_menu.c
+src/menu/settings/init_settings_menu.c \
+src/menu/settings/settings_buttons.c
+
 OBJ_DIR = $(CACHE_DIR)/obj
 DEP_DIR = $(CACHE_DIR)/dep
 

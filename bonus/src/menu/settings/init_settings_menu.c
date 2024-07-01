@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_settings_menu.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:26:54 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 17:16:11 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 21:22:38 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_settings_menu.h"
-#include "struct.h"
-#include <SDL2/SDL_scancode.h>
 
 static void	init_image(t_data *data, t_image *src, t_image *dst, t_vec2i *ratio)
 {

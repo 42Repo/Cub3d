@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_hook.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:59:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 16:59:36 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 21:24:11 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	set_button_state(t_settings *settings, int button_state)
 {
-	settings->button_state_hover = button_state;
+	settings->button_state_press = button_state;
 	settings->waiting_for_key = true;
 }
 
@@ -51,7 +51,8 @@ int	mouse_press(int __attribute__((unused)) key, void *param)
 		data->graphics.menu.exit_button.is_pressed = true;
 	else if (data->graphics.menu.settings_button.is_hovered)
 		data->graphics.menu.settings_button.is_pressed = true;
-	mouse_settings(data, &data->graphics.settings);
+	if (data->settings.screen_state == SETTINGS)
+		mouse_settings(data, &data->graphics.settings);
 	return (0);
 }
 
