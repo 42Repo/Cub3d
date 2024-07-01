@@ -3,23 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
+#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/28 12:24:33 by bgoron           ###   ########.fr        #
+#    Updated: 2024/07/01 15:30:14 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include utils.mk
 
 NAME = cub3D
-CFLAGS		=	-Wall -Werror -Wextra -g
+CFLAGS		=	-Wall -Werror -Wextra
 MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
 LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
 FLAGS_OPTI = -Ofast  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -finline-functions  -pipe -fno-plt -fno-stack-protector -fno-stack-check -fno-strict-aliasing -fno-builtin -fno-common  -fno-jump-tables -fno-semantic-interposition -fno-zero-initialized-in-bss
 IFLAGS = -I include -I Libft/include -I $(MacroLibX_DIR)includes
-CC = clang $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
+CC = gcc $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
 MACROLIBX		=	$(MacroLibX_DIR)libmlx.so
 CACHE_DIR	=	$(addprefix $(shell pwd)/, .cache)
 MAKE		=	make --no-print-directory

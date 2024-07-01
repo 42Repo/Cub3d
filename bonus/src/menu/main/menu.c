@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   menu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 20:10:56 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/28 14:34:41 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 15:43:14 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,20 @@ void	update_button_states(t_data *data)
 	data->graphics.menu.play_button.is_hovered = is_mouse_over_button(&data->graphics.menu.play_button,
 			mouse_x, mouse_y);
 	if (was_hovered == 0 && data->graphics.menu.play_button.is_hovered == 1)
-		system("aplay -q ./textures/menu/button_hover.wav &");
+		if (system("paplay ./textures/menu/button_hover.wav &") == -1)
+			exit_game(*data, EXIT_FAILURE);
 	was_hovered = data->graphics.menu.settings_button.is_hovered;
 	data->graphics.menu.settings_button.is_hovered = is_mouse_over_button(&data->graphics.menu.settings_button,
 			mouse_x, mouse_y);
 	if (was_hovered == 0 && data->graphics.menu.settings_button.is_hovered == 1)
-		system("aplay -q ./textures/menu/button_hover.wav &");
+		if (system("paplay ./textures/menu/button_hover.wav &") == -1)
+			exit_game(*data, EXIT_FAILURE);
 	was_hovered = data->graphics.menu.exit_button.is_hovered;
 	data->graphics.menu.exit_button.is_hovered = is_mouse_over_button(&data->graphics.menu.exit_button,
 			mouse_x, mouse_y);
 	if (was_hovered == 0 && data->graphics.menu.exit_button.is_hovered == 1)
-		system("aplay -q ./textures/menu/button_hover.wav &");
+		if (system("paplay ./textures/menu/button_hover.wav &") == -1)
+			exit_game(*data, EXIT_FAILURE);
 }
 
 void	render_menu(t_data *data)

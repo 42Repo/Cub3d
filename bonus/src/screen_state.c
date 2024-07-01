@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_state.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:41:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/28 14:34:41 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 15:41:17 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	other_move(t_data *data)
 {
 	data->settings.minimap_scale = 1;
-	if (data->graphics.key_states[SDL_SCANCODE_Z])
+	if (data->graphics.key_states[data->settings.key_map_zoom])
 		data->settings.minimap_scale = 1.5;
 }
 
@@ -25,7 +25,13 @@ void	screen_state_game(t_data *d)
 	if (d->graphics.is_first_frame)
 	{
 		d->graphics.is_first_frame = false;
-		system("aplay -q ./textures/menu/button_pressed.wav &");
+		if (system("paplay ./textures/menu/button_pressed.wav &") == -1)
+			exit_game(*d, EXIT_FAILURE);
+		usleep(250000);
+		mlx_mouse_hide();
+		d->graphics.is_first_frame = false;
+		if (system("paplay ./textures/menu/button_pressed.wav &") == -1)
+			exit_game(*d, EXIT_FAILURE);
 		usleep(250000);
 		mlx_mouse_hide();
 	}
@@ -49,7 +55,8 @@ void	screen_state_settings(t_data *d)
 	if (d->graphics.is_first_frame)
 	{
 		d->graphics.is_first_frame = false;
-		system("aplay -q ./textures/menu/button_pressed.wav &");
+		if (system("paplay ./textures/menu/button_pressed.wav &") == -1)
+			exit_game(*d, EXIT_FAILURE);	
 		usleep(250000);
 		mlx_mouse_show();
 	}
@@ -62,7 +69,8 @@ void	screen_state_exit( t_data *d)
 	if (d->graphics.is_first_frame)
 	{
 		d->graphics.is_first_frame = false;
-		system("aplay -q ./textures/menu/button_pressed.wav &");
+		if (system("paplay ./textures/menu/button_pressed.wav &") == -1)
+			exit_game(*d, EXIT_FAILURE);	
 		usleep(250000);
 	}
 	exit_game(*d, EXIT_GAME);
@@ -85,6 +93,7 @@ void	press_button(t_data *d)
 		d->graphics.menu.settings_button.is_pressed = false;
 		d->settings.screen_state = SETTINGS;
 	}
+	
 }
 
 int	update(void *param)

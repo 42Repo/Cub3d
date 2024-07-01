@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/28 16:58:47 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/28 17:46:14 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	destroy_image(t_data *data)
 	mlx_destroy_image(g->mlx, g->menu.img_background_button.img);
 	mlx_destroy_image(g->mlx, g->wall_sprite.floor.img);
 	mlx_destroy_image(g->mlx, g->wall_sprite.ceiling.img);
-	mlx_destroy_image(g->mlx, g->menu.img_darken.img);
+	mlx_destroy_image(g->mlx, g->settings.img_darken.img);
 }
 
 void	exit_exitgame(t_data d)

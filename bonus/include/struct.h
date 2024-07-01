@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/27 17:03:50 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/01 15:04:40 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCT_H
 
 # include "../MacroLibX/includes/mlx.h"
+# include <SDL2/SDL.h>
 # include "SDL2/SDL_scancode.h"
 # include "libft.h"
 # include <fcntl.h>
@@ -28,19 +29,6 @@
 # define WIN_HEIGHT 1080
 // # define FOV 90.0
 
-# define LCLICK 1
-# define RCLICK 3
-# define WUP 1
-# define WDOWN 2
-# define UP 82
-# define DOWN 81
-# define LEFT 79
-# define RIGHT 80
-# define ESCAP 41
-# define W 26
-# define A 4
-# define S 22
-# define D 7
 
 typedef struct s_vec2f
 {
@@ -145,7 +133,6 @@ typedef struct s_menu
 {
 	t_image			img_background;
 	t_image			img_background_button;
-	t_image			img_darken;
 	t_button		play_button;
 	t_button		exit_button;
 	t_button		settings_button;
@@ -157,31 +144,66 @@ typedef struct s_game
 	bool			floor_and_ceiling;
 }					t_game;
 
+typedef enum e_button_state
+{
+	NOTHING,
+	MOVE_FORWARD,
+	MOVE_BACKWARD,
+	MOVE_LEFT,
+	MOVE_RIGHT,
+	ROTATE_LEFT,
+	ROTATE_RIGHT,
+	SPRINT,
+	MAP_ZOOM,
+	SHOW_FLOOR_AND_CEILING,
+}				t_button_state;
+
+typedef struct s_settings
+{
+	t_image			img_background;
+	t_vec2i			pos_img_background;
+	t_image			img_darken;
+	t_button		back_button;
+	t_button_state	button_state_hover;
+	t_button_state	button_state_press;
+	bool			waiting_for_key;
+}					t_settings;
+
 typedef struct s_graphics
 {
 	void			*mlx;
 	void			*win;
 	t_menu			menu;
 	t_game			game;
+	t_settings		settings;
 	bool			is_first_frame;
 	void			*img_mini_map;
 	t_sprite		wall_sprite;
 	int				key_states[256];
 }					t_graphics;
 
-typedef struct s_settings
+typedef struct s_settings_player
 {
 	float			minimap_scale;
 	float			fov;
+	int				key_move_forward;
+	int				key_move_backward;
+	int				key_move_left;
+	int				key_move_right;
+	int				key_rotate_left;
+	int				key_rotate_right;
+	int				key_sprint;
+	int				key_map_zoom;
+	int				key_show_floor_and_ceiling;
 	t_screen_state	screen_state;
-}					t_settings;
+}					t_settings_player;
 
 typedef struct s_data
 {
-	t_graphics		graphics;
-	t_map			map;
-	t_player		player;
-	t_settings		settings;
+	t_graphics			graphics;
+	t_map				map;
+	t_player			player;
+	t_settings_player	settings;
 }					t_data;
 
 #endif // STRUCT_H
