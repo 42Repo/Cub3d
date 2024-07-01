@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 21:40:07 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/29 21:47:11 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 13:50:54 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	screen_state_menu(t_data *d)
 
 void	screen_state_settings(t_data *d)
 {
-	(void)d;
 	if (d->graphics.is_first_frame)
 	{
 		d->graphics.is_first_frame = false;

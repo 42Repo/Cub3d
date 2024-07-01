@@ -1,10 +1,10 @@
-NO      ./sprite/circle50.png
+NO ./sprite/circle50.png
 WE ./sprite/circle50.png
 EA ./sprite/circle50.png
 SO ./sprite/circle50.png
 
-F    150,  450,   50
-C    40, 50,             5450
+F 150,250,50
+C 40,50,250
 
 11111111111111
 100000000000W1

@@ -6,7 +6,7 @@
 #    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/06/29 21:39:45 by bgoron           ###   ########.fr        #
+#    Updated: 2024/07/01 15:18:00 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ src/movement/mouse_movement.c \
 src/movement/movement_utils.c \
 src/minimap/rotate_minimap.c \
 src/minimap/player_minimap.c \
+src/minimap/minimap_utils.c \
 src/render.c \
 src/resize_textures.c \
 src/menu/main/menu.c \
