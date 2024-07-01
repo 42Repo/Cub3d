@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:58:08 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 12:04:27 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/06/30 17:12:08 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,7 @@ inline void	perform_dda(t_ray *ray, t_map *map, t_player *player)
 		}
 	}
 	if (ray->hit == 1)
-	{
 		calculate_perpendicular_distance(ray);
-	}
 	else if (ray->hit == 2)
-	{
 		ray->perp_wall_dist = max_distance;
-	}
 }

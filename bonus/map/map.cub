@@ -9,13 +9,13 @@ EA ./textures/wall/template(2).png
 
 NO ./textures/wall/template(3).png
 
-CE ./textures/wall/parquet.png
+CE ./textures/wall/blue.png
 
 FL ./textures/wall/parquet.png
 
-F 255,255,0
+C 0,0,1
 
-C 225,30,150
+F 169,131,7
 
         1111111111111111111111111   11111
         100000000011000000D0000W1   10001
