@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings_menu.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:31:58 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 15:36:04 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/01 16:24:37 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	render_settings(t_data *data)
 	mlx_string_put(data->graphics.mlx, data->graphics.win, 400, 300, 0xFFFFFFFF,
 		"Move forward");
 	if (is_mouse_over_button((t_vec2i){700, 250},
-			(t_vec2i){data->graphics.settings.back_button.img.width,
-			data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
+		(t_vec2i){data->graphics.settings.back_button.img.width,
+		data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
 	{
 		data->graphics.settings.button_state_hover = MOVE_FORWARD;
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -66,17 +66,17 @@ void	render_settings(t_data *data)
 	}
 	else
 	{
-		mlx_string_put(data->graphics.mlx, data->graphics.win, 720, 300, 0xFFFFFFFF,
-    		(char *)SDL_GetKeyName(SDL_GetKeyFromScancode(data->settings.key_move_forward)));
+		mlx_string_put(data->graphics.mlx, data->graphics.win, 720, 300, 0xFFFFFFFF, \
+		(char *)SDL_GetKeyName(SDL_GetKeyFromScancode(data->settings.key_move_forward)));
 	}
 	mlx_string_put(data->graphics.mlx, data->graphics.win, 400, 400, 0xFFFFFFFF,
 		"Move backward");
 	if (is_mouse_over_button((t_vec2i){700, 350},
-			(t_vec2i){data->graphics.settings.back_button.img.width,
-			data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
+		(t_vec2i){data->graphics.settings.back_button.img.width,
+		data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
 	{
 		data->graphics.settings.button_state_hover = MOVE_BACKWARD;
-		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
+		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win, \
 			data->graphics.settings.back_button.img_hovered.img, 700, 350);
 	}
 	else
@@ -97,8 +97,8 @@ void	render_settings(t_data *data)
 	mlx_string_put(data->graphics.mlx, data->graphics.win, 400, 500, 0xFFFFFFFF,
 		"Move left");
 	if (is_mouse_over_button((t_vec2i){700, 450},
-			(t_vec2i){data->graphics.settings.back_button.img.width,
-			data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
+		(t_vec2i){data->graphics.settings.back_button.img.width,
+		data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
 	{
 		data->graphics.settings.button_state_hover = MOVE_LEFT;
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -122,8 +122,8 @@ void	render_settings(t_data *data)
 	mlx_string_put(data->graphics.mlx, data->graphics.win, 400, 600, 0xFFFFFFFF,
 		"Move right");
 	if (is_mouse_over_button((t_vec2i){700, 550},
-			(t_vec2i){data->graphics.settings.back_button.img.width,
-			data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
+		(t_vec2i){data->graphics.settings.back_button.img.width,
+		data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
 	{
 		data->graphics.settings.button_state_hover = MOVE_RIGHT;
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -147,8 +147,8 @@ void	render_settings(t_data *data)
 	mlx_string_put(data->graphics.mlx, data->graphics.win, 400, 700, 0xFFFFFFFF,
 		"Sprint");
 	if (is_mouse_over_button((t_vec2i){700, 650},
-			(t_vec2i){data->graphics.settings.back_button.img.width,
-			data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
+		(t_vec2i){data->graphics.settings.back_button.img.width,
+		data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
 	{
 		data->graphics.settings.button_state_hover = SPRINT;
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -172,8 +172,8 @@ void	render_settings(t_data *data)
 	mlx_string_put(data->graphics.mlx, data->graphics.win, 400, 800, 0xFFFFFFFF,
 		"Map zoom");
 	if (is_mouse_over_button((t_vec2i){700, 750},
-			(t_vec2i){data->graphics.settings.back_button.img.width,
-			data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
+		(t_vec2i){data->graphics.settings.back_button.img.width,
+		data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
 	{
 		data->graphics.settings.button_state_hover = MAP_ZOOM;
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -197,8 +197,8 @@ void	render_settings(t_data *data)
 	mlx_string_put(data->graphics.mlx, data->graphics.win, 965, 300, 0xFFFFFFFF,
 		"Floor and ceiling");
 	if (is_mouse_over_button((t_vec2i){1250, 250},
-			(t_vec2i){data->graphics.settings.back_button.img.width,
-			data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
+		(t_vec2i){data->graphics.settings.back_button.img.width,
+		data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
 	{
 		data->graphics.settings.button_state_hover = SHOW_FLOOR_AND_CEILING;
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -222,8 +222,8 @@ void	render_settings(t_data *data)
 	mlx_string_put(data->graphics.mlx, data->graphics.win, 965, 400, 0xFFFFFFFF,
 		"Rotate left");
 	if (is_mouse_over_button((t_vec2i){1250, 350},
-			(t_vec2i){data->graphics.settings.back_button.img.width,
-			data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
+		(t_vec2i){data->graphics.settings.back_button.img.width,
+		data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
 	{
 		data->graphics.settings.button_state_hover = ROTATE_LEFT;
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -243,12 +243,12 @@ void	render_settings(t_data *data)
 	{
 		mlx_string_put(data->graphics.mlx, data->graphics.win, 1270, 400, 0xFFFFFFFF,
 			(char *)SDL_GetKeyName(SDL_GetKeyFromScancode(data->settings.key_rotate_left)));
-	}	
+	}
 	mlx_string_put(data->graphics.mlx, data->graphics.win, 965, 500, 0xFFFFFFFF,
 		"Rotate right");
 	if (is_mouse_over_button((t_vec2i){1250, 450},
-			(t_vec2i){data->graphics.settings.back_button.img.width,
-			data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
+		(t_vec2i){data->graphics.settings.back_button.img.width,
+		data->graphics.settings.back_button.img.height}, pos_mouse) == 1)
 	{
 		data->graphics.settings.button_state_hover = ROTATE_RIGHT;
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -268,5 +268,5 @@ void	render_settings(t_data *data)
 	{
 		mlx_string_put(data->graphics.mlx, data->graphics.win, 1270, 500, 0xFFFFFFFF,
 			(char *)SDL_GetKeyName(SDL_GetKeyFromScancode(data->settings.key_rotate_right)));
-	}	
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_settings_menu.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:26:54 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 15:44:58 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/01 16:25:44 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,12 @@ void	init_settings_menu(t_data *data)
 		i++;
 	}
 	g->settings.img_background = g->menu.img_background;
-	g->settings.img_background.img = mlx_png_file_to_image(g->mlx, "textures/menu/background_settings_menu.png",
-		&g->settings.img_background.width, &g->settings.img_background.height);
+	g->settings.img_background.img = mlx_png_file_to_image(g->mlx, "textures/menu/background_settings_menu.png", &g->settings.img_background.width, &g->settings.img_background.height);
 	resize_image(data, &g->settings.img_background, (t_vec2i){g->settings.img_background.width * 7, g->settings.img_background.height * 7});
 	g->settings.pos_img_background.x = WIN_WIDTH / 2 - g->settings.img_background.width / 2;
 	g->settings.pos_img_background.y = WIN_HEIGHT / 2 - g->settings.img_background.height / 2;
-			g->settings.back_button.img.img = mlx_png_file_to_image(g->mlx, "textures/menu/back_button.png",
-		&g->settings.back_button.img.width, &g->settings.back_button.img.height);
-	g->settings.back_button.img_hovered.img = mlx_png_file_to_image(g->mlx, "textures/menu/hovered_back_button.png",
-		&g->settings.back_button.img_hovered.width, &g->settings.back_button.img_hovered.height);
+	g->settings.back_button.img.img = mlx_png_file_to_image(g->mlx, "textures/menu/back_button.png", &g->settings.back_button.img.width, &g->settings.back_button.img.height);
+	g->settings.back_button.img_hovered.img = mlx_png_file_to_image(g->mlx, "textures/menu/hovered_back_button.png", &g->settings.back_button.img_hovered.width, &g->settings.back_button.img_hovered.height);
 	data->graphics.settings.button_state_hover = NOTHING;
 	data->graphics.settings.waiting_for_key = false;
 	data->settings.key_map_zoom = SDL_SCANCODE_LALT;

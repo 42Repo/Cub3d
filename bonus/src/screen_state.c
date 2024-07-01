@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_state.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:41:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 15:47:54 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/01 16:22:20 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,11 @@ void	screen_state_settings(t_data *d)
 	{
 		d->graphics.is_first_frame = false;
 		if (system("paplay ./textures/menu/button_pressed.wav &") == -1)
-			exit_game(*d, EXIT_FAILURE);	
+			exit_game(*d, EXIT_FAILURE);
 		usleep(250000);
 		mlx_mouse_show();
 	}
 	render_settings(d);
-	// d->settings.screen_state = MAIN_MENU;
 }
 
 void	screen_state_exit( t_data *d)
@@ -71,7 +70,7 @@ void	screen_state_exit( t_data *d)
 	{
 		d->graphics.is_first_frame = false;
 		if (system("paplay ./textures/menu/button_pressed.wav &") == -1)
-			exit_game(*d, EXIT_FAILURE);	
+			exit_game(*d, EXIT_FAILURE);
 		usleep(250000);
 	}
 	exit_game(*d, EXIT_GAME);
@@ -94,7 +93,6 @@ void	press_button(t_data *d)
 		d->graphics.menu.settings_button.is_pressed = false;
 		d->settings.screen_state = SETTINGS;
 	}
-	
 }
 
 int	update(void *param)

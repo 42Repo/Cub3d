@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 15:46:48 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/01 16:26:56 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 
 int	key_press(int key, void *param)
 {
-	t_data	*data;
-	t_game	*g;
+	t_data		*data;
+	t_game		*g;
+	const char	*keyname = SDL_GetKeyName(SDL_GetKeyFromScancode(key));
 
 	data = (t_data *)param;
-    const char *keyname = SDL_GetKeyName(SDL_GetKeyFromScancode(key));
 	printf("Key pressed: %s\n", keyname);
-
 	g = &data->graphics.game;
 	if (key == SDL_SCANCODE_ESCAPE && data->settings.screen_state == MAIN_MENU)
 		exit_game(*data, EXIT_GAME);
