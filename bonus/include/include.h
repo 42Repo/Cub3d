@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 16:30:21 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/29 21:41:11 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,10 @@ int		update(void *param);
 
 void	render_settings(t_data *data);
 void	init_settings_menu(t_data *data);
+
+void	screen_state_game(t_data *d);
+void	screen_state_menu(t_data *d);
+void	screen_state_settings(t_data *d);
+void	screen_state_exit(t_data *d);
 
 #endif // INCLUDE_H

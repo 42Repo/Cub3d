@@ -6,7 +6,7 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/07/01 15:30:14 by asuc             ###   ########.fr        #
+#    Updated: 2024/07/01 15:46:16 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ src/hook.c       \
 src/set_game.c   \
 src/set_image.c  \
 src/screen_state.c \
+src/manage_screen_state.c \
 src/parsing/parsing.c \
 src/parsing/parsing_utils.c \
 src/parsing/parse_texture.c \
@@ -47,10 +48,12 @@ src/movement/mouse_movement.c \
 src/movement/movement_utils.c \
 src/minimap/rotate_minimap.c \
 src/minimap/player_minimap.c \
+src/minimap/minimap_utils.c \
 src/render.c \
 src/resize_textures.c \
 src/menu/main/menu.c \
 src/menu/main/init_menu.c \
+src/menu/main/image_menu.c \
 src/floor_ceiling_render/render_data.c \
 src/floor_ceiling_render/pixel_render.c \
 src/floor_ceiling_render/floor_ceiling_render.c \

@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:17:23 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/16 19:25:31 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:01:33 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,22 @@ static int	get_wall_texture(t_data *data, char **line)
 	return (0);
 }
 
+static int	is_valid_rgb(char **tmp)
+{
+	int	i;
+
+	i = 0;
+	while (tmp[i])
+	{
+		if (!ft_isdigit(tmp[i][0]))
+			return (-1);
+		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
 static int	get_background_color(t_data *data, char **line)
 {
 	t_color	*color;
@@ -50,7 +66,7 @@ static int	get_background_color(t_data *data, char **line)
 		return (-1);
 	*line += 2;
 	tmp = ft_split(*line, ',');
-	if (!tmp || ft_ctablen(tmp) != 3)
+	if (!tmp || ft_ctablen(tmp) != 3 || is_valid_rgb(tmp) == -1)
 		return (ft_free_tab((void **)tmp));
 	(*color).a = 255;
 	(*color).r = ft_atoi(tmp[0]);

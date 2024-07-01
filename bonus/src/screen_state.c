@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:41:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 15:41:17 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/01 15:47:54 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ void	screen_state_game(t_data *d)
 	}
 	mouse_move(d);
 	move(d);
-	other_move(d);
+	d->settings.minimap_scale = 1;
+	if (d->graphics.key_states[SDL_SCANCODE_Z])
+		d->settings.minimap_scale = 1.5;
 	render(d);
 	fps_counter();
 }
@@ -51,7 +53,6 @@ void	screen_state_menu(t_data *d)
 
 void	screen_state_settings(t_data *d)
 {
-	(void)d;
 	if (d->graphics.is_first_frame)
 	{
 		d->graphics.is_first_frame = false;

@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 15:04:40 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/01 15:46:36 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,31 @@
 # define WIN_HEIGHT 1080
 // # define FOV 90.0
 
+# define LCLICK 1
+# define RCLICK 3
+# define WUP 1
+# define WDOWN 2
+# define UP 82
+# define DOWN 81
+# define LEFT 79
+# define RIGHT 80
+# define ESCAP 41
+# define W 26
+# define A 4
+# define S 22
+# define D 7
+
+# define BACKGROUND "textures/menu/menu_background.png"
+# define GUI "textures/menu/GUI.png"
+# define START "textures/menu/start.png"
+# define START_HOVERED "textures/menu/start_hovered.png"
+# define START_PRESSED "textures/menu/start_pressed.png"
+# define EXIT_MENU "textures/menu/exit.png"
+# define EXIT_HOVERED "textures/menu/exit_hovered.png"
+# define EXIT_PRESSED "textures/menu/exit_pressed.png"
+# define SETTINGS_MENU "textures/menu/settings.png"
+# define SETTINGS_HOVERED "textures/menu/settings_hovered.png"
+# define SETTINGS_PRESSED "textures/menu/settings_pressed.png"
 
 typedef struct s_vec2f
 {

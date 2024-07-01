@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:34:29 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/24 21:35:58 by asuc             ###   ########.fr       */
+/*   Updated: 2024/06/30 17:13:47 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ inline void	calculate_wall_x_and_tex_x(t_ray *ray, t_ray_params *params)
 
 int	player_is_in_front_of_door(t_player *player, t_ray *ray)
 {
-	return ((((int)player->pos.x == ray->map.x
-				&& (int)player->pos.y == ray->map.y)
-			|| ((int)player->pos.x == ray->map.x + 1
-				&& (int)player->pos.y == ray->map.y)
-			|| ((int)player->pos.x == ray->map.x - 1
-				&& (int)player->pos.y == ray->map.y)
-			|| ((int)player->pos.x == ray->map.x
-				&& (int)player->pos.y == ray->map.y + 1)
-			|| ((int)player->pos.x == ray->map.x
-				&& (int)player->pos.y == ray->map.y - 1)));
+	return ((((int)player->pos.x == ray->map.x \
+		&& (int)player->pos.y == ray->map.y) \
+		|| ((int)player->pos.x == ray->map.x + 1 \
+		&& (int)player->pos.y == ray->map.y) \
+		|| ((int)player->pos.x == ray->map.x - 1 \
+		&& (int)player->pos.y == ray->map.y) \
+		|| ((int)player->pos.x == ray->map.x \
+		&& (int)player->pos.y == ray->map.y + 1) \
+		|| ((int)player->pos.x == ray->map.x \
+		&& (int)player->pos.y == ray->map.y - 1)));
 }
