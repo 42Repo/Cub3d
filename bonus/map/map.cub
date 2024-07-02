@@ -1,19 +1,16 @@
-SO ./textures/wall/template.png
-WE ./textures/wall/template(1).png
-EA ./textures/wall/template(2).png
-NO       ./textures/wall/template(3).png
-CE   ./textures/wall/blue.png
-
-FL ./textures/wall/parquet.png
-C 0,0,      12
-F 169,131,7
+SO ./textures/wall/circle.png
+WE ./textures/wall/circle.png
+EA ./textures/wall/circle.png
+NO       ./textures/wall/circle.png
+CE   ./textures/wall/circle.png
+FL ./textures/wall/circle.png
+C 0,            0,                  12
+F 169,   131,  7
         1111111111111111111111111   11111
         100000000011000000D0000W1   10001
         1011000001110000011100001   11111
         100100000000000001 100001
 111111111011000001110000011100001
-111111111111111111111111111111111
-11111111111111111111111111111111
 100000000011000001110111111111111
 11110111111111011100000000001
 11110111111111011101010010001

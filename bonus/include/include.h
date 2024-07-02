@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   include.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 17:39:20 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 23:47:53 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 19:17:59 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ const char	*SDL_GetKeyName(int key);
 int			SDL_GetKeyFromScancode(int scancode);
 
 int			parsing(int ac, char **av, t_data *data);
-void		preload_textures(t_data *data);
+int 		preload_textures(t_data *data);
 
 void		init_data(t_data *d);
 void		init_mlx(t_data *data);

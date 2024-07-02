@@ -6,18 +6,18 @@
 #    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/07/02 11:51:54 by bgoron           ###   ########.fr        #
+#    Updated: 2024/07/02 19:21:29 by bgoron           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include utils.mk
 
 NAME = cub3D
-CFLAGS		=	-Wall -Werror -Wextra -g
+CFLAGS		=	-Wall -Werror -Wextra -g3
 MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
 LIBFT_DIR	=	$(shell pwd)/Libft/
 LIBFT		=	$(LIBFT_DIR)libft.a
-FLAGS_OPTI = -Ofast  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -finline-functions  -pipe -fno-plt -fno-stack-protector -fno-stack-check -fno-strict-aliasing -fno-builtin -fno-common  -fno-jump-tables -fno-semantic-interposition -fno-zero-initialized-in-bss
+# FLAGS_OPTI = -Ofast  -march=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -finline-functions  -pipe -fno-plt -fno-stack-protector -fno-stack-check -fno-strict-aliasing -fno-builtin -fno-common  -fno-jump-tables -fno-semantic-interposition -fno-zero-initialized-in-bss
 IFLAGS = -I include -I Libft/include -I $(MacroLibX_DIR)includes
 CC = cc $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
 MACROLIBX		=	$(MacroLibX_DIR)libmlx.so

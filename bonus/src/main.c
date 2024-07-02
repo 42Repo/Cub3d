@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 12:35:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 17:42:22 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 19:22:23 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	main(int ac, char **av)
 		exit_game(data, PARSING_ERROR);
 	init_data(&data);
 	resize_images(&data);
-	preload_textures(&data);
+	if (preload_textures(&data) == -1)
+		exit_game(data, PRELOAD_ERROR);
 	g = data.graphics;
 	data.graphics.win = mlx_new_window(g.mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3D");
 	print_first_background(&data);
