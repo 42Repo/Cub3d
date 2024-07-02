@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 04:46:11 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 20:05:31 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,6 @@ static int	print_error(const char *error)
 {
 	printf("\033[1;31mError\n%s\033[0m", error);
 	return (-1);
-}
-
-void	print_parsing(t_data *data)
-{
-	char	**tmp;
-
-	tmp = data->map.map;
-	printf("NO: %s\n", data->graphics.wall_sprite.path_n);
-	printf("SO: %s\n", data->graphics.wall_sprite.path_s);
-	printf("EA: %s\n", data->graphics.wall_sprite.path_e);
-	printf("WE: %s\n", data->graphics.wall_sprite.path_w);
-	printf("C: %s\n", data->graphics.wall_sprite.path_ceiling);
-	printf("F: %s\n", data->graphics.wall_sprite.path_floor);
-	printf("F: %d, %d, %d\n", data->graphics.wall_sprite.floor_color.r,
-		data->graphics.wall_sprite.floor_color.g,
-		data->graphics.wall_sprite.floor_color.b);
-	printf("C: %d, %d, %d\n", data->graphics.wall_sprite.ceiling_color.r,
-		data->graphics.wall_sprite.ceiling_color.g,
-		data->graphics.wall_sprite.ceiling_color.b);
-	printf("Map:\n");
-	while (*tmp)
-	{
-		printf("%s\n", *tmp);
-		tmp++;
-	}
 }
 
 static int	check_argv(int ac, char **av, int *fd)
