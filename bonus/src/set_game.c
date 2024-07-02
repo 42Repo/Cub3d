@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 04:58:06 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 20:03:44 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	init_data(t_data *d)
 	g = &d->graphics;
 	d->settings.fov = 90;
 	map_size = (t_vec2i){(int)(WIN_WIDTH * 0.17f), (int)(WIN_HEIGHT * 0.28f)};
-	d->settings.minimap_scale = 1.5;
+	d->settings.minimap_scale = 1.5f;
 	g->mlx = mlx_init();
 	d->settings.screen_state = MAIN_MENU;
 	d->graphics.is_first_frame = true;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _parsing.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:02:04 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 19:35:51 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 20:13:15 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ int		parse_map(char **file, t_data *data);
 void	file_to_char(int fd, char ***file);
 int		extand_map(char **map, size_t max_len);
 int		reset_map(char **map);
-
-void	print_parsing(t_data *data);
 
 int		check_extension_file(char *file, const char *extension);
 int		check_map_character(char **map);

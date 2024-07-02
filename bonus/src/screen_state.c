@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   screen_state.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:41:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 18:59:31 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 20:03:58 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	screen_state_game(t_data *d)
 	move(d);
 	d->settings.minimap_scale = 1;
 	if (d->graphics.key_states[d->settings.key_map_zoom])
-		d->settings.minimap_scale = 1.5;
+		d->settings.minimap_scale = 1.5f;
 	render(d);
 	fps_counter();
 }

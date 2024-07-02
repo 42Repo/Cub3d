@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 06:04:29 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 21:45:21 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ static inline void	cast_ray(t_data *data, int x)
 	params.line_offset = (int)(-data->player.pitch * WIN_HEIGHT);
 	calculate_line_height_and_draw_points(&params.ray, &params);
 	calculate_wall_x_and_tex_x(&params.ray, &params);
-	params.step = (float)(1.0 * params.texture_height / params.line_height);
+	params.step = (float)((float)params.texture_height
+			/ (float)params.line_height);
 	draw_texture(data, x, &params);
 }
 
