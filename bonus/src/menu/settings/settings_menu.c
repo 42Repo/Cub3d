@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:31:58 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/02 06:05:17 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 06:11:12 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_settings_menu.h"
-#include <stdint.h>
 
 static void	render_settings_background(t_data *data)
 {

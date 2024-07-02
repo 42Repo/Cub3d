@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:37:39 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 06:04:50 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 06:11:16 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_minimap.h"
-#include <stdint.h>
 
 static void	draw_circle(int radius, t_vec2i center, t_data *data)
 {

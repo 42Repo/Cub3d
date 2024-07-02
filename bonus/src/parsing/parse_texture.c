@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:17:23 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 04:33:38 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 06:11:33 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
-#include <stdint.h>
 
 static int	get_wall_texture(t_data *data, char **line)
 {

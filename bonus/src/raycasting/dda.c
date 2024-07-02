@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:58:08 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/02 06:04:17 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 06:11:37 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_raycasting.h"
-#include <stdint.h>
 
 static inline int	is_within_map_bounds(t_ray *ray, t_map *map)
 {

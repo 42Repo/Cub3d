@@ -6,12 +6,11 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 21:50:07 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/02 06:05:00 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 06:11:09 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_settings_menu.h"
-#include <stdint.h>
 
 static int	is_mouse_over_button(t_vec2i pos_button, t_vec2i size_button,
 		t_vec2i pos_mouse)
