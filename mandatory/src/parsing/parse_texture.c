@@ -42,8 +42,6 @@ static int	is_valid_rgb(char **tmp)
 	i = 0;
 	while (tmp[i])
 	{
-		if (!ft_isdigit(tmp[i][0]))
-			return (-1);
 		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
 			return (-1);
 		i++;
@@ -76,6 +74,12 @@ static int	get_background_color(t_data *data, char **line)
 	return (0);
 }
 
+int	is_texture_path(char *line)
+{
+	return (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
+		|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3));
+}
+
 int	parse_texture(char **file, t_data *data)
 {
 	char	**tmp;
@@ -85,8 +89,7 @@ int	parse_texture(char **file, t_data *data)
 	while (*tmp)
 	{
 		line = *tmp;
-		if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
-			|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3))
+		if (is_texture_path(line))
 		{
 			if (get_wall_texture(data, &line) == -1)
 				return (ft_free_tab((void **)file));
