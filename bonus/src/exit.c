@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 23:46:31 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 11:55:42 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static void	exit_parsingerror(t_data data)
 	free(data.graphics.wall_sprite.path_s);
 	free(data.graphics.wall_sprite.path_e);
 	free(data.graphics.wall_sprite.path_w);
+	free(data.graphics.wall_sprite.path_floor);
+	free(data.graphics.wall_sprite.path_ceiling);
 	ft_free_tab((void **)data.map.map);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:13:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 23:00:05 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 17:50:07 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,19 @@ void	extand_map(char **map, size_t max_len)
 void	file_to_char(int fd, char ***file)
 {
 	char	*line;
+	int		nb_arg;
 
+	nb_arg = 0;
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (*line != '\n')
+		if (*line != '\n' || nb_arg >= 8)
 		{
 			if (ft_strchr(line, '\n'))
 				ft_extand_tab(file, ft_substr(line, 0, ft_strlen(line) - 1));
 			else
 				ft_extand_tab(file, ft_strdup(line));
+			nb_arg++;
 		}
 		free(line);
 		line = get_next_line(fd);

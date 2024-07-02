@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:15:52 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 04:34:38 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 18:21:32 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,23 @@ static void	format_map(char ***grid, t_map *map)
 int	parse_map(char **file, t_data *data)
 {
 	char	**tmp;
+	bool	has_empty_line;
 
+	has_empty_line = false;
 	tmp = file + 8;
 	while (*tmp)
 	{
+		if (**tmp == '\0')
+			has_empty_line = true;
 		ft_extand_tab(&data->map.map, ft_strdup(*tmp));
 		tmp++;
 	}
 	ft_free_tab((void **)file);
 	format_map(&data->map.map, &data->map);
-	return (0);
+	if (has_empty_line == true)
+		return (-1);
+	else
+		return (0);
 }
 
 int	reset_map(char **map)

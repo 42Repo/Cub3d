@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:17:23 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 06:11:33 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 18:26:42 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ static int	is_valid_rgb(char **tmp)
 	i = 0;
 	while (tmp[i])
 	{
-		if (!ft_isdigit(tmp[i][0]))
-			return (-1);
 		if (ft_atoi(tmp[i]) < 0 || ft_atoi(tmp[i]) > 255)
 			return (-1);
 		i++;
@@ -80,6 +78,13 @@ static int	get_background_color(t_data *data, char **line)
 	return (0);
 }
 
+int	is_texture_path(char *line)
+{
+	return (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
+			|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3)
+			|| !ft_strncmp(line, "CE ", 3) || !ft_strncmp(line, "FL ", 3));
+}
+
 int	parse_texture(char **file, t_data *data)
 {
 	char	**tmp;
@@ -89,9 +94,7 @@ int	parse_texture(char **file, t_data *data)
 	while (*tmp)
 	{
 		line = *tmp;
-		if (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
-			|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3)
-			|| !ft_strncmp(line, "CE ", 3) || !ft_strncmp(line, "FL ", 3))
+		if (is_texture_path(line))
 		{
 			if (get_wall_texture(data, &line) == -1)
 				return (ft_free_tab((void **)file));
@@ -101,6 +104,8 @@ int	parse_texture(char **file, t_data *data)
 			if (get_background_color(data, &line) == -1)
 				return (ft_free_tab((void **)file));
 		}
+		else if ((tmp - file) < 8)
+			return (ft_free_tab((void **)file));
 		tmp++;
 	}
 	if (check_texture(&data->graphics.wall_sprite) == -1)
