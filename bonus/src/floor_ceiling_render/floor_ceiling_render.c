@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floor_ceiling_render.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:42:48 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/27 15:32:32 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 06:00:09 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ static inline void	calculate_line_data(t_render_data *rd, int y,
 		t_line_data *ld)
 {
 	ld->pitch = rd->data->player.pitch;
-	ld->real_y = y + ld->pitch * WIN_HEIGHT;
+	ld->real_y = (int)((float)y + ld->pitch * WIN_HEIGHT);
 	ld->render_ceiling = ld->real_y < rd->center_line;
 	if (ld->render_ceiling)
-		ld->p = rd->center_line - ld->real_y;
+		ld->p = rd->center_line - (float)ld->real_y;
 	else
-		ld->p = ld->real_y - rd->center_line;
-	if (ld->p == 0)
-		ld->p = 1;
+		ld->p = (float)ld->real_y - rd->center_line;
+	if (fabsf(ld->p) < FLT_EPSILON)
+		ld->p = FLT_EPSILON;
 	ld->row_distance = rd->pos_z / ld->p;
 }
 

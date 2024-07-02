@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:26:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 13:49:09 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 04:58:06 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_data(t_data *d)
 
 	g = &d->graphics;
 	d->settings.fov = 90;
-	map_size = (t_vec2i){WIN_WIDTH * 0.17, WIN_HEIGHT * 0.28};
+	map_size = (t_vec2i){(int)(WIN_WIDTH * 0.17f), (int)(WIN_HEIGHT * 0.28f)};
 	d->settings.minimap_scale = 1.5;
 	g->mlx = mlx_init();
 	d->settings.screen_state = MAIN_MENU;

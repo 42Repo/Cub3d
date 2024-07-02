@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:59:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 21:24:11 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 06:03:45 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	set_button_state(t_settings *settings, int button_state)
 	settings->waiting_for_key = true;
 }
 
-void	mouse_settings(t_data *data, t_settings *settings)
+static void	mouse_settings(t_data *data, t_settings *settings)
 {
 	if (settings->button_state_hover == MOVE_FORWARD)
 		set_button_state(&data->graphics.settings, MOVE_FORWARD);

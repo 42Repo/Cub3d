@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 15:17:00 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 05:09:21 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_minimap.h"
 
-void	reset_minimap(t_data *data, int size)
+static void	reset_minimap(t_data *data, int size)
 {
 	t_vec2i	pos;
 
@@ -31,7 +31,7 @@ void	reset_minimap(t_data *data, int size)
 	}
 }
 
-void	draw_minimap(t_data *data, int size, int *mask, t_vec2f player_map)
+static void	draw_minimap(t_data *data, int size, int *mask, t_vec2f player_map)
 {
 	t_vec2i	pos;
 
@@ -48,7 +48,7 @@ void	draw_minimap(t_data *data, int size, int *mask, t_vec2f player_map)
 	}
 }
 
-void	put_minimap(t_data *data, int size)
+static void	put_minimap(t_data *data, int size)
 {
 	t_vec2i	pos;
 	t_vec2i	window_offset;
@@ -80,8 +80,8 @@ void	print_minimap(t_data *data)
 	int		size;
 	int		*mask;
 
-	size = (WIN_HEIGHT * 0.56 / 3) * data->settings.minimap_scale;
-	mask = malloc(sizeof(int) * size * size);
+	size = (int)((WIN_HEIGHT * 0.56f / 3.0f) * data->settings.minimap_scale);
+	mask = malloc(sizeof(int) * (unsigned int)size * (unsigned int)size);
 	create_circular_mask(mask, size, size);
 	player_map.x = data->player.pos.x;
 	player_map.y = data->player.pos.y;

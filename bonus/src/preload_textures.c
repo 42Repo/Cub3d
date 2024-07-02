@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   preload_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:42:33 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 13:50:06 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 06:03:35 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	load_texture_data(void *mlx, t_image wall_img, int *texture)
+static void	load_texture_data(void *mlx, t_image wall_img, int *texture)
 {
 	int	x;
 	int	y;
@@ -31,9 +31,10 @@ void	load_texture_data(void *mlx, t_image wall_img, int *texture)
 	}
 }
 
-void	preload_texture(t_data *data, t_image wall_img, int **texture)
+static void	preload_texture(t_data *data, t_image wall_img, int **texture)
 {
-	*texture = malloc(wall_img.width * wall_img.height * sizeof(int));
+	*texture = malloc((unsigned int)wall_img.width
+			* (unsigned int)wall_img.height * sizeof(int));
 	load_texture_data(data->graphics.mlx, wall_img, *texture);
 }
 

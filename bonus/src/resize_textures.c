@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   resize_textures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:16:22 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 13:48:30 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 02:47:53 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	next_power_of_two(int n)
 	return (power);
 }
 
-void	init_image(t_data *data, t_image *src, t_image *dst, t_vec2i *ratio)
+static void	init_image(t_data *data, t_image *src, t_image *dst, t_vec2i *ratio)
 {
 	dst->width = next_power_of_two(src->width);
 	dst->height = dst->width;

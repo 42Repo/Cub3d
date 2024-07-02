@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/28 16:51:55 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 04:46:11 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
 
-int	print_error(char *error)
+static int	print_error(const char *error)
 {
 	printf("\033[1;31mError\n%s\033[0m", error);
 	return (-1);
@@ -43,7 +43,7 @@ void	print_parsing(t_data *data)
 	}
 }
 
-int	check_argv(int ac, char **av, int *fd)
+static int	check_argv(int ac, char **av, int *fd)
 {
 	if (ac != 2)
 		return (print_error("Wrong number of arguments\n"));

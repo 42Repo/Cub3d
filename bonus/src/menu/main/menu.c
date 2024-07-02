@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 20:10:56 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 15:48:04 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 05:53:22 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	update_button_states(t_data *data)
 			exit_game(*data, EXIT_FAILURE);
 }
 
-void	manage_play_button(t_data *data)
+static void	manage_play_button(t_data *data)
 {
 	if (data->graphics.menu.play_button.is_pressed)
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -57,7 +57,7 @@ void	manage_play_button(t_data *data)
 			data->graphics.menu.play_button.pos.y);
 }
 
-void	manage_settings_button(t_data *data)
+static void	manage_settings_button(t_data *data)
 {
 	if (data->graphics.menu.settings_button.is_pressed)
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -76,7 +76,7 @@ void	manage_settings_button(t_data *data)
 			data->graphics.menu.settings_button.pos.y);
 }
 
-void	manage_exit_button(t_data *data)
+static void	manage_exit_button(t_data *data)
 {
 	if (data->graphics.menu.exit_button.is_pressed)
 		mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
@@ -99,9 +99,9 @@ void	render_menu(t_data *data)
 {
 	t_vec2i	button;
 
-	button.x = (WIN_WIDTH / 2)
+	button.x = ((int)WIN_WIDTH / 2)
 		- (data->graphics.menu.img_background_button.width / 2);
-	button.y = (WIN_HEIGHT / 2)
+	button.y = ((int)WIN_HEIGHT / 2)
 		- (data->graphics.menu.img_background_button.height / 2);
 	mlx_put_image_to_window(data->graphics.mlx, data->graphics.win,
 		data->graphics.menu.img_background.img, 0, 0);

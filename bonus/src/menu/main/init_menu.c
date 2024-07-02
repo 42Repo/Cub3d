@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_menu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 21:41:16 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/29 21:35:46 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 05:54:15 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,22 @@ void	resize_image(t_data *data, t_image *src, t_vec2i new_size)
 	*src = dst;
 }
 
-void	set_button_pos(t_menu *m, t_vec2f scale_factor)
+static void	set_button_pos(t_menu *m, t_vec2f scale_factor)
 {
-	m->play_button.pos.x = (WIN_WIDTH / 2) \
-	- (m->img_background_button.width / 2) + 56 * scale_factor.x;
-	m->play_button.pos.y = (WIN_HEIGHT / 2) \
-	- (m->img_background_button.height / 2) + 77 * scale_factor.y;
+	m->play_button.pos.x = ((int)WIN_WIDTH / 2) \
+	- (m->img_background_button.width / 2) + 56 * (int)scale_factor.x;
+	m->play_button.pos.y = ((int)WIN_HEIGHT / 2) \
+	- (m->img_background_button.height / 2) + 77 * (int)scale_factor.y;
 	m->play_button.size.x = m->play_button.img.width;
 	m->play_button.size.y = m->play_button.img.height;
 	m->settings_button.pos.x = m->play_button.pos.x;
 	m->settings_button.pos.y = m->play_button.pos.y \
-	+ m->play_button.size.y + 14 * scale_factor.y;
+	+ m->play_button.size.y + 14 * (int)scale_factor.y;
 	m->settings_button.size.x = m->settings_button.img.width;
 	m->settings_button.size.y = m->settings_button.img.height;
 	m->exit_button.pos.x = m->settings_button.pos.x;
 	m->exit_button.pos.y = m->settings_button.pos.y + \
-	m->settings_button.size.y + 14 * scale_factor.y;
+	m->settings_button.size.y + 14 * (int)scale_factor.y;
 	m->exit_button.size.x = m->exit_button.img.width;
 	m->exit_button.size.y = m->exit_button.img.height;
 }

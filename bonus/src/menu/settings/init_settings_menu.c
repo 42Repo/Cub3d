@@ -6,11 +6,12 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:26:54 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 21:22:38 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 06:01:44 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_settings_menu.h"
+#include <stdint.h>
 
 static void	init_image(t_data *data, t_image *src, t_image *dst, t_vec2i *ratio)
 {
@@ -37,9 +38,9 @@ static void	resize_image(t_data *data, t_image *src, t_vec2i new_size)
 		{
 			pos_src.x = (pos_dst.x * ratio.x) >> 16;
 			pos_src.y = (pos_dst.y * ratio.y) >> 16;
-			mlx_set_image_pixel(data->graphics.mlx, \
-			dst.img, pos_dst.x, pos_dst.y, mlx_get_image_pixel \
-			(data->graphics.mlx, src->img, pos_src.x, pos_src.y));
+			mlx_set_image_pixel(data->graphics.mlx, dst.img, pos_dst.x,
+				pos_dst.y, mlx_get_image_pixel(data->graphics.mlx, src->img,
+					pos_src.x, pos_src.y));
 			pos_dst.x++;
 		}
 		pos_dst.y++;
@@ -48,21 +49,21 @@ static void	resize_image(t_data *data, t_image *src, t_vec2i new_size)
 	*src = dst;
 }
 
-void	set_menu_var(t_data *data, t_graphics *g, t_settings *s)
+static void	set_menu_var(t_data *data, t_graphics *g, t_settings *s)
 {
 	s->img_background = g->menu.img_background;
-	s->img_background.img = mlx_png_file_to_image(g->mlx, \
-	BACKGROUND_SETTING, &s->img_background.width, &s->img_background.height);
-	resize_image(data, &s->img_background, \
-	(t_vec2i){s->img_background.width * 7, s->img_background.height * 7});
-	s->pos_img_background.x = WIN_WIDTH / 2 - s->img_background.width / 2;
-	s->pos_img_background.y = WIN_HEIGHT / 2 - s->img_background.height / 2;
-	s->back_button.img.img = mlx_png_file_to_image(g->mlx, \
-	BACK_BUTTON_PRESSED, &s->back_button.img.width, \
-	&s->back_button.img.height);
-	s->back_button.img_hovered.img = mlx_png_file_to_image(g->mlx, \
-	BACK_BUTTON_HOVERED, &s->back_button.img_hovered.width, \
-	&s->back_button.img_hovered.height);
+	s->img_background.img = mlx_png_file_to_image(g->mlx, BACKGROUND_SETTING,
+			&s->img_background.width, &s->img_background.height);
+	resize_image(data, &s->img_background, (t_vec2i){s->img_background.width
+		* 7, s->img_background.height * 7});
+	s->pos_img_background.x = (int)WIN_WIDTH / 2 - s->img_background.width / 2;
+	s->pos_img_background.y = (int)WIN_HEIGHT / 2 - s->img_background.height
+		/ 2;
+	s->back_button.img.img = mlx_png_file_to_image(g->mlx, BACK_BUTTON_PRESSED,
+			&s->back_button.img.width, &s->back_button.img.height);
+	s->back_button.img_hovered.img = mlx_png_file_to_image(g->mlx,
+			BACK_BUTTON_HOVERED, &s->back_button.img_hovered.width,
+			&s->back_button.img_hovered.height);
 	data->graphics.settings.button_state_hover = NOTHING;
 	data->graphics.settings.waiting_for_key = false;
 	data->settings.key_map_zoom = SDL_SCANCODE_LALT;
@@ -90,8 +91,8 @@ void	init_settings_menu(t_data *data)
 		j = 0;
 		while (j < WIN_WIDTH)
 		{
-			mlx_set_image_pixel(g->mlx, \
-			g->settings.img_darken.img, j, i, 0xBF000000);
+			mlx_set_image_pixel(g->mlx, g->settings.img_darken.img, j, i,
+				(int)(uintptr_t)0xBF000000);
 			j++;
 		}
 		i++;

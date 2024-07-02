@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:12:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 17:56:57 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 23:46:31 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	exit_parsingerror(t_data data)
+static void	exit_parsingerror(t_data data)
 {
 	free(data.graphics.wall_sprite.path_n);
 	free(data.graphics.wall_sprite.path_s);
@@ -21,7 +21,7 @@ void	exit_parsingerror(t_data data)
 	ft_free_tab((void **)data.map.map);
 }
 
-void	exit_preloaderror(t_data data)
+static void	exit_preloaderror(t_data data)
 {
 	free(data.graphics.wall_sprite.north_texture);
 	free(data.graphics.wall_sprite.south_texture);
@@ -58,7 +58,7 @@ static void	destroy_image(t_graphics *g)
 	mlx_destroy_image(g->mlx, g->settings.back_button.img_hovered.img);
 }
 
-void	exit_exitgame(t_data d)
+static void	exit_exitgame(t_data d)
 {
 	t_graphics	*g;
 

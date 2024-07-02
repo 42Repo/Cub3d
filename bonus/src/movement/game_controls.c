@@ -6,28 +6,28 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 16:58:24 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 15:00:57 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 01:08:27 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_player_movement.h"
 
-void	manage_sprint(t_data *data)
+static void	manage_sprint(t_data *data)
 {
 	if (data->graphics.key_states[data->settings.key_sprint])
 	{
-		if (data->settings.fov < 91.0)
+		if (data->settings.fov < 91.0f)
 		{
-			data->settings.fov += 0.25;
-			data->player.move_speed = 0.07;
+			data->settings.fov += 0.5f;
+			data->player.move_speed = 0.07f;
 		}
 	}
 	else
 	{
-		if (data->settings.fov > 90)
+		if (data->settings.fov > 90.0f)
 		{
-			data->settings.fov -= 0.25;
-			data->player.move_speed = 0.05;
+			data->settings.fov -= 0.5f;
+			data->player.move_speed = 0.05f;
 		}
 	}
 }

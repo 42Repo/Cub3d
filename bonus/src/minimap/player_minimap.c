@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   player_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:37:39 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/27 15:38:08 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 06:04:50 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_minimap.h"
+#include <stdint.h>
 
-void	draw_circle(int radius, t_vec2i center, t_data *data)
+static void	draw_circle(int radius, t_vec2i center, t_data *data)
 {
 	t_vec2i	p;
 	t_vec2i	d;
@@ -27,8 +28,9 @@ void	draw_circle(int radius, t_vec2i center, t_data *data)
 			{
 				p.x = center.x + d.x;
 				p.y = center.y + d.y;
-				mlx_set_image_pixel(data->graphics.mlx, \
-				data->graphics.img_mini_map, p.x, p.y, 0xFF00FF00);
+				mlx_set_image_pixel(data->graphics.mlx,
+					data->graphics.img_mini_map, p.x, p.y,
+					(int)(uintptr_t)0xFF00FF00);
 			}
 			d.x++;
 		}
@@ -36,7 +38,7 @@ void	draw_circle(int radius, t_vec2i center, t_data *data)
 	}
 }
 
-void	draw_tip(t_vec2i center, t_data *data)
+static void	draw_tip(t_vec2i center, t_data *data)
 {
 	t_vec2i	p;
 	t_vec2i	d;
@@ -51,9 +53,9 @@ void	draw_tip(t_vec2i center, t_data *data)
 			{
 				p.x = center.x + d.x;
 				p.y = center.y - 3 - d.y + 2;
-				mlx_set_image_pixel(data->graphics.mlx, \
-				data->graphics.img_mini_map, p.x, p.y,
-					0xFF00FF00);
+				mlx_set_image_pixel(data->graphics.mlx,
+					data->graphics.img_mini_map, p.x, p.y,
+					(int)(uintptr_t)0xFF00FF00);
 			}
 			d.x++;
 		}
@@ -65,8 +67,10 @@ void	draw_player_marker(t_data *data)
 {
 	t_vec2i	center;
 
-	center.x = (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
-	center.y = (WIN_HEIGHT * 0.28 / 3) * data->settings.minimap_scale;
+	center.x = (int)((WIN_HEIGHT * 0.28f / 3.0f)
+			* data->settings.minimap_scale);
+	center.y = (int)((WIN_HEIGHT * 0.28f / 3.0f)
+			* data->settings.minimap_scale);
 	draw_circle(3, center, data);
 	draw_tip(center, data);
 }

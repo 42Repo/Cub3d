@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:02:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 16:16:42 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 04:57:46 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	fps_counter(void)
 	frame_count++;
 	if ((current_time - last_avg_time) >= CLOCKS_PER_SEC * 10)
 	{
-		avg_fps = fps_sum / frame_count;
-		printf("\033[1;31mAverage FPS (10s): %.2f\033[0m\n", avg_fps);
+		avg_fps = fps_sum / (float)frame_count;
+		printf("\033[1;31mAverage FPS (10s): %.2f\033[0m\n", (double)avg_fps);
 		fps_sum = 0.0;
 		frame_count = 0;
 		last_avg_time = current_time;
 	}
-	printf("FPS: %.2f\n", fps);
+	printf("FPS: %.2f\n",(double)fps);
 }

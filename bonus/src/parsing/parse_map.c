@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:15:52 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/28 14:32:54 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 04:34:38 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static void	format_map(char ***grid, t_map *map)
 			max_len = ft_strlen(*tmp);
 		tmp++;
 	}
-	map->cols = max_len;
-	map->rows = tmp - *grid;
+	map->cols = (int)max_len;
+	map->rows = (int)(tmp - *grid);
 	extand_map(*grid, max_len);
 }
 

@@ -6,7 +6,7 @@
 #    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/07/01 21:53:14 by asuc             ###   ########.fr        #
+#    Updated: 2024/07/02 06:09:16 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR) $(DEP_DIR)
 
 all : $(NAME)
 
-debug: CFLAGS += -gdwarf-4 -g -pg
+debug: CFLAGS += -fstack-protector-strong -D_FORTIFY_SOURCE=2 -pipe -fno-plt -Wformat-truncation=2 -Wstringop-truncation -fvisibility=hidden -fstack-clash-protection -fcf-protection -Wsign-conversion -Wconversion -Wvla-larger-than=4096 -Wduplicated-cond -Wduplicated-branches -Wjump-misses-init -Wlogical-not-parentheses -Wnull-dereference -Wpedantic -Wshadow=local -Wshift-overflow=2 -Wswitch-enum -Wunused-const-variable=1 -Wunused-macros -Wdate-time -gdwarf-4 -g3 -pedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wlogical-op -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wstrict-aliasing=2 -Wswitch-default -Wundef -Wno-unused -Wno-variadic-macros -Wno-parentheses -fdiagnostics-show-option -Wdouble-promotion -Wfloat-equal -Wformat-nonliteral -Wformat-security -Wformat-signedness -Wmissing-declarations -Wmissing-field-initializers -Wmissing-noreturn -Wnested-externs -Wold-style-definition -Wpointer-arith -Wstack-protector -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wsuggest-attribute=pure -Wtrampolines -Wunreachable-code -Wunused-but-set-parameter
 debug: clean all
 
 $(OBJ_DIR) $(DEP_DIR):

@@ -6,13 +6,13 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:13:00 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 19:23:18 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/01 23:28:55 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	map_keyboard(t_data *data, int key)
+static void	map_keyboard(t_data *data, int key)
 {
 	t_settings	*settings;
 

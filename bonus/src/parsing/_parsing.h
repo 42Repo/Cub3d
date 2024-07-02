@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _parsing.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:02:04 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/19 11:31:33 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 23:36:08 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		reset_map(char **map);
 
 void	print_parsing(t_data *data);
 
-int		check_extension_file(char *file, char *extension);
+int		check_extension_file(char *file, const char *extension);
 int		check_map_character(char **map);
 int		check_player(char **map, t_player *player);
 int		check_unclosed_map(char **map);
@@ -34,6 +34,6 @@ int		check_texture(t_sprite *sprite);
 void	check_valid_zero(char **map, size_t i, size_t j);
 void	check_valid_door(char **map, size_t i, size_t j);
 
-size_t	ft_ctablen(char **tab);
+size_t	ft_ctablen(char **tab) __attribute__((pure));
 
 #endif // _PARSING_H

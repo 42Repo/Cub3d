@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image_menu.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 17:10:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/29 21:32:59 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 05:55:03 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	set_background_image(t_data *data, t_menu *m, t_vec2f scale_factor)
 {
 	t_vec2i	new_size;
 
-	new_size = (t_vec2i){scale_factor.x * 7, scale_factor.y * 7};
+	new_size = (t_vec2i){(int)scale_factor.x * 7, (int)scale_factor.y * 7};
 	m->img_background.img = mlx_png_file_to_image (data->graphics.mlx, \
 	BACKGROUND, &m->img_background.width, &m->img_background.height);
 	resize_image(data, &m->img_background, (t_vec2i){WIN_WIDTH, WIN_HEIGHT});
@@ -31,7 +31,7 @@ static void	set_start_button(t_data *data, t_menu *m, t_vec2f scale_factor)
 {
 	t_vec2i	new_size;
 
-	new_size = (t_vec2i){scale_factor.x * 7, scale_factor.y * 7};
+	new_size = (t_vec2i){(int)scale_factor.x * 7, (int)scale_factor.y * 7};
 	m->play_button.img.img = mlx_png_file_to_image (data->graphics.mlx, \
 	START, &m->play_button.img.width, &m->play_button.img.height);
 	resize_image(data, &m->play_button.img, \
@@ -55,7 +55,7 @@ static void	set_exit_button(t_data *data, t_menu *m, t_vec2f scale_factor)
 {
 	t_vec2i	new_size;
 
-	new_size = (t_vec2i){scale_factor.x * 7, scale_factor.y * 7};
+	new_size = (t_vec2i){(int)scale_factor.x * 7, (int)scale_factor.y * 7};
 	m->exit_button.img.img = mlx_png_file_to_image (data->graphics.mlx, \
 	EXIT_MENU, &m->exit_button.img.width, &m->exit_button.img.height);
 	resize_image(data, &m->exit_button.img, \
@@ -79,7 +79,7 @@ static void	set_settings_button(t_data *data, t_menu *m, t_vec2f scale_factor)
 {
 	t_vec2i	new_size;
 
-	new_size = (t_vec2i){scale_factor.x * 7, scale_factor.y * 7};
+	new_size = (t_vec2i){(int)scale_factor.x * 7, (int)scale_factor.y * 7};
 	m->settings_button.img.img = mlx_png_file_to_image (data->graphics.mlx, \
 	SETTINGS_MENU, &m->settings_button.img.width, \
 	&m->settings_button.img.height);

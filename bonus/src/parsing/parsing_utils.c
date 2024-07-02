@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:13:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/20 18:44:55 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 23:00:05 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	extand_map(char **map, size_t max_len)
 		{
 			tmp2 = ft_calloc(sizeof(char), max_len - ft_strlen(*tmp) + 1);
 			ft_memset(tmp2, ' ', max_len - ft_strlen(*tmp));
-			*tmp = ft_strjoin(*tmp, tmp2, 0b11);
+			*tmp = ft_strjoin(*tmp, tmp2, 0x3);
 		}
 		tmp++;
 	}

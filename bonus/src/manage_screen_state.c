@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   manage_screen_state.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 15:41:28 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/29 21:42:41 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/01 23:29:06 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-void	press_button(t_data *d)
+static void	press_button(t_data *d)
 {
 	if (d->graphics.menu.play_button.is_pressed == true)
 	{

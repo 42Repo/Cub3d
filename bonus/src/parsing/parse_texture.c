@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:17:23 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/01 11:59:49 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 04:33:38 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
+#include <stdint.h>
 
 static int	get_wall_texture(t_data *data, char **line)
 {
@@ -73,9 +74,9 @@ static int	get_background_color(t_data *data, char **line)
 	if (!tmp || ft_ctablen(tmp) != 3 || is_valid_rgb(tmp) == -1)
 		return (ft_free_tab((void **)tmp));
 	(*color).a = 255;
-	(*color).r = ft_atoi(tmp[0]);
-	(*color).g = ft_atoi(tmp[1]);
-	(*color).b = ft_atoi(tmp[2]);
+	(*color).r = (uint8_t)ft_atoi(tmp[0]);
+	(*color).g = (uint8_t)ft_atoi(tmp[1]);
+	(*color).b = (uint8_t)ft_atoi(tmp[2]);
 	ft_free_tab((void **)tmp);
 	return (0);
 }

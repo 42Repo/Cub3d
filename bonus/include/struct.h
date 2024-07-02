@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 19:24:53 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/01 19:13:29 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 04:46:11 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 # include <time.h>
 # include <unistd.h>
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 1920.0f
+# define WIN_HEIGHT 1080.0f
+# define M_PI_F 3.14159265358979323846f
 
 # define BACKGROUND "textures/menu/menu_background.png"
 # define BACKGROUND_SETTING "textures/menu/background_settings_menu.png"
