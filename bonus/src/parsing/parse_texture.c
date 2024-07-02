@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:17:23 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 18:26:42 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 18:59:23 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ static int	get_background_color(t_data *data, char **line)
 int	is_texture_path(char *line)
 {
 	return (!ft_strncmp(line, "NO ", 3) || !ft_strncmp(line, "SO ", 3)
-			|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3)
-			|| !ft_strncmp(line, "CE ", 3) || !ft_strncmp(line, "FL ", 3));
+		|| !ft_strncmp(line, "WE ", 3) || !ft_strncmp(line, "EA ", 3)
+		|| !ft_strncmp(line, "CE ", 3) || !ft_strncmp(line, "FL ", 3));
 }
 
 int	parse_texture(char **file, t_data *data)
