@@ -6,13 +6,13 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:13:40 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 17:50:07 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 19:34:46 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
 
-void	extand_map(char **map, size_t max_len)
+int	extand_map(char **map, size_t max_len)
 {
 	char	**tmp;
 	char	*tmp2;
@@ -23,11 +23,14 @@ void	extand_map(char **map, size_t max_len)
 		if (ft_strlen(*tmp) < max_len)
 		{
 			tmp2 = ft_calloc(sizeof(char), max_len - ft_strlen(*tmp) + 1);
+			if (!tmp2)
+				return (-1);
 			ft_memset(tmp2, ' ', max_len - ft_strlen(*tmp));
 			*tmp = ft_strjoin(*tmp, tmp2, 0x3);
 		}
 		tmp++;
 	}
+	return (0);
 }
 
 void	file_to_char(int fd, char ***file)

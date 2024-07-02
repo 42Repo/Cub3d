@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_minimap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 22:37:15 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/02 05:09:21 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/02 19:36:20 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,15 @@ void	print_minimap(t_data *data)
 
 	size = (int)((WIN_HEIGHT * 0.56f / 3.0f) * data->settings.minimap_scale);
 	mask = malloc(sizeof(int) * (unsigned int)size * (unsigned int)size);
-	create_circular_mask(mask, size, size);
-	player_map.x = data->player.pos.x;
-	player_map.y = data->player.pos.y;
-	reset_minimap(data, size);
-	draw_minimap(data, size, mask, player_map);
-	draw_player_marker(data);
-	put_minimap(data, size);
+	if (mask)
+	{
+		create_circular_mask(mask, size, size);
+		player_map.x = data->player.pos.x;
+		player_map.y = data->player.pos.y;
+		reset_minimap(data, size);
+		draw_minimap(data, size, mask, player_map);
+		draw_player_marker(data);
+		put_minimap(data, size);
+	}
 	free(mask);
 }

@@ -6,19 +6,19 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:15:52 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 18:21:32 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/02 19:34:41 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "_parsing.h"
 
-static void	format_map(char ***grid, t_map *map)
+static int	format_map(char ***grid, t_map *map)
 {
 	size_t	max_len;
 	char	**tmp;
 
 	if (!grid || !*grid)
-		return ;
+		return (-1);
 	max_len = 0;
 	tmp = *grid;
 	while (*tmp)
@@ -29,7 +29,9 @@ static void	format_map(char ***grid, t_map *map)
 	}
 	map->cols = (int)max_len;
 	map->rows = (int)(tmp - *grid);
-	extand_map(*grid, max_len);
+	if (extand_map(*grid, max_len) == -1)
+		return (-1);
+	return (0);
 }
 
 int	parse_map(char **file, t_data *data)
@@ -47,8 +49,8 @@ int	parse_map(char **file, t_data *data)
 		tmp++;
 	}
 	ft_free_tab((void **)file);
-	format_map(&data->map.map, &data->map);
-	if (has_empty_line == true)
+	if (has_empty_line == true \
+	|| format_map(&data->map.map, &data->map) == -1)
 		return (-1);
 	else
 		return (0);
