@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 17:15:52 by bgoron            #+#    #+#             */
-/*   Updated: 2024/06/18 19:53:34 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/06 16:47:08 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,14 @@ int	parse_map(char **file, t_data *data)
 
 	has_empty_line = false;
 	tmp = file + 6;
-	while (*tmp)
+	while (**tmp == '\0')
+		(tmp)++;
+	while (*tmp && has_empty_line == false)
 	{
 		if (**tmp == '\0')
 			has_empty_line = true;
-		ft_extand_tab(&data->map.map, ft_strdup(*tmp));
+		else
+			ft_extand_tab(&data->map.map, ft_strdup(*tmp));
 		tmp++;
 	}
 	ft_free_tab((void **)file);
