@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   settings_buttons.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 21:50:07 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/02 11:31:11 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/06 16:15:10 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_vec2i pos_mouse)
 	&& pos_mouse.y <= pos_button.y + size_button.y);
 }
 
-void	render_button(t_data *data, t_button_info *button, t_vec2i pos_mouse)
+static void	render_button(t_data *data, t_button_info *button, \
+t_vec2i pos_mouse)
 {
 	if (is_mouse_over_button(button->pos, button->size, pos_mouse) == 1)
 	{

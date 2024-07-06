@@ -6,13 +6,13 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 16:59:13 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 06:03:45 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/06 16:02:34 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include.h"
 
-static void	set_button_state(t_settings *settings, int button_state)
+static void	set_button_state(t_settings *settings, t_button_state button_state)
 {
 	settings->button_state_press = button_state;
 	settings->waiting_for_key = true;

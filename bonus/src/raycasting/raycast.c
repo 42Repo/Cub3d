@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 21:01:19 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 21:45:21 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/06 16:15:39 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static inline void	calculate_line_height_and_draw_points(t_ray *ray,
 		params->draw_start = 0;
 	params->draw_end = (int)((float)params->line_height / 2.0f + WIN_HEIGHT
 			/ 2.0f + (float)params->line_offset);
-	if (params->draw_end >= WIN_HEIGHT)
-		params->draw_end = WIN_HEIGHT - 1;
+	if (params->draw_end >= (int)WIN_HEIGHT)
+		params->draw_end = (int)WIN_HEIGHT - 1;
 }
 
 static inline void	draw_texture(t_data *data, int x, t_ray_params *params)
@@ -72,7 +72,7 @@ void	render_frame(t_data *data)
 	int	i;
 
 	i = 0;
-	while (i < WIN_WIDTH)
+	while (i < (int)WIN_WIDTH)
 	{
 		cast_ray(data, i);
 		i++;

@@ -3,30 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+         #
+#    By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/12 17:42:16 by asuc              #+#    #+#              #
-#    Updated: 2024/07/06 13:44:37 by bgoron           ###   ########.fr        #
+#    Updated: 2024/07/06 17:16:51 by asuc             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include utils.mk
 
 NAME = cub3D
-CFLAGS = -Werror -Wextra -Wall
-MacroLibX_DIR = $(shell pwd)/MacroLibX/
-LIBFT_DIR = $(shell pwd)/Libft/
-LIBFT = $(LIBFT_DIR)libft.a
-IFLAGS = -I include -I Libft/include -I $(MacroLibX_DIR)includes
-COMPIL = clang
-CC = $(COMPIL) $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
-MACROLIBX = $(MacroLibX_DIR)libmlx.so
-CACHE_DIR = $(addprefix $(shell pwd)/, .cache)
-MAKE = make --no-print-directory
+CFLAGS			=	-Wextra -Wall -Werror
+MacroLibX_DIR	=	$(shell pwd)/MacroLibX/
+LIBFT_DIR		=	$(shell pwd)/Libft/
+LIBFT			=	$(LIBFT_DIR)libft.a
+IFLAGS 			=	-I include -I Libft/include -I $(MacroLibX_DIR)includes
+COMPIL			=	cc
+CC 				=	$(COMPIL) $(CFLAGS) $(IFLAGS) $(FLAGS_OPTI)
+MACROLIBX		=	$(MacroLibX_DIR)libmlx.so
+CACHE_DIR		=	$(addprefix $(shell pwd)/, .cache)
+MAKE			=	make --no-print-directory
 
 SRC = src/main.c \
 src/exit.c       \
-src/mouse_hook.c       \
+src/mouse_hook.c \
 src/keyboard_hook.c \
 src/set_game.c   \
 src/set_image.c  \
@@ -94,8 +94,12 @@ all : $(NAME)
 
 #CLANG FLAG : 
 # debug: DEBUG_FLAGS := -Weverything
+# -pedantic-errors -pedantic -Wpedantic
 
-debug: CFLAGS +=   -pedantic-errors -Wno-padded -Wno-disabled-macro-expansion -Wno-reserved-id-macro -Waggregate-return  -Walloca -Warray-parameter -Wattribute-warning  -Wcomment  -Wcpp -Wdeclaration-after-statement  -Wdiv-by-zero -Wduplicate-decl-specifier -Wempty-body -Wendif-labels -Wenum-compare -Wenum-conversion -Wexpansion-to-defined -Wfloat-conversion  -Wformat-extra-args -Wformat-zero-length -Wframe-address -Wframe-larger-than=4096 -Wfree-nonheap-object   -Wignored-attributes  -Wimplicit -Wimplicit-function-declaration -Wimplicit-int -Wincompatible-pointer-types -Winfinite-recursion -Winline -Wint-conversion -Wint-in-bool-context -Wint-to-pointer-cast   -Wlarger-than=4096 -Wmain  -Wmemset-transposed-args -Wmisleading-indentation -Wmissing-braces  -Wmissing-prototypes -Wmultichar -Wnarrowing -Wnonnull  -Wnull-dereference -Wodr  -Woverflow -Woverlength-strings -Woverride-init  -Wparentheses -Wpointer-compare -Wpointer-sign -Wpointer-to-int-cast -Wpragmas -Wpsabi -Wreturn-local-addr  -Wsequence-point -Wshift-negative-value -Wshift-overflow -Wsizeof-array-argument -Wsizeof-pointer-div -Wsizeof-pointer-memaccess   -Wswitch-bool  -Wtautological-compare  -Wtrigraphs -Wtype-limits -Wuninitialized  -Wunused -Wunused-label -Wunused-local-typedefs -Wunused-parameter -Wunused-result -Wunused-value -Wunused-variable -Wvarargs -Wvariadic-macros  -Wvla -Wvolatile-register-var  -Wdangling-else -Wdouble-promotion  -Wimplicit-fallthrough -Winvalid-pch  -Wpacked -Wpointer-arith -Wredundant-decls  -Wsign-conversion  -Wswitch-default -Wswitch-enum   -Wuninitialized  -Wunused-but-set-variable -fstack-protector-strong -D_FORTIFY_SOURCE=2 -pipe -fno-plt -fvisibility=hidden -fstack-clash-protection -fcf-protection -Wsign-conversion -Wconversion   -Wlogical-not-parentheses -Wnull-dereference -Wpedantic  -Wswitch-enum  -Wunused-macros -Wdate-time -gdwarf-4 -g3 -pedantic -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wstrict-aliasing=2 -Wswitch-default -Wundef -Wno-unused -Wno-variadic-macros -Wno-parentheses -fdiagnostics-show-option -Wdouble-promotion -Wfloat-equal -Wformat-nonliteral -Wformat-security -Wmissing-declarations -Wmissing-field-initializers -Wmissing-noreturn -Wnested-externs -Wold-style-definition -Wpointer-arith -Wstack-protector  -Wunreachable-code -Wunused-but-set-parameter
+fast : CFLAGS += -Ofast -march=native -mtune=native -flto -ffast-math -funroll-loops -fomit-frame-pointer -finline-functions -fno-plt -fno-semantic-interposition  -falign-functions=32 -falign-loops=32 -fno-math-errno -fno-trapping-math -freciprocal-math -fno-signed-zeros -fno-associative-math
+fast : clean all
+
+debug: CFLAGS += -O1 -Wno-padded -Waggregate-return  -Walloca -Warray-parameter -Wattribute-warning  -Wcomment  -Wcpp -Wdeclaration-after-statement  -Wdiv-by-zero -Wduplicate-decl-specifier -Wempty-body -Wendif-labels -Wenum-compare -Wenum-conversion -Wexpansion-to-defined -Wfloat-conversion  -Wformat-extra-args -Wformat-zero-length -Wframe-address -Wframe-larger-than=4096 -Wfree-nonheap-object   -Wignored-attributes  -Wimplicit -Wimplicit-function-declaration -Wimplicit-int -Wincompatible-pointer-types -Winfinite-recursion -Winline -Wint-conversion -Wint-in-bool-context -Wint-to-pointer-cast   -Wlarger-than=4096 -Wmain  -Wmemset-transposed-args -Wmisleading-indentation -Wmissing-braces  -Wmissing-prototypes -Wmultichar -Wnarrowing -Wnonnull  -Wnull-dereference -Wodr  -Woverflow -Woverlength-strings -Woverride-init  -Wparentheses -Wpointer-compare -Wpointer-sign -Wpointer-to-int-cast -Wpragmas -Wpsabi -Wreturn-local-addr  -Wsequence-point -Wshift-negative-value -Wshift-overflow -Wsizeof-array-argument -Wsizeof-pointer-div -Wsizeof-pointer-memaccess   -Wswitch-bool  -Wtautological-compare  -Wtrigraphs -Wtype-limits -Wuninitialized  -Wunused -Wunused-label -Wunused-local-typedefs -Wunused-parameter -Wunused-result -Wunused-value -Wunused-variable -Wvarargs -Wvariadic-macros  -Wvla -Wvolatile-register-var  -Wdangling-else -Wdouble-promotion  -Wimplicit-fallthrough -Winvalid-pch  -Wpacked -Wpointer-arith -Wredundant-decls  -Wsign-conversion  -Wswitch-default -Wswitch-enum   -Wuninitialized  -Wunused-but-set-variable -fstack-protector-strong -D_FORTIFY_SOURCE=2 -pipe -fno-plt -fvisibility=hidden -fstack-clash-protection -fcf-protection -Wsign-conversion -Wconversion   -Wlogical-not-parentheses -Wnull-dereference -Wno-strict-prototypes   -Wswitch-enum  -Wunused-macros -Wdate-time -gdwarf-4 -g3  -Wcast-align -Wcast-qual -Wdisabled-optimization -Wformat=2 -Winit-self -Wmissing-include-dirs -Wredundant-decls -Wshadow -Wstrict-aliasing=2 -Wswitch-default -Wundef -Wno-unused -Wno-variadic-macros -Wno-parentheses -fdiagnostics-show-option -Wdouble-promotion -Wfloat-equal -Wformat-nonliteral -Wformat-security -Wmissing-declarations -Wmissing-field-initializers -Wmissing-noreturn -Wnested-externs -Wold-style-definition -Wpointer-arith -Wstack-protector  -Wunreachable-code -Wunused-but-set-parameter
 debug: CFLAGS += $(DEBUG_FLAGS)
 debug: clean all
 

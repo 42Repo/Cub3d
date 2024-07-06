@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/01 15:17:11 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 05:50:35 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/06 16:17:15 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	create_circular_mask(int *mask, int width, int height)
 
 void	set_minimap_color(t_data *d, t_vec2f map, int *color)
 {
-	if (map.x >= 0 && map.x < d->map.cols && map.y >= 0 && map.y < d->map.rows)
+	if (map.x >= 0.f && map.x < (float)d->map.cols && map.y >= 0.f && map.y < (float)d->map.rows)
 	{
 		if (d->map.map[(int)map.y][(int)map.x] == '1')
 			*color = (int)(uintptr_t)0xFFFF0000;

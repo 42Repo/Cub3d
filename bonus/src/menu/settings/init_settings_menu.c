@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_settings_menu.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:26:54 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/06 14:02:36 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/06 16:28:39 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ void	init_settings_menu(t_data *data)
 	g = &data->graphics;
 	g->settings.img_darken.img = mlx_new_image(g->mlx, WIN_WIDTH, WIN_HEIGHT);
 	i = 0;
-	while (i < WIN_HEIGHT)
+	while (i < (int)WIN_HEIGHT)
 	{
 		j = 0;
-		while (j < WIN_WIDTH)
+		while (j < (int)WIN_WIDTH)
 		{
 			mlx_set_image_pixel(g->mlx, g->settings.img_darken.img, j, i,
 				(int)(uintptr_t)0xBF000000);

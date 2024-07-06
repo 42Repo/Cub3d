@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:42:50 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/02 04:46:11 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/06 16:23:13 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ inline void	render_pixel_row(t_render_data *rd, t_pixel_data *pd,
 	int			color;
 
 	pd->x = 1;
-	while (pd->x < WIN_WIDTH)
+	while (pd->x < (int)WIN_WIDTH)
 	{
 		pd->tx = ((int)(pd->floor_xi >> (shift - 16)) & 0xFFFF)
 			* rd->width >> 16;

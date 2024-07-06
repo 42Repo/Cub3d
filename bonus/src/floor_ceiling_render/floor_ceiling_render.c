@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 02:42:48 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/02 06:00:09 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/06 16:28:23 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,16 @@ static inline void	calculate_line_data(t_render_data *rd, int y,
 {
 	ld->pitch = rd->data->player.pitch;
 	ld->real_y = (int)((float)y + ld->pitch * WIN_HEIGHT);
-	ld->render_ceiling = ld->real_y < rd->center_line;
-	if (ld->render_ceiling)
+	if ((float)ld->real_y < rd->center_line)
+	{
+		ld->render_ceiling = true;
 		ld->p = rd->center_line - (float)ld->real_y;
+	}
 	else
+	{
+		ld->render_ceiling = false;
 		ld->p = (float)ld->real_y - rd->center_line;
+	}
 	if (fabsf(ld->p) < FLT_EPSILON)
 		ld->p = FLT_EPSILON;
 	ld->row_distance = rd->pos_z / ld->p;
@@ -79,7 +84,7 @@ inline void	render_floor_and_ceiling(t_data *data)
 
 	i = 0;
 	init_render_data(&rd, data);
-	while (i < WIN_HEIGHT)
+	while (i < (int)WIN_HEIGHT)
 	{
 		render_horizontal_line(&rd, i);
 		i++;

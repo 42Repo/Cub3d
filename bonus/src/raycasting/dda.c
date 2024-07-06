@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 15:58:08 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/02 06:11:37 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/06 16:14:29 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static inline int	is_within_map_bounds(t_ray *ray, t_map *map)
 
 static inline int	has_reached_max_distance(t_ray *ray, int max_distance)
 {
-	return (fabs(ray->pos.x - (float)ray->map.x) > max_distance
-		|| fabs(ray->pos.y - (float)ray->map.y) > max_distance);
+	return (fabsf(ray->pos.x - (float)ray->map.x) > (float)max_distance
+		|| fabsf(ray->pos.y - (float)ray->map.y) > (float)max_distance);
 }
 
 static inline void	update_ray_position(t_ray *ray)

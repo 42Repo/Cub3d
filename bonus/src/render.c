@@ -6,7 +6,7 @@
 /*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 16:05:34 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 05:52:43 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/06 16:17:46 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static inline void	set_image(t_vec2f pos, int start_y, int color, t_data *data)
 {
-	while (pos.y <= start_y)
+	while ((int)pos.y <= start_y)
 	{
 		pos.x = 0;
 		while (pos.x < WIN_WIDTH)
