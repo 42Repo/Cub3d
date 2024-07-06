@@ -6,7 +6,7 @@
 /*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 15:10:51 by bgoron            #+#    #+#             */
-/*   Updated: 2024/07/02 20:05:31 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/06 16:10:51 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	parsing(int ac, char **av, t_data *data)
 	if (check_argv(ac, av, &fd) == -1)
 		return (-1);
 	file_to_char(fd, &file);
+	if (!file)
+		return (print_error("Empty file"));
 	if (parse_texture(file, data) == -1)
 		return (print_error("Can't parse texture\n"));
 	if (parse_map(file, data) == -1)
