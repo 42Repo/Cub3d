@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_settings_menu.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 16:26:54 by asuc              #+#    #+#             */
-/*   Updated: 2024/07/02 06:11:06 by asuc             ###   ########.fr       */
+/*   Updated: 2024/07/06 14:02:36 by bgoron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ static void	set_menu_var(t_data *data, t_graphics *g, t_settings *s)
 			&s->img_background.width, &s->img_background.height);
 	resize_image(data, &s->img_background, (t_vec2i){s->img_background.width
 		* 7, s->img_background.height * 7});
-	s->pos_img_background.x = (int)WIN_WIDTH / 2 - s->img_background.width / 2;
-	s->pos_img_background.y = (int)WIN_HEIGHT / 2 - s->img_background.height
-		/ 2;
+	s->pos_img_background.x = (int)WIN_WIDTH / 2 \
+	- s->img_background.width / 2;
+	s->pos_img_background.y = (int)WIN_HEIGHT / 2 \
+	- s->img_background.height / 2;
 	s->back_button.img.img = mlx_png_file_to_image(g->mlx, BACK_BUTTON_PRESSED,
 			&s->back_button.img.width, &s->back_button.img.height);
 	s->back_button.img_hovered.img = mlx_png_file_to_image(g->mlx,
