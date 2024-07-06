@@ -1,10 +1,14 @@
-NO ./sprite/wall_1.png
+NO ./textures/wall/wall_1.png
 
-SO ./sprite/wall_2.png
+SO ./textures/wall/wall_2.png
 
-WE ./sprite/wall_3.png
+WE ./textures/wall/wall_3.png
 
-EA ./sprite/wall_4.png
+EA ./textures/wall/wall_4.png
+
+FL ./textures/wall/floor_1.png
+
+CE ./textures/wall/blue.png
 
 F 220,100,0
 

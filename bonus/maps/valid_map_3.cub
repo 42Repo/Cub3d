@@ -1,9 +1,11 @@
-NO ./sprite/wall_1.png
-EA ./sprite/wall_4.png
+NO ./textures/wall/wall_1.png
+EA ./textures/wall/wall_4.png
 F 220,100,0
-SO ./sprite/wall_2.png
+SO ./textures/wall/wall_2.png
 C 225,30,0
-WE ./sprite/wall_3.png
+WE ./textures/wall/wall_3.png
+FL ./textures/wall/floor_1.png
+CE ./textures/wall/blue.png
 
         1111111111111111111111111
         1000000000110000000000001
