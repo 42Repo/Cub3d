@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgoron <bgoron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asuc <asuc@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:34:29 by asuc              #+#    #+#             */
-/*   Updated: 2024/06/19 12:02:15 by bgoron           ###   ########.fr       */
+/*   Updated: 2024/07/06 15:26:47 by asuc             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ inline void	init_ray(t_ray *ray, t_player *player, float camera_x)
 	ray->pos = player->pos;
 	ray->dir.x = player->dir.x + player->plane.x * camera_x;
 	ray->dir.y = player->dir.y + player->plane.y * camera_x;
-	ray->map.x = (int)ray->pos.x;
-	ray->map.y = (int)ray->pos.y;
+	ray->map.x = (int)floor(ray->pos.x);
+	ray->map.y = (int)floor(ray->pos.y);
 	ray->delta_dist.x = fabs(1 / ray->dir.x);
 	ray->delta_dist.y = fabs(1 / ray->dir.y);
 	ray->hit = 0;
